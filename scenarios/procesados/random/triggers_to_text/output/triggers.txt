@@ -1,0 +1,1461 @@
+
+Triggers:
+	'Andar por el agua' [Index: 26, Display: 0]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			script_call [Index: 0, Display: 0]:
+				message: 'permitir_caminar_agua();'
+
+	'========= arboles====' [Index: 2, Display: 1]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'Modificar Roble otoñal nevado' [Index: 3, Display: 2]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			modify_attribute [Index: 0, Display: 0]:
+				quantity: 250
+				object_list_unit_id: Tree Oak Autumn Snow (1249)
+				source_player: Player Gaia (0)
+				item_id: 1249
+				operation: Set (1)
+				object_attributes: Amount Of 1st Resource Storage (21)
+
+	'=====Arboles segundo anilo======' [Index: 4, Display: 3]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'Modificar árbol Dragon' [Index: 5, Display: 4]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			modify_attribute [Index: 0, Display: 0]:
+				quantity: 250
+				object_list_unit_id: Tree Dragon (1051)
+				source_player: Player Gaia (0)
+				item_id: 1051
+				operation: Set (1)
+				object_attributes: Amount Of 1st Resource Storage (21)
+
+	'===== Arboles Tropical======' [Index: 6, Display: 5]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'Modificar selva tropical' [Index: 7, Display: 6]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			modify_attribute [Index: 0, Display: 0]:
+				quantity: 250
+				object_list_unit_id: Tree Rainforest (1146)
+				source_player: Player Gaia (0)
+				item_id: 1146
+				operation: Set (1)
+				object_attributes: Amount Of 1st Resource Storage (21)
+
+	'====== Pesca======' [Index: 8, Display: 7]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'Pesac profunda' [Index: 9, Display: 8]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 1055
+				inverted: False (0)
+		effects:
+			create_object [Index: 0, Display: 0]:
+				object_list_unit_id: Fish Salmon (456)
+				source_player: Player Gaia (0)
+				location_x: 114
+				location_y: 3
+				item_id: 456
+			create_object [Index: 1, Display: 1]:
+				object_list_unit_id: Fish Salmon (456)
+				source_player: Player Gaia (0)
+				location_x: 110
+				location_y: 9
+				item_id: 456
+			create_object [Index: 2, Display: 2]:
+				object_list_unit_id: Fish Salmon (456)
+				source_player: Player Gaia (0)
+				location_x: 108
+				location_y: 9
+				item_id: 456
+			create_object [Index: 3, Display: 3]:
+				object_list_unit_id: Fish Salmon (456)
+				source_player: Player Gaia (0)
+				location_x: 96
+				location_y: 21
+				item_id: 456
+			create_object [Index: 4, Display: 4]:
+				object_list_unit_id: Fish Salmon (456)
+				source_player: Player Gaia (0)
+				location_x: 91
+				location_y: 27
+				item_id: 456
+			create_object [Index: 5, Display: 5]:
+				object_list_unit_id: Fish Salmon (456)
+				source_player: Player Gaia (0)
+				location_x: 94
+				location_y: 26
+				item_id: 456
+			create_object [Index: 6, Display: 6]:
+				object_list_unit_id: Fish Salmon (456)
+				source_player: Player Gaia (0)
+				location_x: 89
+				location_y: 28
+				item_id: 456
+			create_object [Index: 7, Display: 7]:
+				object_list_unit_id: Fish Salmon (456)
+				source_player: Player Gaia (0)
+				location_x: 87
+				location_y: 33
+				item_id: 456
+			create_object [Index: 8, Display: 8]:
+				object_list_unit_id: Fish Salmon (456)
+				source_player: Player Gaia (0)
+				location_x: 77
+				location_y: 41
+				item_id: 456
+			create_object [Index: 9, Display: 9]:
+				object_list_unit_id: Fish Salmon (456)
+				source_player: Player Gaia (0)
+				location_x: 74
+				location_y: 42
+				item_id: 456
+			create_object [Index: 10, Display: 10]:
+				object_list_unit_id: Fish Salmon (456)
+				source_player: Player Gaia (0)
+				location_x: 72
+				location_y: 45
+				item_id: 456
+			create_object [Index: 11, Display: 11]:
+				object_list_unit_id: Fish Salmon (456)
+				source_player: Player Gaia (0)
+				location_x: 68
+				location_y: 48
+				item_id: 456
+			create_object [Index: 12, Display: 12]:
+				object_list_unit_id: Fish Salmon (456)
+				source_player: Player Gaia (0)
+				location_x: 59
+				location_y: 58
+				item_id: 456
+			create_object [Index: 13, Display: 13]:
+				object_list_unit_id: Fish Salmon (456)
+				source_player: Player Gaia (0)
+				location_x: 52
+				location_y: 65
+				item_id: 456
+			create_object [Index: 14, Display: 14]:
+				object_list_unit_id: Fish Salmon (456)
+				source_player: Player Gaia (0)
+				location_x: 51
+				location_y: 66
+				item_id: 456
+			create_object [Index: 15, Display: 15]:
+				object_list_unit_id: Fish Salmon (456)
+				source_player: Player Gaia (0)
+				location_x: 48
+				location_y: 68
+				item_id: 456
+			create_object [Index: 16, Display: 16]:
+				object_list_unit_id: Fish Salmon (456)
+				source_player: Player Gaia (0)
+				location_x: 44
+				location_y: 70
+				item_id: 456
+			create_object [Index: 17, Display: 17]:
+				object_list_unit_id: Fish Salmon (456)
+				source_player: Player Gaia (0)
+				location_x: 46
+				location_y: 72
+				item_id: 456
+			create_object [Index: 18, Display: 18]:
+				object_list_unit_id: Fish Salmon (456)
+				source_player: Player Gaia (0)
+				location_x: 36
+				location_y: 81
+				item_id: 456
+			create_object [Index: 19, Display: 19]:
+				object_list_unit_id: Fish Salmon (456)
+				source_player: Player Gaia (0)
+				location_x: 46
+				location_y: 70
+				item_id: 456
+			create_object [Index: 20, Display: 20]:
+				object_list_unit_id: Fish Salmon (456)
+				source_player: Player Gaia (0)
+				location_x: 24
+				location_y: 92
+				item_id: 456
+			create_object [Index: 21, Display: 21]:
+				object_list_unit_id: Fish Salmon (456)
+				source_player: Player Gaia (0)
+				location_x: 13
+				location_y: 101
+				item_id: 456
+			create_object [Index: 22, Display: 22]:
+				object_list_unit_id: Fish Salmon (456)
+				source_player: Player Gaia (0)
+				location_x: 11
+				location_y: 102
+				item_id: 456
+			create_object [Index: 23, Display: 23]:
+				object_list_unit_id: Fish Salmon (456)
+				source_player: Player Gaia (0)
+				location_x: 6
+				location_y: 105
+				item_id: 456
+
+	'====Bichos========' [Index: 10, Display: 9]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'Bicho Bufalo de Agua' [Index: 11, Display: 10]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 1220
+				inverted: False (0)
+		effects:
+			create_object [Index: 0, Display: 0]:
+				object_list_unit_id: Water Buffalo (1142)
+				source_player: Player Gaia (0)
+				location_x: 40
+				location_y: 8
+				item_id: 1142
+			create_object [Index: 1, Display: 1]:
+				object_list_unit_id: Water Buffalo (1142)
+				source_player: Player Gaia (0)
+				location_x: 49
+				location_y: 5
+				item_id: 1142
+			create_object [Index: 2, Display: 2]:
+				object_list_unit_id: Water Buffalo (1142)
+				source_player: Player Gaia (0)
+				location_x: 41
+				location_y: 9
+				item_id: 1142
+			create_object [Index: 3, Display: 3]:
+				object_list_unit_id: Water Buffalo (1142)
+				source_player: Player Gaia (0)
+				location_x: 35
+				location_y: 38
+				item_id: 1142
+			create_object [Index: 4, Display: 4]:
+				object_list_unit_id: Water Buffalo (1142)
+				source_player: Player Gaia (0)
+				location_x: 21
+				location_y: 48
+				item_id: 1142
+			create_object [Index: 5, Display: 5]:
+				object_list_unit_id: Water Buffalo (1142)
+				source_player: Player Gaia (0)
+				location_x: 14
+				location_y: 40
+				item_id: 1142
+			create_object [Index: 6, Display: 6]:
+				object_list_unit_id: Water Buffalo (1142)
+				source_player: Player Gaia (0)
+				location_x: 106
+				location_y: 65
+				item_id: 1142
+			create_object [Index: 7, Display: 7]:
+				object_list_unit_id: Water Buffalo (1142)
+				source_player: Player Gaia (0)
+				location_x: 94
+				location_y: 75
+				item_id: 1142
+			create_object [Index: 8, Display: 8]:
+				object_list_unit_id: Water Buffalo (1142)
+				source_player: Player Gaia (0)
+				location_x: 78
+				location_y: 76
+				item_id: 1142
+			create_object [Index: 9, Display: 9]:
+				object_list_unit_id: Water Buffalo (1142)
+				source_player: Player Gaia (0)
+				location_x: 63
+				location_y: 91
+				item_id: 1142
+			create_object [Index: 10, Display: 10]:
+				object_list_unit_id: Water Buffalo (1142)
+				source_player: Player Gaia (0)
+				location_x: 59
+				location_y: 109
+				item_id: 1142
+			create_object [Index: 11, Display: 11]:
+				object_list_unit_id: Water Buffalo (1142)
+				source_player: Player Gaia (0)
+				location_x: 74
+				location_y: 114
+				item_id: 1142
+
+	'Bicho Avestruz' [Index: 12, Display: 11]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 1580
+				inverted: False (0)
+		effects:
+			create_object [Index: 0, Display: 0]:
+				object_list_unit_id: Ostrich (1026)
+				source_player: Player Gaia (0)
+				location_x: 59
+				location_y: 11
+				item_id: 1026
+			create_object [Index: 1, Display: 1]:
+				object_list_unit_id: Ostrich (1026)
+				source_player: Player Gaia (0)
+				location_x: 62
+				location_y: 31
+				item_id: 1026
+			create_object [Index: 2, Display: 2]:
+				object_list_unit_id: Ostrich (1026)
+				source_player: Player Gaia (0)
+				location_x: 45
+				location_y: 38
+				item_id: 1026
+			create_object [Index: 3, Display: 3]:
+				object_list_unit_id: Ostrich (1026)
+				source_player: Player Gaia (0)
+				location_x: 26
+				location_y: 48
+				item_id: 1026
+			create_object [Index: 4, Display: 4]:
+				object_list_unit_id: Ostrich (1026)
+				source_player: Player Gaia (0)
+				location_x: 21
+				location_y: 60
+				item_id: 1026
+			create_object [Index: 5, Display: 5]:
+				object_list_unit_id: Ostrich (1026)
+				source_player: Player Gaia (0)
+				location_x: 7
+				location_y: 62
+				item_id: 1026
+			create_object [Index: 6, Display: 6]:
+				object_list_unit_id: Ostrich (1026)
+				source_player: Player Gaia (0)
+				location_x: 9
+				location_y: 75
+				item_id: 1026
+			create_object [Index: 7, Display: 7]:
+				object_list_unit_id: Ostrich (1026)
+				source_player: Player Gaia (0)
+				location_x: 23
+				location_y: 76
+				item_id: 1026
+			create_object [Index: 8, Display: 8]:
+				object_list_unit_id: Ostrich (1026)
+				source_player: Player Gaia (0)
+				location_x: 29
+				location_y: 71
+				item_id: 1026
+			create_object [Index: 9, Display: 9]:
+				object_list_unit_id: Ostrich (1026)
+				source_player: Player Gaia (0)
+				location_x: 41
+				location_y: 60
+				item_id: 1026
+			create_object [Index: 10, Display: 10]:
+				object_list_unit_id: Ostrich (1026)
+				source_player: Player Gaia (0)
+				location_x: 54
+				location_y: 49
+				item_id: 1026
+			create_object [Index: 11, Display: 11]:
+				object_list_unit_id: Ostrich (1026)
+				source_player: Player Gaia (0)
+				location_x: 65
+				location_y: 40
+				item_id: 1026
+			create_object [Index: 12, Display: 12]:
+				object_list_unit_id: Ostrich (1026)
+				source_player: Player Gaia (0)
+				location_x: 75
+				location_y: 20
+				item_id: 1026
+
+	'Bicho  Pavo' [Index: 13, Display: 12]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 2010
+				inverted: False (0)
+		effects:
+			create_object [Index: 0, Display: 0]:
+				object_list_unit_id: Turkey (833)
+				source_player: Player Gaia (0)
+				location_x: 87
+				location_y: 26
+				item_id: 833
+			create_object [Index: 1, Display: 1]:
+				object_list_unit_id: Turkey (833)
+				source_player: Player Gaia (0)
+				location_x: 79
+				location_y: 41
+				item_id: 833
+			create_object [Index: 2, Display: 2]:
+				object_list_unit_id: Turkey (833)
+				source_player: Player Gaia (0)
+				location_x: 62
+				location_y: 48
+				item_id: 833
+			create_object [Index: 3, Display: 3]:
+				object_list_unit_id: Turkey (833)
+				source_player: Player Gaia (0)
+				location_x: 44
+				location_y: 70
+				item_id: 833
+			create_object [Index: 4, Display: 4]:
+				object_list_unit_id: Turkey (833)
+				source_player: Player Gaia (0)
+				location_x: 33
+				location_y: 81
+				item_id: 833
+			create_object [Index: 5, Display: 5]:
+				object_list_unit_id: Turkey (833)
+				source_player: Player Gaia (0)
+				location_x: 15
+				location_y: 90
+				item_id: 833
+
+	'Dragon komodo' [Index: 14, Display: 13]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 2015
+				inverted: False (0)
+		effects:
+			create_object [Index: 0, Display: 0]:
+				object_list_unit_id: Komodo Dragon (1135)
+				source_player: Player Gaia (0)
+				location_x: 104
+				location_y: 6
+				item_id: 1135
+			create_object [Index: 1, Display: 1]:
+				object_list_unit_id: Komodo Dragon (1135)
+				source_player: Player Gaia (0)
+				location_x: 115
+				location_y: 24
+				item_id: 1135
+			create_object [Index: 2, Display: 2]:
+				object_list_unit_id: Komodo Dragon (1135)
+				source_player: Player Gaia (0)
+				location_x: 97
+				location_y: 28
+				item_id: 1135
+			create_object [Index: 3, Display: 3]:
+				object_list_unit_id: Komodo Dragon (1135)
+				source_player: Player Gaia (0)
+				location_x: 90
+				location_y: 15
+				item_id: 1135
+			create_object [Index: 4, Display: 4]:
+				object_list_unit_id: Komodo Dragon (1135)
+				source_player: Player Gaia (0)
+				location_x: 75
+				location_y: 37
+				item_id: 1135
+			create_object [Index: 5, Display: 5]:
+				object_list_unit_id: Komodo Dragon (1135)
+				source_player: Player Gaia (0)
+				location_x: 76
+				location_y: 46
+				item_id: 1135
+			create_object [Index: 6, Display: 6]:
+				object_list_unit_id: Komodo Dragon (1135)
+				source_player: Player Gaia (0)
+				location_x: 50
+				location_y: 60
+				item_id: 1135
+			create_object [Index: 7, Display: 7]:
+				object_list_unit_id: Komodo Dragon (1135)
+				source_player: Player Gaia (0)
+				location_x: 33
+				location_y: 82
+				item_id: 1135
+			create_object [Index: 8, Display: 8]:
+				object_list_unit_id: Komodo Dragon (1135)
+				source_player: Player Gaia (0)
+				location_x: 6
+				location_y: 91
+				item_id: 1135
+
+	'====== Objetos varios====' [Index: 15, Display: 14]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'Remplazr piedra' [Index: 16, Display: 15]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 1450
+				inverted: False (0)
+		effects:
+			replace_object [Index: 0, Display: 0]:
+				object_list_unit_id: Rock 1 (623)
+				source_player: Player Gaia (0)
+				target_player: Player Gaia (0)
+				area_x1: 0
+				area_y1: 0
+				area_x2: 119
+				area_y2: 119
+				object_list_unit_id_2: Rock Jungle (1149)
+
+	'rEMPLAZR ESCOMBRO 1X1' [Index: 17, Display: 16]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 1400
+				inverted: False (0)
+		effects:
+			replace_object [Index: 0, Display: 0]:
+				object_list_unit_id: Rubble 1 X 1 (863)
+				source_player: Player Gaia (0)
+				target_player: Player Gaia (0)
+				area_x1: 0
+				area_y1: 0
+				area_x2: 119
+				area_y2: 119
+				object_list_unit_id_2: Plant Shrub Green (1362)
+
+	'rEMPLAZAR CRATER' [Index: 18, Display: 17]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 1395
+				inverted: False (0)
+		effects:
+			replace_object [Index: 0, Display: 0]:
+				object_list_unit_id: Crater (723)
+				source_player: Player Gaia (0)
+				target_player: Player Gaia (0)
+				area_x1: 0
+				area_y1: 0
+				area_x2: 119
+				area_y2: 119
+				object_list_unit_id_2: Cactus (709)
+
+	'======Minas======' [Index: 19, Display: 18]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'Crear oro 1' [Index: 20, Display: 19]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 930
+				inverted: False (0)
+		effects:
+			create_object [Index: 0, Display: 0]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 49
+				location_y: 19
+				item_id: 66
+			create_object [Index: 1, Display: 1]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 49
+				location_y: 18
+				item_id: 66
+			create_object [Index: 2, Display: 2]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 51
+				location_y: 18
+				item_id: 66
+			create_object [Index: 3, Display: 3]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 52
+				location_y: 19
+				item_id: 66
+			create_object [Index: 4, Display: 4]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 23
+				location_y: 38
+				item_id: 66
+			create_object [Index: 5, Display: 5]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 20
+				location_y: 39
+				item_id: 66
+			create_object [Index: 6, Display: 6]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 24
+				location_y: 39
+				item_id: 66
+			create_object [Index: 7, Display: 7]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 19
+				location_y: 42
+				item_id: 66
+			create_object [Index: 8, Display: 8]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 9
+				location_y: 51
+				item_id: 66
+			create_object [Index: 9, Display: 9]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 9
+				location_y: 50
+				item_id: 66
+			create_object [Index: 10, Display: 10]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 6
+				location_y: 50
+				item_id: 66
+			create_object [Index: 11, Display: 11]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 8
+				location_y: 48
+				item_id: 66
+			create_object [Index: 12, Display: 12]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 84
+				location_y: 81
+				item_id: 66
+			create_object [Index: 13, Display: 13]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 84
+				location_y: 76
+				item_id: 66
+			create_object [Index: 14, Display: 14]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 86
+				location_y: 80
+				item_id: 66
+			create_object [Index: 15, Display: 15]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 83
+				location_y: 78
+				item_id: 66
+			create_object [Index: 16, Display: 16]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 60
+				location_y: 115
+				item_id: 66
+			create_object [Index: 17, Display: 17]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 58
+				location_y: 114
+				item_id: 66
+			create_object [Index: 18, Display: 18]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 59
+				location_y: 118
+				item_id: 66
+			create_object [Index: 19, Display: 19]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 57
+				location_y: 113
+				item_id: 66
+
+	'crar oro 2' [Index: 21, Display: 20]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 1430
+				inverted: False (0)
+		effects:
+			create_object [Index: 0, Display: 0]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 97
+				location_y: 45
+				item_id: 66
+			create_object [Index: 1, Display: 1]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 98
+				location_y: 45
+				item_id: 66
+			create_object [Index: 2, Display: 2]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 97
+				location_y: 47
+				item_id: 66
+			create_object [Index: 3, Display: 3]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 95
+				location_y: 47
+				item_id: 66
+			create_object [Index: 4, Display: 4]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 71
+				location_y: 67
+				item_id: 66
+			create_object [Index: 5, Display: 5]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 72
+				location_y: 68
+				item_id: 66
+			create_object [Index: 6, Display: 6]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 69
+				location_y: 66
+				item_id: 66
+			create_object [Index: 7, Display: 7]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 73
+				location_y: 66
+				item_id: 66
+			create_object [Index: 8, Display: 8]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 40
+				location_y: 106
+				item_id: 66
+			create_object [Index: 9, Display: 9]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 41
+				location_y: 106
+				item_id: 66
+			create_object [Index: 10, Display: 10]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 39
+				location_y: 105
+				item_id: 66
+			create_object [Index: 11, Display: 11]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 41
+				location_y: 104
+				item_id: 66
+			create_object [Index: 12, Display: 12]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 22
+				location_y: 58
+				item_id: 66
+			create_object [Index: 13, Display: 13]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 20
+				location_y: 58
+				item_id: 66
+			create_object [Index: 14, Display: 14]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 20
+				location_y: 57
+				item_id: 66
+			create_object [Index: 15, Display: 15]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 22
+				location_y: 57
+				item_id: 66
+			create_object [Index: 16, Display: 16]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 62
+				location_y: 33
+				item_id: 66
+			create_object [Index: 17, Display: 17]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 60
+				location_y: 34
+				item_id: 66
+			create_object [Index: 18, Display: 18]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 59
+				location_y: 32
+				item_id: 66
+			create_object [Index: 19, Display: 19]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 63
+				location_y: 32
+				item_id: 66
+			create_object [Index: 20, Display: 20]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 57
+				location_y: 16
+				item_id: 66
+			create_object [Index: 21, Display: 21]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 57
+				location_y: 12
+				item_id: 66
+			create_object [Index: 22, Display: 22]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 58
+				location_y: 14
+				item_id: 66
+			create_object [Index: 23, Display: 23]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 57
+				location_y: 13
+				item_id: 66
+
+	'Crear oro 3' [Index: 22, Display: 21]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 1830
+				inverted: False (0)
+		effects:
+			create_object [Index: 0, Display: 0]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 85
+				location_y: 25
+				item_id: 66
+			create_object [Index: 1, Display: 1]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 85
+				location_y: 22
+				item_id: 66
+			create_object [Index: 2, Display: 2]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 86
+				location_y: 21
+				item_id: 66
+			create_object [Index: 3, Display: 3]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 85
+				location_y: 22
+				item_id: 66
+			create_object [Index: 4, Display: 4]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 51
+				location_y: 58
+				item_id: 66
+			create_object [Index: 5, Display: 5]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 59
+				location_y: 66
+				item_id: 66
+			create_object [Index: 6, Display: 6]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 50
+				location_y: 57
+				item_id: 66
+			create_object [Index: 7, Display: 7]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 62
+				location_y: 65
+				item_id: 66
+			create_object [Index: 8, Display: 8]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 63
+				location_y: 70
+				item_id: 66
+			create_object [Index: 9, Display: 9]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 64
+				location_y: 44
+				item_id: 66
+			create_object [Index: 10, Display: 10]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 61
+				location_y: 64
+				item_id: 66
+			create_object [Index: 11, Display: 11]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 67
+				location_y: 43
+				item_id: 66
+			create_object [Index: 12, Display: 12]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 71
+				location_y: 52
+				item_id: 66
+			create_object [Index: 13, Display: 13]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 15
+				location_y: 86
+				item_id: 66
+			create_object [Index: 14, Display: 14]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 15
+				location_y: 90
+				item_id: 66
+			create_object [Index: 15, Display: 15]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 14
+				location_y: 89
+				item_id: 66
+			create_object [Index: 16, Display: 16]:
+				object_list_unit_id: Gold Mine (66)
+				source_player: Player Gaia (0)
+				location_x: 15
+				location_y: 89
+				item_id: 66
+
+	'Crear piedra 1' [Index: 23, Display: 22]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 930
+				inverted: False (0)
+		effects:
+			create_object [Index: 0, Display: 0]:
+				object_list_unit_id: Stone Mine (102)
+				source_player: Player Gaia (0)
+				location_x: 36
+				location_y: 35
+				item_id: 102
+			create_object [Index: 1, Display: 1]:
+				object_list_unit_id: Stone Mine (102)
+				source_player: Player Gaia (0)
+				location_x: 34
+				location_y: 34
+				item_id: 102
+			create_object [Index: 2, Display: 2]:
+				object_list_unit_id: Stone Mine (102)
+				source_player: Player Gaia (0)
+				location_x: 36
+				location_y: 33
+				item_id: 102
+			create_object [Index: 3, Display: 3]:
+				object_list_unit_id: Stone Mine (102)
+				source_player: Player Gaia (0)
+				location_x: 37
+				location_y: 35
+				item_id: 102
+			create_object [Index: 4, Display: 4]:
+				object_list_unit_id: Stone Mine (102)
+				source_player: Player Gaia (0)
+				location_x: 4
+				location_y: 52
+				item_id: 102
+			create_object [Index: 5, Display: 5]:
+				object_list_unit_id: Stone Mine (102)
+				source_player: Player Gaia (0)
+				location_x: 5
+				location_y: 51
+				item_id: 102
+			create_object [Index: 6, Display: 6]:
+				object_list_unit_id: Stone Mine (102)
+				source_player: Player Gaia (0)
+				location_x: 8
+				location_y: 51
+				item_id: 102
+			create_object [Index: 7, Display: 7]:
+				object_list_unit_id: Stone Mine (102)
+				source_player: Player Gaia (0)
+				location_x: 6
+				location_y: 50
+				item_id: 102
+			create_object [Index: 8, Display: 8]:
+				object_list_unit_id: Stone Mine (102)
+				source_player: Player Gaia (0)
+				location_x: 93
+				location_y: 69
+				item_id: 102
+			create_object [Index: 9, Display: 9]:
+				object_list_unit_id: Stone Mine (102)
+				source_player: Player Gaia (0)
+				location_x: 91
+				location_y: 68
+				item_id: 102
+			create_object [Index: 10, Display: 10]:
+				object_list_unit_id: Stone Mine (102)
+				source_player: Player Gaia (0)
+				location_x: 95
+				location_y: 69
+				item_id: 102
+			create_object [Index: 11, Display: 11]:
+				object_list_unit_id: Stone Mine (102)
+				source_player: Player Gaia (0)
+				location_x: 93
+				location_y: 68
+				item_id: 102
+			create_object [Index: 12, Display: 12]:
+				object_list_unit_id: Stone Mine (102)
+				source_player: Player Gaia (0)
+				location_x: 69
+				location_y: 94
+				item_id: 102
+			create_object [Index: 13, Display: 13]:
+				object_list_unit_id: Stone Mine (102)
+				source_player: Player Gaia (0)
+				location_x: 68
+				location_y: 92
+				item_id: 102
+			create_object [Index: 14, Display: 14]:
+				object_list_unit_id: Stone Mine (102)
+				source_player: Player Gaia (0)
+				location_x: 69
+				location_y: 92
+				item_id: 102
+			create_object [Index: 15, Display: 15]:
+				object_list_unit_id: Stone Mine (102)
+				source_player: Player Gaia (0)
+				location_x: 69
+				location_y: 93
+				item_id: 102
+
+	'Crear piedra 2' [Index: 24, Display: 23]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 1430
+				inverted: False (0)
+		effects:
+			create_object [Index: 0, Display: 0]:
+				object_list_unit_id: Stone Mine (102)
+				source_player: Player Gaia (0)
+				location_x: 50
+				location_y: 48
+				item_id: 102
+			create_object [Index: 1, Display: 1]:
+				object_list_unit_id: Stone Mine (102)
+				source_player: Player Gaia (0)
+				location_x: 47
+				location_y: 54
+				item_id: 102
+			create_object [Index: 2, Display: 2]:
+				object_list_unit_id: Stone Mine (102)
+				source_player: Player Gaia (0)
+				location_x: 64
+				location_y: 43
+				item_id: 102
+			create_object [Index: 3, Display: 3]:
+				object_list_unit_id: Stone Mine (102)
+				source_player: Player Gaia (0)
+				location_x: 64
+				location_y: 45
+				item_id: 102
+			create_object [Index: 4, Display: 4]:
+				object_list_unit_id: Stone Mine (102)
+				source_player: Player Gaia (0)
+				location_x: 88
+				location_y: 23
+				item_id: 102
+			create_object [Index: 5, Display: 5]:
+				object_list_unit_id: Stone Mine (102)
+				source_player: Player Gaia (0)
+				location_x: 86
+				location_y: 23
+				item_id: 102
+			create_object [Index: 6, Display: 6]:
+				object_list_unit_id: Stone Mine (102)
+				source_player: Player Gaia (0)
+				location_x: 118
+				location_y: 12
+				item_id: 102
+			create_object [Index: 7, Display: 7]:
+				object_list_unit_id: Stone Mine (102)
+				source_player: Player Gaia (0)
+				location_x: 119
+				location_y: 9
+				item_id: 102
+			create_object [Index: 8, Display: 8]:
+				object_list_unit_id: Stone Mine (102)
+				source_player: Player Gaia (0)
+				location_x: 117
+				location_y: 15
+				item_id: 102
+			create_object [Index: 9, Display: 9]:
+				object_list_unit_id: Stone Mine (102)
+				source_player: Player Gaia (0)
+				location_x: 116
+				location_y: 10
+				item_id: 102
+
+	'==== Reliquias===' [Index: 25, Display: 24]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 1700
+				inverted: False (0)
+		effects:
+			create_object [Index: 0, Display: 0]:
+				object_list_unit_id: Relic (285)
+				source_player: Player Gaia (0)
+				location_x: 108
+				location_y: 4
+				item_id: 285
+			create_object [Index: 1, Display: 1]:
+				object_list_unit_id: Relic (285)
+				source_player: Player Gaia (0)
+				location_x: 1
+				location_y: 91
+				item_id: 285
+			create_object [Index: 2, Display: 2]:
+				object_list_unit_id: Relic (285)
+				source_player: Player Gaia (0)
+				location_x: 65
+				location_y: 58
+				item_id: 285
+			create_object [Index: 3, Display: 3]:
+				object_list_unit_id: Relic (285)
+				source_player: Player Gaia (0)
+				location_x: 42
+				location_y: 67
+				item_id: 285
+			create_object [Index: 4, Display: 4]:
+				object_list_unit_id: Relic (285)
+				source_player: Player Gaia (0)
+				location_x: 81
+				location_y: 31
+				item_id: 285
+
+	'======= Efectos estaciones====' [Index: 27, Display: 25]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'invierno-Noche' [Index: 28, Display: 26]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			change_color_mood [Index: 0, Display: 0]:
+				quantity: 0
+				color_mood: Winter (2)
+
+	'Otoño' [Index: 29, Display: 27]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 600
+				inverted: False (0)
+		effects:
+			change_color_mood [Index: 0, Display: 0]:
+				quantity: 0
+				color_mood: Autumn (1)
+
+	'Primavera' [Index: 30, Display: 28]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 1000
+				inverted: False (0)
+		effects:
+			change_color_mood [Index: 0, Display: 0]:
+				quantity: 0
+				color_mood: Default (0)
+
+	'Jungla' [Index: 31, Display: 29]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 1800
+				inverted: False (0)
+		effects:
+			change_color_mood [Index: 0, Display: 0]:
+				quantity: 0
+				color_mood: Jungle (3)
+
+	'===============' [Index: 32, Display: 30]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'Gurjara p1' [Index: 33, Display: 31]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			technology_state [Index: 0, Display: 0]:
+				quantity: Not Ready (0)
+				source_player: Player One (1)
+				technology: Elite Chakram Thrower (830)
+				inverted: False (0)
+		effects:
+			replace_object [Index: 0, Display: 0]:
+				source_player: Player One (1)
+				target_player: Player One (1)
+				object_list_unit_id_2: Camel Scout (1755)
+				selected_object_ids: 1 unit:
+					0: Scout Cavalry (448) [P1, X108.5, Y106.5] (768)
+
+	'Gurjara p2' [Index: 34, Display: 32]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			technology_state [Index: 0, Display: 0]:
+				quantity: Not Ready (0)
+				source_player: Player Two (2)
+				technology: Elite Chakram Thrower (830)
+				inverted: False (0)
+		effects:
+			replace_object [Index: 0, Display: 0]:
+				source_player: Player Two (2)
+				target_player: Player Two (2)
+				object_list_unit_id_2: Camel Scout (1755)
+				selected_object_ids: 1 unit:
+					0: Scout Cavalry (448) [P2, X17.5, Y14.5] (769)
+
+	'Maya p1' [Index: 35, Display: 33]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			technology_state [Index: 0, Display: 0]:
+				quantity: Not Ready (0)
+				source_player: Player One (1)
+				technology: Elite Plumed Archer (27)
+				inverted: False (0)
+		effects:
+			replace_object [Index: 0, Display: 0]:
+				source_player: Player One (1)
+				target_player: Player One (1)
+				object_list_unit_id_2: Eagle Scout (751)
+
+	'Maya p2' [Index: 36, Display: 34]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			technology_state [Index: 0, Display: 0]:
+				quantity: Not Ready (0)
+				source_player: Player Two (2)
+				technology: Elite Plumed Archer (27)
+				inverted: False (0)
+		effects:
+			replace_object [Index: 0, Display: 0]:
+				source_player: Player Two (2)
+				target_player: Player Two (2)
+				object_list_unit_id_2: Eagle Scout (751)
+				selected_object_ids: 1 unit:
+					0: Scout Cavalry (448) [P2, X17.5, Y14.5] (769)
+
+	'Azteca p1' [Index: 37, Display: 35]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			technology_state [Index: 0, Display: 0]:
+				quantity: Not Ready (0)
+				source_player: Player One (1)
+				technology: Elite Jaguar Warrior (432)
+				inverted: False (0)
+		effects:
+			replace_object [Index: 0, Display: 0]:
+				source_player: Player One (1)
+				target_player: Player One (1)
+				object_list_unit_id_2: Eagle Scout (751)
+				selected_object_ids: 1 unit:
+					0: Scout Cavalry (448) [P1, X108.5, Y106.5] (768)
+
+	'Azteca p2' [Index: 38, Display: 36]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			technology_state [Index: 0, Display: 0]:
+				quantity: Not Ready (0)
+				source_player: Player Two (2)
+				technology: Elite Jaguar Warrior (432)
+				inverted: False (0)
+		effects:
+			replace_object [Index: 0, Display: 0]:
+				source_player: Player Two (2)
+				target_player: Player Two (2)
+				object_list_unit_id_2: Eagle Scout (751)
+				selected_object_ids: 1 unit:
+					0: Scout Cavalry (448) [P2, X17.5, Y14.5] (769)
+
+	'Inca p1' [Index: 39, Display: 37]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			technology_state [Index: 0, Display: 0]:
+				quantity: Not Ready (0)
+				source_player: Player One (1)
+				technology: Elite Kamayuk (509)
+				inverted: False (0)
+		effects:
+			replace_object [Index: 0, Display: 0]:
+				source_player: Player One (1)
+				target_player: Player One (1)
+				object_list_unit_id_2: Eagle Scout (751)
+
+	'Inca p2' [Index: 40, Display: 38]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			technology_state [Index: 0, Display: 0]:
+				quantity: Not Ready (0)
+				source_player: Player Two (2)
+				technology: Elite Kamayuk (509)
+				inverted: False (0)
+		effects:
+			replace_object [Index: 0, Display: 0]:
+				source_player: Player Two (2)
+				target_player: Player Two (2)
+				object_list_unit_id_2: Eagle Scout (751)
+				selected_object_ids: 1 unit:
+					0: Scout Cavalry (448) [P2, X17.5, Y14.5] (769)
+
+	'==========AGUA=======' [Index: 1, Display: 39]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'Prohibir caminar por el agua' [Index: 0, Display: 40]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 600
+				inverted: False (0)
+		effects:
+			script_call [Index: 0, Display: 0]:
+				message: 'quitar_caminar_agua();'
+			enable/disable_object [Index: 1, Display: 1]:
+				object_list_unit_id: Dock (45)
+				source_player: Player One (1)
+				enabled: True (1)
+				item_id: 45
+			enable/disable_object [Index: 2, Display: 2]:
+				object_list_unit_id: Dock (45)
+				source_player: Player Two (2)
+				enabled: True (1)
+				item_id: 45
+
+	'=============' [Index: 41, Display: 41]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+Variables:
+	<<No Variables>>
