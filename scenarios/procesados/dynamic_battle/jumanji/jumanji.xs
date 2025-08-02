@@ -30,8 +30,8 @@ void unit_stats(int unit_id = 0){
 void projectile_stats(int projectile_id = 0){
     xsEffectAmount(cSetAttribute, projectile_id, cEnableSmartProjectile, 2, player);
     xsEffectAmount(cSetAttribute, projectile_id, cBlastAttackLevel, 1, player);
-    xsEffectAmount(cSetAttribute, projectile_id, cUnitSizeX, 1, player);
-    xsEffectAmount(cSetAttribute, projectile_id, cUnitSizeY, 1, player);
+    xsEffectAmount(cSetAttribute, projectile_id, cUnitSizeX, 2, player);
+    xsEffectAmount(cSetAttribute, projectile_id, cUnitSizeY, 2, player);
     xsEffectAmount(cSetAttribute, projectile_id, cUnitSizeZ, 100, player);
     xsEffectAmount(cSetAttribute, projectile_id, cEnableSmartProjectile, 2, player);
     xsEffectAmount(cSetAttribute, projectile_id, cMovementSpeed, 2, player);
