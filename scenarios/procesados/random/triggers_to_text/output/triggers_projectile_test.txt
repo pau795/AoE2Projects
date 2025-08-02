@@ -1,0 +1,14 @@
+
+Triggers:
+	'Trigger 0' [Index: 0, Display: 0]:
+		enabled: True
+		looping: False
+		effects:
+			modify_attribute [Index: 0, Display: 0]:
+				quantity: 2575
+				source_player: Player One (1)
+				operation: Set (1)
+				object_attributes: Standing Graphic (71)
+
+Variables:
+	<<No Variables>>
