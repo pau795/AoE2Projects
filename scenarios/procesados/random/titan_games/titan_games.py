@@ -7,7 +7,7 @@ from scenarios.lib.parser_project import ParserProject
 
 
 class TitanGames(ParserProject):
-    def __init__(self,input_scenario_name:str ,output_scenario_name: str):
+    def __init__(self,input_scenario_name: str, output_scenario_name: str):
         super().__init__(input_scenario_name, output_scenario_name)
 
     def process(self):
@@ -16,6 +16,8 @@ class TitanGames(ParserProject):
         trigger_manager = self.scenario.trigger_manager
         player_manager = self.scenario.player_manager
         trigger_data = self.scenario.actions.load_data_triggers()
+        xs_manager = self.scenario.xs_manager
+        xs_manager.add_script(xs_file_path="timer.xs")
 
         area_map: Area = trigger_data.areas['map'][0]
 

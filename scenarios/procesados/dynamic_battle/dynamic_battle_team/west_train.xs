@@ -47,7 +47,7 @@ void train_damage_task(){
 void unit_stats(int unit_id = 25){
     xsEffectAmount(cSetAttribute, unit_id, cHitpoints, train_hp, player); 
     xsEffectAmount(cSetAttribute, unit_id, cAttack, cMelee * maxByte + train_damage_shown, player); 
-    xsEffectAmount(cMulAttribute, unit_id, cAttack, cMelee * maxByte + train_damage_shown, player); 
+    xsEffectAmount(cAddAttribute, unit_id, cAttack, cMelee * maxByte + train_damage_shown, player);
     xsEffectAmount(cAddAttribute, unit_id, cAttack, cMelee * maxByte + train_damage_shown, player); 
     xsEffectAmount(cAddAttribute, unit_id, cAttack, cMelee * maxByte + train_damage_shown, player); 
     xsEffectAmount(cAddAttribute, unit_id, cAttack, cMelee * maxByte + train_damage_shown, player); 
