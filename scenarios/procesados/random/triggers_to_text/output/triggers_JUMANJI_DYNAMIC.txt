@@ -1,0 +1,3242 @@
+
+Triggers:
+	'Atac Ground 1_1' [Index: 0, Display: 0]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 2
+				inverted: False (0)
+		effects:
+			task_object [Index: 0, Display: 0]:
+				object_list_unit_id: Ballista Elephant (1120)
+				source_player: Player Three (3)
+				location_x: 118
+				location_y: 106
+				action_type: Attack Ground (6)
+				selected_object_ids: 1 unit:
+					0: Ballista Elephant (1120) [P3, X0.5, Y0.5] (16790)
+			activate_trigger [Index: 1, Display: 1]:
+				trigger_id: "detener 1_1" (3)
+
+	'revvelador de mapa 1_1' [Index: 1, Display: 1]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			create_object [Index: 0, Display: 0]:
+				object_list_unit_id: Moveable Map Revealer (0)
+				source_player: Player Three (3)
+				location_x: 118
+				location_y: 118
+				item_id: 0
+			create_object [Index: 1, Display: 1]:
+				object_list_unit_id: Moveable Map Revealer (0)
+				source_player: Player Three (3)
+				location_x: 2
+				location_y: 117
+				item_id: 0
+			create_object [Index: 2, Display: 2]:
+				object_list_unit_id: Moveable Map Revealer (0)
+				source_player: Player Three (3)
+				location_x: 62
+				location_y: 118
+				item_id: 0
+
+	'modificar arbol' [Index: 2, Display: 2]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			modify_attribute [Index: 0, Display: 0]:
+				quantity: 10
+				object_list_unit_id: Tree Pine Forest (350)
+				source_player: Player Gaia (0)
+				item_id: 350
+				operation: Set (1)
+				object_attributes: Unit Size Z (32)
+
+	'detener 1_1' [Index: 3, Display: 3]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 4
+				inverted: False (0)
+		effects:
+			stop_object [Index: 0, Display: 0]:
+				object_list_unit_id: Ballista Elephant (1120)
+				source_player: Player Three (3)
+				selected_object_ids: 1 unit:
+					0: Ballista Elephant (1120) [P3, X0.5, Y0.5] (16790)
+
+	'=================' [Index: 4, Display: 4]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'crear unidades' [Index: 5, Display: 5]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 4
+				inverted: False (0)
+		effects:
+			create_object [Index: 0, Display: 0]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 5
+				location_y: 1
+				item_id: 1746
+			create_object [Index: 1, Display: 1]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 3
+				location_y: 1
+				item_id: 1746
+			create_object [Index: 2, Display: 2]:
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				location_x: 1
+				location_y: 1
+				item_id: 1258
+			create_object [Index: 3, Display: 3]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 5
+				location_y: 3
+				item_id: 1746
+			create_object [Index: 7, Display: 4]:
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				location_x: 3
+				location_y: 3
+				item_id: 24
+			create_object [Index: 4, Display: 5]:
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				location_x: 1
+				location_y: 3
+				item_id: 1258
+			create_object [Index: 8, Display: 6]:
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				location_x: 1
+				location_y: 5
+				item_id: 24
+			create_object [Index: 9, Display: 7]:
+				object_list_unit_id: Arambai (1126)
+				source_player: Player Three (3)
+				location_x: 3
+				location_y: 5
+				item_id: 1126
+			create_object [Index: 10, Display: 8]:
+				object_list_unit_id: Cretan Archer (2326)
+				source_player: Player Three (3)
+				location_x: 2
+				location_y: 1
+				item_id: 2326
+			activate_trigger [Index: 5, Display: 9]:
+				trigger_id: "fUNCION OBJETO 1_1" (7)
+			change_object_stance [Index: 6, Display: 10]:
+				source_player: Player Three (3)
+				area_x1: 0
+				area_y1: 0
+				area_x2: 6
+				area_y2: 8
+				attack_stance: No Attack Stance (3)
+
+	'Modificar elefante asediop p3' [Index: 6, Display: 6]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			modify_attribute [Index: 0, Display: 0]:
+				quantity: 10199
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				item_id: 1258
+				operation: Set (1)
+				object_attributes: Standing Graphic (71)
+			modify_attribute [Index: 1, Display: 1]:
+				quantity: 10202
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				item_id: 1746
+				operation: Set (1)
+				object_attributes: Walking Graphic (75)
+			modify_attribute [Index: 2, Display: 2]:
+				quantity: 10202
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				item_id: 1746
+				operation: Set (1)
+				object_attributes: Running Graphic (76)
+			modify_attribute [Index: 3, Display: 3]:
+				quantity: 10198
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				item_id: 1746
+				operation: Set (1)
+				object_attributes: Dying Graphic (73)
+			modify_attribute [Index: 4, Display: 4]:
+				quantity: 20000
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				item_id: 1746
+				operation: Set (1)
+				object_attributes: Hit Points (0)
+			modify_attribute [Index: 5, Display: 5]:
+				quantity: 2
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				item_id: 1746
+				operation: Set (1)
+				object_attributes: Movement Speed (5)
+			modify_attribute [Index: 6, Display: 6]:
+				quantity: 0
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				item_id: 1746
+				operation: Set (1)
+				object_attributes: Unit Size Z (32)
+
+	'fUNCION OBJETO 1_1' [Index: 7, Display: 7]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			task_object [Index: 0, Display: 0]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 118
+				location_y: 106
+				area_x1: 0
+				area_y1: 0
+				area_x2: 6
+				area_y2: 8
+				action_type: Move (1)
+			task_object [Index: 1, Display: 1]:
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				location_x: 118
+				location_y: 106
+				area_x1: 0
+				area_y1: 0
+				area_x2: 6
+				area_y2: 8
+				action_type: Move (1)
+			task_object [Index: 2, Display: 2]:
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				location_x: 118
+				location_y: 106
+				area_x1: 0
+				area_y1: 0
+				area_x2: 6
+				area_y2: 8
+				action_type: Move (1)
+			task_object [Index: 3, Display: 3]:
+				object_list_unit_id: Arambai (1126)
+				source_player: Player Three (3)
+				location_x: 118
+				location_y: 106
+				area_x1: 0
+				area_y1: 0
+				area_x2: 6
+				area_y2: 8
+				action_type: Move (1)
+			task_object [Index: 4, Display: 4]:
+				object_list_unit_id: Cretan Archer (2326)
+				source_player: Player Three (3)
+				location_x: 118
+				location_y: 106
+				area_x1: 0
+				area_y1: 0
+				area_x2: 6
+				area_y2: 8
+				action_type: Move (1)
+
+	'=================' [Index: 8, Display: 8]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'quitar 1' [Index: 9, Display: 9]:
+		enabled: False
+		looping: True
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			objects_in_area [Index: 0, Display: 0]:
+				quantity: 1
+				source_player: Player Three (3)
+				area_x1: 116
+				area_y1: 105
+				area_x2: 119
+				area_y2: 107
+				object_type: Military (4)
+				inverted: False (0)
+				object_state: Alive (2)
+				include_changeable_weapon_objects: False (0)
+
+	'===============' [Index: 10, Display: 10]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'ESTAMPIDA 1' [Index: 11, Display: 11]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'Modificar  Ariete ' [Index: 12, Display: 12]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			modify_attribute [Index: 0, Display: 0]:
+				quantity: 8354
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				item_id: 1258
+				operation: Set (1)
+				object_attributes: Standing Graphic (71)
+			modify_attribute [Index: 1, Display: 1]:
+				quantity: 8357
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				item_id: 1258
+				operation: Set (1)
+				object_attributes: Walking Graphic (75)
+			modify_attribute [Index: 2, Display: 2]:
+				quantity: 8357
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				item_id: 1258
+				operation: Set (1)
+				object_attributes: Running Graphic (76)
+			modify_attribute [Index: 3, Display: 3]:
+				quantity: 8353
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				item_id: 1258
+				operation: Set (1)
+				object_attributes: Dying Graphic (73)
+			modify_attribute [Index: 4, Display: 4]:
+				quantity: 20000
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				item_id: 1258
+				operation: Set (1)
+				object_attributes: Hit Points (0)
+			modify_attribute [Index: 5, Display: 5]:
+				quantity: 2
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				item_id: 1258
+				operation: Set (1)
+				object_attributes: Movement Speed (5)
+			modify_attribute [Index: 6, Display: 6]:
+				quantity: 0
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				item_id: 1258
+				operation: Set (1)
+				object_attributes: Unit Size Z (32)
+
+	'Modificar  ballestero' [Index: 13, Display: 13]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			modify_attribute [Index: 0, Display: 0]:
+				quantity: 2455
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				item_id: 24
+				operation: Set (1)
+				object_attributes: Standing Graphic (71)
+			modify_attribute [Index: 1, Display: 1]:
+				quantity: 2457
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				item_id: 24
+				operation: Set (1)
+				object_attributes: Walking Graphic (75)
+			modify_attribute [Index: 2, Display: 2]:
+				quantity: 2457
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				item_id: 24
+				operation: Set (1)
+				object_attributes: Running Graphic (76)
+			modify_attribute [Index: 3, Display: 3]:
+				quantity: 2457
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				item_id: 24
+				operation: Set (1)
+				object_attributes: Dying Graphic (73)
+			modify_attribute [Index: 4, Display: 4]:
+				quantity: 20000
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				item_id: 24
+				operation: Set (1)
+				object_attributes: Hit Points (0)
+			modify_attribute [Index: 5, Display: 5]:
+				quantity: 2
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				item_id: 24
+				operation: Set (1)
+				object_attributes: Movement Speed (5)
+			modify_attribute [Index: 6, Display: 6]:
+				quantity: 0
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				item_id: 24
+				operation: Set (1)
+				object_attributes: Unit Size Z (32)
+
+	'MODIFICAR ARAMBAI' [Index: 14, Display: 14]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			modify_attribute [Index: 0, Display: 0]:
+				quantity: 7351
+				object_list_unit_id: Arambai (1126)
+				source_player: Player Three (3)
+				item_id: 1126
+				operation: Set (1)
+				object_attributes: Standing Graphic (71)
+			modify_attribute [Index: 1, Display: 1]:
+				quantity: 7353
+				object_list_unit_id: Arambai (1126)
+				source_player: Player Three (3)
+				item_id: 1126
+				operation: Set (1)
+				object_attributes: Walking Graphic (75)
+			modify_attribute [Index: 2, Display: 2]:
+				quantity: 7353
+				object_list_unit_id: Arambai (1126)
+				source_player: Player Three (3)
+				item_id: 1126
+				operation: Set (1)
+				object_attributes: Running Graphic (76)
+			modify_attribute [Index: 3, Display: 3]:
+				quantity: 7350
+				object_list_unit_id: Arambai (1126)
+				source_player: Player Three (3)
+				item_id: 1126
+				operation: Set (1)
+				object_attributes: Dying Graphic (73)
+			modify_attribute [Index: 4, Display: 4]:
+				quantity: 20000
+				object_list_unit_id: Arambai (1126)
+				source_player: Player Three (3)
+				item_id: 1126
+				operation: Set (1)
+				object_attributes: Hit Points (0)
+			modify_attribute [Index: 5, Display: 5]:
+				quantity: 2
+				object_list_unit_id: Arambai (1126)
+				source_player: Player Three (3)
+				item_id: 1126
+				operation: Set (1)
+				object_attributes: Movement Speed (5)
+			modify_attribute [Index: 6, Display: 6]:
+				quantity: 0
+				object_list_unit_id: Arambai (1126)
+				source_player: Player Three (3)
+				item_id: 1126
+				operation: Set (1)
+				object_attributes: Unit Size Z (32)
+
+	'Modificar arquero cretense' [Index: 15, Display: 15]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			modify_attribute [Index: 0, Display: 0]:
+				quantity: 10211
+				object_list_unit_id: Cretan Archer (2326)
+				source_player: Player Three (3)
+				item_id: 2326
+				operation: Set (1)
+				object_attributes: Standing Graphic (71)
+			modify_attribute [Index: 1, Display: 1]:
+				quantity: 10213
+				object_list_unit_id: Cretan Archer (2326)
+				source_player: Player Three (3)
+				item_id: 2326
+				operation: Set (1)
+				object_attributes: Walking Graphic (75)
+			modify_attribute [Index: 2, Display: 2]:
+				quantity: 10213
+				object_list_unit_id: Cretan Archer (2326)
+				source_player: Player Three (3)
+				item_id: 2326
+				operation: Set (1)
+				object_attributes: Running Graphic (76)
+			modify_attribute [Index: 3, Display: 3]:
+				quantity: 10210
+				object_list_unit_id: Cretan Archer (2326)
+				source_player: Player Three (3)
+				item_id: 2326
+				operation: Set (1)
+				object_attributes: Dying Graphic (73)
+			modify_attribute [Index: 4, Display: 4]:
+				quantity: 20000
+				object_list_unit_id: Cretan Archer (2326)
+				source_player: Player Three (3)
+				item_id: 2326
+				operation: Set (1)
+				object_attributes: Hit Points (0)
+			modify_attribute [Index: 5, Display: 5]:
+				quantity: 2
+				object_list_unit_id: Cretan Archer (2326)
+				source_player: Player Three (3)
+				item_id: 2326
+				operation: Set (1)
+				object_attributes: Movement Speed (5)
+			modify_attribute [Index: 6, Display: 6]:
+				quantity: 0
+				object_list_unit_id: Cretan Archer (2326)
+				source_player: Player Three (3)
+				item_id: 2326
+				operation: Set (1)
+				object_attributes: Unit Size Z (32)
+
+	'Attack ground 2_1' [Index: 16, Display: 16]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 2
+				inverted: False (0)
+		effects:
+			task_object [Index: 0, Display: 0]:
+				object_list_unit_id: Ballista Elephant (1120)
+				source_player: Player Three (3)
+				location_x: 1
+				location_y: 107
+				action_type: Attack Ground (6)
+				selected_object_ids: 1 unit:
+					0: Ballista Elephant (1120) [P3, X119.16666412353516, Y0.7083333134651184] (16980)
+			activate_trigger [Index: 1, Display: 1]:
+				trigger_id: "Detener 2_1" (17)
+
+	'Detener 2_1' [Index: 17, Display: 17]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 4
+				inverted: False (0)
+		effects:
+			stop_object [Index: 0, Display: 0]:
+				object_list_unit_id: Ballista Elephant (1120)
+				source_player: Player Three (3)
+				selected_object_ids: 1 unit:
+					0: Ballista Elephant (1120) [P3, X119.16666412353516, Y0.7083333134651184] (16980)
+
+	'Crear 2_1' [Index: 18, Display: 18]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 4
+				inverted: False (0)
+		effects:
+			create_object [Index: 0, Display: 0]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 115
+				location_y: 3
+				item_id: 1746
+			create_object [Index: 1, Display: 1]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 116
+				location_y: 1
+				item_id: 1746
+			create_object [Index: 2, Display: 2]:
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				location_x: 118
+				location_y: 3
+				item_id: 1258
+			create_object [Index: 3, Display: 3]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 117
+				location_y: 2
+				item_id: 1746
+			create_object [Index: 7, Display: 4]:
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				location_x: 113
+				location_y: 4
+				item_id: 24
+			create_object [Index: 4, Display: 5]:
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				location_x: 114
+				location_y: 5
+				item_id: 1258
+			create_object [Index: 8, Display: 6]:
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				location_x: 114
+				location_y: 2
+				item_id: 24
+			create_object [Index: 9, Display: 7]:
+				object_list_unit_id: Arambai (1126)
+				source_player: Player Three (3)
+				location_x: 116
+				location_y: 4
+				item_id: 1126
+			create_object [Index: 10, Display: 8]:
+				object_list_unit_id: Cretan Archer (2326)
+				source_player: Player Three (3)
+				location_x: 117
+				location_y: 5
+				item_id: 2326
+			activate_trigger [Index: 5, Display: 9]:
+				trigger_id: "Funcion objeto 2_1" (19)
+			change_object_stance [Index: 6, Display: 10]:
+				source_player: Player Three (3)
+				area_x1: 112
+				area_y1: 0
+				area_x2: 119
+				area_y2: 7
+				attack_stance: No Attack Stance (3)
+
+	'Funcion objeto 2_1' [Index: 19, Display: 19]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			task_object [Index: 0, Display: 0]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 1
+				location_y: 107
+				area_x1: 112
+				area_y1: 0
+				area_x2: 119
+				area_y2: 7
+				action_type: Move (1)
+			task_object [Index: 1, Display: 1]:
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				location_x: 1
+				location_y: 107
+				area_x1: 112
+				area_y1: 0
+				area_x2: 119
+				area_y2: 7
+				action_type: Move (1)
+			task_object [Index: 2, Display: 2]:
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				location_x: 1
+				location_y: 107
+				area_x1: 112
+				area_y1: 0
+				area_x2: 119
+				area_y2: 7
+				action_type: Move (1)
+			task_object [Index: 3, Display: 3]:
+				object_list_unit_id: Arambai (1126)
+				source_player: Player Three (3)
+				location_x: 1
+				location_y: 107
+				area_x1: 112
+				area_y1: 0
+				area_x2: 119
+				area_y2: 7
+				action_type: Move (1)
+			task_object [Index: 4, Display: 4]:
+				object_list_unit_id: Cretan Archer (2326)
+				source_player: Player Three (3)
+				location_x: 1
+				location_y: 107
+				area_x1: 112
+				area_y1: 0
+				area_x2: 119
+				area_y2: 7
+				action_type: Move (1)
+
+	'Quitar 2_1' [Index: 20, Display: 20]:
+		enabled: False
+		looping: True
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			objects_in_area [Index: 0, Display: 0]:
+				quantity: 1
+				source_player: Player Three (3)
+				area_x1: 0
+				area_y1: 106
+				area_x2: 2
+				area_y2: 109
+				inverted: False (0)
+				object_state: Alive (2)
+				include_changeable_weapon_objects: False (0)
+
+	'Estampida 2' [Index: 21, Display: 21]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'================' [Index: 22, Display: 22]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'Estampida 3' [Index: 23, Display: 23]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'Attack ground_ 1-2' [Index: 24, Display: 24]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 2
+				inverted: False (0)
+		effects:
+			task_object [Index: 0, Display: 0]:
+				object_list_unit_id: Ballista Elephant (1120)
+				source_player: Player Three (3)
+				location_x: 62
+				location_y: 118
+				action_type: Attack Ground (6)
+				selected_object_ids: 1 unit:
+					0: Ballista Elephant (1120) [P3, X0.5, Y0.5] (16790)
+			activate_trigger [Index: 1, Display: 1]:
+				trigger_id: "detener 1-2" (25)
+
+	'detener 1-2' [Index: 25, Display: 25]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 24
+				inverted: False (0)
+		effects:
+			stop_object [Index: 0, Display: 0]:
+				object_list_unit_id: Ballista Elephant (1120)
+				source_player: Player Three (3)
+				selected_object_ids: 1 unit:
+					0: Ballista Elephant (1120) [P3, X0.5, Y0.5] (16790)
+
+	'Crear objeto 1-2' [Index: 26, Display: 26]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 4
+				inverted: False (0)
+		effects:
+			create_object [Index: 0, Display: 0]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 5
+				location_y: 1
+				item_id: 1746
+			create_object [Index: 1, Display: 1]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 3
+				location_y: 1
+				item_id: 1746
+			create_object [Index: 2, Display: 2]:
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				location_x: 1
+				location_y: 1
+				item_id: 1258
+			create_object [Index: 3, Display: 3]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 5
+				location_y: 3
+				item_id: 1746
+			create_object [Index: 7, Display: 4]:
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				location_x: 3
+				location_y: 3
+				item_id: 24
+			create_object [Index: 4, Display: 5]:
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				location_x: 1
+				location_y: 3
+				item_id: 1258
+			create_object [Index: 8, Display: 6]:
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				location_x: 1
+				location_y: 5
+				item_id: 24
+			create_object [Index: 9, Display: 7]:
+				object_list_unit_id: Arambai (1126)
+				source_player: Player Three (3)
+				location_x: 3
+				location_y: 5
+				item_id: 1126
+			create_object [Index: 10, Display: 8]:
+				object_list_unit_id: Cretan Archer (2326)
+				source_player: Player Three (3)
+				location_x: 2
+				location_y: 1
+				item_id: 2326
+			activate_trigger [Index: 5, Display: 9]:
+				trigger_id: "Funcion objeto 1-2" (27)
+			change_object_stance [Index: 6, Display: 10]:
+				source_player: Player Three (3)
+				area_x1: 0
+				area_y1: 0
+				area_x2: 6
+				area_y2: 8
+				attack_stance: No Attack Stance (3)
+
+	'Funcion objeto 1-2' [Index: 27, Display: 27]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			task_object [Index: 0, Display: 0]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 62
+				location_y: 117
+				area_x1: 0
+				area_y1: 0
+				area_x2: 6
+				area_y2: 8
+				action_type: Move (1)
+			task_object [Index: 1, Display: 1]:
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				location_x: 62
+				location_y: 117
+				area_x1: 0
+				area_y1: 0
+				area_x2: 6
+				area_y2: 8
+				action_type: Move (1)
+			task_object [Index: 2, Display: 2]:
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				location_x: 62
+				location_y: 117
+				area_x1: 0
+				area_y1: 0
+				area_x2: 6
+				area_y2: 8
+				action_type: Move (1)
+			task_object [Index: 3, Display: 3]:
+				object_list_unit_id: Arambai (1126)
+				source_player: Player Three (3)
+				location_x: 62
+				location_y: 117
+				area_x1: 0
+				area_y1: 0
+				area_x2: 6
+				area_y2: 8
+				action_type: Move (1)
+			task_object [Index: 4, Display: 4]:
+				object_list_unit_id: Cretan Archer (2326)
+				source_player: Player Three (3)
+				location_x: 62
+				location_y: 117
+				area_x1: 0
+				area_y1: 0
+				area_x2: 6
+				area_y2: 8
+				action_type: Move (1)
+
+	'quitar 1-2' [Index: 28, Display: 28]:
+		enabled: False
+		looping: True
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			objects_in_area [Index: 0, Display: 0]:
+				quantity: 1
+				source_player: Player Three (3)
+				area_x1: 116
+				area_y1: 105
+				area_x2: 119
+				area_y2: 107
+				inverted: False (0)
+				object_state: Alive (2)
+				include_changeable_weapon_objects: False (0)
+
+	'=================' [Index: 29, Display: 29]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'Activar 1' [Index: 30, Display: 30]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			activate_trigger [Index: 0, Display: 0]:
+				trigger_id: "Atac Ground 1_1" (0)
+			activate_trigger [Index: 1, Display: 1]:
+				trigger_id: "detener 1_1" (3)
+			activate_trigger [Index: 2, Display: 2]:
+				trigger_id: "crear unidades" (5)
+			activate_trigger [Index: 3, Display: 3]:
+				trigger_id: "quitar 1" (9)
+			activate_trigger [Index: 4, Display: 4]:
+				trigger_id: "fUNCION OBJETO 1_1" (7)
+
+	'activar 3' [Index: 31, Display: 31]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			activate_trigger [Index: 0, Display: 0]:
+				trigger_id: "Attack ground_ 1-2" (24)
+			activate_trigger [Index: 1, Display: 1]:
+				trigger_id: "detener 1-2" (25)
+			activate_trigger [Index: 2, Display: 2]:
+				trigger_id: "Crear objeto 1-2" (26)
+			activate_trigger [Index: 3, Display: 3]:
+				trigger_id: "quitar 1-2" (28)
+			activate_trigger [Index: 4, Display: 4]:
+				trigger_id: "Funcion objeto 1-2" (27)
+			deactivate_trigger [Index: 5, Display: 5]:
+				trigger_id: "Atac Ground 1_1" (0)
+			deactivate_trigger [Index: 6, Display: 6]:
+				trigger_id: "detener 1_1" (3)
+			deactivate_trigger [Index: 7, Display: 7]:
+				trigger_id: "crear unidades" (5)
+			deactivate_trigger [Index: 8, Display: 8]:
+				trigger_id: "fUNCION OBJETO 1_1" (7)
+
+	'ESTAMPIDA 4' [Index: 32, Display: 32]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'=================' [Index: 33, Display: 33]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'aTTACK GORUN 2_2' [Index: 34, Display: 34]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 2
+				inverted: False (0)
+		effects:
+			task_object [Index: 0, Display: 0]:
+				object_list_unit_id: Ballista Elephant (1120)
+				source_player: Player Three (3)
+				location_x: 62
+				location_y: 117
+				action_type: Attack Ground (6)
+				selected_object_ids: 1 unit:
+					0: Ballista Elephant (1120) [P3, X119.16666412353516, Y0.7083333134651184] (16980)
+			activate_trigger [Index: 1, Display: 1]:
+				trigger_id: "DETENER 2_2" (35)
+
+	'DETENER 2_2' [Index: 35, Display: 35]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 4
+				inverted: False (0)
+		effects:
+			stop_object [Index: 0, Display: 0]:
+				object_list_unit_id: Ballista Elephant (1120)
+				source_player: Player Three (3)
+				selected_object_ids: 1 unit:
+					0: Ballista Elephant (1120) [P3, X119.16666412353516, Y0.7083333134651184] (16980)
+
+	'cREAR 2_2' [Index: 36, Display: 36]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 4
+				inverted: False (0)
+		effects:
+			create_object [Index: 0, Display: 0]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 115
+				location_y: 3
+				item_id: 1746
+			create_object [Index: 1, Display: 1]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 116
+				location_y: 1
+				item_id: 1746
+			create_object [Index: 2, Display: 2]:
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				location_x: 118
+				location_y: 3
+				item_id: 1258
+			create_object [Index: 3, Display: 3]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 117
+				location_y: 2
+				item_id: 1746
+			create_object [Index: 7, Display: 4]:
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				location_x: 113
+				location_y: 4
+				item_id: 24
+			create_object [Index: 4, Display: 5]:
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				location_x: 114
+				location_y: 5
+				item_id: 1258
+			create_object [Index: 8, Display: 6]:
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				location_x: 114
+				location_y: 2
+				item_id: 24
+			create_object [Index: 9, Display: 7]:
+				object_list_unit_id: Arambai (1126)
+				source_player: Player Three (3)
+				location_x: 116
+				location_y: 4
+				item_id: 1126
+			create_object [Index: 10, Display: 8]:
+				object_list_unit_id: Cretan Archer (2326)
+				source_player: Player Three (3)
+				location_x: 117
+				location_y: 5
+				item_id: 2326
+			activate_trigger [Index: 5, Display: 9]:
+				trigger_id: "fUNCION OBJETO 2_2" (37)
+			change_object_stance [Index: 6, Display: 10]:
+				source_player: Player Three (3)
+				area_x1: 112
+				area_y1: 0
+				area_x2: 119
+				area_y2: 7
+				attack_stance: No Attack Stance (3)
+
+	'fUNCION OBJETO 2_2' [Index: 37, Display: 37]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			task_object [Index: 0, Display: 0]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 62
+				location_y: 117
+				area_x1: 112
+				area_y1: 0
+				area_x2: 119
+				area_y2: 7
+				action_type: Move (1)
+			task_object [Index: 1, Display: 1]:
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				location_x: 62
+				location_y: 117
+				area_x1: 112
+				area_y1: 0
+				area_x2: 119
+				area_y2: 7
+				action_type: Move (1)
+			task_object [Index: 2, Display: 2]:
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				location_x: 62
+				location_y: 117
+				area_x1: 112
+				area_y1: 0
+				area_x2: 119
+				area_y2: 7
+				action_type: Move (1)
+			task_object [Index: 3, Display: 3]:
+				object_list_unit_id: Arambai (1126)
+				source_player: Player Three (3)
+				location_x: 62
+				location_y: 117
+				area_x1: 112
+				area_y1: 0
+				area_x2: 119
+				area_y2: 7
+				action_type: Move (1)
+			task_object [Index: 4, Display: 4]:
+				object_list_unit_id: Cretan Archer (2326)
+				source_player: Player Three (3)
+				location_x: 62
+				location_y: 117
+				area_x1: 112
+				area_y1: 0
+				area_x2: 119
+				area_y2: 7
+				action_type: Move (1)
+
+	'qUITAR 2_2' [Index: 38, Display: 38]:
+		enabled: False
+		looping: True
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			objects_in_area [Index: 0, Display: 0]:
+				quantity: 1
+				source_player: Player Three (3)
+				area_x1: 60
+				area_y1: 115
+				area_x2: 64
+				area_y2: 119
+				inverted: False (0)
+				object_state: Alive (2)
+				include_changeable_weapon_objects: False (0)
+
+	'Activar 2' [Index: 39, Display: 39]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			activate_trigger [Index: 0, Display: 0]:
+				trigger_id: "Attack ground 2_1" (16)
+			activate_trigger [Index: 1, Display: 1]:
+				trigger_id: "Detener 2_1" (17)
+			activate_trigger [Index: 2, Display: 2]:
+				trigger_id: "Crear 2_1" (18)
+			activate_trigger [Index: 3, Display: 3]:
+				trigger_id: "Funcion objeto 2_1" (19)
+			activate_trigger [Index: 4, Display: 4]:
+				trigger_id: "Quitar 2_1" (20)
+
+	'Activar 4' [Index: 40, Display: 40]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			activate_trigger [Index: 0, Display: 0]:
+				trigger_id: "aTTACK GORUN 2_2" (34)
+			activate_trigger [Index: 1, Display: 1]:
+				trigger_id: "DETENER 2_2" (35)
+			activate_trigger [Index: 2, Display: 2]:
+				trigger_id: "cREAR 2_2" (36)
+			activate_trigger [Index: 3, Display: 3]:
+				trigger_id: "fUNCION OBJETO 2_2" (37)
+			deactivate_trigger [Index: 4, Display: 4]:
+				trigger_id: "Attack ground 2_1" (16)
+			deactivate_trigger [Index: 5, Display: 5]:
+				trigger_id: "Detener 2_1" (17)
+			deactivate_trigger [Index: 6, Display: 6]:
+				trigger_id: "Crear 2_1" (18)
+			deactivate_trigger [Index: 7, Display: 7]:
+				trigger_id: "Funcion objeto 2_1" (19)
+
+	'================' [Index: 41, Display: 41]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'Attack ground E1_3' [Index: 42, Display: 42]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 2
+				inverted: False (0)
+		effects:
+			task_object [Index: 0, Display: 0]:
+				object_list_unit_id: Ballista Elephant (1120)
+				source_player: Player Three (3)
+				location_x: 118
+				location_y: 55
+				action_type: Attack Ground (6)
+				selected_object_ids: 1 unit:
+					0: Ballista Elephant (1120) [P3, X0.5, Y0.5] (16790)
+			activate_trigger [Index: 1, Display: 1]:
+				trigger_id: "Detener E1_3" (43)
+
+	'Detener E1_3' [Index: 43, Display: 43]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 4
+				inverted: False (0)
+		effects:
+			stop_object [Index: 0, Display: 0]:
+				object_list_unit_id: Ballista Elephant (1120)
+				source_player: Player Three (3)
+				selected_object_ids: 1 unit:
+					0: Ballista Elephant (1120) [P3, X0.5, Y0.5] (16790)
+
+	'Crear 1_3' [Index: 44, Display: 44]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 4
+				inverted: False (0)
+		effects:
+			create_object [Index: 0, Display: 0]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 5
+				location_y: 1
+				item_id: 1746
+			create_object [Index: 1, Display: 1]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 3
+				location_y: 1
+				item_id: 1746
+			create_object [Index: 2, Display: 2]:
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				location_x: 1
+				location_y: 1
+				item_id: 1258
+			create_object [Index: 3, Display: 3]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 5
+				location_y: 3
+				item_id: 1746
+			create_object [Index: 7, Display: 4]:
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				location_x: 3
+				location_y: 3
+				item_id: 24
+			create_object [Index: 4, Display: 5]:
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				location_x: 1
+				location_y: 3
+				item_id: 1258
+			create_object [Index: 8, Display: 6]:
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				location_x: 1
+				location_y: 5
+				item_id: 24
+			create_object [Index: 9, Display: 7]:
+				object_list_unit_id: Arambai (1126)
+				source_player: Player Three (3)
+				location_x: 3
+				location_y: 5
+				item_id: 1126
+			create_object [Index: 10, Display: 8]:
+				object_list_unit_id: Cretan Archer (2326)
+				source_player: Player Three (3)
+				location_x: 2
+				location_y: 1
+				item_id: 2326
+			activate_trigger [Index: 5, Display: 9]:
+				trigger_id: "Funcion 1_3" (45)
+			change_object_stance [Index: 6, Display: 10]:
+				source_player: Player Three (3)
+				area_x1: 0
+				area_y1: 0
+				area_x2: 6
+				area_y2: 8
+				attack_stance: No Attack Stance (3)
+
+	'Funcion 1_3' [Index: 45, Display: 45]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			task_object [Index: 0, Display: 0]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 118
+				location_y: 54
+				area_x1: 0
+				area_y1: 0
+				area_x2: 6
+				area_y2: 8
+				action_type: Move (1)
+			task_object [Index: 1, Display: 1]:
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				location_x: 118
+				location_y: 54
+				area_x1: 0
+				area_y1: 0
+				area_x2: 6
+				area_y2: 8
+				action_type: Move (1)
+			task_object [Index: 2, Display: 2]:
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				location_x: 118
+				location_y: 54
+				area_x1: 0
+				area_y1: 0
+				area_x2: 6
+				area_y2: 8
+				action_type: Move (1)
+			task_object [Index: 3, Display: 3]:
+				object_list_unit_id: Arambai (1126)
+				source_player: Player Three (3)
+				location_x: 118
+				location_y: 54
+				area_x1: 0
+				area_y1: 0
+				area_x2: 6
+				area_y2: 8
+				action_type: Move (1)
+			task_object [Index: 4, Display: 4]:
+				object_list_unit_id: Cretan Archer (2326)
+				source_player: Player Three (3)
+				location_x: 118
+				location_y: 54
+				area_x1: 0
+				area_y1: 0
+				area_x2: 6
+				area_y2: 8
+				action_type: Move (1)
+
+	'Quitar 1_3' [Index: 46, Display: 46]:
+		enabled: False
+		looping: True
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			objects_in_area [Index: 0, Display: 0]:
+				quantity: 1
+				source_player: Player Three (3)
+				area_x1: 114
+				area_y1: 52
+				area_x2: 119
+				area_y2: 58
+				inverted: False (0)
+				object_state: Alive (2)
+				include_changeable_weapon_objects: False (0)
+
+	'ESTAMPIDA 5' [Index: 47, Display: 47]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'ACITVAR 5' [Index: 48, Display: 48]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			activate_trigger [Index: 0, Display: 0]:
+				trigger_id: "Attack ground E1_3" (42)
+			activate_trigger [Index: 1, Display: 1]:
+				trigger_id: "Detener E1_3" (43)
+			activate_trigger [Index: 2, Display: 2]:
+				trigger_id: "Crear 1_3" (44)
+			activate_trigger [Index: 3, Display: 3]:
+				trigger_id: "Funcion 1_3" (45)
+			activate_trigger [Index: 4, Display: 4]:
+				trigger_id: "Quitar 1_3" (46)
+			deactivate_trigger [Index: 5, Display: 5]:
+				trigger_id: "Atac Ground 1_1" (0)
+			deactivate_trigger [Index: 6, Display: 6]:
+				trigger_id: "detener 1_1" (3)
+			deactivate_trigger [Index: 7, Display: 7]:
+				trigger_id: "crear unidades" (5)
+			deactivate_trigger [Index: 8, Display: 8]:
+				trigger_id: "fUNCION OBJETO 1_1" (7)
+			deactivate_trigger [Index: 9, Display: 9]:
+				trigger_id: "Attack ground 2_1" (16)
+			deactivate_trigger [Index: 10, Display: 10]:
+				trigger_id: "Detener 2_1" (17)
+			deactivate_trigger [Index: 11, Display: 11]:
+				trigger_id: "Crear 2_1" (18)
+			deactivate_trigger [Index: 12, Display: 12]:
+				trigger_id: "Funcion objeto 2_1" (19)
+
+	'================' [Index: 49, Display: 49]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'ESTAMPIDA 6' [Index: 50, Display: 50]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'aTTACK GOUND E2_3' [Index: 51, Display: 51]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 2
+				inverted: False (0)
+		effects:
+			task_object [Index: 0, Display: 0]:
+				object_list_unit_id: Ballista Elephant (1120)
+				source_player: Player Three (3)
+				location_x: 2
+				location_y: 56
+				action_type: Attack Ground (6)
+				selected_object_ids: 1 unit:
+					0: Ballista Elephant (1120) [P3, X119.16666412353516, Y0.7083333134651184] (16980)
+			activate_trigger [Index: 1, Display: 1]:
+				trigger_id: "DETENER E2_3" (52)
+
+	'DETENER E2_3' [Index: 52, Display: 52]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 4
+				inverted: False (0)
+		effects:
+			stop_object [Index: 0, Display: 0]:
+				object_list_unit_id: Ballista Elephant (1120)
+				source_player: Player Three (3)
+				selected_object_ids: 1 unit:
+					0: Ballista Elephant (1120) [P3, X119.16666412353516, Y0.7083333134651184] (16980)
+
+	'CREAR E2_3' [Index: 53, Display: 53]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 4
+				inverted: False (0)
+		effects:
+			create_object [Index: 0, Display: 0]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 115
+				location_y: 3
+				item_id: 1746
+			create_object [Index: 1, Display: 1]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 116
+				location_y: 1
+				item_id: 1746
+			create_object [Index: 2, Display: 2]:
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				location_x: 118
+				location_y: 3
+				item_id: 1258
+			create_object [Index: 3, Display: 3]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 117
+				location_y: 2
+				item_id: 1746
+			create_object [Index: 7, Display: 4]:
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				location_x: 113
+				location_y: 4
+				item_id: 24
+			create_object [Index: 4, Display: 5]:
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				location_x: 114
+				location_y: 5
+				item_id: 1258
+			create_object [Index: 8, Display: 6]:
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				location_x: 114
+				location_y: 2
+				item_id: 24
+			create_object [Index: 9, Display: 7]:
+				object_list_unit_id: Arambai (1126)
+				source_player: Player Three (3)
+				location_x: 116
+				location_y: 4
+				item_id: 1126
+			create_object [Index: 10, Display: 8]:
+				object_list_unit_id: Cretan Archer (2326)
+				source_player: Player Three (3)
+				location_x: 117
+				location_y: 5
+				item_id: 2326
+			activate_trigger [Index: 5, Display: 9]:
+				trigger_id: "FUNCION E2_3" (54)
+			change_object_stance [Index: 6, Display: 10]:
+				source_player: Player Three (3)
+				area_x1: 112
+				area_y1: 0
+				area_x2: 119
+				area_y2: 7
+				attack_stance: No Attack Stance (3)
+
+	'FUNCION E2_3' [Index: 54, Display: 54]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			task_object [Index: 0, Display: 0]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 1
+				location_y: 56
+				area_x1: 112
+				area_y1: 0
+				area_x2: 119
+				area_y2: 7
+				action_type: Move (1)
+			task_object [Index: 1, Display: 1]:
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				location_x: 1
+				location_y: 56
+				area_x1: 112
+				area_y1: 0
+				area_x2: 119
+				area_y2: 7
+				action_type: Move (1)
+			task_object [Index: 2, Display: 2]:
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				location_x: 1
+				location_y: 56
+				area_x1: 112
+				area_y1: 0
+				area_x2: 119
+				area_y2: 7
+				action_type: Move (1)
+			task_object [Index: 3, Display: 3]:
+				object_list_unit_id: Arambai (1126)
+				source_player: Player Three (3)
+				location_x: 1
+				location_y: 56
+				area_x1: 112
+				area_y1: 0
+				area_x2: 119
+				area_y2: 7
+				action_type: Move (1)
+			task_object [Index: 4, Display: 4]:
+				object_list_unit_id: Cretan Archer (2326)
+				source_player: Player Three (3)
+				location_x: 1
+				location_y: 56
+				area_x1: 112
+				area_y1: 0
+				area_x2: 119
+				area_y2: 7
+				action_type: Move (1)
+
+	'QUITAR E2_3' [Index: 55, Display: 55]:
+		enabled: False
+		looping: True
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			objects_in_area [Index: 0, Display: 0]:
+				quantity: 1
+				source_player: Player Three (3)
+				area_x1: 0
+				area_y1: 53
+				area_x2: 5
+				area_y2: 58
+				inverted: False (0)
+				object_state: Alive (2)
+				include_changeable_weapon_objects: False (0)
+
+	'================' [Index: 56, Display: 56]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'ACTIVAR 6' [Index: 57, Display: 57]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			activate_trigger [Index: 0, Display: 0]:
+				trigger_id: "aTTACK GOUND E2_3" (51)
+			activate_trigger [Index: 1, Display: 1]:
+				trigger_id: "DETENER E2_3" (52)
+			activate_trigger [Index: 2, Display: 2]:
+				trigger_id: "CREAR E2_3" (53)
+			activate_trigger [Index: 3, Display: 3]:
+				trigger_id: "FUNCION E2_3" (54)
+			activate_trigger [Index: 4, Display: 4]:
+				trigger_id: "QUITAR E2_3" (55)
+			deactivate_trigger [Index: 5, Display: 5]:
+				trigger_id: "Attack ground 2_1" (16)
+			deactivate_trigger [Index: 6, Display: 6]:
+				trigger_id: "Detener 2_1" (17)
+			deactivate_trigger [Index: 7, Display: 7]:
+				trigger_id: "Crear 2_1" (18)
+			deactivate_trigger [Index: 8, Display: 8]:
+				trigger_id: "Funcion objeto 2_1" (19)
+			deactivate_trigger [Index: 9, Display: 9]:
+				trigger_id: "aTTACK GORUN 2_2" (34)
+			deactivate_trigger [Index: 10, Display: 10]:
+				trigger_id: "DETENER 2_2" (35)
+			deactivate_trigger [Index: 11, Display: 11]:
+				trigger_id: "cREAR 2_2" (36)
+			deactivate_trigger [Index: 12, Display: 12]:
+				trigger_id: "fUNCION OBJETO 2_2" (37)
+
+	'ESTAMPIDA 7' [Index: 58, Display: 58]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'AATAC_GROUND E3_1' [Index: 59, Display: 59]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 2
+				inverted: False (0)
+		effects:
+			task_object [Index: 0, Display: 0]:
+				object_list_unit_id: Ballista Elephant (1120)
+				source_player: Player Three (3)
+				location_x: 64
+				location_y: 2
+				action_type: Attack Ground (6)
+				selected_object_ids: 1 unit:
+					0: Ballista Elephant (1120) [P3, X0.5, Y119.5] (17412)
+			activate_trigger [Index: 1, Display: 1]:
+				trigger_id: "DETENER E3_1" (60)
+
+	'DETENER E3_1' [Index: 60, Display: 60]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 4
+				inverted: False (0)
+		effects:
+			stop_object [Index: 0, Display: 0]:
+				object_list_unit_id: Ballista Elephant (1120)
+				source_player: Player Three (3)
+				selected_object_ids: 1 unit:
+					0: Ballista Elephant (1120) [P3, X0.5, Y119.5] (17412)
+
+	'CREAR E3_1' [Index: 61, Display: 61]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 4
+				inverted: False (0)
+		effects:
+			create_object [Index: 0, Display: 0]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 2
+				location_y: 114
+				item_id: 1746
+			create_object [Index: 1, Display: 1]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 3
+				location_y: 115
+				item_id: 1746
+			create_object [Index: 2, Display: 2]:
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				location_x: 4
+				location_y: 116
+				item_id: 1258
+			create_object [Index: 3, Display: 3]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 5
+				location_y: 117
+				item_id: 1746
+			create_object [Index: 7, Display: 4]:
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				location_x: 4
+				location_y: 113
+				item_id: 24
+			create_object [Index: 4, Display: 5]:
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				location_x: 5
+				location_y: 114
+				item_id: 1258
+			create_object [Index: 8, Display: 6]:
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				location_x: 6
+				location_y: 115
+				item_id: 24
+			create_object [Index: 9, Display: 7]:
+				object_list_unit_id: Arambai (1126)
+				source_player: Player Three (3)
+				location_x: 6
+				location_y: 113
+				item_id: 1126
+			create_object [Index: 10, Display: 8]:
+				object_list_unit_id: Cretan Archer (2326)
+				source_player: Player Three (3)
+				location_x: 2
+				location_y: 112
+				item_id: 2326
+			activate_trigger [Index: 5, Display: 9]:
+				trigger_id: "FUNCION E3_1" (62)
+			change_object_stance [Index: 6, Display: 10]:
+				source_player: Player Three (3)
+				area_x1: 0
+				area_y1: 111
+				area_x2: 8
+				area_y2: 119
+				attack_stance: No Attack Stance (3)
+
+	'FUNCION E3_1' [Index: 62, Display: 62]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			task_object [Index: 0, Display: 0]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 64
+				location_y: 2
+				area_x1: 0
+				area_y1: 111
+				area_x2: 8
+				area_y2: 119
+				action_type: Move (1)
+			task_object [Index: 1, Display: 1]:
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				location_x: 64
+				location_y: 2
+				area_x1: 0
+				area_y1: 111
+				area_x2: 8
+				area_y2: 119
+				action_type: Move (1)
+			task_object [Index: 2, Display: 2]:
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				location_x: 64
+				location_y: 1
+				area_x1: 0
+				area_y1: 111
+				area_x2: 8
+				area_y2: 119
+				action_type: Move (1)
+			task_object [Index: 3, Display: 3]:
+				object_list_unit_id: Arambai (1126)
+				source_player: Player Three (3)
+				location_x: 64
+				location_y: 2
+				area_x1: 0
+				area_y1: 111
+				area_x2: 8
+				area_y2: 119
+				action_type: Move (1)
+			task_object [Index: 4, Display: 4]:
+				object_list_unit_id: Cretan Archer (2326)
+				source_player: Player Three (3)
+				location_x: 64
+				location_y: 2
+				area_x1: 0
+				area_y1: 111
+				area_x2: 8
+				area_y2: 119
+				action_type: Move (1)
+
+	'QUITAR E3_1' [Index: 63, Display: 63]:
+		enabled: False
+		looping: True
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			objects_in_area [Index: 0, Display: 0]:
+				quantity: 1
+				source_player: Player Three (3)
+				area_x1: 62
+				area_y1: 0
+				area_x2: 66
+				area_y2: 4
+				inverted: False (0)
+				object_state: Alive (2)
+				include_changeable_weapon_objects: False (0)
+
+	'================' [Index: 64, Display: 64]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'ACTIVAR 7' [Index: 65, Display: 65]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			activate_trigger [Index: 0, Display: 0]:
+				trigger_id: "AATAC_GROUND E3_1" (59)
+			activate_trigger [Index: 1, Display: 1]:
+				trigger_id: "DETENER E3_1" (60)
+			activate_trigger [Index: 2, Display: 2]:
+				trigger_id: "CREAR E3_1" (61)
+			activate_trigger [Index: 3, Display: 3]:
+				trigger_id: "FUNCION E3_1" (62)
+			activate_trigger [Index: 4, Display: 4]:
+				trigger_id: "QUITAR E3_1" (63)
+
+	'ESTAMPIDA 8' [Index: 66, Display: 66]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'ATTACK_GROUND_E3_2' [Index: 67, Display: 67]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 2
+				inverted: False (0)
+		effects:
+			task_object [Index: 0, Display: 0]:
+				object_list_unit_id: Ballista Elephant (1120)
+				source_player: Player Three (3)
+				location_x: 118
+				location_y: 54
+				action_type: Attack Ground (6)
+				selected_object_ids: 1 unit:
+					0: Ballista Elephant (1120) [P3, X0.5, Y119.5] (17412)
+			activate_trigger [Index: 1, Display: 1]:
+				trigger_id: "DETENER E3_1" (60)
+
+	'DETENER_E3_2' [Index: 68, Display: 68]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 4
+				inverted: False (0)
+		effects:
+			stop_object [Index: 0, Display: 0]:
+				object_list_unit_id: Ballista Elephant (1120)
+				source_player: Player Three (3)
+				selected_object_ids: 1 unit:
+					0: Ballista Elephant (1120) [P3, X0.5, Y119.5] (17412)
+
+	'CREAR_E3_2' [Index: 69, Display: 69]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 4
+				inverted: False (0)
+		effects:
+			create_object [Index: 0, Display: 0]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 2
+				location_y: 114
+				item_id: 1746
+			create_object [Index: 1, Display: 1]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 3
+				location_y: 115
+				item_id: 1746
+			create_object [Index: 2, Display: 2]:
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				location_x: 4
+				location_y: 116
+				item_id: 1258
+			create_object [Index: 3, Display: 3]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 5
+				location_y: 117
+				item_id: 1746
+			create_object [Index: 7, Display: 4]:
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				location_x: 4
+				location_y: 113
+				item_id: 24
+			create_object [Index: 4, Display: 5]:
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				location_x: 5
+				location_y: 114
+				item_id: 1258
+			create_object [Index: 8, Display: 6]:
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				location_x: 6
+				location_y: 115
+				item_id: 24
+			create_object [Index: 9, Display: 7]:
+				object_list_unit_id: Arambai (1126)
+				source_player: Player Three (3)
+				location_x: 6
+				location_y: 113
+				item_id: 1126
+			create_object [Index: 10, Display: 8]:
+				object_list_unit_id: Cretan Archer (2326)
+				source_player: Player Three (3)
+				location_x: 2
+				location_y: 112
+				item_id: 2326
+			activate_trigger [Index: 5, Display: 9]:
+				trigger_id: "FUNCION E3_2" (70)
+			change_object_stance [Index: 6, Display: 10]:
+				source_player: Player Three (3)
+				area_x1: 0
+				area_y1: 111
+				area_x2: 8
+				area_y2: 119
+				attack_stance: No Attack Stance (3)
+
+	'FUNCION E3_2' [Index: 70, Display: 70]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			task_object [Index: 0, Display: 0]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 118
+				location_y: 54
+				area_x1: 0
+				area_y1: 111
+				area_x2: 8
+				area_y2: 119
+				action_type: Move (1)
+			task_object [Index: 1, Display: 1]:
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				location_x: 118
+				location_y: 54
+				area_x1: 0
+				area_y1: 111
+				area_x2: 8
+				area_y2: 119
+				action_type: Move (1)
+			task_object [Index: 2, Display: 2]:
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				location_x: 118
+				location_y: 54
+				area_x1: 0
+				area_y1: 111
+				area_x2: 8
+				area_y2: 119
+				action_type: Move (1)
+			task_object [Index: 3, Display: 3]:
+				object_list_unit_id: Arambai (1126)
+				source_player: Player Three (3)
+				location_x: 118
+				location_y: 54
+				area_x1: 0
+				area_y1: 111
+				area_x2: 8
+				area_y2: 119
+				action_type: Move (1)
+			task_object [Index: 4, Display: 4]:
+				object_list_unit_id: Cretan Archer (2326)
+				source_player: Player Three (3)
+				location_x: 118
+				location_y: 54
+				area_x1: 0
+				area_y1: 111
+				area_x2: 8
+				area_y2: 119
+				action_type: Move (1)
+
+	'QUITAR_E3_2' [Index: 71, Display: 71]:
+		enabled: False
+		looping: True
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			objects_in_area [Index: 0, Display: 0]:
+				quantity: 1
+				source_player: Player Three (3)
+				area_x1: 115
+				area_y1: 53
+				area_x2: 119
+				area_y2: 57
+				inverted: False (0)
+				object_state: Alive (2)
+				include_changeable_weapon_objects: False (0)
+
+	'ACTIVAR 8' [Index: 72, Display: 72]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			activate_trigger [Index: 0, Display: 0]:
+				trigger_id: "ATTACK_GROUND_E3_2" (67)
+			activate_trigger [Index: 1, Display: 1]:
+				trigger_id: "DETENER_E3_2" (68)
+			activate_trigger [Index: 2, Display: 2]:
+				trigger_id: "CREAR_E3_2" (69)
+			activate_trigger [Index: 3, Display: 3]:
+				trigger_id: "FUNCION E3_2" (70)
+			activate_trigger [Index: 4, Display: 4]:
+				trigger_id: "QUITAR_E3_2" (71)
+			deactivate_trigger [Index: 5, Display: 5]:
+				trigger_id: "Quitar 2_1" (20)
+			deactivate_trigger [Index: 6, Display: 6]:
+				trigger_id: "AATAC_GROUND E3_1" (59)
+			deactivate_trigger [Index: 7, Display: 7]:
+				trigger_id: "DETENER E3_1" (60)
+			deactivate_trigger [Index: 8, Display: 8]:
+				trigger_id: "CREAR E3_1" (61)
+			deactivate_trigger [Index: 9, Display: 9]:
+				trigger_id: "FUNCION E3_1" (62)
+
+	'=================' [Index: 73, Display: 73]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'ESTAMPIDA 9' [Index: 74, Display: 74]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'ATTACK_GROUND E4_1' [Index: 75, Display: 75]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 2
+				inverted: False (0)
+		effects:
+			task_object [Index: 0, Display: 0]:
+				object_list_unit_id: Ballista Elephant (1120)
+				source_player: Player Three (3)
+				location_x: 2
+				location_y: 56
+				action_type: Attack Ground (6)
+				selected_object_ids: 1 unit:
+					0: Ballista Elephant (1120) [P3, X119.5, Y119.5] (17413)
+			activate_trigger [Index: 1, Display: 1]:
+				trigger_id: "DETENER E4_1" (76)
+
+	'DETENER E4_1' [Index: 76, Display: 76]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 4
+				inverted: False (0)
+		effects:
+			stop_object [Index: 0, Display: 0]:
+				object_list_unit_id: Ballista Elephant (1120)
+				source_player: Player Three (3)
+				selected_object_ids: 1 unit:
+					0: Ballista Elephant (1120) [P3, X119.5, Y119.5] (17413)
+
+	'CREAR E4_1' [Index: 77, Display: 77]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 4
+				inverted: False (0)
+		effects:
+			create_object [Index: 0, Display: 0]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 114
+				location_y: 116
+				item_id: 1746
+			create_object [Index: 1, Display: 1]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 115
+				location_y: 115
+				item_id: 1746
+			create_object [Index: 2, Display: 2]:
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				location_x: 116
+				location_y: 114
+				item_id: 1258
+			create_object [Index: 3, Display: 3]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 117
+				location_y: 113
+				item_id: 1746
+			create_object [Index: 7, Display: 4]:
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				location_x: 114
+				location_y: 114
+				item_id: 24
+			create_object [Index: 4, Display: 5]:
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				location_x: 115
+				location_y: 113
+				item_id: 1258
+			create_object [Index: 8, Display: 6]:
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				location_x: 113
+				location_y: 113
+				item_id: 24
+			create_object [Index: 9, Display: 7]:
+				object_list_unit_id: Arambai (1126)
+				source_player: Player Three (3)
+				location_x: 114
+				location_y: 112
+				item_id: 1126
+			create_object [Index: 10, Display: 8]:
+				object_list_unit_id: Cretan Archer (2326)
+				source_player: Player Three (3)
+				location_x: 116
+				location_y: 111
+				item_id: 2326
+			activate_trigger [Index: 5, Display: 9]:
+				trigger_id: "FUNCION E4_1" (78)
+			change_object_stance [Index: 6, Display: 10]:
+				source_player: Player Three (3)
+				area_x1: 111
+				area_y1: 110
+				area_x2: 119
+				area_y2: 119
+				attack_stance: No Attack Stance (3)
+
+	'FUNCION E4_1' [Index: 78, Display: 78]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			task_object [Index: 0, Display: 0]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 2
+				location_y: 56
+				area_x1: 111
+				area_y1: 110
+				area_x2: 119
+				area_y2: 119
+				action_type: Move (1)
+			task_object [Index: 1, Display: 1]:
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				location_x: 2
+				location_y: 56
+				area_x1: 111
+				area_y1: 110
+				area_x2: 119
+				area_y2: 119
+				action_type: Move (1)
+			task_object [Index: 2, Display: 2]:
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				location_x: 2
+				location_y: 56
+				area_x1: 111
+				area_y1: 110
+				area_x2: 119
+				area_y2: 119
+				action_type: Move (1)
+			task_object [Index: 3, Display: 3]:
+				object_list_unit_id: Arambai (1126)
+				source_player: Player Three (3)
+				location_x: 1
+				location_y: 55
+				area_x1: 111
+				area_y1: 110
+				area_x2: 119
+				area_y2: 119
+				action_type: Move (1)
+			task_object [Index: 4, Display: 4]:
+				object_list_unit_id: Cretan Archer (2326)
+				source_player: Player Three (3)
+				location_x: 1
+				location_y: 56
+				area_x1: 111
+				area_y1: 110
+				area_x2: 119
+				area_y2: 119
+				action_type: Move (1)
+
+	'QUITAR E4_1' [Index: 79, Display: 79]:
+		enabled: False
+		looping: True
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			objects_in_area [Index: 0, Display: 0]:
+				quantity: 1
+				source_player: Player Three (3)
+				area_x1: 0
+				area_y1: 54
+				area_x2: 4
+				area_y2: 59
+				inverted: False (0)
+				object_state: Alive (2)
+				include_changeable_weapon_objects: False (0)
+
+	'ACTIVAR 9' [Index: 80, Display: 80]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			activate_trigger [Index: 0, Display: 0]:
+				trigger_id: "ATTACK_GROUND E4_1" (75)
+			activate_trigger [Index: 1, Display: 1]:
+				trigger_id: "DETENER E4_1" (76)
+			activate_trigger [Index: 2, Display: 2]:
+				trigger_id: "CREAR E4_1" (77)
+			activate_trigger [Index: 3, Display: 3]:
+				trigger_id: "FUNCION E4_1" (78)
+			activate_trigger [Index: 4, Display: 4]:
+				trigger_id: "ACTIVAR 9" (80)
+
+	'=================' [Index: 81, Display: 81]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'ESTAMPIDA 10' [Index: 82, Display: 82]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'ATTACK GROUND E4_2' [Index: 83, Display: 83]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 2
+				inverted: False (0)
+		effects:
+			task_object [Index: 0, Display: 0]:
+				object_list_unit_id: Ballista Elephant (1120)
+				source_player: Player Three (3)
+				location_x: 64
+				location_y: 2
+				action_type: Attack Ground (6)
+				selected_object_ids: 1 unit:
+					0: Ballista Elephant (1120) [P3, X119.5, Y119.5] (17413)
+			activate_trigger [Index: 1, Display: 1]:
+				trigger_id: "DETENER E4_2" (84)
+
+	'DETENER E4_2' [Index: 84, Display: 84]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 4
+				inverted: False (0)
+		effects:
+			stop_object [Index: 0, Display: 0]:
+				object_list_unit_id: Ballista Elephant (1120)
+				source_player: Player Three (3)
+				selected_object_ids: 1 unit:
+					0: Ballista Elephant (1120) [P3, X119.5, Y119.5] (17413)
+
+	'CREAR E4_2' [Index: 85, Display: 85]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 4
+				inverted: False (0)
+		effects:
+			create_object [Index: 0, Display: 0]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 114
+				location_y: 116
+				item_id: 1746
+			create_object [Index: 1, Display: 1]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 115
+				location_y: 115
+				item_id: 1746
+			create_object [Index: 2, Display: 2]:
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				location_x: 116
+				location_y: 114
+				item_id: 1258
+			create_object [Index: 3, Display: 3]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 117
+				location_y: 113
+				item_id: 1746
+			create_object [Index: 7, Display: 4]:
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				location_x: 114
+				location_y: 114
+				item_id: 24
+			create_object [Index: 4, Display: 5]:
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				location_x: 115
+				location_y: 113
+				item_id: 1258
+			create_object [Index: 8, Display: 6]:
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				location_x: 113
+				location_y: 113
+				item_id: 24
+			create_object [Index: 9, Display: 7]:
+				object_list_unit_id: Arambai (1126)
+				source_player: Player Three (3)
+				location_x: 114
+				location_y: 112
+				item_id: 1126
+			create_object [Index: 10, Display: 8]:
+				object_list_unit_id: Cretan Archer (2326)
+				source_player: Player Three (3)
+				location_x: 116
+				location_y: 111
+				item_id: 2326
+			activate_trigger [Index: 5, Display: 9]:
+				trigger_id: "FUNCION E4_2" (86)
+			change_object_stance [Index: 6, Display: 10]:
+				source_player: Player Three (3)
+				area_x1: 111
+				area_y1: 110
+				area_x2: 119
+				area_y2: 119
+				attack_stance: No Attack Stance (3)
+
+	'FUNCION E4_2' [Index: 86, Display: 86]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			task_object [Index: 0, Display: 0]:
+				object_list_unit_id: Siege Elephant (1746)
+				source_player: Player Three (3)
+				location_x: 64
+				location_y: 2
+				area_x1: 111
+				area_y1: 110
+				area_x2: 119
+				area_y2: 119
+				action_type: Move (1)
+			task_object [Index: 1, Display: 1]:
+				object_list_unit_id: Battering Ram (1258)
+				source_player: Player Three (3)
+				location_x: 64
+				location_y: 2
+				area_x1: 111
+				area_y1: 110
+				area_x2: 119
+				area_y2: 119
+				action_type: Move (1)
+			task_object [Index: 2, Display: 2]:
+				object_list_unit_id: Crossbowman (24)
+				source_player: Player Three (3)
+				location_x: 64
+				location_y: 2
+				area_x1: 111
+				area_y1: 110
+				area_x2: 119
+				area_y2: 119
+				action_type: Move (1)
+			task_object [Index: 3, Display: 3]:
+				object_list_unit_id: Arambai (1126)
+				source_player: Player Three (3)
+				location_x: 64
+				location_y: 2
+				area_x1: 111
+				area_y1: 110
+				area_x2: 119
+				area_y2: 119
+				action_type: Move (1)
+			task_object [Index: 4, Display: 4]:
+				object_list_unit_id: Cretan Archer (2326)
+				source_player: Player Three (3)
+				location_x: 64
+				location_y: 2
+				area_x1: 111
+				area_y1: 110
+				area_x2: 119
+				area_y2: 119
+				action_type: Move (1)
+
+	'QUITAR E4_2' [Index: 87, Display: 87]:
+		enabled: False
+		looping: True
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			objects_in_area [Index: 0, Display: 0]:
+				quantity: 1
+				source_player: Player Three (3)
+				area_x1: 62
+				area_y1: 0
+				area_x2: 66
+				area_y2: 4
+				inverted: False (0)
+				object_state: Alive (2)
+				include_changeable_weapon_objects: False (0)
+
+	'ACTIVAR 10' [Index: 88, Display: 88]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			activate_trigger [Index: 0, Display: 0]:
+				trigger_id: "ATTACK GROUND E4_2" (83)
+			activate_trigger [Index: 1, Display: 1]:
+				trigger_id: "DETENER E4_2" (84)
+			activate_trigger [Index: 2, Display: 2]:
+				trigger_id: "CREAR E4_2" (85)
+			activate_trigger [Index: 3, Display: 3]:
+				trigger_id: "FUNCION E4_2" (86)
+			activate_trigger [Index: 4, Display: 4]:
+				trigger_id: "QUITAR E4_2" (87)
+			deactivate_trigger [Index: 5, Display: 5]:
+				trigger_id: "ATTACK_GROUND E4_1" (75)
+			deactivate_trigger [Index: 6, Display: 6]:
+				trigger_id: "DETENER E4_1" (76)
+			deactivate_trigger [Index: 7, Display: 7]:
+				trigger_id: "CREAR E4_1" (77)
+			deactivate_trigger [Index: 8, Display: 8]:
+				trigger_id: "FUNCION E4_1" (78)
+
+	'================' [Index: 89, Display: 89]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'CWNTROS URBANOS' [Index: 90, Display: 90]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'C1_P1' [Index: 91, Display: 91]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			chance [Index: 0, Display: 0]:
+				quantity: 25
+		effects:
+			create_object [Index: 0, Display: 0]:
+				object_list_unit_id: Town Center (109)
+				source_player: Player One (1)
+				location_x: 23
+				location_y: 56
+				item_id: 109
+			create_object [Index: 1, Display: 1]:
+				object_list_unit_id: Villager Male (83)
+				source_player: Player One (1)
+				location_x: 19
+				location_y: 52
+				item_id: 83
+			create_object [Index: 4, Display: 2]:
+				object_list_unit_id: Villager Male (83)
+				source_player: Player One (1)
+				location_x: 27
+				location_y: 60
+				item_id: 83
+			create_object [Index: 2, Display: 3]:
+				object_list_unit_id: Villager Male (83)
+				source_player: Player One (1)
+				location_x: 27
+				location_y: 52
+				item_id: 83
+			create_object [Index: 3, Display: 4]:
+				object_list_unit_id: Scout Cavalry (448)
+				source_player: Player One (1)
+				location_x: 19
+				location_y: 60
+				item_id: 448
+			deactivate_trigger [Index: 5, Display: 5]:
+				trigger_id: "C1_P2" (92)
+			deactivate_trigger [Index: 6, Display: 6]:
+				trigger_id: "C1_P3" (93)
+			deactivate_trigger [Index: 7, Display: 7]:
+				trigger_id: "C1_P4" (94)
+			activate_trigger [Index: 8, Display: 8]:
+				trigger_id: "C2_P3" (96)
+			activate_trigger [Index: 9, Display: 9]:
+				trigger_id: "ACTIVAR 3-10" (105)
+			activate_trigger [Index: 10, Display: 10]:
+				trigger_id: "ACTIVAR 1-2" (106)
+			activate_trigger [Index: 11, Display: 11]:
+				trigger_id: "ACTIVAR 4-7" (107)
+			activate_trigger [Index: 12, Display: 12]:
+				trigger_id: "ACTIVAR 6-8" (108)
+			activate_trigger [Index: 13, Display: 13]:
+				trigger_id: "ACTIVAR 5-9" (109)
+
+	'C1_P2' [Index: 92, Display: 92]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			chance [Index: 0, Display: 0]:
+				quantity: 33
+		effects:
+			create_object [Index: 0, Display: 0]:
+				object_list_unit_id: Town Center (109)
+				source_player: Player One (1)
+				location_x: 64
+				location_y: 25
+				item_id: 109
+			create_object [Index: 1, Display: 1]:
+				object_list_unit_id: Villager Male (83)
+				source_player: Player One (1)
+				location_x: 60
+				location_y: 21
+				item_id: 83
+			create_object [Index: 4, Display: 2]:
+				object_list_unit_id: Villager Male (83)
+				source_player: Player One (1)
+				location_x: 68
+				location_y: 29
+				item_id: 83
+			create_object [Index: 2, Display: 3]:
+				object_list_unit_id: Villager Male (83)
+				source_player: Player One (1)
+				location_x: 68
+				location_y: 21
+				item_id: 83
+			create_object [Index: 3, Display: 4]:
+				object_list_unit_id: Scout Cavalry (448)
+				source_player: Player One (1)
+				location_x: 60
+				location_y: 29
+				item_id: 448
+			deactivate_trigger [Index: 5, Display: 5]:
+				trigger_id: "C1_P1" (91)
+			deactivate_trigger [Index: 6, Display: 6]:
+				trigger_id: "C1_P3" (93)
+			deactivate_trigger [Index: 7, Display: 7]:
+				trigger_id: "C1_P4" (94)
+			activate_trigger [Index: 8, Display: 8]:
+				trigger_id: "C2_P4" (98)
+			activate_trigger [Index: 9, Display: 9]:
+				trigger_id: "bACTIVAR 3-10" (112)
+			activate_trigger [Index: 10, Display: 10]:
+				trigger_id: " bACTIVAR 1-2" (113)
+			activate_trigger [Index: 11, Display: 11]:
+				trigger_id: "bACTIVAR 4-7" (114)
+			activate_trigger [Index: 12, Display: 12]:
+				trigger_id: "bACTIVAR 6-8" (115)
+			activate_trigger [Index: 13, Display: 13]:
+				trigger_id: "bACTIVAR 5-9" (116)
+
+	'C1_P3' [Index: 93, Display: 93]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			chance [Index: 0, Display: 0]:
+				quantity: 50
+		effects:
+			create_object [Index: 0, Display: 0]:
+				object_list_unit_id: Town Center (109)
+				source_player: Player One (1)
+				location_x: 101
+				location_y: 54
+				item_id: 109
+			create_object [Index: 1, Display: 1]:
+				object_list_unit_id: Villager Male (83)
+				source_player: Player One (1)
+				location_x: 97
+				location_y: 50
+				item_id: 83
+			create_object [Index: 4, Display: 2]:
+				object_list_unit_id: Villager Male (83)
+				source_player: Player One (1)
+				location_x: 105
+				location_y: 50
+				item_id: 83
+			create_object [Index: 2, Display: 3]:
+				object_list_unit_id: Villager Male (83)
+				source_player: Player One (1)
+				location_x: 105
+				location_y: 58
+				item_id: 83
+			create_object [Index: 3, Display: 4]:
+				object_list_unit_id: Scout Cavalry (448)
+				source_player: Player One (1)
+				location_x: 97
+				location_y: 58
+				item_id: 448
+			deactivate_trigger [Index: 5, Display: 5]:
+				trigger_id: "C1_P1" (91)
+			deactivate_trigger [Index: 6, Display: 6]:
+				trigger_id: "C1_P2" (92)
+			deactivate_trigger [Index: 7, Display: 7]:
+				trigger_id: "C1_P4" (94)
+			activate_trigger [Index: 8, Display: 8]:
+				trigger_id: "C2_P1" (100)
+			activate_trigger [Index: 9, Display: 9]:
+				trigger_id: "ACTIVAR 3-10" (105)
+			activate_trigger [Index: 10, Display: 10]:
+				trigger_id: "ACTIVAR 1-2" (106)
+			activate_trigger [Index: 11, Display: 11]:
+				trigger_id: "ACTIVAR 4-7" (107)
+			activate_trigger [Index: 12, Display: 12]:
+				trigger_id: "ACTIVAR 6-8" (108)
+			activate_trigger [Index: 13, Display: 13]:
+				trigger_id: "ACTIVAR 5-9" (109)
+
+	'C1_P4' [Index: 94, Display: 94]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			chance [Index: 0, Display: 0]:
+				quantity: 50
+		effects:
+			create_object [Index: 0, Display: 0]:
+				object_list_unit_id: Town Center (109)
+				source_player: Player One (1)
+				location_x: 62
+				location_y: 90
+				item_id: 109
+			create_object [Index: 1, Display: 1]:
+				object_list_unit_id: Villager Male (83)
+				source_player: Player One (1)
+				location_x: 58
+				location_y: 86
+				item_id: 83
+			create_object [Index: 4, Display: 2]:
+				object_list_unit_id: Villager Male (83)
+				source_player: Player One (1)
+				location_x: 66
+				location_y: 86
+				item_id: 83
+			create_object [Index: 2, Display: 3]:
+				object_list_unit_id: Villager Male (83)
+				source_player: Player One (1)
+				location_x: 66
+				location_y: 94
+				item_id: 83
+			create_object [Index: 3, Display: 4]:
+				object_list_unit_id: Scout Cavalry (448)
+				source_player: Player One (1)
+				location_x: 58
+				location_y: 94
+				item_id: 448
+			deactivate_trigger [Index: 5, Display: 5]:
+				trigger_id: "C1_P1" (91)
+			deactivate_trigger [Index: 6, Display: 6]:
+				trigger_id: "C1_P2" (92)
+			deactivate_trigger [Index: 7, Display: 7]:
+				trigger_id: "C1_P3" (93)
+			activate_trigger [Index: 8, Display: 8]:
+				trigger_id: "C2_P2" (102)
+			activate_trigger [Index: 9, Display: 9]:
+				trigger_id: "bACTIVAR 3-10" (112)
+			activate_trigger [Index: 10, Display: 10]:
+				trigger_id: " bACTIVAR 1-2" (113)
+			activate_trigger [Index: 11, Display: 11]:
+				trigger_id: "bACTIVAR 4-7" (114)
+			activate_trigger [Index: 12, Display: 12]:
+				trigger_id: "bACTIVAR 6-8" (115)
+			activate_trigger [Index: 13, Display: 13]:
+				trigger_id: "bACTIVAR 5-9" (116)
+
+	'================' [Index: 95, Display: 95]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'C2_P3' [Index: 96, Display: 96]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			create_object [Index: 0, Display: 0]:
+				object_list_unit_id: Town Center (109)
+				source_player: Player Two (2)
+				location_x: 101
+				location_y: 54
+				item_id: 109
+			create_object [Index: 1, Display: 1]:
+				object_list_unit_id: Villager Male (83)
+				source_player: Player Two (2)
+				location_x: 97
+				location_y: 50
+				item_id: 83
+			create_object [Index: 4, Display: 2]:
+				object_list_unit_id: Villager Male (83)
+				source_player: Player Two (2)
+				location_x: 105
+				location_y: 50
+				item_id: 83
+			create_object [Index: 2, Display: 3]:
+				object_list_unit_id: Villager Male (83)
+				source_player: Player Two (2)
+				location_x: 105
+				location_y: 58
+				item_id: 83
+			create_object [Index: 3, Display: 4]:
+				object_list_unit_id: Scout Cavalry (448)
+				source_player: Player Two (2)
+				location_x: 97
+				location_y: 58
+				item_id: 448
+
+	'================' [Index: 97, Display: 97]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'C2_P4' [Index: 98, Display: 98]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			create_object [Index: 0, Display: 0]:
+				object_list_unit_id: Town Center (109)
+				source_player: Player Two (2)
+				location_x: 62
+				location_y: 90
+				item_id: 109
+			create_object [Index: 1, Display: 1]:
+				object_list_unit_id: Villager Male (83)
+				source_player: Player Two (2)
+				location_x: 58
+				location_y: 86
+				item_id: 83
+			create_object [Index: 4, Display: 2]:
+				object_list_unit_id: Villager Male (83)
+				source_player: Player Two (2)
+				location_x: 66
+				location_y: 86
+				item_id: 83
+			create_object [Index: 2, Display: 3]:
+				object_list_unit_id: Villager Male (83)
+				source_player: Player Two (2)
+				location_x: 66
+				location_y: 94
+				item_id: 83
+			create_object [Index: 3, Display: 4]:
+				object_list_unit_id: Scout Cavalry (448)
+				source_player: Player Two (2)
+				location_x: 58
+				location_y: 94
+				item_id: 448
+
+	'================' [Index: 99, Display: 99]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'C2_P1' [Index: 100, Display: 100]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			create_object [Index: 0, Display: 0]:
+				object_list_unit_id: Town Center (109)
+				source_player: Player Two (2)
+				location_x: 23
+				location_y: 56
+				item_id: 109
+			create_object [Index: 1, Display: 1]:
+				object_list_unit_id: Villager Male (83)
+				source_player: Player Two (2)
+				location_x: 19
+				location_y: 52
+				item_id: 83
+			create_object [Index: 4, Display: 2]:
+				object_list_unit_id: Villager Male (83)
+				source_player: Player Two (2)
+				location_x: 27
+				location_y: 52
+				item_id: 83
+			create_object [Index: 2, Display: 3]:
+				object_list_unit_id: Villager Male (83)
+				source_player: Player Two (2)
+				location_x: 27
+				location_y: 60
+				item_id: 83
+			create_object [Index: 3, Display: 4]:
+				object_list_unit_id: Scout Cavalry (448)
+				source_player: Player Two (2)
+				location_x: 19
+				location_y: 60
+				item_id: 448
+
+	'================' [Index: 101, Display: 101]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'C2_P2' [Index: 102, Display: 102]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		effects:
+			create_object [Index: 0, Display: 0]:
+				object_list_unit_id: Town Center (109)
+				source_player: Player Two (2)
+				location_x: 64
+				location_y: 25
+				item_id: 109
+			create_object [Index: 1, Display: 1]:
+				object_list_unit_id: Villager Male (83)
+				source_player: Player Two (2)
+				location_x: 60
+				location_y: 21
+				item_id: 83
+			create_object [Index: 4, Display: 2]:
+				object_list_unit_id: Villager Male (83)
+				source_player: Player Two (2)
+				location_x: 68
+				location_y: 21
+				item_id: 83
+			create_object [Index: 2, Display: 3]:
+				object_list_unit_id: Villager Male (83)
+				source_player: Player Two (2)
+				location_x: 68
+				location_y: 29
+				item_id: 83
+			create_object [Index: 3, Display: 4]:
+				object_list_unit_id: Scout Cavalry (448)
+				source_player: Player Two (2)
+				location_x: 60
+				location_y: 29
+				item_id: 448
+
+	'================' [Index: 103, Display: 103]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'HORIZONTAL' [Index: 104, Display: 104]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'ACTIVAR 3-10' [Index: 105, Display: 105]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 300
+				inverted: False (0)
+		effects:
+			activate_trigger [Index: 0, Display: 0]:
+				trigger_id: "activar 3" (31)
+			activate_trigger [Index: 1, Display: 1]:
+				trigger_id: "ACTIVAR 10" (88)
+			play_sound [Index: 2, Display: 2]:
+				source_player: Player One (1)
+				sound_name: 'estampida2'
+			play_sound [Index: 3, Display: 3]:
+				source_player: Player Two (2)
+				sound_name: 'estampida2'
+			activate_trigger [Index: 4, Display: 4]:
+				trigger_id: "SONIDO ESTAMPIDA" (118)
+
+	'ACTIVAR 1-2' [Index: 106, Display: 106]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 500
+				inverted: False (0)
+		effects:
+			activate_trigger [Index: 0, Display: 0]:
+				trigger_id: "Activar 1" (30)
+			activate_trigger [Index: 1, Display: 1]:
+				trigger_id: "Activar 2" (39)
+			play_sound [Index: 2, Display: 2]:
+				source_player: Player One (1)
+				sound_name: 'estampida2'
+			play_sound [Index: 3, Display: 3]:
+				source_player: Player Two (2)
+				sound_name: 'estampida2'
+			activate_trigger [Index: 4, Display: 4]:
+				trigger_id: "SONIDO ESTAMPIDA" (118)
+
+	'ACTIVAR 4-7' [Index: 107, Display: 107]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 700
+				inverted: False (0)
+		effects:
+			activate_trigger [Index: 0, Display: 0]:
+				trigger_id: "Activar 4" (40)
+			activate_trigger [Index: 1, Display: 1]:
+				trigger_id: "ACTIVAR 7" (65)
+			play_sound [Index: 2, Display: 2]:
+				source_player: Player One (1)
+				sound_name: 'estampida2'
+			play_sound [Index: 3, Display: 3]:
+				source_player: Player Two (2)
+				sound_name: 'estampida2'
+			activate_trigger [Index: 4, Display: 4]:
+				trigger_id: "SONIDO ESTAMPIDA" (118)
+
+	'ACTIVAR 6-8' [Index: 108, Display: 108]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 900
+				inverted: False (0)
+		effects:
+			activate_trigger [Index: 0, Display: 0]:
+				trigger_id: "ACTIVAR 6" (57)
+			activate_trigger [Index: 1, Display: 1]:
+				trigger_id: "ACTIVAR 8" (72)
+			play_sound [Index: 2, Display: 2]:
+				source_player: Player One (1)
+				sound_name: 'estampida2'
+			play_sound [Index: 3, Display: 3]:
+				source_player: Player Two (2)
+				sound_name: 'estampida2'
+			activate_trigger [Index: 4, Display: 4]:
+				trigger_id: "SONIDO ESTAMPIDA" (118)
+
+	'ACTIVAR 5-9' [Index: 109, Display: 109]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 1200
+				inverted: False (0)
+		effects:
+			activate_trigger [Index: 0, Display: 0]:
+				trigger_id: "ACITVAR 5" (48)
+			activate_trigger [Index: 1, Display: 1]:
+				trigger_id: "ACTIVAR 9" (80)
+			play_sound [Index: 2, Display: 2]:
+				source_player: Player One (1)
+				sound_name: 'estampida2'
+			play_sound [Index: 3, Display: 3]:
+				source_player: Player Two (2)
+				sound_name: 'estampida2'
+			activate_trigger [Index: 4, Display: 4]:
+				trigger_id: "SONIDO ESTAMPIDA" (118)
+
+	'===============' [Index: 110, Display: 110]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'VERTICAL' [Index: 111, Display: 111]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'bACTIVAR 3-10' [Index: 112, Display: 112]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 1200
+				inverted: False (0)
+		effects:
+			activate_trigger [Index: 0, Display: 0]:
+				trigger_id: "activar 3" (31)
+			activate_trigger [Index: 1, Display: 1]:
+				trigger_id: "ACTIVAR 10" (88)
+			play_sound [Index: 2, Display: 2]:
+				source_player: Player One (1)
+				sound_name: 'estampida2'
+			play_sound [Index: 3, Display: 3]:
+				source_player: Player Two (2)
+				sound_name: 'estampida2'
+			activate_trigger [Index: 4, Display: 4]:
+				trigger_id: "SONIDO ESTAMPIDA" (118)
+
+	' bACTIVAR 1-2' [Index: 113, Display: 113]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 900
+				inverted: False (0)
+		effects:
+			activate_trigger [Index: 0, Display: 0]:
+				trigger_id: "Activar 1" (30)
+			activate_trigger [Index: 1, Display: 1]:
+				trigger_id: "Activar 2" (39)
+			play_sound [Index: 2, Display: 2]:
+				source_player: Player One (1)
+				sound_name: 'estampida2'
+			play_sound [Index: 3, Display: 3]:
+				source_player: Player Two (2)
+				sound_name: 'estampida2'
+			activate_trigger [Index: 4, Display: 4]:
+				trigger_id: "SONIDO ESTAMPIDA" (118)
+
+	'bACTIVAR 4-7' [Index: 114, Display: 114]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 700
+				inverted: False (0)
+		effects:
+			activate_trigger [Index: 0, Display: 0]:
+				trigger_id: "Activar 4" (40)
+			activate_trigger [Index: 1, Display: 1]:
+				trigger_id: "ACTIVAR 7" (65)
+			play_sound [Index: 2, Display: 2]:
+				source_player: Player One (1)
+				sound_name: 'estampida2'
+			play_sound [Index: 3, Display: 3]:
+				source_player: Player Two (2)
+				sound_name: 'estampida2'
+			activate_trigger [Index: 4, Display: 4]:
+				trigger_id: "SONIDO ESTAMPIDA" (118)
+
+	'bACTIVAR 6-8' [Index: 115, Display: 115]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 500
+				inverted: False (0)
+		effects:
+			activate_trigger [Index: 0, Display: 0]:
+				trigger_id: "ACTIVAR 6" (57)
+			activate_trigger [Index: 1, Display: 1]:
+				trigger_id: "ACTIVAR 8" (72)
+			play_sound [Index: 2, Display: 2]:
+				source_player: Player One (1)
+				sound_name: 'estampida2'
+			play_sound [Index: 3, Display: 3]:
+				source_player: Player Two (2)
+				sound_name: 'estampida2'
+			activate_trigger [Index: 4, Display: 4]:
+				trigger_id: "SONIDO ESTAMPIDA" (118)
+
+	'bACTIVAR 5-9' [Index: 116, Display: 116]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 300
+				inverted: False (0)
+		effects:
+			activate_trigger [Index: 0, Display: 0]:
+				trigger_id: "ACITVAR 5" (48)
+			activate_trigger [Index: 1, Display: 1]:
+				trigger_id: "ACTIVAR 9" (80)
+			play_sound [Index: 2, Display: 2]:
+				source_player: Player One (1)
+				sound_name: 'estampida2'
+			play_sound [Index: 3, Display: 3]:
+				source_player: Player Two (2)
+				sound_name: 'estampida2'
+			activate_trigger [Index: 4, Display: 4]:
+				trigger_id: "SONIDO ESTAMPIDA" (118)
+
+	'==============' [Index: 117, Display: 117]:
+		enabled: True
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+
+	'SONIDO ESTAMPIDA' [Index: 118, Display: 118]:
+		enabled: False
+		looping: False
+		description_stid: 0
+		short_description_stid: 0
+		conditions:
+			timer [Index: 0, Display: 0]:
+				timer: 5
+				inverted: False (0)
+		effects:
+			play_sound [Index: 0, Display: 0]:
+				source_player: Player One (1)
+				sound_name: 'estampida3'
+			play_sound [Index: 1, Display: 1]:
+				source_player: Player Two (2)
+				sound_name: 'estampida3'
+
+Variables:
+	'ES1' [Index: 1] (1a7ba38a-c942-4506-a9c7-cae99a5c0b81)
+	'ES2' [Index: 2] (1a7ba38a-c942-4506-a9c7-cae99a5c0b81)
+	'ES3' [Index: 3] (1a7ba38a-c942-4506-a9c7-cae99a5c0b81)
+	'ES4' [Index: 4] (1a7ba38a-c942-4506-a9c7-cae99a5c0b81)
+	'ES5' [Index: 5] (1a7ba38a-c942-4506-a9c7-cae99a5c0b81)
+	'ES6' [Index: 6] (1a7ba38a-c942-4506-a9c7-cae99a5c0b81)
+	'ES7' [Index: 7] (1a7ba38a-c942-4506-a9c7-cae99a5c0b81)
+	'ES8' [Index: 8] (1a7ba38a-c942-4506-a9c7-cae99a5c0b81)
+	'ES9' [Index: 9] (1a7ba38a-c942-4506-a9c7-cae99a5c0b81)
+	'ES10' [Index: 10] (1a7ba38a-c942-4506-a9c7-cae99a5c0b81)

@@ -8,8 +8,8 @@ class MapMarker(ParserProject):
 
     def __init__(self, input_scenario_name: str, output_scenario_name: str):
         super().__init__(input_scenario_name, output_scenario_name)
-        horizontal_sections = 3,
-        vertical_sections = 10,
+        horizontal_sections = 3
+        vertical_sections = 10
         center = True
         self.horizontal_sections = horizontal_sections if horizontal_sections >= 1 else 1
         self.vertical_sections = vertical_sections if horizontal_sections >= 1 else 1
