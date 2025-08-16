@@ -43,8 +43,9 @@ class AllMapEarthquake(ParserProject):
         CivSettings(self.scenario, players)
 
 
-earthquake = AllMapEarthquake(
-    input_scenario_name='Earthquake migracion',
-    output_scenario_name='Earthquake migracion_output'
-)
-earthquake.convert()
+if __name__ == '__main__':
+    earthquake = AllMapEarthquake(
+        input_scenario_name='Earthquake migracion',
+        output_scenario_name='Earthquake migracion_output'
+    )
+    earthquake.convert()

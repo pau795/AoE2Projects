@@ -47,9 +47,10 @@ class Twister(ParserProject):
             )
 
 
-twister = Twister(
-    input_scenario_name='twister',
-    output_scenario_name='twister_output',
+if __name__ == '__main__':
+    twister = Twister(
+        input_scenario_name='twister',
+        output_scenario_name='twister_output',
 
-)
-twister.convert()
+    )
+    twister.convert()

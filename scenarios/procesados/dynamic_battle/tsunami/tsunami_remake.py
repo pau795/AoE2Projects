@@ -32,8 +32,9 @@ class TsunamiRemake(ParserProject):
         CivSettings(self.scenario, self.player_list)
 
 
-tsunami_remake = TsunamiRemake(
-    input_scenario_name='tsunami_remake',
-    output_scenario_name='tsunami_remake_output',
-)
-tsunami_remake.convert()
+if __name__ == '__main__':
+    tsunami_remake = TsunamiRemake(
+        input_scenario_name='tsunami_remake',
+        output_scenario_name='tsunami_remake_output',
+    )
+    tsunami_remake.convert()

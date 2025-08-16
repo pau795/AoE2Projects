@@ -113,8 +113,12 @@ class MazeRunner(ParserProject):
         )
         (UnitModifier(self.scenario, self.MOVEABLE_TREE, PlayerId.GAIA)
          .modify_attribute(ObjectAttribute.DEAD_UNIT_ID, Operation.SET, self.MOVEABLE_TREE)
+         .modify_attribute(ObjectAttribute.TERRAIN_RESTRICTION_ID, Operation.SET, TerrainRestrictions.ALL)
          .modify_attribute(ObjectAttribute.STANDING_GRAPHIC, Operation.SET, 2310)
          .modify_attribute(ObjectAttribute.OBJECT_NAME_ID, Operation.SET, 5399)
+         .create_triggers())
+        (UnitModifier(self.scenario, self.NORMAL_TREE, PlayerId.GAIA)
+         .modify_attribute(ObjectAttribute.DEAD_UNIT_ID, Operation.SET, self.NORMAL_TREE)
          .create_triggers())
         (UnitModifier(self.scenario, UnitInfo.SNOW_LEOPARD.ID, PlayerId.GAIA)
          .modify_attribute(ObjectAttribute.UNIT_SIZE_X, Operation.SET, 0)
@@ -251,8 +255,9 @@ class MazeRunner(ParserProject):
         return trees_phase_1
 
 
-maze_runner = MazeRunner(
-    input_scenario_name='CORREDOR_DEL_LABERINTO',
-    output_scenario_name='CORREDOR_DEL_LABERINTO_output'
-)
-maze_runner.convert()
+if __name__ == '__main__':
+    maze_runner = MazeRunner(
+        input_scenario_name='CORREDOR_DEL_LABERINTO',
+        output_scenario_name='CORREDOR_DEL_LABERINTO_output'
+    )
+    maze_runner.convert()

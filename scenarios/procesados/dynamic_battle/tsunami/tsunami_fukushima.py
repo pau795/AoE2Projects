@@ -280,8 +280,9 @@ class Tsunami2(ParserProject):
         initial_tsunami_delay.new_effect.activate_trigger(tsunami_manager.trigger_id)
 
 
-tsunami = Tsunami2(
-    input_scenario_name='Tsunami 2 Fukushima',
-    output_scenario_name='Tsunami 2 Fukushima_output'
-)
-tsunami.convert()
+if __name__ == "__main__":
+    tsunami = Tsunami2(
+        input_scenario_name='Tsunami 2 Fukushima',
+        output_scenario_name='Tsunami 2 Fukushima_output'
+    )
+    tsunami.convert()

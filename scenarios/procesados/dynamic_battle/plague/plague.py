@@ -324,9 +324,9 @@ class Plague(ParserProject):
         p2_victory.new_condition.player_defeated(source_player=PlayerId.ONE)
         p2_victory.new_effect.declare_victory(source_player=PlayerId.TWO)
 
-
-plaga = Plague(
-    input_scenario_name='plaga',
-    output_scenario_name='plaga_output',
-)
-plaga.convert()
+if __name__ == "__main__":
+    plaga = Plague(
+        input_scenario_name='plaga',
+        output_scenario_name='plaga_output',
+    )
+    plaga.convert()

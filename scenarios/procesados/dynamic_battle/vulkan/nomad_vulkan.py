@@ -34,8 +34,9 @@ class NomadVulkan(ParserProject):
             raise e
 
 
-nomad_vulkan = NomadVulkan(
-    input_scenario_name='VULKAN NOMADA',
-    output_scenario_name='VULKAN NOMADA output',
-)
-nomad_vulkan.convert()
+if __name__ == '__main__':
+    nomad_vulkan = NomadVulkan(
+        input_scenario_name='VULKAN NOMADA',
+        output_scenario_name='VULKAN NOMADA output',
+    )
+    nomad_vulkan.convert()

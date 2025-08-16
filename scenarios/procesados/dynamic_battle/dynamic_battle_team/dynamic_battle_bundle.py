@@ -4,15 +4,15 @@ import tempfile
 import zipfile
 from pathlib import Path
 
-from leonroma.procesados.dynamic_battle.dynamic_battle_team.armaggeddon import Armageddon
-from leonroma.procesados.dynamic_battle.dynamic_battle_team.bosque_encantado_multiplayer import BosqueEncantadoMultiplayer
-from leonroma.procesados.dynamic_battle.dynamic_battle_team.castastrophic import Catastrophic
-from leonroma.procesados.dynamic_battle.dynamic_battle_team.caves import Caves
-from leonroma.procesados.dynamic_battle.dynamic_battle_team.earthquake_multiplayer import EarthquakeMultiplayer
-from leonroma.procesados.dynamic_battle.dynamic_battle_team.niebla_multiplayer import NieblaMultiplayer
-from leonroma.procesados.dynamic_battle.dynamic_battle_team.tsunami_multiplayer import TsunamiMultiplayer
-from leonroma.procesados.dynamic_battle.dynamic_battle_team.vulkan_multiplayer import VulkanMultiplayer
-from leonroma.procesados.dynamic_battle.dynamic_battle_team.west_train import WestTrain
+from scenarios.procesados.dynamic_battle.dynamic_battle_team.armaggeddon import Armageddon
+from scenarios.procesados.dynamic_battle.dynamic_battle_team.bosque_encantado_multiplayer import BosqueEncantadoMultiplayer
+from scenarios.procesados.dynamic_battle.dynamic_battle_team.castastrophic import Catastrophic
+from scenarios.procesados.dynamic_battle.dynamic_battle_team.caves import Caves
+from scenarios.procesados.dynamic_battle.dynamic_battle_team.earthquake_multiplayer import EarthquakeMultiplayer
+from scenarios.procesados.dynamic_battle.dynamic_battle_team.niebla_multiplayer import NieblaMultiplayer
+from scenarios.procesados.dynamic_battle.dynamic_battle_team.tsunami_multiplayer import TsunamiMultiplayer
+from scenarios.procesados.dynamic_battle.dynamic_battle_team.vulkan_multiplayer import VulkanMultiplayer
+from scenarios.procesados.dynamic_battle.dynamic_battle_team.west_train import WestTrain
 
 
 def zip_folder(source_dir: Path, archive_name: str):
@@ -73,7 +73,6 @@ if __name__ == '__main__':
     west_train = 'WILD_WEST_TRAIN_3V3'
 
     armageddon_class = Armageddon(
-        steam_id=steam_id,
         input_scenario_name=f'{input_scenario_prefix}{armageddon}',
         output_scenario_name=f'{output_scenario_prefix}{armageddon}'
     )
@@ -158,5 +157,3 @@ if __name__ == '__main__':
     shutil.copy(scenario_folder / f'{output_scenario_prefix}{west_train}{scenario_extension}', mod_maps_folder / f'{mod_scenario_prefix}{west_train}{scenario_extension}')
 
     zip_folder(output_folder, zip_name)
-
-

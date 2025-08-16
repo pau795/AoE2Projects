@@ -1,3 +1,5 @@
+from AoE2ScenarioParser.objects.data_objects.trigger import Trigger
+
 from scenarios.lib.parser_project import ParserProject
 
 
@@ -12,12 +14,15 @@ class Template(ParserProject):
 
     def process(self):
         # REALIZAR LOS CAMBIOS DEL ESCENARIO AQUÍ
+
         pass
 
 
 if __name__ == '__main__':
     template_class = Template(
-        input_scenario_name=f'TEMPLATE',
-        output_scenario_name=f'OUTPUT_TEMPLATE'
+        input_scenario_name=f'template_titan',
+        output_scenario_name=f'template_titan_output'
+        # input_scenario_name = f'TEMPLATE',
+        # output_scenario_name = f'OUTPUT_TEMPLATE'
     )
     template_class.convert()

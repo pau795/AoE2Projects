@@ -31,8 +31,9 @@ class AllMapEarthquake(ParserProject):
         CivSettings(self.scenario, players)
 
 
-earthquake = AllMapEarthquake(
-    input_scenario_name='EARTHQUAKE nomad 1vs1',
-    output_scenario_name='EARTHQUAKE nomad 1vs1_output'
-)
-earthquake.convert()
+if __name__ == '__main__':
+    earthquake = AllMapEarthquake(
+        input_scenario_name='EARTHQUAKE nomad 1vs1',
+        output_scenario_name='EARTHQUAKE nomad 1vs1_output'
+    )
+    earthquake.convert()

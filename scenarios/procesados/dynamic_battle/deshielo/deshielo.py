@@ -31,9 +31,9 @@ class Deshielo(ParserProject):
                 y += 0.75
             x += 0.75
 
-
-deshielo = Deshielo(
-    input_scenario_name='el_deshielo',
-    output_scenario_name='el_deshielo_output'
-)
-deshielo.convert()
+if __name__ == '__main__':
+    deshielo = Deshielo(
+        input_scenario_name='el_deshielo',
+        output_scenario_name='el_deshielo_output'
+    )
+    deshielo.convert()

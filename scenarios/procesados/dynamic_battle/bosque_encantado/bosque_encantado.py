@@ -169,6 +169,7 @@ class BosqueEncantado(ParserProject):
                 area_y2=min(self.scenario.map_manager.map_height - 1, area_pair[1].y2 + 1),
             )
         transform_leopards_to_trees.new_effect.replace_object(
+
             object_list_unit_id=UnitInfo.SNOW_LEOPARD.ID,
             source_player=PlayerId.GAIA,
             object_list_unit_id_2=OtherInfo.TREE_PINE_FOREST.ID,
@@ -180,9 +181,9 @@ class BosqueEncantado(ParserProject):
         )
         return transform_trees_to_leopards, move_leopards, transform_leopards_to_trees
 
-
-bosque_encantado = BosqueEncantado(
-    input_scenario_name='BOSQUE ENCANTADO',
-    output_scenario_name='BOSQUE ENCANTADO_output'
-)
-bosque_encantado.convert()
+if __name__ == '__main__':
+    bosque_encantado = BosqueEncantado(
+        input_scenario_name='BOSQUE ENCANTADO',
+        output_scenario_name='BOSQUE ENCANTADO_output'
+    )
+    bosque_encantado.convert()

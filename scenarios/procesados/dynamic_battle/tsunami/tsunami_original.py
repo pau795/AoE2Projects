@@ -315,8 +315,9 @@ class Tsunami(ParserProject):
                                 )
 
 
-tsunami = Tsunami(
-    input_scenario_name="TSUNAMI",
-    output_scenario_name="tsunami_output"
-)
-tsunami.convert()
+if __name__ == "__main__":
+    tsunami = Tsunami(
+        input_scenario_name="TSUNAMI",
+        output_scenario_name="tsunami_output"
+    )
+    tsunami.convert()

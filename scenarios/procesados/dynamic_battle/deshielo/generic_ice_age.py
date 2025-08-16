@@ -127,8 +127,9 @@ class IceAge(ParserProject):
             unfreeze_delay += 2
 
 
-ice_age = IceAge(
-    input_scenario_name='ICE AGE MOUNTAIN_fixed',
-    output_scenario_name='ICE AGE MOUNTAIN_output'
-)
-ice_age.convert()
+if __name__ == "__main__":
+    ice_age = IceAge(
+        input_scenario_name='ICE AGE MOUNTAIN_fixed',
+        output_scenario_name='ICE AGE MOUNTAIN_output'
+    )
+    ice_age.convert()

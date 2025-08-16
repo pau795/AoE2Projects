@@ -31,8 +31,9 @@ class Vulkan(ParserProject):
             raise e
 
 
-vulkan = Vulkan(
-    input_scenario_name='VULKAN ARENA',
-    output_scenario_name='VULKAN ARENA_output',
-)
-vulkan.convert()
+if __name__ == '__main__':
+    vulkan = Vulkan(
+        input_scenario_name='VULKAN ARENA',
+        output_scenario_name='VULKAN ARENA_output',
+    )
+    vulkan.convert()

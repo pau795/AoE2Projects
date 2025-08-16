@@ -43,4 +43,4 @@ if __name__ == "__main__":
 
     rock_graphics.set_rock_graphic(9510, "p_rock_med_x1", 9511)
     rock_graphics.set_rock_graphic(9512, "p_rock_big_x1", 9513)
-    dat.save("C:\\Users\\pau_7\\Games\\Age of Empires 2 DE\\76561198074945033\\mods\\local\\Esfinge\\resources\\_common\\dat\\empires2_x2_p1.dat")
+    dat.save("output/empires2_x2_p1.dat")

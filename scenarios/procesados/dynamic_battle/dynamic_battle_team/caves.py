@@ -10,7 +10,7 @@ from scenarios.lib.unit_modifier import UnitModifier
 class Caves(ParserProject):
 
     def __init__(self, input_scenario_name: str, output_scenario_name: str):
-        super().__init__(steam_id, input_scenario_name, output_scenario_name)
+        super().__init__(input_scenario_name, output_scenario_name)
         self.player_list = [PlayerId.ONE, PlayerId.TWO, PlayerId.THREE, PlayerId.FOUR, PlayerId.FIVE, PlayerId.SIX, PlayerId.SEVEN, PlayerId.EIGHT]
         self.trigger_manager = self.scenario.trigger_manager
         self.unit_manager = self.scenario.unit_manager
