@@ -10,7 +10,7 @@ from AoE2ScenarioParser.objects.support.tile import Tile
 
 from scenarios.lib import transformations
 from scenarios.lib.parser_project import ParserProject
-from scenarios.lib.random_probability import EqualRandomProbability
+from scenarios.lib.equally_probable_trigger_list import EquallyProbableTriggerList
 from scenarios.lib.civ_settings import CivSettings
 from scenarios.lib.unit_modifier import UnitModifier
 
@@ -272,7 +272,7 @@ class Tsunami2(ParserProject):
         for i, trigger in enumerate(period_triggers):
             trigger.new_condition.timer(self.tsunami_periods[i])
             trigger.new_effect.activate_trigger(tsunami_manager.trigger_id)
-        random_period = EqualRandomProbability(self.trigger_manager, period_triggers, "Random Period")
+        random_period = EquallyProbableTriggerList(self.trigger_manager, period_triggers, "Random Period")
         tsunami_manager.new_effect.activate_trigger(random_period.enable_probability_trigger.trigger_id)
 
         initial_tsunami_delay = self.trigger_manager.add_trigger("Initial Tsunami Delay", enabled=True)

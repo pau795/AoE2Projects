@@ -20,7 +20,6 @@ class BosqueEncantadoMultiplayer(ParserProject):
         self.trigger_manager = self.scenario.trigger_manager
         self.data_triggers = self.scenario.actions.load_data_triggers()
         self.leopard_speed = 2
-        self.forest_delay = 300
         self.way_delay = 300
         self.player_list = [PlayerId.ONE, PlayerId.TWO, PlayerId.THREE, PlayerId.FOUR]
         self.sound = 'tree_roots'
@@ -149,8 +148,7 @@ class BosqueEncantadoMultiplayer(ParserProject):
 
         # PHASE 2
         distance = math.dist(source_area.get_center(), target_area.get_center())
-        rotation = source_area.get_width() != target_area.get_width()
-        timer = int(math.ceil(distance / self.leopard_speed) + (4 * (2 if rotation else 1))) + 1
+        timer = int(math.ceil(distance / self.leopard_speed)) + 5
         trees_phase_2.new_condition.timer(timer=timer)
 
         trees_phase_2.new_effect.remove_object(

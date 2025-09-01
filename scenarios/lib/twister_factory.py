@@ -7,7 +7,7 @@ from AoE2ScenarioParser.objects.managers.trigger_manager import TriggerManager
 from AoE2ScenarioParser.objects.support.tile import Tile
 from AoE2ScenarioParser.scenarios.aoe2_de_scenario import AoE2DEScenario
 
-from scenarios.lib.random_probability import EqualRandomProbability
+from scenarios.lib.equally_probable_trigger_list import EquallyProbableTriggerList
 from scenarios.lib.unit_modifier import UnitModifier
 
 
@@ -258,11 +258,11 @@ class TwisterFactory:
         tornado_duration_triggers = [self.trigger_manager.add_trigger(f'Tornado Duration {i}', enabled=False)
                                      for i, x in enumerate(duration_times)]
 
-        activate_tornado_probability = EqualRandomProbability(
+        activate_tornado_probability = EquallyProbableTriggerList(
             self.trigger_manager, tornado_activate_triggers, "Activate Tornado"
         )
         activate_tornado_probability.enable_probability_trigger.enabled = True
-        tornado_duration_probability = EqualRandomProbability(
+        tornado_duration_probability = EquallyProbableTriggerList(
             self.trigger_manager, tornado_duration_triggers, "Tornado Duration"
         )
 

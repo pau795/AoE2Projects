@@ -5,7 +5,7 @@ from AoE2ScenarioParser.datasets.players import PlayerId
 from AoE2ScenarioParser.datasets.trigger_lists import ObjectClass, ObjectAttribute, Operation, PanelLocation
 from AoE2ScenarioParser.scenarios.aoe2_de_scenario import AoE2DEScenario
 
-from scenarios.lib.random_probability import EqualRandomProbability
+from scenarios.lib.equally_probable_trigger_list import EquallyProbableTriggerList
 
 
 class EarthquakeFactory:
@@ -137,7 +137,7 @@ class EarthquakeFactory:
             )
             period_triggers.append(period_trigger)
 
-        probability_trigger = EqualRandomProbability(self.trigger_manager, period_triggers, "Earthquake Period")
+        probability_trigger = EquallyProbableTriggerList(self.trigger_manager, period_triggers, "Earthquake Period")
 
         # earthquake duration
         earthquake_duration.new_condition.timer(

@@ -20,9 +20,7 @@ class Template(ParserProject):
 
 if __name__ == '__main__':
     template_class = Template(
-        input_scenario_name=f'template_titan',
-        output_scenario_name=f'template_titan_output'
-        # input_scenario_name = f'TEMPLATE',
-        # output_scenario_name = f'OUTPUT_TEMPLATE'
+        input_scenario_name = f'TEMPLATE',
+        output_scenario_name = f'OUTPUT_TEMPLATE'
     )
     template_class.convert()

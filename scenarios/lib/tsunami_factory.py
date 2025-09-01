@@ -10,7 +10,7 @@ from AoE2ScenarioParser.scenarios.aoe2_de_scenario import AoE2DEScenario
 
 from scenarios.lib import transformations
 from scenarios.lib.area_optimizer import AreaOptimizer
-from scenarios.lib.random_probability import EqualRandomProbability
+from scenarios.lib.equally_probable_trigger_list import EquallyProbableTriggerList
 from scenarios.lib.unit_modifier import UnitModifier
 
 
@@ -67,7 +67,7 @@ class TsunamiFactory:
         for i, trigger in enumerate(period_triggers):
             trigger.new_condition.timer(tsunami_periods[i])
             trigger.new_effect.activate_trigger(tsunami_init_wave.trigger_id)
-        random_period = EqualRandomProbability(self.trigger_manager, period_triggers, "Random Period")
+        random_period = EquallyProbableTriggerList(self.trigger_manager, period_triggers, "Random Period")
         tsunami_init_wave.new_effect.activate_trigger(random_period.enable_probability_trigger.trigger_id)
         random_period.enable_probability_trigger.enabled = True
 

@@ -19,7 +19,7 @@ class Catastrophic(ParserProject):
         self.player_list = [PlayerId.ONE, PlayerId.TWO, PlayerId.THREE, PlayerId.FOUR, PlayerId.FIVE, PlayerId.SIX, PlayerId.SEVEN, PlayerId.EIGHT]
 
     def process(self):
-        CivSettings(self.scenario, self.player_list, nomad_players=[True, True, True, True, True, True, True, True])
+        CivSettings(self.scenario, self.player_list)
         VulkanFactory(
             scenario=self.scenario,
             first_stage_time=600,
@@ -76,6 +76,7 @@ class Catastrophic(ParserProject):
             tsunami_periods=[660],
             display_sound=True
         )
+
 
 
 if __name__ == '__main__':

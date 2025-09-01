@@ -2,15 +2,14 @@ import math
 import random
 
 from AoE2ScenarioParser.datasets.players import PlayerId
-from AoE2ScenarioParser.datasets.trigger_lists import ObjectAttribute, Operation, FogVisibility, AttackStance, ActionType
+from AoE2ScenarioParser.datasets.trigger_lists import AttackStance, ActionType
 from AoE2ScenarioParser.datasets.units import UnitInfo
 from AoE2ScenarioParser.objects.data_objects.trigger import Trigger
 from AoE2ScenarioParser.objects.support.tile import Tile
 
 from scenarios.lib.parser_project import ParserProject
-from scenarios.lib.random_probability import EqualRandomProbability
+from scenarios.lib.equally_probable_trigger_list import EquallyProbableTriggerList
 from scenarios.lib.civ_settings import CivSettings
-from scenarios.lib.unit_modifier import UnitModifier
 
 
 class Plague(ParserProject):
@@ -21,9 +20,10 @@ class Plague(ParserProject):
         self.plague_life_time = 60
         self.plague_units = 50
         self.plague_radius = 8
-        self.init_plague_time = 730
+        self.init_plague_time = 30
         self.rino_sound = "RINO_MUERE_1"
         self.plague_sound = "MOSQUITO1"
+        self.plague_unit = UnitInfo.FIRE_GALLEY.ID
         self.random_wait_periods = [120, 150, 180, 210, 240]
         self.player_list = [PlayerId.ONE, PlayerId.TWO]
         self.trigger_manager = self.scenario.trigger_manager
@@ -41,53 +41,7 @@ class Plague(ParserProject):
         self.victory()
 
     def karambit_stats(self):
-        (UnitModifier(self.scenario, UnitInfo.HORSE_A.ID, PlayerId.THREE)
-         .modify_attribute(ObjectAttribute.STANDING_GRAPHIC, Operation.SET, 0)
-         .modify_attribute(ObjectAttribute.WALKING_GRAPHIC, Operation.SET, 0)
-         ).create_triggers()
-        (UnitModifier(self.scenario, UnitInfo.RHINOCEROS.ID, PlayerId.GAIA)
-         .modify_attribute(ObjectAttribute.UNIT_SIZE_X, Operation.SET, 0)
-         .modify_attribute(ObjectAttribute.UNIT_SIZE_Y, Operation.SET, 0)
-         .modify_attribute(ObjectAttribute.UNIT_SIZE_Z, Operation.SET, 0)
-         .modify_attribute(ObjectAttribute.AMOUNT_OF_1ST_RESOURCE_STORAGE, Operation.SET, 10)
-         .modify_attribute(ObjectAttribute.HIT_POINTS, Operation.SET, self.rino_life_time)
-         ).create_triggers()
-        (UnitModifier(self.scenario, UnitInfo.FIRE_GALLEY.ID, PlayerId.THREE)
-         .modify_attribute(ObjectAttribute.UNIT_SIZE_X, Operation.SET, 0)
-         .modify_attribute(ObjectAttribute.UNIT_SIZE_Y, Operation.SET, 0)
-         .modify_attribute(ObjectAttribute.UNIT_SIZE_Z, Operation.SET, 0)
-         .modify_attribute(ObjectAttribute.MAX_RANGE, Operation.SET, 0)
-         .modify_attribute(ObjectAttribute.PROJECTILE_UNIT, Operation.SET, -2)
-         .modify_attribute(ObjectAttribute.PROJECTILE_UNIT, Operation.DIVIDE, 2)
-         .modify_attribute(ObjectAttribute.SECONDARY_PROJECTILE_UNIT, Operation.SET, -2)
-         .modify_attribute(ObjectAttribute.SECONDARY_PROJECTILE_UNIT, Operation.DIVIDE, 2)
-         .modify_attribute(ObjectAttribute.ATTACK_DISPERSION, Operation.DIVIDE, 0)
-         .modify_attribute(ObjectAttribute.TERRAIN_RESTRICTION_ID, Operation.SET, 0)
-         .modify_attribute(ObjectAttribute.ACCURACY_PERCENT, Operation.SET, 100)
-         .modify_attribute(ObjectAttribute.STANDING_GRAPHIC, Operation.SET, 12300)
-         .modify_attribute(ObjectAttribute.WALKING_GRAPHIC, Operation.SET, 12300)
-         .modify_attribute(ObjectAttribute.DYING_GRAPHIC, Operation.SET, 0)
-         .modify_attribute(ObjectAttribute.ATTACK_GRAPHIC, Operation.SET, 0)
-         .modify_attribute(ObjectAttribute.HIT_POINTS, Operation.SET, self.plague_life_time + self.rino_life_time)
-         .modify_attribute(ObjectAttribute.MOVEMENT_SPEED, Operation.SET, 7)
-         .modify_attribute(ObjectAttribute.MOVEMENT_SPEED, Operation.DIVIDE, 10)
-         .modify_attribute(ObjectAttribute.BLAST_ATTACK_LEVEL, Operation.SET, 2)
-         .modify_attribute(ObjectAttribute.ATTACK, Operation.SET, 0, armor_attack_class=29)
-         .modify_attribute(ObjectAttribute.ATTACK, Operation.SET, 0, armor_attack_class=11)
-         .modify_attribute(ObjectAttribute.ATTACK, Operation.SET, 0, armor_attack_class=16)
-         .modify_attribute(ObjectAttribute.ATTACK, Operation.SET, 0, armor_attack_class=2)
-         .modify_attribute(ObjectAttribute.ATTACK, Operation.SET, 0, armor_attack_class=3)
-         .modify_attribute(ObjectAttribute.ATTACK, Operation.SET, 0, armor_attack_class=34)
-         .modify_attribute(ObjectAttribute.ATTACK, Operation.SET, 3, armor_attack_class=5)
-         .modify_attribute(ObjectAttribute.ATTACK_RELOAD_TIME, Operation.SET, 5)
-         .modify_attribute(ObjectAttribute.COMBAT_ABILITY, Operation.SET, 1)
-         .modify_attribute(ObjectAttribute.LINE_OF_SIGHT, Operation.SET, 12)
-         .modify_attribute(ObjectAttribute.SEARCH_RADIUS, Operation.SET, 12)
-         .modify_attribute(ObjectAttribute.FOG_VISIBILITY, Operation.SET, FogVisibility.ALWAYS_VISIBLE)
-         .modify_attribute(ObjectAttribute.DEAD_UNIT_ID, Operation.SET, -2)
-         .modify_attribute(ObjectAttribute.DEAD_UNIT_ID, Operation.DIVIDE, 2)
-         .create_triggers()
-         )
+        self.scenario.xs_manager.add_script("plague.xs")
         horse_trigger = self.trigger_manager.add_trigger("Horse Trigger")
         horse_trigger.new_effect.disable_object_selection(
             source_player=PlayerId.THREE,
@@ -99,7 +53,7 @@ class Plague(ParserProject):
         )
         plague_damage = self.trigger_manager.add_trigger("Plague Damage", looping=True)
         plague_damage.new_effect.damage_object(
-            object_list_unit_id=UnitInfo.FIRE_GALLEY.ID,
+            object_list_unit_id=self.plague_unit,
             source_player=PlayerId.THREE,
             quantity=1
         )
@@ -109,7 +63,7 @@ class Plague(ParserProject):
             quantity=1
         )
         plague_damage.new_effect.remove_object(
-            object_list_unit_id=UnitInfo.FIRE_GALLEY.ID,
+            object_list_unit_id=self.plague_unit,
             source_player=PlayerId.THREE,
             area_x1=0,
             area_x2=self.map_manager.map_width - 1,
@@ -117,7 +71,7 @@ class Plague(ParserProject):
             area_y2=0
         )
         plague_damage.new_effect.remove_object(
-            object_list_unit_id=UnitInfo.FIRE_GALLEY.ID,
+            object_list_unit_id=self.plague_unit,
             source_player=PlayerId.THREE,
             area_x1=self.map_manager.map_width - 1,
             area_x2=self.map_manager.map_width - 1,
@@ -125,7 +79,7 @@ class Plague(ParserProject):
             area_y2=self.map_manager.map_height - 1
         )
         plague_damage.new_effect.remove_object(
-            object_list_unit_id=UnitInfo.FIRE_GALLEY.ID,
+            object_list_unit_id=self.plague_unit,
             source_player=PlayerId.THREE,
             area_x1=0,
             area_x2=self.map_manager.map_width - 1,
@@ -133,7 +87,7 @@ class Plague(ParserProject):
             area_y2=self.map_manager.map_height - 1
         )
         plague_damage.new_effect.remove_object(
-            object_list_unit_id=UnitInfo.FIRE_GALLEY.ID,
+            object_list_unit_id=self.plague_unit,
             source_player=PlayerId.THREE,
             area_x1=0,
             area_x2=0,
@@ -171,13 +125,13 @@ class Plague(ParserProject):
             create_plague_trigger.new_condition.timer(timer=accumulated_delay)
             for plague_tile in chunk:
                 create_plague_trigger.new_effect.create_object(
-                    object_list_unit_id=UnitInfo.FIRE_GALLEY.ID,
+                    object_list_unit_id=self.plague_unit,
                     source_player=PlayerId.THREE,
                     location_x=plague_tile.x,
                     location_y=plague_tile.y
                 )
             create_plague_trigger.new_effect.change_object_stance(
-                object_list_unit_id=UnitInfo.FIRE_GALLEY.ID,
+                object_list_unit_id=self.plague_unit,
                 source_player=PlayerId.THREE,
                 area_x1=pond_tile.x - self.plague_radius,
                 area_x2=pond_tile.x + self.plague_radius,
@@ -186,7 +140,7 @@ class Plague(ParserProject):
                 attack_stance=AttackStance.NO_ATTACK_STANCE
             )
             create_plague_trigger.new_effect.disable_unit_targeting(
-                object_list_unit_id=UnitInfo.FIRE_GALLEY.ID,
+                object_list_unit_id=self.plague_unit,
                 source_player=PlayerId.THREE,
                 area_x1=pond_tile.x - self.plague_radius,
                 area_x2=pond_tile.x + self.plague_radius,
@@ -194,7 +148,7 @@ class Plague(ParserProject):
                 area_y2=pond_tile.y + self.plague_radius,
             )
             create_plague_trigger.new_effect.disable_object_selection(
-                object_list_unit_id=UnitInfo.FIRE_GALLEY.ID,
+                object_list_unit_id=self.plague_unit,
                 source_player=PlayerId.THREE,
                 area_x1=pond_tile.x - self.plague_radius,
                 area_x2=pond_tile.x + self.plague_radius,
@@ -215,7 +169,7 @@ class Plague(ParserProject):
             x = int(x - normal_vector[0])
             y = int(y - normal_vector[1])
             plague_attack_trigger.new_effect.task_object(
-                object_list_unit_id=UnitInfo.FIRE_GALLEY.ID,
+                object_list_unit_id=self.plague_unit,
                 source_player=PlayerId.THREE,
                 area_x1=plague_tile.x,
                 area_y1=plague_tile.y,
@@ -223,7 +177,7 @@ class Plague(ParserProject):
                 area_y2=plague_tile.y,
                 location_x=x,
                 location_y=y,
-                action_type=ActionType.PATROL
+                action_type=ActionType.ATTACK_MOVE
             )
 
         rino_dead_trigger = self.trigger_manager.add_trigger("Plague Rino Dead", enabled=False)
@@ -238,7 +192,7 @@ class Plague(ParserProject):
         )
         rino_dead_trigger.new_effect.change_object_stance(
             source_player=PlayerId.THREE,
-            object_list_unit_id=UnitInfo.FIRE_GALLEY.ID,
+            object_list_unit_id=self.plague_unit,
             area_x1=pond_tile.x - self.plague_radius,
             area_x2=pond_tile.x + self.plague_radius,
             area_y1=pond_tile.y - self.plague_radius,
@@ -295,7 +249,7 @@ class Plague(ParserProject):
         spawn_d.new_effect.activate_trigger(trigger_id=plague_pond_list[0].trigger_id)
         spawn_d.new_effect.activate_trigger(trigger_id=plague_pond_list[4].trigger_id)
 
-        random_spawn = EqualRandomProbability(self.trigger_manager, [spawn_a, spawn_b, spawn_c, spawn_d], "Plague Spawns")
+        random_spawn = EquallyProbableTriggerList(self.trigger_manager, [spawn_a, spawn_b, spawn_c, spawn_d], "Plague Spawns")
         random_spawn.enable_probability_trigger.new_effect.activate_trigger(trigger_id=no_karambits.trigger_id)
 
         period_triggers = []
@@ -305,10 +259,10 @@ class Plague(ParserProject):
             period_trigger.new_effect.activate_trigger(trigger_id=random_spawn.enable_probability_trigger.trigger_id)
             period_triggers.append(period_trigger)
 
-        random_periods = EqualRandomProbability(self.trigger_manager, period_triggers, "Plague Periods")
+        random_periods = EquallyProbableTriggerList(self.trigger_manager, period_triggers, "Plague Periods")
 
         no_karambits.new_condition.timer(timer=self.rino_life_time)
-        no_karambits.new_condition.own_fewer_objects(object_list=UnitInfo.FIRE_GALLEY.ID, source_player=PlayerId.THREE, quantity=0)
+        no_karambits.new_condition.own_fewer_objects(object_list=self.plague_unit, source_player=PlayerId.THREE, quantity=0)
         no_karambits.new_effect.activate_trigger(trigger_id=random_periods.enable_probability_trigger.trigger_id)
 
         init_plague = self.trigger_manager.add_trigger("Init Plague", enabled=True)
@@ -316,13 +270,11 @@ class Plague(ParserProject):
         init_plague.new_effect.activate_trigger(trigger_id=random_spawn.enable_probability_trigger.trigger_id)
 
     def victory(self):
-        p1_victory = self.trigger_manager.add_trigger("P1 Victory", enabled=True)
-        p1_victory.new_condition.player_defeated(source_player=PlayerId.TWO)
-        p1_victory.new_effect.declare_victory(source_player=PlayerId.ONE)
+        for player in self.player_list:
+            player_defeat = self.trigger_manager.add_trigger(f"Defeat player {player}", enabled=True)
+            player_defeat.new_condition.player_defeated(source_player=player)
+            player_defeat.new_effect.declare_victory(source_player=PlayerId.THREE, enabled=False)
 
-        p2_victory = self.trigger_manager.add_trigger("P2 Victory", enabled=True)
-        p2_victory.new_condition.player_defeated(source_player=PlayerId.ONE)
-        p2_victory.new_effect.declare_victory(source_player=PlayerId.TWO)
 
 if __name__ == "__main__":
     plaga = Plague(

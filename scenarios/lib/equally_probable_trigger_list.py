@@ -2,7 +2,7 @@ from AoE2ScenarioParser.datasets.players import PlayerId
 from AoE2ScenarioParser.objects.managers.trigger_manager import TriggerManager
 
 
-class EqualRandomProbability:
+class EquallyProbableTriggerList:
     def __init__(self, trigger_manager, target_trigger_list, trigger_name):
         self.trigger_manager: TriggerManager = trigger_manager
         self.target_trigger_list = target_trigger_list

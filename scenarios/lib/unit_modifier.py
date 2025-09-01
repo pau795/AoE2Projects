@@ -11,7 +11,7 @@ class UnitModifier:
         self._modify_unit_trigger = scenario.trigger_manager.add_trigger(f"P{source_player} Modify Unit {unit_id}")
         self._attribute_list: list[tuple[int, int, int, int]] = []
 
-    def modify_attribute(self, attribute: int, operation: int, quantity: int, armor_attack_class: int = None) -> Self:
+    def modify_attribute(self, attribute: int, operation: int, quantity: int | float, armor_attack_class: int = None) -> Self:
         self._attribute_list.append((attribute, operation, quantity, armor_attack_class))
         return self
 

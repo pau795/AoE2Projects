@@ -1,32 +1,31 @@
 from AoE2ScenarioParser.datasets.buildings import BuildingInfo
 from AoE2ScenarioParser.datasets.players import PlayerId
-from AoE2ScenarioParser.datasets.trigger_lists import ActionType, ObjectAttribute, Operation
+from AoE2ScenarioParser.datasets.trigger_lists import ObjectAttribute, Operation, ActionType
+from AoE2ScenarioParser.objects.support.area import Area
+from AoE2ScenarioParser.scenarios.aoe2_de_scenario import AoE2DEScenario
 
-from scenarios.lib.parser_project import ParserProject
-from scenarios.lib.civ_settings import CivSettings
 from scenarios.lib.unit_modifier import UnitModifier
 
 
-class Caves(ParserProject):
+class CaveFactory:
 
-    def __init__(self, input_scenario_name: str, output_scenario_name: str):
-        super().__init__(input_scenario_name, output_scenario_name)
-        self.player_list = [PlayerId.ONE, PlayerId.TWO, PlayerId.THREE, PlayerId.FOUR, PlayerId.FIVE, PlayerId.SIX, PlayerId.SEVEN, PlayerId.EIGHT]
-        self.trigger_manager = self.scenario.trigger_manager
-        self.unit_manager = self.scenario.unit_manager
-        self.trigger_data = self.scenario.actions.load_data_triggers()
+    def __init__(self, scenario: AoE2DEScenario, player_list: list[PlayerId]):
+        self.scenario = scenario
+        self.trigger_manager = scenario.trigger_manager
+        self.player_list = player_list
 
-    def process(self):
-        CivSettings(self.scenario, self.player_list)
-        cave_list = [v for k, v in self.trigger_data.areas.items() if k.startswith('cave')]
-        (UnitModifier(self.scenario, BuildingInfo.WOODEN_BRIDGE_A_MIDDLE.ID, PlayerId.GAIA)
-         .modify_attribute(ObjectAttribute.FOUNDATION_TERRAIN, Operation.SET, -1)
+    def caves_stats(self):
+        (UnitModifier(self.scenario, BuildingInfo.BRIDGE_PIECE_AB_END_A.ID, PlayerId.GAIA)
+         .modify_attribute(ObjectAttribute.FOUNDATION_TERRAIN, Operation.SET, -2)
+         .modify_attribute(ObjectAttribute.FOUNDATION_TERRAIN, Operation.DIVIDE, -2)
          .modify_attribute(ObjectAttribute.STANDING_GRAPHIC, Operation.SET, 0)
          .create_triggers()
          )
 
+    def generate_caves(self, cave_list: list[list[Area]]):
         for i, cave in enumerate(cave_list):
-            print(f'{cave[0].get_dimensions()} {cave[1].get_dimensions()}')
+            if cave[0].get_dimensions() != cave[1].get_dimensions():
+                raise ValueError(f'Cave {i} has different dimensions: {cave[0].get_dimensions()} {cave[1].get_dimensions()}')
             cave_area = cave[0]
             teleport_area = cave[1]
             destination = cave[2].get_center()
@@ -37,7 +36,7 @@ class Caves(ParserProject):
                     source_player=PlayerId.GAIA,
                     location_x=tile.x,
                     location_y=tile.y,
-                    object_list_unit_id=BuildingInfo.WOODEN_BRIDGE_A_MIDDLE.ID
+                    object_list_unit_id=BuildingInfo.BRIDGE_PIECE_AB_END_A.ID
                 )
             teleport_trigger = self.trigger_manager.add_trigger(f'cave{i}', enabled=True, looping=True)
             move_trigger = self.trigger_manager.add_trigger(f'cave{i} move', enabled=True, looping=True)
@@ -62,11 +61,3 @@ class Caves(ParserProject):
                     location_y=int(destination[1]),
                     action_type=ActionType.MOVE
                 )
-
-
-if __name__ == '__main__':
-    cave_class = Caves(
-        input_scenario_name=f'EDIT_CAVES_4V4',
-        output_scenario_name=f'OUTPUT_CAVES_4V4'
-    )
-    cave_class.convert()

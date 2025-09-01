@@ -1,7 +1,7 @@
 import re
 from AoE2ScenarioParser.datasets.units import UnitInfo
 from AoE2ScenarioParser.objects.managers.trigger_manager import TriggerManager
-from scenarios.lib.random_probability import EqualRandomProbability
+from scenarios.lib.equally_probable_trigger_list import EquallyProbableTriggerList
 
 
 class NomadStart:
@@ -33,7 +33,7 @@ class NomadStart:
                             location_y=spot.y,
                         )
                         villager_triggers.append(create_villager_trigger)
-                    villager_probability = EqualRandomProbability(self.trigger_manager, villager_triggers, f'Ramdom Villager {villager_number} P{player_id.value}')
+                    villager_probability = EquallyProbableTriggerList(self.trigger_manager, villager_triggers, f'Ramdom Villager {villager_number} P{player_id.value}')
                     villager_probability.enable_probability_trigger.enabled = True
 
         except Exception as e:

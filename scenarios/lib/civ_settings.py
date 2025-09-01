@@ -14,11 +14,12 @@ class CivSettings:
     NOMAD_STONE = 100
     APPLY_RESOURCES = False
 
-    def __init__(self, scenario: AoE2DEScenario, player_id_list, nomad_players=None):
+    def __init__(self, scenario: AoE2DEScenario, player_id_list, nomad_players=None, delay=0):
         self.player_manager = scenario.player_manager
         self.trigger_manager = scenario.trigger_manager
         self.player_id_list = player_id_list
         self.nomad_players = nomad_players
+        self.delay = delay
         for i, player_id in enumerate(self.player_id_list):
 
             gurjara_trigger = self.trigger_manager.add_trigger(f"Gurjara P{player_id}")
