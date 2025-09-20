@@ -28,17 +28,19 @@ void plague_stats(){
     xsEffectAmount(cSetAttribute, plague, cAttackDispersion, 0, plague_player);
     xsEffectAmount(cSetAttribute, plague, cTerrainTable, 0, plague_player);
     xsEffectAmount(cSetAttribute, plague, cAccuracyPercent, 100, plague_player);
-    xsEffectAmount(cSetAttribute, plague, cStandingGraphic, 10217, plague_player);
-    xsEffectAmount(cSetAttribute, plague, cWalkingGraphic, 10219, plague_player);
-    xsEffectAmount(cSetAttribute, plague, cDyingGraphic, 10216, plague_player);
-    xsEffectAmount(cSetAttribute, plague, cAttackGraphic, 10215, plague_player);
+    xsEffectAmount(cSetAttribute, plague, cStandingGraphic, 9410, plague_player);
+    xsEffectAmount(cSetAttribute, plague, cWalkingGraphic, 9410, plague_player);
+    xsEffectAmount(cSetAttribute, plague, cDyingGraphic, 9410, plague_player);
+    xsEffectAmount(cSetAttribute, plague, cAttackGraphic, 9410, plague_player);
+    //xsEffectAmount(cSetAttribute, plague, cHeroGlowGraphic, 12218, plague_player);
     xsEffectAmount(cSetAttribute, plague, cHitpoints, plague_life_time + rino_life_time, plague_player);
-    xsEffectAmount(cSetAttribute, plague, cMovementSpeed, 1, plague_player);
+    xsEffectAmount(cSetAttribute, plague, cMovementSpeed, 0.8, plague_player);
+    //xsEffectAmount(cSetAttribute, plague, cHeroStatus, 64, plague_player);
     xsEffectAmount(cSetAttribute, plague, cBlastAttackLevel, 2, plague_player);
     xsEffectAmount(cSetAttribute, plague, cAttack, 29 * maxByte + 0 , plague_player);
     xsEffectAmount(cSetAttribute, plague, cAttack, 11 * maxByte + 0 , plague_player);
     xsEffectAmount(cSetAttribute, plague, cAttack, 16 * maxByte + 0 , plague_player);
-    xsEffectAmount(cSetAttribute, plague, cAttack, 2 * maxByte + 0 , plague_player);
+    xsEffectAmount(cSetAttribute, plague, cAttack, 2 * maxByte + 0 , plague_player);    
     xsEffectAmount(cSetAttribute, plague, cAttack, 3 * maxByte + 0 , plague_player);
     xsEffectAmount(cSetAttribute, plague, cAttack, 34 * maxByte + 0 , plague_player);
     xsEffectAmount(cSetAttribute, plague, cAttack, 4 * maxByte + 3 , plague_player);
@@ -46,10 +48,12 @@ void plague_stats(){
     xsEffectAmount(cSetAttribute, plague, cAttackReloadTime, 5, plague_player);
     xsEffectAmount(cSetAttribute, plague, cCombatAbility, 1 + 128, plague_player);
     xsEffectAmount(cSetAttribute, plague, cFormationCategory, 1, plague_player);
-    xsEffectAmount(cSetAttribute, plague, cLineOfSight, 3, plague_player);
-    xsEffectAmount(cSetAttribute, plague, cSearchRadius, 3, plague_player);
+    xsEffectAmount(cSetAttribute, plague, cLineOfSight, 4, plague_player);
+    xsEffectAmount(cSetAttribute, plague, cSearchRadius, 4, plague_player);
     xsEffectAmount(cSetAttribute, plague, cFogFlag, 1, plague_player);
     xsEffectAmount(cSetAttribute, plague, cDeadUnitId, -1, plague_player);
+    xsEffectAmount(cSetAttribute, plague, cSelectionEffect, 2, plague_player);
+    
 
     xsTaskAmount(0, -60);
     xsTaskAmount(1, 6);

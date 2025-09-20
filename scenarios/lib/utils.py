@@ -1,7 +1,12 @@
+import json
+import math
+from pathlib import Path
+
 from AoE2ScenarioParser.objects.data_objects.terrain_tile import TerrainTile
 from AoE2ScenarioParser.objects.managers.map_manager import MapManager
 from AoE2ScenarioParser.objects.support.area import Area
 from AoE2ScenarioParser.objects.support.tile import Tile
+from AoE2ScenarioParser.scenarios.aoe2_de_scenario import AoE2DEScenario
 
 
 def get_edge_tile(map_manager: MapManager, tile: Tile, direction: tuple[int, int]) -> TerrainTile:
@@ -24,40 +29,49 @@ def get_edge_tile(map_manager: MapManager, tile: Tile, direction: tuple[int, int
     return map_manager.get_tile(int(x), int(y))
 
 
-def increment_tile(tile: Tile, increment: tuple[int, int], step: int):
-    return Tile(tile.x + increment[0] * step, tile.y + increment[1] * step)
+def get_direction(tile1: Tile, tile2: Tile) -> tuple[int, int]:
+    difference = (tile2.x - tile1.x, tile2.y - tile1.y)
+    length = math.hypot(difference[0], difference[1])
+    return int(difference[0] / length), int(difference[1] / length)
 
 
-def generate_range(x: int, y: int) -> list[int]:
-    """Generate a list of numbers between x and y (inclusive).
-
-    Args:
-        x: First number
-        y: Second number
-
-    Returns:
-        List of integers from x to y (inclusive), in ascending order.
-    """
-    step = 1 if x <= y else -1
-    return list(range(x, y + step, step))
-
-
-def set_area_coordinates(area: Area, x1: int, x2: int, y1: int, y2: int) -> Area:
-    """
-    Set the coordinates of the given area.
-
-    Args:
-        area (Area): The area to modify.
-        x1 (int): The new x1 coordinate.
-        x2 (int): The new x2 coordinate.
-        y1 (int): The new y1 coordinate.
-        y2 (int): The new y2 coordinate.
-
-    Returns:
-        Area: The modified area.
-    """
-    area.x1 = x1
-    area.y1 = y1
-    area.x2 = x2
-    area.y2 = y2
+def modify_area_dimension(area: Area, short_or_long: str, shrink_or_expand: str, n: int):
+    dimension = area.get_width() < area.get_height()
+    axis = short_or_long == 'long'
+    if shrink_or_expand == 'shrink':
+        if dimension == axis:
+            area.shrink_y1(n)
+            area.shrink_y2(n)
+        else:
+            area.shrink_x1(n)
+            area.shrink_x2(n)
+    elif shrink_or_expand == 'expand':
+        if dimension == axis:
+            area.expand_y1(n)
+            area.expand_y2(n)
+        else:
+            area.expand_x1(n)
+            area.shrink_x2(n)
     return area
+
+
+def get_terrain_dict():
+    module_dir = Path(__file__).parent
+    terrain_dict_file = module_dir / "data/terrains.json"
+    with open(terrain_dict_file, 'r') as f:
+        dict1 = {}
+        terrain_dict = json.load(f)
+        for terrain, value in terrain_dict.items():
+            dict1[int(terrain)] = value
+        return dict1
+
+
+def get_terrain_restrictions():
+    module_dir = Path(__file__).parent
+    terrain_dict_file = module_dir / "data/terrain_restrictions.json"
+    with open(terrain_dict_file, 'r') as f:
+        dict1 = {}
+        terrain_dict = json.load(f)
+        for restriction, value in terrain_dict.items():
+            dict1[int(restriction)] = value
+        return dict1

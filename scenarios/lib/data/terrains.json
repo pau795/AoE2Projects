@@ -1,0 +1,1002 @@
+{
+    "0": {
+        "name": "Grass",
+        "is_water": 32,
+        "sprite": "g_grs"
+    },
+    "1": {
+        "name": "Water, Shallow",
+        "is_water": 4,
+        "sprite": "g_wtr"
+    },
+    "2": {
+        "name": "Beach",
+        "is_water": 16,
+        "sprite": "g_bch"
+    },
+    "3": {
+        "name": "Dirt 3",
+        "is_water": 32,
+        "sprite": "g_ds3"
+    },
+    "4": {
+        "name": "Shallows",
+        "is_water": 8,
+        "sprite": "g_sha"
+    },
+    "5": {
+        "name": "Underbrush",
+        "is_water": 32,
+        "sprite": "g_for"
+    },
+    "6": {
+        "name": "Dirt",
+        "is_water": 32,
+        "sprite": "g_des"
+    },
+    "7": {
+        "name": "Farm1",
+        "is_water": 32,
+        "sprite": "g_fm1"
+    },
+    "8": {
+        "name": "Farm2",
+        "is_water": 32,
+        "sprite": "g_fm2"
+    },
+    "9": {
+        "name": "Grass 3",
+        "is_water": 32,
+        "sprite": "g_gr3"
+    },
+    "10": {
+        "name": "Forest",
+        "is_water": 32,
+        "sprite": "g_for"
+    },
+    "11": {
+        "name": "Dirt 2",
+        "is_water": 32,
+        "sprite": "g_ds2"
+    },
+    "12": {
+        "name": "Grass 2",
+        "is_water": 32,
+        "sprite": "g_gr2"
+    },
+    "13": {
+        "name": "Palm Desert",
+        "is_water": 32,
+        "sprite": "g_pal"
+    },
+    "14": {
+        "name": "Desert",
+        "is_water": 32,
+        "sprite": "g_pal"
+    },
+    "15": {
+        "name": "Water, Old",
+        "is_water": 1,
+        "sprite": "g_wtr"
+    },
+    "16": {
+        "name": "Old Grass",
+        "is_water": 32,
+        "sprite": "g_grs"
+    },
+    "17": {
+        "name": "Jungle",
+        "is_water": 32,
+        "sprite": "g_for"
+    },
+    "18": {
+        "name": "Bamboo",
+        "is_water": 32,
+        "sprite": "g_for"
+    },
+    "19": {
+        "name": "Pine Forest",
+        "is_water": 32,
+        "sprite": "g_for"
+    },
+    "20": {
+        "name": "Forest, Oak Bush",
+        "is_water": 32,
+        "sprite": "g_for"
+    },
+    "21": {
+        "name": "Snow Forest",
+        "is_water": 160,
+        "sprite": "g_snf"
+    },
+    "22": {
+        "name": "Water, Deep",
+        "is_water": 2,
+        "sprite": "g_wt2"
+    },
+    "23": {
+        "name": "Water, Medium",
+        "is_water": 1,
+        "sprite": "g_wt3"
+    },
+    "24": {
+        "name": "Road",
+        "is_water": 32,
+        "sprite": "g_rd1"
+    },
+    "25": {
+        "name": "Road, Broken",
+        "is_water": 32,
+        "sprite": "g_rd2"
+    },
+    "26": {
+        "name": "Ice Navigable",
+        "is_water": 72,
+        "sprite": "g_ic2"
+    },
+    "27": {
+        "name": "Foundation",
+        "is_water": 32,
+        "sprite": "g_ds2"
+    },
+    "28": {
+        "name": "Water, Bridge",
+        "is_water": 32,
+        "sprite": "g_wtr"
+    },
+    "29": {
+        "name": "Farm Cnst1",
+        "is_water": 32,
+        "sprite": "g_fc1"
+    },
+    "30": {
+        "name": "Farm Cnst2",
+        "is_water": 32,
+        "sprite": "g_fc2"
+    },
+    "31": {
+        "name": "Farm Cnst3",
+        "is_water": 32,
+        "sprite": "g_fc3"
+    },
+    "32": {
+        "name": "Snow",
+        "is_water": 160,
+        "sprite": "g_sno"
+    },
+    "33": {
+        "name": "                    OBSOLETE (Snow Dirt)",
+        "is_water": 0,
+        "sprite": "o_snd"
+    },
+    "34": {
+        "name": "                    OBSOLETE (Snow Grass)",
+        "is_water": 0,
+        "sprite": "o_sng"
+    },
+    "35": {
+        "name": "Ice",
+        "is_water": 96,
+        "sprite": "g_ice"
+    },
+    "36": {
+        "name": "Snow Foundat",
+        "is_water": 160,
+        "sprite": "g_snd"
+    },
+    "37": {
+        "name": "Ice, Beach",
+        "is_water": 80,
+        "sprite": "g_ice_beach"
+    },
+    "38": {
+        "name": "                    OBSOLETE (Road, Snow)",
+        "is_water": 0,
+        "sprite": "o_sr1"
+    },
+    "39": {
+        "name": "                    OBSOLETE (Road, Fungus)",
+        "is_water": 0,
+        "sprite": "o_sr2"
+    },
+    "40": {
+        "name": "Rock 1",
+        "is_water": 32,
+        "sprite": "g_rck"
+    },
+    "41": {
+        "name": "Savannah",
+        "is_water": 32,
+        "sprite": "g_gr5"
+    },
+    "42": {
+        "name": "Dirt 4",
+        "is_water": 32,
+        "sprite": "g_ds4"
+    },
+    "43": {
+        "name": "                    OBSOLETE (Road, Desert)",
+        "is_water": 0,
+        "sprite": "o_rd3"
+    },
+    "44": {
+        "name": "                    OBSOLETE (Moorland)",
+        "is_water": 0,
+        "sprite": "o_gr4"
+    },
+    "45": {
+        "name": "Desert, Cracked",
+        "is_water": 32,
+        "sprite": "g_pal1"
+    },
+    "46": {
+        "name": "Desert, Quicksand",
+        "is_water": 32,
+        "sprite": "g_qs"
+    },
+    "47": {
+        "name": "Black",
+        "is_water": 32,
+        "sprite": "g_bla"
+    },
+    "48": {
+        "name": "Dragon Forest",
+        "is_water": 32,
+        "sprite": "g_des"
+    },
+    "49": {
+        "name": "Baobab Forest",
+        "is_water": 32,
+        "sprite": "g_ds4"
+    },
+    "50": {
+        "name": "Acacia Forest",
+        "is_water": 32,
+        "sprite": "g_gr5"
+    },
+    "51": {
+        "name": "Beach, White Vegetation",
+        "is_water": 16,
+        "sprite": "g_bc4"
+    },
+    "52": {
+        "name": "Beach, Vegetation",
+        "is_water": 16,
+        "sprite": "g_bc2"
+    },
+    "53": {
+        "name": "Beach, White",
+        "is_water": 16,
+        "sprite": "g_bc3"
+    },
+    "54": {
+        "name": "Mangrove Shallows",
+        "is_water": 8,
+        "sprite": "g_sh3"
+    },
+    "55": {
+        "name": "Mangrove Forest",
+        "is_water": 8,
+        "sprite": "g_sh3"
+    },
+    "56": {
+        "name": "Rainforest",
+        "is_water": 32,
+        "sprite": "g_fo2"
+    },
+    "57": {
+        "name": "Water, Deep Ocean",
+        "is_water": 2,
+        "sprite": "g_wt4"
+    },
+    "58": {
+        "name": "Water, Azure",
+        "is_water": 4,
+        "sprite": "g_wt5"
+    },
+    "59": {
+        "name": "Shallows, Azure",
+        "is_water": 8,
+        "sprite": "g_sh2"
+    },
+    "60": {
+        "name": "Jungle Grass",
+        "is_water": 32,
+        "sprite": "g_gr6"
+    },
+    "61": {
+        "name": "                    OBSOLETE (Road, Jungle)",
+        "is_water": 0,
+        "sprite": "o_rd4"
+    },
+    "62": {
+        "name": "                    OBSOLETE (Leaves, Jungle)",
+        "is_water": 0,
+        "sprite": "o_fo2"
+    },
+    "63": {
+        "name": "RFarm1",
+        "is_water": 8,
+        "sprite": "g_rm1"
+    },
+    "64": {
+        "name": "RFarm2",
+        "is_water": 8,
+        "sprite": "g_rm2"
+    },
+    "65": {
+        "name": "RFarm Cnst1",
+        "is_water": 8,
+        "sprite": "g_rc1"
+    },
+    "66": {
+        "name": "RFarm Cnst2",
+        "is_water": 8,
+        "sprite": "g_rc2"
+    },
+    "67": {
+        "name": "RFarm Cnst3",
+        "is_water": 8,
+        "sprite": "g_rc3"
+    },
+    "68": {
+        "name": "Reserved",
+        "is_water": 32,
+        "sprite": "g_r01"
+    },
+    "69": {
+        "name": "Very Evil Fog",
+        "is_water": 32,
+        "sprite": "g_kf1"
+    },
+    "70": {
+        "name": "Gravel Default",
+        "is_water": 32,
+        "sprite": "g_gravel_default"
+    },
+    "71": {
+        "name": "Underbrush, Leaves",
+        "is_water": 32,
+        "sprite": "g_underbrush_leaves"
+    },
+    "72": {
+        "name": "Underbrush, Snow",
+        "is_water": 32,
+        "sprite": "g_snf"
+    },
+    "73": {
+        "name": "Snow Light",
+        "is_water": 160,
+        "sprite": "g_sno"
+    },
+    "74": {
+        "name": "Snow Deep",
+        "is_water": 160,
+        "sprite": "g_sno"
+    },
+    "75": {
+        "name": "          NEW Road, Fungus",
+        "is_water": 32,
+        "sprite": "g_sr2"
+    },
+    "76": {
+        "name": "Dirt Mud",
+        "is_water": 32,
+        "sprite": "g_gr4"
+    },
+    "77": {
+        "name": "          NEW Leaves, Jungle",
+        "is_water": 32,
+        "sprite": "g_fo2"
+    },
+    "78": {
+        "name": "          NEW Road, Gravel (Desert)",
+        "is_water": 32,
+        "sprite": "g_rd5"
+    },
+    "79": {
+        "name": "Beach (Non-Navigable)",
+        "is_water": 32,
+        "sprite": "g_bch"
+    },
+    "80": {
+        "name": "Beach, Wet (Non-Navigable)",
+        "is_water": 32,
+        "sprite": "g_beach_wet"
+    },
+    "81": {
+        "name": "Beach, Gravel Wet (Non-Navigable)",
+        "is_water": 32,
+        "sprite": "g_gravel_wet"
+    },
+    "82": {
+        "name": "Beach, Rock Wet (Non-Navigable)",
+        "is_water": 32,
+        "sprite": "g_rock_wet"
+    },
+    "83": {
+        "name": "Jungle Grass (Rainforest)",
+        "is_water": 32,
+        "sprite": "g_gr6"
+    },
+    "84": {
+        "name": "Moddable Grass",
+        "is_water": 32,
+        "sprite": "o_mod"
+    },
+    "85": {
+        "name": "Moddable Grass",
+        "is_water": 32,
+        "sprite": "o_mod"
+    },
+    "86": {
+        "name": "Moddable Grass",
+        "is_water": 32,
+        "sprite": "o_mod"
+    },
+    "87": {
+        "name": "Moddable Grass",
+        "is_water": 32,
+        "sprite": "o_mod"
+    },
+    "88": {
+        "name": "Forest, Mediterranean",
+        "is_water": 32,
+        "sprite": "g_for"
+    },
+    "89": {
+        "name": "Forest, Bush",
+        "is_water": 32,
+        "sprite": "g_for"
+    },
+    "90": {
+        "name": "Forest, Reeds (Shallows)",
+        "is_water": 8,
+        "sprite": "g_sha"
+    },
+    "91": {
+        "name": "Forest, Reeds (Beach)",
+        "is_water": 16,
+        "sprite": "g_beach_wet"
+    },
+    "92": {
+        "name": "Forest, Reeds",
+        "is_water": 32,
+        "sprite": "g_for"
+    },
+    "93": {
+        "name": "Moddable Shallows",
+        "is_water": 8,
+        "sprite": "o_mod"
+    },
+    "94": {
+        "name": "Moddable Shallows",
+        "is_water": 8,
+        "sprite": "o_mod"
+    },
+    "95": {
+        "name": "Water, Green",
+        "is_water": 4,
+        "sprite": "g_wt_green"
+    },
+    "96": {
+        "name": "Water, Brown",
+        "is_water": 4,
+        "sprite": "g_wt_brown"
+    },
+    "97": {
+        "name": "Moddable Normal Water",
+        "is_water": 1,
+        "sprite": "o_mod"
+    },
+    "98": {
+        "name": "Moddable Normal Water",
+        "is_water": 1,
+        "sprite": "o_mod"
+    },
+    "99": {
+        "name": "Moddable Deep Water",
+        "is_water": 2,
+        "sprite": "o_mod"
+    },
+    "100": {
+        "name": "Dry Grass",
+        "is_water": 32,
+        "sprite": "g_gr7"
+    },
+    "101": {
+        "name": "Bogland",
+        "is_water": 32,
+        "sprite": "g_qs2"
+    },
+    "102": {
+        "name": "Desert, Gravel",
+        "is_water": 32,
+        "sprite": "g_ds5"
+    },
+    "103": {
+        "name": "                    OBSOLETE (Road, Gravel)",
+        "is_water": 0,
+        "sprite": "o_rd5"
+    },
+    "104": {
+        "name": "Forest, Autumn",
+        "is_water": 32,
+        "sprite": "g_for"
+    },
+    "105": {
+        "name": "Forest, Snow Autumn",
+        "is_water": 160,
+        "sprite": "g_snf"
+    },
+    "106": {
+        "name": "Dead Forest",
+        "is_water": 32,
+        "sprite": "g_snf"
+    },
+    "107": {
+        "name": "Beach, Wet",
+        "is_water": 16,
+        "sprite": "g_beach_wet"
+    },
+    "108": {
+        "name": "Beach, Gravel Wet",
+        "is_water": 16,
+        "sprite": "g_gravel_wet"
+    },
+    "109": {
+        "name": "Beach, Rock Wet",
+        "is_water": 16,
+        "sprite": "g_rock_wet"
+    },
+    "110": {
+        "name": "Forest, Birch",
+        "is_water": 32,
+        "sprite": "g_for"
+    },
+    "111": {
+        "name": "Swamp",
+        "is_water": 8,
+        "sprite": "g_sh4"
+    },
+    "112": {
+        "name": "Forest, Palm Grass",
+        "is_water": 32,
+        "sprite": "g_gr2"
+    },
+    "113": {
+        "name": "Forest, Lush Bamboo",
+        "is_water": 32,
+        "sprite": "g_fo2"
+    },
+    "114": {
+        "name": "Water, Yellow Shallow",
+        "is_water": 4,
+        "sprite": "g_wt_yellow"
+    },
+    "115": {
+        "name": "Shallows, Yellow",
+        "is_water": 8,
+        "sprite": "g_sh5"
+    },
+    "116": {
+        "name": "Water, Yellow Deep",
+        "is_water": 1,
+        "sprite": "g_wt_yellow2"
+    },
+    "117": {
+        "name": "Pasture1",
+        "is_water": 32,
+        "sprite": "g_pm1"
+    },
+    "118": {
+        "name": "Pasture2",
+        "is_water": 32,
+        "sprite": "g_pm2"
+    },
+    "119": {
+        "name": "Pasture Cnst1",
+        "is_water": 32,
+        "sprite": "g_pc1"
+    },
+    "120": {
+        "name": "Pasture Cnst2",
+        "is_water": 32,
+        "sprite": "g_pc2"
+    },
+    "121": {
+        "name": "Pasture Cnst3",
+        "is_water": 32,
+        "sprite": "g_pc3"
+    },
+    "122": {
+        "name": "Grass Flowers 1",
+        "is_water": 32,
+        "sprite": "g_gr8"
+    },
+    "123": {
+        "name": "Grass Flowers 2",
+        "is_water": 32,
+        "sprite": "g_gr9"
+    },
+    "124": {
+        "name": "Snow Soft",
+        "is_water": 160,
+        "sprite": "g_sn2"
+    },
+    "125": {
+        "name": "Snow Soft Light",
+        "is_water": 160,
+        "sprite": "g_sn2"
+    },
+    "126": {
+        "name": "Snow Soft Deep",
+        "is_water": 160,
+        "sprite": "g_sn2"
+    },
+    "127": {
+        "name": "Ice Soft",
+        "is_water": 96,
+        "sprite": "g_ic3"
+    },
+    "128": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "129": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "130": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "131": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "132": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "133": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "134": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "135": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "136": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "137": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "138": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "139": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "140": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "141": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "142": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "143": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "144": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "145": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "146": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "147": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "148": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "149": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "150": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "151": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "152": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "153": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "154": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "155": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "156": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "157": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "158": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "159": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "160": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "161": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "162": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "163": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "164": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "165": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "166": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "167": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "168": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "169": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "170": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "171": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "172": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "173": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "174": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "175": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "176": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "177": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "178": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "179": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "180": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "181": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "182": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "183": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "184": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "185": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "186": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "187": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "188": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "189": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "190": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "191": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "192": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "193": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "194": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "195": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "196": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "197": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "198": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    },
+    "199": {
+        "name": "",
+        "is_water": 0,
+        "sprite": "g_grs"
+    }
+}

@@ -20,7 +20,7 @@ class Plague(ParserProject):
         self.plague_life_time = 60
         self.plague_units = 50
         self.plague_radius = 8
-        self.init_plague_time = 30
+        self.init_plague_time = 730
         self.rino_sound = "RINO_MUERE_1"
         self.plague_sound = "MOSQUITO1"
         self.plague_unit = UnitInfo.FIRE_GALLEY.ID

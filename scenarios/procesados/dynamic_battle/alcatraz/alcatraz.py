@@ -67,9 +67,9 @@ class Alcatraz(ParserProject):
         initial_variables.new_effect.change_variable(message="Bridge Pack 2", variable=2, quantity=0, operation=Operation.SET)
         bridge_factory = BridgeFactory(self.scenario, self.player_list)
         bridge_factory.set_bridge_stats()
-        bridge_areas = self.data_triggers.areas['bridge']
-        center_tile = self.data_triggers.tiles['fortress_center'][0]
-        bridge_triggers = bridge_factory.generate_retractable_bridges(bridge_areas, center_tile)
+        bridge_list = [v for k, v in self.data_triggers.areas.items() if k.startswith("bridge")]
+        gate_list = [v for k, v in self.data_triggers.objects.items() if k.startswith("gate")]
+        bridge_triggers = bridge_factory.generate_retractable_bridges(bridge_list, gate_list)
         bridge_packs = [(bridge_triggers[0], bridge_triggers[5]), (bridge_triggers[1], bridge_triggers[4]), (bridge_triggers[2], bridge_triggers[3])]
         initial_deploy_delay = self.trigger_manager.add_trigger(f'Initial Bridge deploy delay', enabled=True)
         initial_deploy_delay.new_condition.timer(timer=self.initial_bridge_delay)

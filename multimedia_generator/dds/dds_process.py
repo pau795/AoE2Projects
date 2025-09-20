@@ -40,6 +40,6 @@ def process_dds(dds_file_path: Path):
 
 
 if __name__ == '__main__':
-    image_path = constants.AOE_UNIT_ICONS_FOLDER / "048_50730.DDS"
+    image_path = constants.AOE_UNIT_ICONS_FOLDER / "218_50730.DDS"
     image1 = process_dds(image_path)
     image1.show()

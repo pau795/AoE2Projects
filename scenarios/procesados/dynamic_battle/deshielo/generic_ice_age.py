@@ -5,6 +5,13 @@ from AoE2ScenarioParser.datasets.players import PlayerId
 from AoE2ScenarioParser.datasets.terrains import TerrainId
 
 from scenarios.lib.parser_project import ParserProject
+import math
+import random
+from AoE2ScenarioParser.datasets.other import OtherInfo
+from AoE2ScenarioParser.datasets.players import PlayerId
+from AoE2ScenarioParser.datasets.terrains import TerrainId
+
+from scenarios.lib.parser_project import ParserProject
 
 
 class IceAge(ParserProject):
