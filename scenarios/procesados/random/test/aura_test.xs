@@ -1,0 +1,80 @@
+const int aura_damage_unit = 2011;
+
+void aura_damage(){
+    xsEffectAmount(cSetAttribute, aura_damage_unit, cCombatAbility, 32, 0);
+    xsTaskAmount(cTaskAttrWorkValue1, -60000);
+    xsTaskAmount(cTaskAttrWorkValue2, 6);
+    xsTaskAmount(cTaskAttrWorkRange, 2);
+    xsTaskAmount(cTaskAttrSearchWaitTime, 109);
+    xsTaskAmount(cTaskAttrCombatLevelFlag, 2 + 4);
+    xsTaskAmount(cTaskAttrOwnerType, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cArcherClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cArtifactClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cTradeBoatClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cBuildingClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cVillagerClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cSeaFishClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cInfantryClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cForageBushClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cStoneMineClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cPreyAnimalClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cPredatorAnimalClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cMiscellaneousClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cCavalryClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cSiegeWeaponClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cTerrainClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cTreeClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cTreeStumpClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cHealerClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cMonkClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cTradeCartClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cTransportShipClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cFishingBoatClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cWarshipClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cConquistadorClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cWarElephantClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cHeroClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cElephantArcherClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cWallClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cPhalanxClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cDomesticAnimalClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cFlagClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cDeepSeaFishClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cGoldMine, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cShoreFish, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cCliffClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cPetardClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cCavalryArcherClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cDoppelgangerClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cBirdClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cGateClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cSalvagePileClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cResourcePileClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cRelicClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cMonkWithRelicClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cHandCannoneerClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cTwoHandedSwordsmanClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cPikemanClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cScoutCavalryClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cOreMineClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cFarmClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cSpearmanClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cPackedUnitClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cTowerClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cBoardingShipClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cUnpackedSiegeUnitClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cScorpionClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cRaiderClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cCavalryRaiderClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cLivestockClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cKingClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cMiscBuildingClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cControlledAnimalClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cGoldFishClass, 0);
+    xsTask(aura_damage_unit, cTaskTypeAura, cLandMineClass, 0);
+
+}
+
+void main(){    
+    aura_damage();
+}

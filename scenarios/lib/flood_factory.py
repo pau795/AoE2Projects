@@ -1,25 +1,26 @@
 import itertools
+import math
 from collections import deque
 
 from AoE2ScenarioParser.datasets.buildings import BuildingInfo
 from AoE2ScenarioParser.datasets.other import OtherInfo
 from AoE2ScenarioParser.datasets.players import PlayerId
-from AoE2ScenarioParser.datasets.terrains import TerrainId
-from AoE2ScenarioParser.datasets.trigger_lists import ObjectAttribute, Operation, ObjectState
+from AoE2ScenarioParser.datasets.trigger_lists import ObjectState, ObjectClass
+from AoE2ScenarioParser.datasets.units import UnitInfo
 from AoE2ScenarioParser.objects.data_objects.terrain_tile import TerrainTile
 from AoE2ScenarioParser.objects.data_objects.trigger import Trigger
-from AoE2ScenarioParser.objects.support.area import Area
 from AoE2ScenarioParser.objects.support.tile import Tile
 from AoE2ScenarioParser.scenarios.aoe2_de_scenario import AoE2DEScenario
 
-from scenarios.lib.unit_modifier import UnitModifier
 
 
 class FloodFactory:
 
     BEACH_BRIDGE = BuildingInfo.WOODEN_BRIDGE_A_MIDDLE.ID
-    SHALLOW_WATER_BRIDGE = BuildingInfo.WOODEN_BRIDGE_B_MIDDLE.ID
-    AZURE_WATER_BRIDGE = BuildingInfo.WOODEN_BRIDGE_B_BOTTOM.ID
+    FINAL_WATER_BRIDGE = BuildingInfo.WOODEN_BRIDGE_B_MIDDLE.ID
+    WARNING_WATER_BRIDGE = BuildingInfo.WOODEN_BRIDGE_B_BOTTOM.ID
+    AURA_DAMAGE_UNIT = UnitInfo.SNOW_LEOPARD.ID
+    WATERFALL_FLAG = OtherInfo.FLAG_C.ID
 
     def __init__(self, scenario: AoE2DEScenario, player_list: list[int]):
         self.scenario = scenario
@@ -37,6 +38,8 @@ class FloodFactory:
         bridge_trigger.new_condition.timer(timer=delay)
         trigger_list.append(bridge_trigger)
         current_distance = 0
+        aura_positions = []
+        min_aura_dist = 2.7  # in tiles, adjust as needed
         while tile_queue:
             current_tile, distance = tile_queue.popleft()
             print(f'{current_tile.x}, {current_tile.y}, distance: {distance}, queue size: {len(tile_queue)}, visited: {len(visited_tiles)}')
@@ -57,34 +60,62 @@ class FloodFactory:
                         visited_tiles.add(new_tile)
                 else:
                     invalid_neighbor = True
-            bridge_unit = self.AZURE_WATER_BRIDGE if not kill else (self.BEACH_BRIDGE if stop_on_elevation and invalid_neighbor else self.SHALLOW_WATER_BRIDGE)
+            bridge_unit = self.WARNING_WATER_BRIDGE if not kill else (self.BEACH_BRIDGE if stop_on_elevation and invalid_neighbor else self.FINAL_WATER_BRIDGE)
             if kill:
-                for player in self.player_list + [PlayerId.GAIA]:
-                    bridge_trigger.new_effect.kill_object(
-                        source_player=player,
-                        area_x1=current_tile.x,
-                        area_y1=current_tile.y,
-                        area_x2=current_tile.x,
-                        area_y2=current_tile.y,
+                aura_too_close = any(
+                    math.hypot(current_tile.x - fx, current_tile.y - fy) < min_aura_dist
+                    for fx, fy in aura_positions
+                )
+                if not aura_too_close:
+                    bridge_trigger.new_effect.create_object(
+                        source_player=PlayerId.GAIA,
+                        object_list_unit_id=self.AURA_DAMAGE_UNIT,
+                        location_x=current_tile.x,
+                        location_y=current_tile.y,
                     )
-                    for state in [ObjectState.ALIVE, ObjectState.ALMOST_ALIVE, ObjectState.FOUNDATION]:
+                    for player in self.player_list:
                         bridge_trigger.new_effect.remove_object(
                             source_player=player,
-                            object_state=state,
-                            area_x1=current_tile.x,
-                            area_y1=current_tile.y,
-                            area_x2=current_tile.x,
-                            area_y2=current_tile.y,
+                            object_state=ObjectState.FOUNDATION,
+                            area_x1=max(0, current_tile.x - 2),
+                            area_y1=max(0, current_tile.y - 1),
+                            area_x2=min(current_tile.x + 1, self.map_manager.map_width),
+                            area_y2=min(current_tile.y + 2, self.map_manager.map_height),
                         )
-                for state in [ObjectState.DEAD, ObjectState.ALMOST_ALIVE, ObjectState.RESOURCE, ObjectState.DYING, ObjectState.ALIVE]:
+                    bridge_trigger.new_effect.kill_object(
+                        source_player=PlayerId.GAIA,
+                        object_group=ObjectClass.TERRAIN,
+                        area_x1=max(0, current_tile.x - 2),
+                        area_y1=max(0, current_tile.y - 1),
+                        area_x2=min(current_tile.x + 1, self.map_manager.map_width),
+                        area_y2=min(current_tile.y + 2, self.map_manager.map_height),
+                    )
                     bridge_trigger.new_effect.remove_object(
                         source_player=PlayerId.GAIA,
-                        object_state=state,
-                        area_x1=current_tile.x,
-                        area_y1=current_tile.y,
-                        area_x2=current_tile.x,
-                        area_y2=current_tile.y,
+                        object_state=ObjectState.RESOURCE,
+                        area_x1=max(0, current_tile.x - 2),
+                        area_y1=max(0, current_tile.y - 1),
+                        area_x2=min(current_tile.x + 1, self.map_manager.map_width),
+                        area_y2=min(current_tile.y + 2, self.map_manager.map_height),
                     )
+                    bridge_trigger.new_effect.remove_object(
+                        source_player=PlayerId.GAIA,
+                        object_state=ObjectState.DEAD,
+                        area_x1=max(0, current_tile.x - 2),
+                        area_y1=max(0, current_tile.y - 1),
+                        area_x2=min(current_tile.x + 1, self.map_manager.map_width),
+                        area_y2=min(current_tile.y + 2, self.map_manager.map_height),
+                    )
+                    bridge_trigger.new_effect.remove_object(
+                        source_player=PlayerId.GAIA,
+                        object_group=ObjectClass.TREE,
+                        object_state=ObjectState.ALIVE,
+                        area_x1=max(0, current_tile.x - 2),
+                        area_y1=max(0, current_tile.y - 1),
+                        area_x2=min(current_tile.x + 1, self.map_manager.map_width),
+                        area_y2=min(current_tile.y + 2, self.map_manager.map_height),
+                    )
+                    aura_positions.append((current_tile.x, current_tile.y))
             bridge_trigger.new_effect.create_object(
                 source_player=PlayerId.GAIA,
                 object_list_unit_id=bridge_unit,
@@ -106,7 +137,7 @@ class FloodFactory:
                 for tile in tiles:
                     start_flood.new_effect.create_object(
                         source_player=PlayerId.GAIA,
-                        object_list_unit_id=OtherInfo.WATERFALL_OVERLAY.ID,
+                        object_list_unit_id=self.WATERFALL_FLAG,
                         location_x=tile.x,
                         location_y=tile.y,
                         facet=facet
