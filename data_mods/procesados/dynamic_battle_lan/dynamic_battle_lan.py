@@ -17,6 +17,7 @@ class DynamicBattleLan(DatProject):
 
 
 if __name__ == "__main__":
-    dat_mod_path = "C:\\Users\\pau_7\\Games\\Age of Empires 2 DE\\76561198074945033\\mods\\local\\Dynamic Battle LAN LOCAL\\resources\\_common\\dat"
+    # dat_mod_path = "C:\\Users\\pau_7\\Games\\Age of Empires 2 DE\\76561198074945033\\mods\\local\\Dynamic Battle LAN LOCAL\\resources\\_common\\dat"
+    dat_mod_path = 'output'
     dynamic_battle_lan = DynamicBattleLan(Path(dat_mod_path))
     dynamic_battle_lan.convert()
