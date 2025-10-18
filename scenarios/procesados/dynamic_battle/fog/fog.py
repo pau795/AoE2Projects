@@ -1,11 +1,9 @@
-from pathlib import Path
-
 from AoE2ScenarioParser.datasets.players import PlayerId
-
 from scenarios.lib.parser_project import ParserProject
+from scenarios.lib.civ_settings import CivSettings
 
 
-class Jumanji(ParserProject):
+class Fog(ParserProject):
 
     def __init__(self, input_scenario_name: str, output_scenario_name: str):
         super().__init__(input_scenario_name, output_scenario_name)
@@ -13,14 +11,12 @@ class Jumanji(ParserProject):
         self.trigger_manager = self.scenario.trigger_manager
 
     def process(self):
-        module_dir = Path(__file__).parent
-        xs_path = module_dir / "jumanji.xs"
-        self.scenario.xs_manager.add_script(str(xs_path))
+        CivSettings(self.scenario, self.player_list)
 
 
 if __name__ == '__main__':
-    jumanji_class = Jumanji(
-        input_scenario_name=f'EDIT_JUMANJI_1V1',
-        output_scenario_name=f'OUTPUT_JUMANJI_1V1'
+    fog_class = Fog(
+        input_scenario_name=f'EDIT_FOG_1V1',
+        output_scenario_name=f'OUTPUT_FOG_1V1'
     )
-    jumanji_class.convert()
+    fog_class.convert()

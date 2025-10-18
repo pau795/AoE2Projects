@@ -8,7 +8,7 @@ from scenarios.lib.twister_factory import TwisterFactory
 from scenarios.lib.vulkan_factory import VulkanFactory
 
 
-class Catastrophic(ParserProject):
+class CatastrophicMultiplayer(ParserProject):
 
     def __init__(self, input_scenario_name: str, output_scenario_name: str):
         super().__init__(input_scenario_name, output_scenario_name)
@@ -80,7 +80,7 @@ class Catastrophic(ParserProject):
 
 
 if __name__ == '__main__':
-    catastrophic_class = Catastrophic(
+    catastrophic_class = CatastrophicMultiplayer(
         input_scenario_name='EDIT_CATASTROPHIC_4V4',
         output_scenario_name='OUTPUT_CATASTROPHIC_4V4'
     )

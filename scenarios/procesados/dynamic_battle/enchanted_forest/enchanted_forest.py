@@ -2,7 +2,7 @@ import math
 
 from AoE2ScenarioParser.datasets.other import OtherInfo
 from AoE2ScenarioParser.datasets.players import PlayerId
-from AoE2ScenarioParser.datasets.trigger_lists import Operation, ObjectAttribute, AttackStance, TerrainRestrictions, ObjectState
+from AoE2ScenarioParser.datasets.trigger_lists import Operation, ObjectAttribute, AttackStance, TerrainRestrictions, ObjectState, FogVisibility
 from AoE2ScenarioParser.datasets.units import UnitInfo
 from AoE2ScenarioParser.objects.support.area import Area
 
@@ -11,17 +11,18 @@ from scenarios.lib.civ_settings import CivSettings
 from scenarios.lib.unit_modifier import UnitModifier
 
 
-class BosqueEncantadoMultiplayer(ParserProject):
+class EnchantedForest(ParserProject):
     LEOPARD = UnitInfo.SNOW_LEOPARD.ID
     MOVEABLE_TREE = OtherInfo.TREE_PINE_FOREST.ID
 
     def __init__(self, input_scenario_name: str, output_scenario_name: str):
         super().__init__(input_scenario_name, output_scenario_name)
+        self.player_list = [PlayerId.ONE, PlayerId.TWO]
         self.trigger_manager = self.scenario.trigger_manager
         self.data_triggers = self.scenario.actions.load_data_triggers()
         self.leopard_speed = 2
         self.way_delay = 300
-        self.player_list = [PlayerId.ONE, PlayerId.TWO, PlayerId.THREE, PlayerId.FOUR]
+        self.player_list = [PlayerId.ONE, PlayerId.TWO]
         self.sound = 'tree_roots'
 
     @staticmethod
@@ -64,6 +65,7 @@ class BosqueEncantadoMultiplayer(ParserProject):
          .modify_attribute(ObjectAttribute.SHOWN_ATTACK, Operation.SET, 0)
          .modify_attribute(ObjectAttribute.STANDING_GRAPHIC, Operation.SET, 2310)
          .modify_attribute(ObjectAttribute.WALKING_GRAPHIC, Operation.SET, 2310)
+         .modify_attribute(ObjectAttribute.FOG_VISIBILITY, Operation.SET, FogVisibility.ALWAYS_VISIBLE)
          .modify_attribute(ObjectAttribute.ICON_ID, Operation.SET, OtherInfo.TREE_PINE_FOREST.ICON_ID)
          .modify_attribute(ObjectAttribute.OBJECT_NAME_ID, Operation.SET, 5399)
          .create_triggers())
@@ -189,8 +191,8 @@ class BosqueEncantadoMultiplayer(ParserProject):
 
 
 if __name__ == '__main__':
-    bosque_encantado_class = BosqueEncantadoMultiplayer(
-        input_scenario_name='EDIT_ENCHANTED_FOREST_2V2',
-        output_scenario_name='OUTPUT_ENCHANTED_FOREST_2V2'
+    enchanted_forest_class = EnchantedForest(
+        input_scenario_name='EDIT_ENCHANTED_FOREST_1V1',
+        output_scenario_name='OUTPUT_ENCHANTED_FOREST_1V1'
     )
-    bosque_encantado_class.convert()
+    enchanted_forest_class.convert()

@@ -1,5 +1,6 @@
 import math
 import random
+from pathlib import Path
 
 from AoE2ScenarioParser.datasets.players import PlayerId
 from AoE2ScenarioParser.datasets.trigger_lists import AttackStance, ActionType
@@ -41,7 +42,9 @@ class Plague(ParserProject):
         self.victory()
 
     def karambit_stats(self):
-        self.scenario.xs_manager.add_script("plague.xs")
+        module_dir = Path(__file__).parent
+        xs_path = module_dir / "plague.xs"
+        self.scenario.xs_manager.add_script(str(xs_path))
         horse_trigger = self.trigger_manager.add_trigger("Horse Trigger")
         horse_trigger.new_effect.disable_object_selection(
             source_player=PlayerId.THREE,
@@ -278,7 +281,7 @@ class Plague(ParserProject):
 
 if __name__ == "__main__":
     plaga = Plague(
-        input_scenario_name='plaga',
-        output_scenario_name='plaga_output',
+        input_scenario_name='EDIT_PLAGUE_1V1',
+        output_scenario_name='OUTPUT_PLAGUE_1V1',
     )
     plaga.convert()

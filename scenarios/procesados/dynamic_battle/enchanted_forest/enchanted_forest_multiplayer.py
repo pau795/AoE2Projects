@@ -11,116 +11,50 @@ from scenarios.lib.civ_settings import CivSettings
 from scenarios.lib.unit_modifier import UnitModifier
 
 
-class MazeRunner(ParserProject):
-    MOVEABLE_TREE = OtherInfo.TREE_OAK_AUTUMN_SNOW.ID
+class EnchantedForestMultiplayer(ParserProject):
     LEOPARD = UnitInfo.SNOW_LEOPARD.ID
-    NORMAL_TREE = OtherInfo.TREE_PINE_FOREST.ID
+    MOVEABLE_TREE = OtherInfo.TREE_PINE_FOREST.ID
 
     def __init__(self, input_scenario_name: str, output_scenario_name: str):
         super().__init__(input_scenario_name, output_scenario_name)
-        self.player_list = [PlayerId.ONE, PlayerId.TWO]
         self.trigger_manager = self.scenario.trigger_manager
         self.data_triggers = self.scenario.actions.load_data_triggers()
         self.leopard_speed = 2
-        self.g1_entrance_delay = 300
-        self.interior_delay = 600
-        self.clearing_delay = 900
         self.way_delay = 300
+        self.player_list = [PlayerId.ONE, PlayerId.TWO, PlayerId.THREE, PlayerId.FOUR]
         self.sound = 'tree_roots'
+
+    @staticmethod
+    def calculate_delay(i):
+        if 0 < i <= 4:
+            return 300
+        elif 4 < i <= 8:
+            return 500
+        elif 12 < i <= 24:
+            return 750
+        elif 8 < i <= 12:
+            return 1000
+        else:
+            return 1
 
     def process(self):
         CivSettings(self.scenario, self.player_list)
         self.stats()
-        first_way_list, second_way_list = [], []
         for i, (key, areas) in enumerate(self.data_triggers.areas.items()):
             first_way = self.move_trees(areas[0], areas[1])
             second_way = self.move_trees(areas[1], areas[0])
             first_way.new_effect.activate_trigger(second_way.trigger_id)
             second_way.new_effect.activate_trigger(first_way.trigger_id)
-            first_way_list.append(first_way)
-            second_way_list.append(second_way)
-
-        g1_delay = self.trigger_manager.add_trigger('G1 Delay', enabled=True)
-        g1_entrance = self.trigger_manager.add_trigger('G1 Entrance', enabled=False)
-        g1_entrance_negative = self.trigger_manager.add_trigger('G1 Entrance Negative', enabled=False)
-
-        g2_sideways = self.trigger_manager.add_trigger('G2 Sideways', enabled=False)
-        g3_sideways = self.trigger_manager.add_trigger('G3 Sideways', enabled=False)
-
-        interior_1_delay = self.trigger_manager.add_trigger("Interior 1 Delay", enabled=True)
-        interior_1 = self.trigger_manager.add_trigger("Interior 1", enabled=False)
-        interior_1_negative = self.trigger_manager.add_trigger("Interior 1 Negative", enabled=False)
-
-        central_clearing_delay = self.trigger_manager.add_trigger("Central Clearing Delay", enabled=True)
-        central_clearing = self.trigger_manager.add_trigger("Central Clearing", enabled=False)
-        central_clearing_negative = self.trigger_manager.add_trigger("Central Clearing Negative", enabled=False)
-
-        g1_delay.new_condition.timer(self.g1_entrance_delay)
-        g1_delay.new_effect.activate_trigger(g1_entrance.trigger_id)
-        g1_delay.new_effect.activate_trigger(g1_entrance_negative.trigger_id)
-        g1_entrance.new_condition.chance(50)
-        g1_entrance.new_effect.activate_trigger(first_way_list[0].trigger_id)
-        g1_entrance.new_effect.activate_trigger(first_way_list[1].trigger_id)
-        g1_entrance.new_effect.deactivate_trigger(g1_entrance_negative.trigger_id)
-        g1_entrance.new_effect.activate_trigger(g2_sideways.trigger_id)
-        g1_entrance.new_effect.activate_trigger(g3_sideways.trigger_id)
-        g1_entrance_negative.new_effect.deactivate_trigger(g1_entrance.trigger_id)
-
-        g2_sideways.new_condition.chance(50)
-        g2_sideways.new_effect.activate_trigger(first_way_list[2].trigger_id)
-        g2_sideways.new_effect.activate_trigger(first_way_list[3].trigger_id)
-        g2_sideways.new_effect.deactivate_trigger(g3_sideways.trigger_id)
-
-        g3_sideways.new_effect.activate_trigger(first_way_list[4].trigger_id)
-        g3_sideways.new_effect.activate_trigger(first_way_list[5].trigger_id)
-        g3_sideways.new_effect.deactivate_trigger(g2_sideways.trigger_id)
-
-        interior_1_delay.new_condition.timer(self.interior_delay)
-        interior_1_delay.new_effect.activate_trigger(interior_1.trigger_id)
-        interior_1_delay.new_effect.activate_trigger(interior_1_negative.trigger_id)
-        interior_1.new_condition.chance(50)
-        interior_1.new_effect.activate_trigger(first_way_list[6].trigger_id)
-        interior_1.new_effect.activate_trigger(first_way_list[7].trigger_id)
-        interior_1.new_effect.activate_trigger(first_way_list[8].trigger_id)
-        interior_1.new_effect.deactivate_trigger(interior_1_negative.trigger_id)
-        interior_1_negative.new_effect.deactivate_trigger(interior_1.trigger_id)
-
-        central_clearing_delay.new_condition.timer(self.clearing_delay)
-        central_clearing_delay.new_effect.activate_trigger(central_clearing.trigger_id)
-        central_clearing_delay.new_effect.activate_trigger(central_clearing_negative.trigger_id)
-        central_clearing.new_condition.chance(50)
-        central_clearing.new_effect.activate_trigger(first_way_list[9].trigger_id)
-        central_clearing.new_effect.activate_trigger(first_way_list[10].trigger_id)
-        central_clearing.new_effect.activate_trigger(first_way_list[11].trigger_id)
-        central_clearing.new_effect.activate_trigger(first_way_list[12].trigger_id)
-        central_clearing.new_effect.deactivate_trigger(central_clearing_negative.trigger_id)
-        central_clearing_negative.new_effect.deactivate_trigger(central_clearing.trigger_id)
+            initial_forest_delay = self.trigger_manager.add_trigger(f'{key} initial forest delay', enabled=True)
+            initial_forest_delay.new_condition.timer(self.calculate_delay(i + 1))
+            initial_forest_delay.new_effect.activate_trigger(first_way.trigger_id)
 
     def stats(self):
-        initial_replace = self.trigger_manager.add_trigger('Initial Replace')
-        initial_replace.new_condition.timer(2)
-        initial_replace.new_effect.replace_object(
-            source_player=PlayerId.GAIA,
-            target_player=PlayerId.GAIA,
-            object_list_unit_id=self.MOVEABLE_TREE,
-            object_list_unit_id_2=self.LEOPARD,
-        )
-        initial_replace.new_effect.replace_object(
-            source_player=PlayerId.GAIA,
-            target_player=PlayerId.GAIA,
-            object_list_unit_id=self.LEOPARD,
-            object_list_unit_id_2=self.MOVEABLE_TREE,
-        )
-        (UnitModifier(self.scenario, self.MOVEABLE_TREE, PlayerId.GAIA)
-         .modify_attribute(ObjectAttribute.DEAD_UNIT_ID, Operation.SET, self.MOVEABLE_TREE)
-         .modify_attribute(ObjectAttribute.TERRAIN_RESTRICTION_ID, Operation.SET, TerrainRestrictions.ALL)
-         .modify_attribute(ObjectAttribute.STANDING_GRAPHIC, Operation.SET, 2310)
-         .modify_attribute(ObjectAttribute.OBJECT_NAME_ID, Operation.SET, 5399)
-         .create_triggers())
-        (UnitModifier(self.scenario, self.NORMAL_TREE, PlayerId.GAIA)
-         .modify_attribute(ObjectAttribute.DEAD_UNIT_ID, Operation.SET, self.NORMAL_TREE)
+        (UnitModifier(self.scenario, OtherInfo.TREE_PINE_FOREST.ID, PlayerId.GAIA)
+         .modify_attribute(ObjectAttribute.DEAD_UNIT_ID, Operation.SET, OtherInfo.TREE_PINE_FOREST.ID)
          .create_triggers())
         (UnitModifier(self.scenario, UnitInfo.SNOW_LEOPARD.ID, PlayerId.GAIA)
+         .modify_attribute(ObjectAttribute.HIT_POINTS, Operation.SET, 20000)
          .modify_attribute(ObjectAttribute.UNIT_SIZE_X, Operation.SET, 0)
          .modify_attribute(ObjectAttribute.UNIT_SIZE_Y, Operation.SET, 0)
          .modify_attribute(ObjectAttribute.UNIT_SIZE_Z, Operation.SET, 0)
@@ -214,8 +148,7 @@ class MazeRunner(ParserProject):
 
         # PHASE 2
         distance = math.dist(source_area.get_center(), target_area.get_center())
-        rotation = source_area.get_width() != target_area.get_width()
-        timer = int(math.ceil(distance / self.leopard_speed) + (4 * (2 if rotation else 1))) + 1
+        timer = int(math.ceil(distance / self.leopard_speed)) + 5
         trees_phase_2.new_condition.timer(timer=timer)
 
         trees_phase_2.new_effect.remove_object(
@@ -256,8 +189,8 @@ class MazeRunner(ParserProject):
 
 
 if __name__ == '__main__':
-    maze_runner = MazeRunner(
-        input_scenario_name='CORREDOR_DEL_LABERINTO',
-        output_scenario_name='CORREDOR_DEL_LABERINTO_output'
+    enchanted_forest_class = EnchantedForestMultiplayer(
+        input_scenario_name='EDIT_ENCHANTED_FOREST_2V2',
+        output_scenario_name='OUTPUT_ENCHANTED_FOREST_2V2'
     )
-    maze_runner.convert()
+    enchanted_forest_class.convert()

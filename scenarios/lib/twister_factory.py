@@ -1,4 +1,5 @@
 import math
+from pathlib import Path
 
 from AoE2ScenarioParser.datasets.players import PlayerId
 from AoE2ScenarioParser.datasets.trigger_lists import ActionType, AttackStance, ObjectAttribute, Operation, FogVisibility
@@ -25,20 +26,9 @@ class TwisterFactory:
         self.player_list = player_list
 
     def twister_stats(self):
-        (UnitModifier(self.scenario, UnitInfo.SNOW_LEOPARD.ID, PlayerId.GAIA)
-         .modify_attribute(ObjectAttribute.HIT_POINTS, Operation.SET, 20000)
-         .modify_attribute(ObjectAttribute.UNIT_SIZE_X, Operation.DIVIDE, 10)
-         .modify_attribute(ObjectAttribute.UNIT_SIZE_Y, Operation.DIVIDE, 10)
-         .modify_attribute(ObjectAttribute.UNIT_SIZE_Z, Operation.SET, 0)
-         .modify_attribute(ObjectAttribute.STANDING_GRAPHIC, Operation.SET, 5314)
-         .modify_attribute(ObjectAttribute.WALKING_GRAPHIC, Operation.SET, 5314)
-         .modify_attribute(ObjectAttribute.ATTACK_GRAPHIC, Operation.SET, 5314)
-         .modify_attribute(ObjectAttribute.MOVEMENT_SPEED, Operation.SET, 5)
-         .modify_attribute(ObjectAttribute.TERRAIN_RESTRICTION_ID, Operation.SET, 0)
-         .modify_attribute(ObjectAttribute.FOG_VISIBILITY, Operation.SET, FogVisibility.ALWAYS_VISIBLE)
-         .modify_attribute(ObjectAttribute.ATTACK, Operation.SET, 0, 4)
-         .create_triggers()
-         )
+        module_dir = Path(__file__).parent
+        xs_file = module_dir / "xs/twister.xs"
+        self.scenario.xs_manager.add_script(xs_file_path=str(xs_file))
 
     def twister_sound(self):
         tornado_sound = self.trigger_manager.add_trigger("Tornado Sound", enabled=False)

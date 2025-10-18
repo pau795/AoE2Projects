@@ -7,7 +7,7 @@ from scenarios.lib.civ_settings import CivSettings
 from scenarios.lib.unit_modifier import UnitModifier
 
 
-class Caves(ParserProject):
+class CavesMultiplayer(ParserProject):
 
     def __init__(self, input_scenario_name: str, output_scenario_name: str):
         super().__init__(input_scenario_name, output_scenario_name)
@@ -65,7 +65,7 @@ class Caves(ParserProject):
 
 
 if __name__ == '__main__':
-    cave_class = Caves(
+    cave_class = CavesMultiplayer(
         input_scenario_name=f'EDIT_CAVES_4V4',
         output_scenario_name=f'OUTPUT_CAVES_4V4'
     )

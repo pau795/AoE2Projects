@@ -19,6 +19,7 @@ void unit_stats(int unit_id = 0){
     xsEffectAmount(cSetAttribute, unit_id, cAttackGraphic, 0, player);
     xsEffectAmount(cSetAttribute, unit_id, cDyingGraphic, 0, player);
     xsEffectAmount(cSetAttribute, unit_id, cDeadUnitId, 0, player);    
+    xsEffectAmount(cSetAttribute, unit_id, cProjectileGraphicDisplacementZ, 0.01, player);    
 
     xsEffectAmount(cSetAttribute, unit_id, cAttack, cPierce * maxByte + unit_damage, player);
     xsEffectAmount(cAddAttribute, unit_id, cAttack, cPierce * maxByte + unit_damage, player);

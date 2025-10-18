@@ -15,7 +15,7 @@ from scenarios.lib.civ_settings import CivSettings
 from scenarios.lib.unit_modifier import UnitModifier
 
 
-class Tsunami2(ParserProject):
+class FukushumaOriginal(ParserProject):
 
     def __init__(self, input_scenario_name: str, output_scenario_name: str):
         super().__init__(input_scenario_name, output_scenario_name)
@@ -281,8 +281,8 @@ class Tsunami2(ParserProject):
 
 
 if __name__ == "__main__":
-    tsunami = Tsunami2(
+    fukushima_original = FukushumaOriginal(
         input_scenario_name='Tsunami 2 Fukushima',
         output_scenario_name='Tsunami 2 Fukushima_output'
     )
-    tsunami.convert()
+    fukushima_original.convert()

@@ -1,50 +1,17 @@
 import os
 import shutil
-import tempfile
-import zipfile
 from pathlib import Path
 
-from scenarios.procesados.dynamic_battle.dynamic_battle_team.armaggeddon import Armageddon
-from scenarios.procesados.dynamic_battle.dynamic_battle_team.bosque_encantado_multiplayer import BosqueEncantadoMultiplayer
-from scenarios.procesados.dynamic_battle.dynamic_battle_team.castastrophic import Catastrophic
-from scenarios.procesados.dynamic_battle.dynamic_battle_team.caves import Caves
-from scenarios.procesados.dynamic_battle.dynamic_battle_team.earthquake_multiplayer import EarthquakeMultiplayer
-from scenarios.procesados.dynamic_battle.dynamic_battle_team.niebla_multiplayer import NieblaMultiplayer
-from scenarios.procesados.dynamic_battle.dynamic_battle_team.tsunami_multiplayer import TsunamiMultiplayer
-from scenarios.procesados.dynamic_battle.dynamic_battle_team.vulkan_multiplayer import VulkanMultiplayer
-from scenarios.procesados.dynamic_battle.dynamic_battle_team.west_train import WestTrain
-
-
-def zip_folder(source_dir: Path, archive_name: str):
-    source_dir = source_dir.resolve()
-    if not source_dir.is_dir():
-        raise ValueError(f"{source_dir} is not a valid directory")
-
-    # Prepare the output path
-    final_zip_path = source_dir / archive_name
-
-    # If it already exists, remove it to avoid shutil.move error
-    if final_zip_path.exists():
-        final_zip_path.unlink()
-
-    # Temporary zip path (outside the source dir)
-    temp_zip_path = Path(tempfile.gettempdir()) / archive_name
-
-    # Ensure no leftover from previous runs
-    if temp_zip_path.exists():
-        temp_zip_path.unlink()
-
-    # Create the zip with filtering
-    with zipfile.ZipFile(temp_zip_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
-        for file_path in source_dir.rglob('*'):
-            if file_path.is_file() and file_path.name.lower() != 'desktop.ini':
-                relative_path = file_path.relative_to(source_dir)
-                zipf.write(file_path, arcname=relative_path)
-
-    # Move the zip back to the source folder
-    shutil.move(str(temp_zip_path), str(final_zip_path))
-
-    print(f"✅ Zip created at: {final_zip_path}")
+from scenarios.lib import utils
+from scenarios.procesados.dynamic_battle.armageddon.armageddon_multiplayer import ArmageddonMultiplayer
+from scenarios.procesados.dynamic_battle.enchanted_forest.enchanted_forest_multiplayer import EnchantedForestMultiplayer
+from scenarios.procesados.dynamic_battle.catastrophic.castastrophic_multiplayer import CatastrophicMultiplayer
+from scenarios.procesados.dynamic_battle.caves.caves_multiplayer import CavesMultiplayer
+from scenarios.procesados.dynamic_battle.earthquake.earthquake_multiplayer import EarthquakeMultiplayer
+from scenarios.procesados.dynamic_battle.fog.fog_multiplayer import FogMultiplayer
+from scenarios.procesados.dynamic_battle.tsunami.tsunami_multiplayer import TsunamiMultiplayer
+from scenarios.procesados.dynamic_battle.vulkan.vulkan_multiplayer import VulkanMultiplayer
+from scenarios.procesados.dynamic_battle.west_train.west_train_mutliplayer import WestTrainMultiplayer
 
 
 if __name__ == '__main__':
@@ -72,26 +39,26 @@ if __name__ == '__main__':
     vulkan = 'VULKAN_4V4'
     west_train = 'WILD_WEST_TRAIN_3V3'
 
-    armageddon_class = Armageddon(
+    armageddon_class = ArmageddonMultiplayer(
         input_scenario_name=f'{input_scenario_prefix}{armageddon}',
         output_scenario_name=f'{output_scenario_prefix}{armageddon}'
     )
 
-    niebla_class = NieblaMultiplayer(
+    fog_class = FogMultiplayer(
         input_scenario_name=f'{input_scenario_prefix}{niebla}',
         output_scenario_name=f'{output_scenario_prefix}{niebla}'
     )
 
-    caves_class = Caves(
+    caves_class = CavesMultiplayer(
         input_scenario_name=f'{input_scenario_prefix}{caves}',
         output_scenario_name=f'{output_scenario_prefix}{caves}'
     )
 
-    bosque_encantado_class = BosqueEncantadoMultiplayer(
+    enchanted_forest_class = EnchantedForestMultiplayer(
         input_scenario_name=f'{input_scenario_prefix}{bosque_encantado}',
         output_scenario_name=f'{output_scenario_prefix}{bosque_encantado}'
     )
-    catastrophic_class = Catastrophic(
+    catastrophic_class = CatastrophicMultiplayer(
         input_scenario_name=f'{input_scenario_prefix}{catastrophic}',
         output_scenario_name=f'{output_scenario_prefix}{catastrophic}'
     )
@@ -111,15 +78,15 @@ if __name__ == '__main__':
         output_scenario_name=f'{output_scenario_prefix}{vulkan}'
     )
 
-    west_train_class = WestTrain(
+    west_train_class = WestTrainMultiplayer(
         input_scenario_name=f'{input_scenario_prefix}{west_train}',
         output_scenario_name=f'{output_scenario_prefix}{west_train}'
     )
 
     armageddon_class.convert()
-    niebla_class.convert()
+    fog_class.convert()
     caves_class.convert()
-    bosque_encantado_class.convert()
+    enchanted_forest_class.convert()
     catastrophic_class.convert()
     earthquake_class.convert()
     tsunami_class.convert()
@@ -156,4 +123,4 @@ if __name__ == '__main__':
     shutil.copy(scenario_folder / f'{output_scenario_prefix}{vulkan}{scenario_extension}', mod_maps_folder / f'{mod_scenario_prefix}{vulkan}{scenario_extension}')
     shutil.copy(scenario_folder / f'{output_scenario_prefix}{west_train}{scenario_extension}', mod_maps_folder / f'{mod_scenario_prefix}{west_train}{scenario_extension}')
 
-    zip_folder(output_folder, zip_name)
+    utils.zip_folder(output_folder, zip_name)

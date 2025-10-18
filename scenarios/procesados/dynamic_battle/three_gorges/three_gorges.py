@@ -1,5 +1,6 @@
 import math
 import random
+from pathlib import Path
 
 from AoE2ScenarioParser.datasets.buildings import BuildingInfo
 from AoE2ScenarioParser.datasets.other import OtherInfo
@@ -43,7 +44,9 @@ class ThreeGorges(ParserProject):
             object_list_unit_id=self.SMOKE_FLAG,
             quantity=1
         )
-        self.xs_manager.add_script("three_gorges.xs")
+        module_dir = Path(__file__).parent
+        xs_path = module_dir / "three_gorges.xs"
+        self.xs_manager.add_script(str(xs_path))
         buildings_land_and_beach = self.trigger_manager.add_trigger("Set Buildings on Land and Beach")
         buildings_land_and_beach.new_effect.script_call(message="buildings_on_land_and_beach();")
         flood_factory = FloodFactory(self.scenario, self.player_list)
@@ -172,7 +175,7 @@ class ThreeGorges(ParserProject):
 
 if __name__ == '__main__':
     three_gorges = ThreeGorges(
-        input_scenario_name=f'EDIT_THREE_GORGES',
-        output_scenario_name=f'OUTPUT_THREE_GORGES'
+        input_scenario_name=f'EDIT_THREE_GORGES_1V1',
+        output_scenario_name=f'OUTPUT_THREE_GORGES_1V1'
     )
     three_gorges.convert()

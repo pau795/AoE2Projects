@@ -3,6 +3,7 @@ from data_mods.lib.dat_project import DatProject
 from data_mods.procesados.dynamic_battle_lan.alcatraz import AlcatrazDat
 from data_mods.procesados.dynamic_battle_lan.plague import PlagueDat
 from data_mods.procesados.dynamic_battle_lan.three_gorges import ThreeGorgesDat
+from data_mods.procesados.dynamic_battle_lan.west_train import WestTrain
 
 
 class DynamicBattleLan(DatProject):
@@ -14,6 +15,7 @@ class DynamicBattleLan(DatProject):
         AlcatrazDat(self.dat_file)
         PlagueDat(self.dat_file)
         ThreeGorgesDat(self.dat_file)
+        WestTrain(self.dat_file)
 
 
 if __name__ == "__main__":

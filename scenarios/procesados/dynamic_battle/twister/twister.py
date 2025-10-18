@@ -7,10 +7,9 @@ from scenarios.lib.twister_factory import TwisterFactory
 class Twister(ParserProject):
 
     def __init__(self,
-                 steam_id,
                  input_scenario_name: str,
                  output_scenario_name: str):
-        super().__init__(steam_id, input_scenario_name, output_scenario_name)
+        super().__init__(input_scenario_name, output_scenario_name)
         self.radius = 20
         self.arms = 10
         self.drag_radius = 12
@@ -49,8 +48,7 @@ class Twister(ParserProject):
 
 if __name__ == '__main__':
     twister = Twister(
-        input_scenario_name='twister',
-        output_scenario_name='twister_output',
-
+        input_scenario_name='EDIT_TWISTER_1V1',
+        output_scenario_name='OUTPUT_TWISTER_1V1',
     )
     twister.convert()

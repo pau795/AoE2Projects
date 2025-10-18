@@ -5,7 +5,7 @@ from scenarios.lib.parser_project import ParserProject
 from scenarios.lib.vulkan_factory import VulkanFactory
 
 
-class NomadVulkan(ParserProject):
+class VulkanNomad(ParserProject):
 
     def __init__(self, input_scenario_name: str, output_scenario_name: str):
         super().__init__(input_scenario_name, output_scenario_name)
@@ -35,8 +35,8 @@ class NomadVulkan(ParserProject):
 
 
 if __name__ == '__main__':
-    nomad_vulkan = NomadVulkan(
-        input_scenario_name='VULKAN NOMADA',
-        output_scenario_name='VULKAN NOMADA output',
+    nomad_vulkan = VulkanNomad(
+        input_scenario_name='EDIT_VULKAN_NOMAD_1V1',
+        output_scenario_name='OUTPUT_VULKAN_NOMAD_1V1',
     )
     nomad_vulkan.convert()

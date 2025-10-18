@@ -42,8 +42,8 @@ class TsunamiFactory:
          .modify_attribute(ObjectAttribute.WALKING_GRAPHIC, Operation.SET, 7569)
          .modify_attribute(ObjectAttribute.ATTACK_GRAPHIC, Operation.SET, 7569)
          .modify_attribute(ObjectAttribute.DYING_GRAPHIC, Operation.SET, 5507)
-         .modify_attribute(ObjectAttribute.DEAD_UNIT_ID, Operation.SET, -2)
-         .modify_attribute(ObjectAttribute.DEAD_UNIT_ID, Operation.DIVIDE, 2)
+         .modify_attribute(ObjectAttribute.DEAD_UNIT_ID, Operation.SET, -1)
+         .modify_attribute(ObjectAttribute.FOG_VISIBILITY, Operation.SET, 1)
          .modify_attribute(ObjectAttribute.TERRAIN_RESTRICTION_ID, Operation.SET, TerrainRestrictions.ALL)
          .modify_attribute(ObjectAttribute.MOVEMENT_SPEED, Operation.SET, self.tsunami_speed)
          .create_triggers()
@@ -61,7 +61,7 @@ class TsunamiFactory:
         movement_damage_trigger = self.trigger_manager.add_trigger("Movement Damage Script")
         movement_damage_trigger.new_effect.script_call(message=movement_damage_script)
 
-    def config_tsunami(self, tile_list: list[Tile], amplitude: int, thickness: float, wave_delay: int, tsunami_periods: list[int], display_sound: bool = False):
+    def config_tsunami(self, tile_list: list[Tile], amplitude: int, thickness: float, wave_delay: int, tsunami_periods: list[int], initial_delay: int = 0, display_sound: bool = False):
         tsunami_init_wave = self.generate_tsunami_trigger(tile_list[0], tile_list[1], amplitude, thickness, wave_delay, display_sound=display_sound)
         period_triggers = [self.trigger_manager.add_trigger(f"Period Trigger {i}", enabled=False) for i, _ in enumerate(tsunami_periods)]
         for i, trigger in enumerate(period_triggers):
@@ -69,7 +69,11 @@ class TsunamiFactory:
             trigger.new_effect.activate_trigger(tsunami_init_wave.trigger_id)
         random_period = EquallyProbableTriggerList(self.trigger_manager, period_triggers, "Random Period")
         tsunami_init_wave.new_effect.activate_trigger(random_period.enable_probability_trigger.trigger_id)
-        random_period.enable_probability_trigger.enabled = True
+        random_period.enable_probability_trigger.enabled = initial_delay == 0
+        if initial_delay != 0:
+            initial_delay_trigger = self.trigger_manager.add_trigger("Initial Delay Trigger", enabled=True)
+            initial_delay_trigger.new_condition.timer(initial_delay)
+            initial_delay_trigger.new_effect.activate_trigger(tsunami_init_wave.trigger_id)
 
     def border_check(self, top_left: bool = False, top_right: bool = False, bottom_left: bool = False, bottom_right: bool = False):
         border_check = self.trigger_manager.add_trigger("Border Check", enabled=True, looping=True)

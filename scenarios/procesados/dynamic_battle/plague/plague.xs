@@ -32,10 +32,8 @@ void plague_stats(){
     xsEffectAmount(cSetAttribute, plague, cWalkingGraphic, 9410, plague_player);
     xsEffectAmount(cSetAttribute, plague, cDyingGraphic, 9410, plague_player);
     xsEffectAmount(cSetAttribute, plague, cAttackGraphic, 9410, plague_player);
-    //xsEffectAmount(cSetAttribute, plague, cHeroGlowGraphic, 12218, plague_player);
     xsEffectAmount(cSetAttribute, plague, cHitpoints, plague_life_time + rino_life_time, plague_player);
     xsEffectAmount(cSetAttribute, plague, cMovementSpeed, 0.8, plague_player);
-    //xsEffectAmount(cSetAttribute, plague, cHeroStatus, 64, plague_player);
     xsEffectAmount(cSetAttribute, plague, cBlastAttackLevel, 2, plague_player);
     xsEffectAmount(cSetAttribute, plague, cAttack, 29 * maxByte + 0 , plague_player);
     xsEffectAmount(cSetAttribute, plague, cAttack, 11 * maxByte + 0 , plague_player);

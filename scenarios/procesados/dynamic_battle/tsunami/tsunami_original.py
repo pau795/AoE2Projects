@@ -7,7 +7,7 @@ from AoE2ScenarioParser.datasets.units import UnitInfo
 from scenarios.lib.parser_project import ParserProject
 
 
-class Tsunami(ParserProject):
+class TsunamiOriginal(ParserProject):
 
     def __init__(self, input_scenario_name:str, output_scenario_name:str):
         super().__init__(input_scenario_name, output_scenario_name)
@@ -316,7 +316,7 @@ class Tsunami(ParserProject):
 
 
 if __name__ == "__main__":
-    tsunami = Tsunami(
+    tsunami = TsunamiOriginal(
         input_scenario_name="TSUNAMI",
         output_scenario_name="tsunami_output"
     )

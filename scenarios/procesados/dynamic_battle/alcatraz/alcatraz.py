@@ -1,4 +1,5 @@
 import math
+from pathlib import Path
 
 from AoE2ScenarioParser.datasets.buildings import BuildingInfo
 from AoE2ScenarioParser.datasets.players import PlayerId
@@ -111,7 +112,9 @@ class Alcatraz(ParserProject):
         cave_factory.generate_caves(cave_list)
 
     def setup_walls(self):
-        self.xs_manager.add_script("alcatraz.xs")
+        module_dir = Path(__file__).parent
+        xs_file = module_dir / "alcatraz.xs"
+        self.xs_manager.add_script(str(xs_file))
         xs_trigger = self.trigger_manager.add_trigger("XS CALL WALL_STATS")
         xs_trigger.new_effect.script_call(message="wall_stats();")
         wall_areas = {k: v for k, v in self.data_triggers.areas.items() if k.startswith('muro')}
@@ -247,7 +250,7 @@ class Alcatraz(ParserProject):
 
 if __name__ == '__main__':
     alcatraz_class = Alcatraz(
-        input_scenario_name=f'alcatraz_editar',
-        output_scenario_name=f'alcatraz_output'
+        input_scenario_name=f'EDIT_ALCATRAZ_1V1',
+        output_scenario_name=f'OUTPUT_ALCATRAZ_1V1'
     )
     alcatraz_class.convert()
