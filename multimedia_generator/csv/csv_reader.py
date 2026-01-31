@@ -22,8 +22,9 @@ def read_csv_unit_icon(file_path: Path) -> list[CSVUnitIcon]:
     with file_path.open('r') as f:
         lines = [line.strip().split(';') for line in f if not line.startswith('#')]
         for items in lines:
-            unit_id = int(items[0])
-            image = items[1]
-            csv_object = CSVUnitIcon(unit_id, image)
+            civ = items[0]
+            unit_id = int(items[1])
+            image_icon = int(items[2])
+            csv_object = CSVUnitIcon(civ, unit_id, image_icon)
             units.append(csv_object)
     return units

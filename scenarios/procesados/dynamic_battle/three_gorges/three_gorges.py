@@ -8,6 +8,7 @@ from AoE2ScenarioParser.datasets.players import PlayerId
 from AoE2ScenarioParser.datasets.terrains import TerrainId
 from AoE2ScenarioParser.datasets.trigger_lists import ObjectAttribute, Operation, TimeUnit
 
+from scenarios.lib.civ_settings import CivSettings
 from scenarios.lib.flood_factory import FloodFactory
 from scenarios.lib.parser_project import ParserProject
 
@@ -33,6 +34,7 @@ class ThreeGorges(ParserProject):
         random.seed(self.RANDOM_SEED)
 
     def process(self):
+        CivSettings(self.scenario, self.player_list)
         layers_scenario = self.load_scenario(f'{self.input_scenario_name}_LAYERS')
         for tile in layers_scenario.new.area().select_entire_map().to_coords(as_terrain=True):
             if tile.layer in self.flood_layers:

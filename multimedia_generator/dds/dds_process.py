@@ -1,16 +1,15 @@
-import colorsys
 from pathlib import Path
 import imageio.v3 as iio
 import numpy as np
 from PIL import Image
 
-from multimedia_generator import utils, constants
+from multimedia_generator import  constants
 
 
-def process_dds(dds_file_path: Path):
+def process_dds(dds_file_path: Path, color: list[int]):
     dds_image = iio.imread(dds_file_path)
     image = Image.fromarray(dds_image)
-    r_tint, g_tint, b_tint = constants.icon_color
+    r_tint, g_tint, b_tint = color
 
     # Convert image to NumPy array
     img_array = np.array(image, dtype=np.uint8)
@@ -40,6 +39,7 @@ def process_dds(dds_file_path: Path):
 
 
 if __name__ == '__main__':
-    image_path = constants.AOE_UNIT_ICONS_FOLDER / "218_50730.DDS"
-    image1 = process_dds(image_path)
+    image_path = constants.AOE_UNIT_ICONS_FOLDER / "064_50730.DDS"
+    print(image_path)
+    image1 = process_dds(image_path, constants.p2_color)
     image1.show()

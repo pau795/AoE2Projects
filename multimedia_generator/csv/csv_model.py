@@ -20,5 +20,6 @@ class CSVBuildingGif:
 
 @dataclass
 class CSVUnitIcon:
+    civ: str
     id: int
-    image: int
+    icon: int
