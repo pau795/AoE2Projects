@@ -112,6 +112,85 @@ def get_members() -> list[Member]:
     return members
 
 
+def format_as_table(sheet_document, data_range):
+    """Format the data range as a table with alternating colors and borders"""
+    # Get the range of your data (assuming headers in row 1)
+    last_row = len(data_range)
+    range_name = f"A1:P{last_row}"  # Adjust columns based on your data
+
+    # Apply formatting
+    sheet_document.format(range_name, {
+        "backgroundColor": {"red": 1, "green": 1, "blue": 1},  # White background
+        "borders": {
+            "top": {"style": "SOLID"},
+            "bottom": {"style": "SOLID"},
+            "left": {"style": "SOLID"},
+            "right": {"style": "SOLID"}
+        }
+    })
+
+    # Format header row differently
+    sheet_document.format("A1:P1", {
+        "backgroundColor": {"red": 0.9, "green": 0.9, "blue": 0.9},  # Light gray
+        "textFormat": {"bold": True}
+    })
+
+    # Add alternating row colors
+    for i in range(2, last_row + 1, 2):  # Even rows
+        sheet_document.format(f"A{i}:P{i}", {
+            "backgroundColor": {"red": 0.95, "green": 0.95, "blue": 0.95}  # Very light gray
+        })
+
+
+def create_sortable_table(sheet_document, data_rows):
+    """Create a proper Google Sheets table with sortable headers"""
+    # Write data first
+    sheet_document.update(range_name="A1", values=data_rows)
+
+    # Get the worksheet ID for API calls
+    worksheet = sheet_document
+
+    # Create a filter view (enables sorting)
+    last_row = len(data_rows)
+    last_col = len(data_rows[0])  # Number of columns
+
+    # Add filter to the entire data range
+    filter_range = {
+        "range": {
+            "sheetId": worksheet.id,
+            "startRowIndex": 0,
+            "endRowIndex": last_row,
+            "startColumnIndex": 0,
+            "endColumnIndex": last_col
+        }
+    }
+
+    # Use the Google Sheets API to add the filter
+    try:
+        # Get the spreadsheet object
+        spreadsheet = worksheet.spreadsheet
+
+        # Create the filter request
+        body = {
+            "requests": [{
+                "setBasicFilter": {
+                    "filter": filter_range
+                }
+            }]
+        }
+
+        # Apply the filter
+        spreadsheet.batch_update(body)
+
+        # Also apply visual formatting
+        format_as_table(sheet_document, data_rows)
+
+    except Exception as e:
+        print(f"Could not create filter: {e}")
+        # Fallback to just formatting
+        format_as_table(sheet_document, data_rows)
+
+
 def write_members_to_sheet(member_list: list[Member], sheet_document):
     # Clear existing content
     sheet_document.clear()
@@ -153,7 +232,7 @@ def write_members_to_sheet(member_list: list[Member], sheet_document):
         data_rows.append(row)
 
     # Write to sheet
-    sheet_document.update(range_name="A1", values=data_rows)
+    create_sortable_table(sheet_document, data_rows)
 
 
 if __name__ == "__main__":
@@ -162,3 +241,4 @@ if __name__ == "__main__":
     sheet = gc.open("AoE 2 Clan Dynamic").sheet1
     write_members_to_sheet(all_members, sheet)
     print("Dynamic Clan Members updated successfully ✅")
+    print("https://docs.google.com/spreadsheets/d/19_7G5UzOpuPAHyq-NU3wcIoEvC6u4DX0rNxYAvs42wY")

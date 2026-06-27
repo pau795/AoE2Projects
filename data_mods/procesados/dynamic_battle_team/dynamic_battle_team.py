@@ -1,11 +1,14 @@
-from genieutils.datfile import DatFile
+from pathlib import Path
 from genieutils.graphic import GraphicDelta
-from multimedia_generator import constants
+from data_mods.lib.dat_project import DatProject
 
 
-class DynamicBattleTeam:
-    def __init__(self, dat_file: DatFile):
-        self.dat_file = dat_file
+class DynamicBattleTeam(DatProject):
+    # List of customized graphics used in this data mod:
+    #   - 10635: Hussite + Smoke (West Train)
+
+    def __init__(self, output_file: Path):
+        super().__init__(output_file)
 
     def hussite_smoke_graphic(self, graphic_id: int, smoke_graphic_id: int, sprite_name: str, graphic_name: str,):
         graphic = self.dat_file.graphics[graphic_id]
@@ -24,9 +27,11 @@ class DynamicBattleTeam:
         shadow_delta = GraphicDelta(graphic_id=smoke_graphic_id, offset_x=0, offset_y=-100, padding_1=0, padding_2=0, sprite_ptr=0, display_angle=-1)
         graphic.deltas = [void_delta, shadow_delta]
 
+    def process(self):
+        self.hussite_smoke_graphic(10635, 5314, "u_sie_hussite_wagon_walkA_x1", "HussiteWagonSmoke (Walk)")
+
 
 if __name__ == "__main__":
-    dat = DatFile.parse(constants.AOE_DAT_FILE_PATH)
-    dynamic_battle_team = DynamicBattleTeam(dat)
-    dynamic_battle_team.hussite_smoke_graphic(9500, 5314, "u_sie_hussite_wagon_walkA_x1", "HussiteWagonSmoke (Walk)")
-    dat.save("output/empires2_x2_p1.dat")
+    dat_mod_path = 'output'
+    dynamic_battle_lan = DynamicBattleTeam(Path(dat_mod_path))
+    dynamic_battle_lan.convert()

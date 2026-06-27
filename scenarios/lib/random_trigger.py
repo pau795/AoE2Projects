@@ -1,6 +1,4 @@
-from AoE2ScenarioParser.datasets.players import PlayerId
 from AoE2ScenarioParser.objects.data_objects.trigger import Trigger
-from AoE2ScenarioParser.objects.managers.trigger_manager import TriggerManager
 from AoE2ScenarioParser.scenarios.aoe2_de_scenario import AoE2DEScenario
 
 

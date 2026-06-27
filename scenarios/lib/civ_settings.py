@@ -26,6 +26,9 @@ class CivSettings:
             aztec_trigger = self.trigger_manager.add_trigger(f"Aztec P{player_id}")
             maya_trigger = self.trigger_manager.add_trigger(f"Maya P{player_id}")
             inca_trigger = self.trigger_manager.add_trigger(f"Inca P{player_id}")
+            musica_trigger = self.trigger_manager.add_trigger(f"Muisca P{player_id}")
+            tupi_trigger = self.trigger_manager.add_trigger(f"Tupi P{player_id}")
+            mapuche_trigger = self.trigger_manager.add_trigger(f"Mapuche P{player_id}")
 
             gurjara_trigger.new_condition.technology_state(
                 source_player=player_id,
@@ -70,107 +73,41 @@ class CivSettings:
                 source_player=player_id,
                 target_player=player_id,
                 object_list_unit_id=UnitInfo.SCOUT_CAVALRY.ID,
-                object_list_unit_id_2=UnitInfo.EAGLE_SCOUT.ID
+                object_list_unit_id_2=UnitInfo.CHAMPI_SCOUT.ID
             )
-            if self.APPLY_RESOURCES:
-                chinese_trigger = self.trigger_manager.add_trigger(f"Chinese P{player_id}")
-                sicilian_trigger = self.trigger_manager.add_trigger(f"Sicilian P{player_id}")
-                persian_trigger = self.trigger_manager.add_trigger(f"Persian P{player_id}")
-                huns_trigger = self.trigger_manager.add_trigger(f"Huns P{player_id}")
-                initial_resources_trigger = self.trigger_manager.add_trigger(f"Initial Resources P{player_id}")
-                if self.APPLY_RESOURCES:
-                    self.player_manager.players[player_id].wood = 0
-                    self.player_manager.players[player_id].food = 0
-                    self.player_manager.players[player_id].gold = 0
-                    self.player_manager.players[player_id].stone = 0
-                    self.player_manager.players[player_id].population_cap = 200
-                    self.set_resources(
-                        civ_trigger=aztec_trigger,
-                        initial_resources_trigger=initial_resources_trigger,
-                        player_position=i,
-                        wood=self.STANDARD_WOOD,
-                        food=self.STANDARD_FOOD,
-                        gold=self.STANDARD_GOLD + 50,
-                        stone=self.STANDARD_STONE
-                    )
-                    self.set_resources(
-                        civ_trigger=maya_trigger,
-                        initial_resources_trigger=initial_resources_trigger,
-                        player_position=i,
-                        wood=self.STANDARD_WOOD,
-                        food=self.STANDARD_FOOD - 50,
-                        gold=self.STANDARD_GOLD,
-                        stone=self.STANDARD_STONE
-                    )
-                    chinese_trigger.new_condition.technology_state(
-                        source_player=player_id,
-                        technology=TechInfo.ELITE_CHU_KO_NU.ID,
-                        quantity=TechnologyState.NOT_READY
-                    )
-                    self.set_resources(
-                        civ_trigger=chinese_trigger,
-                        initial_resources_trigger=initial_resources_trigger,
-                        player_position=i,
-                        wood=self.STANDARD_WOOD - 50,
-                        food=self.STANDARD_FOOD - 200,
-                        gold=self.STANDARD_GOLD,
-                        stone=self.STANDARD_STONE
-                    )
-
-                    persian_trigger.new_condition.technology_state(
-                        source_player=player_id,
-                        technology=TechInfo.ELITE_WAR_ELEPHANT.ID,
-                        quantity=TechnologyState.NOT_READY
-                    )
-                    self.set_resources(
-                        civ_trigger=persian_trigger,
-                        initial_resources_trigger=initial_resources_trigger,
-                        player_position=i,
-                        wood=self.STANDARD_WOOD + 50,
-                        food=self.STANDARD_FOOD + 50,
-                        gold=self.STANDARD_GOLD,
-                        stone=self.STANDARD_STONE
-                    )
-
-                    sicilian_trigger.new_condition.technology_state(
-                        source_player=player_id,
-                        technology=TechInfo.ELITE_SERJEANT.ID,
-                        quantity=TechnologyState.NOT_READY
-                    )
-                    self.set_resources(
-                        civ_trigger=sicilian_trigger,
-                        initial_resources_trigger=initial_resources_trigger,
-                        player_position=i,
-                        wood=self.STANDARD_WOOD,
-                        food=self.STANDARD_FOOD,
-                        gold=self.STANDARD_GOLD,
-                        stone=self.STANDARD_STONE + 100
-                    )
-
-                    huns_trigger.new_condition.technology_state(
-                        source_player=player_id,
-                        technology=TechInfo.ELITE_TARKAN.ID,
-                        quantity=TechnologyState.NOT_READY
-                    )
-                    self.set_resources(
-                        civ_trigger=huns_trigger,
-                        initial_resources_trigger=initial_resources_trigger,
-                        player_position=i,
-                        wood=self.STANDARD_WOOD - 100,
-                        food=self.STANDARD_FOOD,
-                        gold=self.STANDARD_GOLD,
-                        stone=self.STANDARD_STONE
-                    )
-
-                    self.set_resources(
-                        civ_trigger=initial_resources_trigger,
-                        initial_resources_trigger=initial_resources_trigger,
-                        player_position=i,
-                        wood=self.STANDARD_WOOD,
-                        food=self.STANDARD_FOOD,
-                        gold=self.STANDARD_GOLD,
-                        stone=self.STANDARD_STONE
-                    )
+            musica_trigger.new_condition.technology_state(
+                source_player=player_id,
+                technology=TechInfo.ELITE_GUECHA_WARRIOR.ID,
+                quantity=TechnologyState.NOT_READY
+            )
+            musica_trigger.new_effect.replace_object(
+                source_player=player_id,
+                target_player=player_id,
+                object_list_unit_id=UnitInfo.SCOUT_CAVALRY.ID,
+                object_list_unit_id_2=UnitInfo.CHAMPI_SCOUT.ID
+            )
+            tupi_trigger.new_condition.technology_state(
+                source_player=player_id,
+                technology=TechInfo.ELITE_BLACKWOOD_ARCHER.ID,
+                quantity=TechnologyState.NOT_READY
+            )
+            tupi_trigger.new_effect.replace_object(
+                source_player=player_id,
+                target_player=player_id,
+                object_list_unit_id=UnitInfo.SCOUT_CAVALRY.ID,
+                object_list_unit_id_2=UnitInfo.CHAMPI_SCOUT.ID
+            )
+            mapuche_trigger.new_condition.technology_state(
+                source_player=player_id,
+                technology=TechInfo.ELITE_KONA.ID,
+                quantity=TechnologyState.NOT_READY
+            )
+            mapuche_trigger.new_effect.replace_object(
+                source_player=player_id,
+                target_player=player_id,
+                object_list_unit_id=UnitInfo.SCOUT_CAVALRY.ID,
+                object_list_unit_id_2=UnitInfo.CHAMPI_SCOUT.ID
+            )
 
     def set_resources(self, civ_trigger: Trigger, initial_resources_trigger: Trigger, player_position: int, wood: int, food: int, gold: int, stone: int):
         player_id = self.player_id_list[player_position]

@@ -6,7 +6,7 @@ from multimedia_generator import constants
 class WestTrain:
     def __init__(self, dat_file: DatFile):
         self.dat_file = dat_file
-        self.hussite_smoke_graphic(9500, 5314, "u_sie_hussite_wagon_walkA_x1", "HussiteWagonSmoke (Walk)")
+        self.hussite_smoke_graphic(10635, 5314, "u_sie_hussite_wagon_walkA_x1", "HussiteWagonSmoke (Walk)")
 
     def hussite_smoke_graphic(self, graphic_id: int, smoke_graphic_id: int, sprite_name: str, graphic_name: str,):
         graphic = self.dat_file.graphics[graphic_id]

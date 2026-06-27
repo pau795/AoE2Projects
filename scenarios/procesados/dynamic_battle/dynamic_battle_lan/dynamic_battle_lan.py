@@ -30,7 +30,7 @@ if __name__ == '__main__':
     edit_maps_folder = output_folder / 'Edit Maps'
     output_maps_folder = output_folder / 'Output Maps'
     mod_maps_folder = output_folder / 'Mod Maps'
-    dat_folder = output_folder / 'DAT File'
+    dat_folder = output_folder / 'Dat File'
 
     zip_name = 'Dynamic_Battle_LAN_Map_Pack.zip'
     input_scenario_prefix = 'EDIT_'

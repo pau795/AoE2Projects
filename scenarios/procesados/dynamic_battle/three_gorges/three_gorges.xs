@@ -40,7 +40,7 @@ void bridge_stats(){
 void aura_damage(){
     xsEffectAmount(cSetAttribute, aura_damage_unit, cCombatAbility, 32, 0);
     xsEffectAmount(cSetAttribute, aura_damage_unit, cMovementSpeed, 0, 0);
-    xsEffectAmount(cSetAttribute, aura_damage_unit, cStandingGraphic, 9420, 0);
+    xsEffectAmount(cSetAttribute, aura_damage_unit, cStandingGraphic, 10634, 0);
     xsEffectAmount(cSetAttribute, aura_damage_unit, cWalkingGraphic, 0, 0);
     xsEffectAmount(cSetAttribute, aura_damage_unit, cAttackGraphic, 0, 0);
     xsEffectAmount(cSetAttribute, aura_damage_unit, cDyingGraphic, 0, 0);

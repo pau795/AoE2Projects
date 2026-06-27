@@ -5,8 +5,8 @@ from genieutils.graphic import GraphicDelta
 class PlagueDat:
     def __init__(self, dat_file: DatFile):
         self.dat_file = dat_file
-        self.set_smoke(9411, "green_glow")
-        self.set_butterflies(9410, 12269, 9411, "butterflies_attack_x1")
+        self.set_smoke(10633, "green_glow")
+        self.set_butterflies(10632, 12269, 10633, "butterflies_attack_x1")
 
     def set_smoke(self, graphic_id: int, smoke_particle: str):
         graphic = self.dat_file.graphics[graphic_id]
@@ -28,7 +28,7 @@ class PlagueDat:
         graphic.replay_delay = 0
         graphic.frame_count = 1
         graphic.frame_duration = 1
-        graphic.sequence_type = 0
+        graphic.sequence_type = 2
         graphic.mirroring_mode = 6
         graphic.angle_count = 1
         void_delta = GraphicDelta(graphic_id=-1, offset_x=0, offset_y=0, padding_1=0, padding_2=0, sprite_ptr=0, display_angle=-1)

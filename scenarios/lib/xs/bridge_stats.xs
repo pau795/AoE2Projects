@@ -40,7 +40,7 @@ void bridge_stats(){
     xsEffectAmount(cSetAttribute, fixed_vertical_bridge_wall_unit, cHitpoints, 20000, 3);
     xsEffectAmount(cSetAttribute, fixed_vertical_bridge_wall_unit, cInvulnerabilityLevel, -20000, 3);
     xsEffectAmount(cSetAttribute, fixed_vertical_bridge_wall_unit, cFoundationTerrain, -1, 3);
-    xsEffectAmount(cSetAttribute, fixed_vertical_bridge_wall_unit, cStandingGraphic, 9401, 3);
+    xsEffectAmount(cSetAttribute, fixed_vertical_bridge_wall_unit, cStandingGraphic, 10631, 3);
     xsEffectAmount(cSetAttribute, fixed_vertical_bridge_wall_unit, cTrainTime, 0, 3);
     xsEffectAmount(cSetAttribute, fixed_vertical_bridge_wall_unit, cLineOfSight, 0, 3);
 
@@ -48,7 +48,7 @@ void bridge_stats(){
     xsEffectAmount(cSetAttribute, fixed_horizontal_bridge_wall_unit, cHitpoints, 20000, 3);
     xsEffectAmount(cSetAttribute, fixed_horizontal_bridge_wall_unit, cInvulnerabilityLevel, -20000, 3);
     xsEffectAmount(cSetAttribute, fixed_horizontal_bridge_wall_unit, cFoundationTerrain, -1, 3);
-    xsEffectAmount(cSetAttribute, fixed_horizontal_bridge_wall_unit, cStandingGraphic, 9400, 3);
+    xsEffectAmount(cSetAttribute, fixed_horizontal_bridge_wall_unit, cStandingGraphic, 10630, 3);
     xsEffectAmount(cSetAttribute, fixed_horizontal_bridge_wall_unit, cTrainTime, 0, 3);
     xsEffectAmount(cSetAttribute, fixed_horizontal_bridge_wall_unit, cLineOfSight, 0, 3);
 
@@ -117,8 +117,8 @@ void bridge_stats(){
     xsEffectAmount(cSetAttribute, mobile_vertical_bridge_wall_unit, cOcclusionMode, 0, 3);
     xsEffectAmount(cSetAttribute, mobile_vertical_bridge_wall_unit, cHitpoints, 20000, 3);
     xsEffectAmount(cSetAttribute, mobile_vertical_bridge_wall_unit, cInvulnerabilityLevel, -20000, 3);
-    xsEffectAmount(cSetAttribute, mobile_vertical_bridge_wall_unit, cStandingGraphic, 9401, 3);
-    xsEffectAmount(cSetAttribute, mobile_vertical_bridge_wall_unit, cWalkingGraphic, 9401, 3);    
+    xsEffectAmount(cSetAttribute, mobile_vertical_bridge_wall_unit, cStandingGraphic, 10631, 3);
+    xsEffectAmount(cSetAttribute, mobile_vertical_bridge_wall_unit, cWalkingGraphic, 10631, 3);    
 
     xsEffectAmount(cSetAttribute, mobile_horizontal_bridge_wall_unit, cTerrainTable, 0, 3);
     xsEffectAmount(cSetAttribute, mobile_horizontal_bridge_wall_unit, cInteractionMode, 0, 3);
@@ -131,7 +131,7 @@ void bridge_stats(){
     xsEffectAmount(cSetAttribute, mobile_horizontal_bridge_wall_unit, cOcclusionMode, 0, 3);
     xsEffectAmount(cSetAttribute, mobile_horizontal_bridge_wall_unit, cHitpoints, 20000, 3);
     xsEffectAmount(cSetAttribute, mobile_horizontal_bridge_wall_unit, cInvulnerabilityLevel, -20000, 3);
-    xsEffectAmount(cSetAttribute, mobile_horizontal_bridge_wall_unit, cStandingGraphic, 9400, 3);
-    xsEffectAmount(cSetAttribute, mobile_horizontal_bridge_wall_unit, cWalkingGraphic, 9400, 3);
+    xsEffectAmount(cSetAttribute, mobile_horizontal_bridge_wall_unit, cStandingGraphic, 10630, 3);
+    xsEffectAmount(cSetAttribute, mobile_horizontal_bridge_wall_unit, cWalkingGraphic, 10630, 3);
 
 }

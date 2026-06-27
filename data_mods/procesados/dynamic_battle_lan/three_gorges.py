@@ -1,5 +1,4 @@
 from AoE2ScenarioParser.datasets.terrains import TerrainId
-from AoE2ScenarioParser.datasets.trigger_lists import TerrainRestrictions
 from genieutils.datfile import DatFile
 from genieutils.terrainrestriction import TerrainRestriction
 
@@ -11,7 +10,7 @@ class ThreeGorgesDat:
         self.dat_file = dat_file
         self.terrain_atlas = utils.get_terrain_dict()
 
-        self.set_water_ripple(9420, "flood_splash")
+        self.set_water_ripple(10634, "flood_splash")
 
         self.new_shore_terrain = TerrainId.MODDABLE_SHALLOWS_1  # This terrain is used on the shores
         self.new_first_flood_terrain = TerrainId.MODDABLE_GRASS_1  # This terrain is used on the first flood, just visual

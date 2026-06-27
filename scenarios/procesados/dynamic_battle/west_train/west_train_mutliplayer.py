@@ -14,7 +14,7 @@ class WestTrainMultiplayer(ParserProject):
 
     def process(self):
         CivSettings(self.scenario, self.player_list)
-        WestTrainFactory(self.scenario, train_player=PlayerId.THREE)
+        WestTrainFactory(self.scenario, train_player=PlayerId.SEVEN)
 
 
 if __name__ == '__main__':

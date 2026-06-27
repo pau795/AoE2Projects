@@ -1,13 +1,11 @@
 from genieutils.datfile import DatFile
-from genieutils.graphic import GraphicDelta
-from multimedia_generator import constants
 
 
 class AlcatrazDat:
     def __init__(self, dat_file: DatFile):
         self.dat_file = dat_file
-        self.set_wall(9400, "horizontal_sea_wall_x1")
-        self.set_wall(9401, "vertical_sea_wall_x1")
+        self.set_wall(10630, "horizontal_sea_wall_x1")
+        self.set_wall(10631, "vertical_sea_wall_x1")
 
     def set_wall(self, graphic_id: int, sprite_name: str):
         graphic = self.dat_file.graphics[graphic_id]

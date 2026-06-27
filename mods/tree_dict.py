@@ -1,4 +1,3 @@
-
 tree_dict = [
     {"graphic": "n_tree_acacia_x1.sld", "object_id": 1063, "type": "tree", "angle_count": 30},
     {"graphic": "n_tree_asian_maple_autumn_x1.sld", "object_id": 2028, "type": "tree", "angle_count": 18},
@@ -8,9 +7,11 @@ tree_dict = [
     {"graphic": "n_tree_bamboo_x1.sld", "object_id": 348, "type": "tree", "angle_count": 12},
     {"graphic": "n_tree_baobab_x1.sld", "object_id": 1052, "type": "tree", "angle_count": 45},
     {"graphic": "n_tree_birch_x1.sld", "object_id": 1717, "type": "tree", "angle_count": 42},
+    {"graphic": "n_tree_brazilwood_x1.sld", "object_id": 2580, "type": "tree", "angle_count": 14},
     {"graphic": "n_tree_bush_a_x1.sld", "object_id": 302, "type": "tree", "angle_count": 6},
     {"graphic": "n_tree_bush_b_x1.sld", "object_id": 1053, "type": "tree", "angle_count": 54},
     {"graphic": "n_tree_bush_c_x1.sld", "object_id": 1054, "type": "tree", "angle_count": 27},
+    {"graphic": "n_tree_cypress_decorative_x1.sld", "object_id": 2529, "type": "tree", "angle_count": 12},
     {"graphic": "n_tree_cypress_x1.sld", "object_id": 1347, "type": "tree", "angle_count": 12},
     {"graphic": "n_tree_dead_x1.sld", "object_id": 1250, "type": "tree", "angle_count": 21},
     {"graphic": "n_tree_dragon_x1.sld", "object_id": 1051, "type": "tree", "angle_count": 36},
@@ -18,10 +19,12 @@ tree_dict = [
     {"graphic": "n_tree_felled_baobab_x1.sld", "object_id": 1541, "type": "felled", "angle_count": 15},
     {"graphic": "n_tree_felled_generic_x1.sld", "object_id": 1539, "type": "felled", "angle_count": 6},
     {"graphic": "n_tree_felled_lush_bamboo_x1.sld", "object_id": 1542, "type": "felled", "angle_count": 4},
+    {"graphic": "n_tree_green_oak_x1.sld", "object_id": 2567, "type": "tree", "angle_count": 27},
     {"graphic": "n_tree_italian_pine_x1.sld", "object_id": 1348, "type": "tree", "angle_count": 24},
     {"graphic": "n_tree_jungle_x1.sld", "object_id": 414, "type": "tree", "angle_count": 39},
     {"graphic": "n_tree_lush_bamboo_x1.sld", "object_id": 1984, "type": "tree", "angle_count": 16},
     {"graphic": "n_tree_mangrove_x1.sld", "object_id": 1144, "type": "tree", "angle_count": 36},
+    {"graphic": "n_tree_monkey_puzzle_x1.sld", "object_id": 2570, "type": "tree", "angle_count": 8},
     {"graphic": "n_tree_oak_x1.sld", "object_id": 349, "type": "tree", "angle_count": 42},
     {"graphic": "n_tree_olive_x1.sld", "object_id": 1349, "type": "tree", "angle_count": 24},
     {"graphic": "n_tree_palm_x1.sld", "object_id": 351, "type": "tree", "angle_count": 39},
@@ -47,5 +50,7 @@ tree_dict = [
     {"graphic": "n_tree_stump_baobab_x1.sld", "object_id": 1537, "type": "stump", "angle_count": 15},
     {"graphic": "n_tree_stump_generic_x1.sld", "object_id": 415, "type": "stump", "angle_count": 9},
     {"graphic": "n_tree_stump_lush_bamboo_x1.sld", "object_id": 1538, "type": "stump", "angle_count": 4},
+    {"graphic": "n_tree_wax_palm_x1.sld", "object_id": 2583, "type": "tree", "angle_count": 8},
     {"graphic": "n_tree_willow_x1.sld", "object_id": 2025, "type": "tree", "angle_count": 3},
+
 ]

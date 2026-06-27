@@ -19,9 +19,10 @@ def replicate_image(image_path: Path, rows: int, columns: int):
     return grid
 
 
-base_tree = Path('C:\\Users\\pau_7\\Desktop\\trees1\\template\\base_tree.png')
-base_felled_tree = Path('C:\\Users\\pau_7\\Desktop\\trees1\\template\\base_felled_tree.png')
-output_dir = Path('C:\\Users\\pau_7\\Desktop\\trees1\\output\\')
+base_path = Path('D:\\cosas\\Utilidades\\age\\mods\\flat trees')
+base_tree = base_path / 'template' / 'base_tree.png'
+base_felled_tree = base_path / 'template' / 'base_felled_tree.png'
+output_dir = base_path / 'output'
 
 generated_templates = set()
 for tree_object in tree_dict:
