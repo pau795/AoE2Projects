@@ -150,9 +150,13 @@ void buildings_on_land_and_beach(){
     xsEffectAmount(cSetAttribute, cTowerClass, cTerrainTable, 10);
     xsEffectAmount(cSetAttribute, cFarmClass, cTerrainTable, 10);
     xsEffectAmount(cSetAttribute, cGateClass, cTerrainTable, 10);
+    //Berries
+    xsEffectAmount(cSetAttribute, 59, cTerrainTable, 13);
     //FISH TRAP
     xsEffectAmount(cSetAttribute, 199, cTerrainTable, 13);
-    
+
+
+
     //DOCKS
     xsEffectAmount(cSetAttribute, 45, cTerrainTable, 6);
     xsEffectAmount(cSetAttribute, 47, cTerrainTable, 6);

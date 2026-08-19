@@ -29,6 +29,14 @@ class CivSettings:
             musica_trigger = self.trigger_manager.add_trigger(f"Muisca P{player_id}")
             tupi_trigger = self.trigger_manager.add_trigger(f"Tupi P{player_id}")
             mapuche_trigger = self.trigger_manager.add_trigger(f"Mapuche P{player_id}")
+            if delay > 0:
+                gurjara_trigger.new_condition.timer(delay)
+                aztec_trigger.new_condition.timer(delay)
+                maya_trigger.new_condition.timer(delay)
+                inca_trigger.new_condition.timer(delay)
+                musica_trigger.new_condition.timer(delay)
+                tupi_trigger.new_condition.timer(delay)
+                mapuche_trigger.new_condition.timer(delay)
 
             gurjara_trigger.new_condition.technology_state(
                 source_player=player_id,

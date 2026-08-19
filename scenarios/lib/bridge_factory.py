@@ -238,7 +238,7 @@ class BridgeFactory:
 
     def set_bridge_stats(self):
         module_dir = Path(__file__).parent
-        xs_file = module_dir / "xs/bridge_stats.xs"
+        xs_file = module_dir / "xs/templates/bridge_stats.xs"
         self.xs_manager.add_script(xs_file_path=str(xs_file))
         xs_trigger = self.trigger_manager.add_trigger("XS CALL BRIDGE_STATS")
         xs_trigger.new_effect.script_call(message="bridge_stats();")

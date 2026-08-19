@@ -8,12 +8,23 @@ from AoE2ScenarioParser.objects.support.area import Area
 
 from scenarios.lib.parser_project import ParserProject
 from scenarios.lib.civ_settings import CivSettings
+from scenarios.lib.random_spawn import RandomSpawn
 from scenarios.lib.unit_modifier import UnitModifier
 
 
 class EnchantedForest(ParserProject):
     LEOPARD = UnitInfo.SNOW_LEOPARD.ID
     MOVEABLE_TREE = OtherInfo.TREE_PINE_FOREST.ID
+    RS_ZONE_RELATION = {
+        PlayerId.ONE: {
+            "zone1": {
+                PlayerId.TWO: "zone2",
+            },
+            "zone2": {
+                PlayerId.TWO: "zone1",
+            },
+        }
+    }
 
     def __init__(self, input_scenario_name: str, output_scenario_name: str):
         super().__init__(input_scenario_name, output_scenario_name)
@@ -39,6 +50,7 @@ class EnchantedForest(ParserProject):
             return 1
 
     def process(self):
+        RandomSpawn(self.scenario, self.data_triggers, self.player_list, self.RS_ZONE_RELATION)
         CivSettings(self.scenario, self.player_list)
         self.stats()
         for i, (key, areas) in enumerate(self.data_triggers.areas.items()):

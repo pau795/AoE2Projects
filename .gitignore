@@ -1,5 +1,5 @@
 .idea
 venv
-/data_mods/*/output/*
+**/output/*
 /scripts/aoe2dynamic/aoe2dynamic-credentials.json
 /records/

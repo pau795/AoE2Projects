@@ -11,11 +11,22 @@ from AoE2ScenarioParser.datasets.trigger_lists import ObjectAttribute, Operation
 from scenarios.lib.civ_settings import CivSettings
 from scenarios.lib.flood_factory import FloodFactory
 from scenarios.lib.parser_project import ParserProject
+from scenarios.lib.random_spawn import RandomSpawn
 
 
 class ThreeGorges(ParserProject):
     RANDOM_SEED = 11111
     SMOKE_FLAG = OtherInfo.FLAG_I.ID
+    RS_ZONE_RELATION = {
+        PlayerId.ONE: {
+            "zone1": {
+                PlayerId.TWO: "zone2",
+            },
+            "zone2": {
+                PlayerId.TWO: "zone1",
+            },
+        }
+    }
 
     def __init__(self, input_scenario_name: str, output_scenario_name: str):
         super().__init__(input_scenario_name, output_scenario_name)
@@ -34,6 +45,7 @@ class ThreeGorges(ParserProject):
         random.seed(self.RANDOM_SEED)
 
     def process(self):
+        RandomSpawn(self.scenario, self.data_triggers, self.player_list, self.RS_ZONE_RELATION)
         CivSettings(self.scenario, self.player_list)
         layers_scenario = self.load_scenario(f'{self.input_scenario_name}_LAYERS')
         for tile in layers_scenario.new.area().select_entire_map().to_coords(as_terrain=True):
@@ -49,7 +61,7 @@ class ThreeGorges(ParserProject):
         module_dir = Path(__file__).parent
         xs_path = module_dir / "three_gorges.xs"
         self.xs_manager.add_script(str(xs_path))
-        buildings_land_and_beach = self.trigger_manager.add_trigger("Set Buildings on Land and Beach")
+        buildings_land_and_beach = self.trigger_manager.add_trigger("Set Buildings on Land and Beach", execute_on_load=True)
         buildings_land_and_beach.new_effect.script_call(message="buildings_on_land_and_beach();")
         flood_factory = FloodFactory(self.scenario, self.player_list)
         first_waterfall_dict, second_waterfall_dict, third_waterfall_dict = {}, {}, {}
@@ -94,22 +106,43 @@ class ThreeGorges(ParserProject):
             display_time=30,
             source_player=PlayerId.GAIA,
             object_list_unit_id=BuildingInfo.BARRICADE_A.ID,
-            sound_name="first_flood"
         )
+        for player in self.player_list:
+            first_flood_trigger.new_effect.play_sound(
+                source_player=player,
+                sound_name="first_flood",
+                global_sound=True,
+                location_x=int(self.scenario.new.area().select_entire_map().get_center()[0]),
+                location_y=int(self.scenario.new.area().select_entire_map().get_center()[1])
+            )
         second_flood_trigger.new_effect.display_instructions(
             message="The water keeps coming in and has greatly weakened the dams!! They won’t hold much longer!!",
             display_time=30,
             source_player=PlayerId.GAIA,
-            object_list_unit_id=BuildingInfo.BARRICADE_A.ID,
-            sound_name="second_flood"
+            object_list_unit_id=BuildingInfo.BARRICADE_A.ID
         )
+        for player in self.player_list:
+            second_flood_trigger.new_effect.play_sound(
+                source_player=player,
+                sound_name="second_flood",
+                global_sound=True,
+                location_x=int(self.scenario.new.area().select_entire_map().get_center()[0]),
+                location_y=int(self.scenario.new.area().select_entire_map().get_center()[1])
+            )
         third_flood_trigger.new_effect.display_instructions(
             message="The dams have collapsed, the flooding is inevitable!! Flee to higher ground immediately!!",
             display_time=30,
             source_player=PlayerId.GAIA,
-            object_list_unit_id=BuildingInfo.BARRICADE_A.ID,
-            sound_name="third_flood"
+            object_list_unit_id=BuildingInfo.BARRICADE_A.ID
         )
+        for player in self.player_list:
+            third_flood_trigger.new_effect.play_sound(
+                source_player=player,
+                sound_name="third_flood",
+                global_sound=True,
+                location_x=int(self.scenario.new.area().select_entire_map().get_center()[0]),
+                location_y=int(self.scenario.new.area().select_entire_map().get_center()[1])
+            )
         third_flood_trigger.new_effect.script_call(message="buildings_on_land_no_beach();")
         first_flood_trigger.new_effect.modify_attribute(
             source_player=PlayerId.GAIA,

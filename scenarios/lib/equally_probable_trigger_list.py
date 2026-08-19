@@ -1,4 +1,3 @@
-from AoE2ScenarioParser.datasets.players import PlayerId
 from AoE2ScenarioParser.objects.managers.trigger_manager import TriggerManager
 
 
@@ -8,7 +7,7 @@ class EquallyProbableTriggerList:
         self.target_trigger_list = target_trigger_list
         self.trigger_name = trigger_name
         self.probability_trigger_list = []
-        self.enable_probability_trigger = self.trigger_manager.add_trigger("Enable Random Probability", enabled=False)
+        self.enable_probability_trigger = self.trigger_manager.add_trigger(f"Random Enabler {trigger_name} ", enabled=False)
         self.__create_probability_triggers()
 
     def __create_probability_triggers(self):
@@ -27,3 +26,15 @@ class EquallyProbableTriggerList:
 
         for trigger in self.probability_trigger_list:
             self.enable_probability_trigger.new_effect.activate_trigger(trigger_id=trigger.trigger_id)
+
+
+class FastEquallyProbableTriggerList:
+    def __init__(self, trigger_manager, target_trigger_list):
+        self.trigger_manager: TriggerManager = trigger_manager
+        self.target_trigger_list = target_trigger_list
+
+        for i, trigger in enumerate(self.target_trigger_list):
+            chance = round(1 / (len(self.target_trigger_list) - i) * 100)
+            trigger.new_condition.chance(chance)
+            for trigger_b in self.target_trigger_list:
+                trigger.new_effect.deactivate_trigger(trigger_id=trigger_b.trigger_id)

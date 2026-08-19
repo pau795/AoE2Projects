@@ -10,7 +10,7 @@ class WestTrainFactory:
         self.scenario = scenario
         self.train_player = train_player
         module_dir = Path(__file__).parent
-        xs_file = module_dir / "xs/west_train.xs"
+        xs_file = module_dir / "xs/templates/west_train.xs"
         parametrized_xs = parametrize_xs(xs_file, {"train_player": str(train_player)})
         self.scenario.xs_manager.add_script(xs_string=parametrized_xs)
 

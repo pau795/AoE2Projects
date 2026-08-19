@@ -27,7 +27,7 @@ class TwisterFactory:
 
     def twister_stats(self):
         module_dir = Path(__file__).parent
-        xs_file = module_dir / "xs/twister.xs"
+        xs_file = module_dir / "xs/templates/twister.xs"
         self.scenario.xs_manager.add_script(xs_file_path=str(xs_file))
 
     def twister_sound(self):

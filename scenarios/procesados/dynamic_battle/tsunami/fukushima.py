@@ -4,21 +4,34 @@ from AoE2ScenarioParser.datasets.trigger_lists import ObjectAttribute, Operation
 
 from scenarios.lib.parser_project import ParserProject
 from scenarios.lib.civ_settings import CivSettings
+from scenarios.lib.random_spawn import RandomSpawn
 from scenarios.lib.tsunami_factory import TsunamiFactory
 
 
 class Fukushima(ParserProject):
+    RS_ZONE_RELATION = {
+        PlayerId.ONE: {
+            "zone1": {
+                PlayerId.TWO: "zone2",
+            },
+            "zone2": {
+                PlayerId.TWO: "zone1",
+            },
+        }
+    }
 
     def __init__(self, input_scenario_name: str, output_scenario_name: str):
         super().__init__(input_scenario_name, output_scenario_name)
-        data_triggers = self.scenario.actions.load_data_triggers()
-        self.left_tsunami_tiles = data_triggers.tiles['left_tsunami']
-        self.right_tsunami_tiles = data_triggers.tiles['right_tsunami']
-        self.diagonal_tsunami_tiles = data_triggers.tiles['diagonal_tsunami']
+        self.data_triggers = self.scenario.actions.load_data_triggers()
+        self.left_tsunami_tiles = self.data_triggers.tiles['left_tsunami']
+        self.right_tsunami_tiles = self.data_triggers.tiles['right_tsunami']
+        self.diagonal_tsunami_tiles = self.data_triggers.tiles['diagonal_tsunami']
         self.player_list = [PlayerId.ONE, PlayerId.TWO]
         self.trigger_manager = self.scenario.trigger_manager
 
     def process(self):
+        RandomSpawn(self.scenario, self.data_triggers, self.player_list, self.RS_ZONE_RELATION)
+        CivSettings(self.scenario, self.player_list)
         tsunami_factory = TsunamiFactory(
             scenario=self.scenario,
             tsunami_sound_name='sirena60',
@@ -53,7 +66,6 @@ class Fukushima(ParserProject):
             tsunami_periods=[1200],
             display_sound=True
         )
-        CivSettings(self.scenario, self.player_list)
         self.trees()
 
     def trees(self):

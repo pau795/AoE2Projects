@@ -62,11 +62,18 @@ class EarthquakeFactory:
         cracks.new_effect.display_instructions(
             object_list_unit_id=OtherInfo.STONE_MINE.ID,
             source_player=PlayerId.GAIA,
-            sound_name=self.crack_sound,
             message="The ground breaks up!",
             display_time=20,
             instruction_panel_position=PanelLocation.BOTTOM
         )
+        for player in self.player_list:
+            cracks.new_effect.play_sound(
+                source_player=player,
+                sound_name=self.crack_sound,
+                global_sound=True,
+                location_x=int(self.scenario.new.area().select_entire_map().get_center()[0]),
+                location_y=int(self.scenario.new.area().select_entire_map().get_center()[1])
+            )
         cracks.new_effect.activate_trigger(
             trigger_id=crack_warning_duration.trigger_id
         )
@@ -83,6 +90,14 @@ class EarthquakeFactory:
             display_time=20,
             instruction_panel_position=PanelLocation.BOTTOM
         )
+        for player in self.player_list:
+            crack_warning_duration.new_effect.play_sound(
+                source_player=player,
+                sound_name=self.earthquake_sound,
+                global_sound=True,
+                location_x=int(self.scenario.new.area().select_entire_map().get_center()[0]),
+                location_y=int(self.scenario.new.area().select_entire_map().get_center()[1])
+            )
         crack_warning_duration.new_effect.activate_trigger(
             trigger_id=earthquake_damage.trigger_id
         )

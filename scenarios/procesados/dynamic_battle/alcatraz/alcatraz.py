@@ -13,6 +13,7 @@ from scenarios.lib.cave_factory import CaveFactory
 from scenarios.lib.civ_settings import CivSettings
 from scenarios.lib.equally_probable_trigger_list import EquallyProbableTriggerList
 from scenarios.lib.parser_project import ParserProject
+from scenarios.lib.random_spawn import RandomSpawn
 
 
 class Alcatraz(ParserProject):
@@ -23,6 +24,17 @@ class Alcatraz(ParserProject):
     SEA_WALL = BuildingInfo.SEA_WALL.ID
     CITY_WALL = BuildingInfo.CITY_WALL.ID
     FORTIFIED_PALISADE_WALL = BuildingInfo.FORTIFIED_PALISADE_WALL.ID
+
+    RS_ZONE_RELATION = {
+        PlayerId.ONE: {
+            "zone1": {
+                PlayerId.TWO: "zone2",
+            },
+            "zone2": {
+                PlayerId.TWO: "zone1",
+            },
+        }
+    }
 
     def __init__(self, input_scenario_name: str, output_scenario_name: str):
         super().__init__(input_scenario_name, output_scenario_name)
@@ -241,6 +253,7 @@ class Alcatraz(ParserProject):
         return walls_phase_1
 
     def process(self):
+        RandomSpawn(self.scenario, self.data_triggers, self.player_list, self.RS_ZONE_RELATION)
         CivSettings(self.scenario, self.player_list)
         self.initial_settings()
         self.setup_bridges()

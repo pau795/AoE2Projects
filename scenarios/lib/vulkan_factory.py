@@ -130,11 +130,18 @@ class VulkanFactory:
         road_aux_units.new_effect.display_instructions(
             object_list_unit_id=OtherInfo.STONE_MINE.ID,
             source_player=PlayerId.GAIA,
-            sound_name=self.volcan_sound,
             message="The lava is rising!",
             display_time=20,
             instruction_panel_position=PanelLocation.TOP
         )
+        for player in self.player_list:
+            road_aux_units.new_effect.play_sound(
+                source_player=player,
+                sound_name=self.volcan_sound,
+                global_sound=True,
+                location_x=int(self.scenario.new.area().select_entire_map().get_center()[0]),
+                location_y=int(self.scenario.new.area().select_entire_map().get_center()[1])
+            )
 
         farm_aux_units.new_effect.remove_object(
             source_player=PlayerId.GAIA,
@@ -147,10 +154,17 @@ class VulkanFactory:
         farm_aux_units.new_effect.display_instructions(
             object_list_unit_id=OtherInfo.STONE_MINE.ID,
             source_player=PlayerId.GAIA,
-            sound_name=self.volcan_sound,
             display_time=20,
             instruction_panel_position=PanelLocation.TOP
         )
+        for player in self.player_list:
+            farm_aux_units.new_effect.play_sound(
+                source_player=player,
+                sound_name=self.volcan_sound,
+                global_sound=True,
+                location_x=int(self.scenario.new.area().select_entire_map().get_center()[0]),
+                location_y=int(self.scenario.new.area().select_entire_map().get_center()[1])
+            )
 
         road_aux_units.new_effect.activate_trigger(
             trigger_id=road_lava_damage.trigger_id

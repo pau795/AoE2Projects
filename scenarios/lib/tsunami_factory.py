@@ -211,11 +211,18 @@ class TsunamiFactory:
             first_wave.new_effect.display_instructions(
                 object_list_unit_id=UnitInfo.GALLEON.ID,
                 source_player=PlayerId.GAIA,
-                sound_name=self.tsunami_sound_name,
                 message="The Tsunami is coming!",
                 display_time=30,
                 instruction_panel_position=PanelLocation.MIDDLE
             )
+            for player in self.player_list:
+                first_wave.new_effect.play_sound(
+                    source_player=player,
+                    sound_name=self.tsunami_sound_name,
+                    global_sound=True,
+                    location_x=int(self.scenario.new.area().select_entire_map().get_center()[0]),
+                    location_y=int(self.scenario.new.area().select_entire_map().get_center()[1])
+                )
         second_wave.new_condition.timer(wave_delay)
         second_wave.new_effect.activate_trigger(create_tsunami.trigger_id)
         third_wave.new_condition.timer(wave_delay * 2)
