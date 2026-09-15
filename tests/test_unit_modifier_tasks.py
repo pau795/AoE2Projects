@@ -1,7 +1,7 @@
 import unittest
 from dataclasses import fields
 
-from AoE2ScenarioParser.datasets.trigger_lists import ObjectAttribute
+from AoE2ScenarioParser.datasets.trigger_lists import ObjectAttribute, Operation
 
 from scenarios.lib.unit_modifier import UnitModifier
 from scenarios.lib.xs import xs_constants
@@ -28,7 +28,14 @@ from scenarios.lib.xs.unit_tasks import (
     UnitRefundTask,
     XsConstant,
 )
-from scenarios.lib.xs.xs_constants import XsConstantAttribute, XsConstantColor, XsConstantTaskAttribute, XsConstantTaskType
+from scenarios.lib.xs.xs_constants import (
+    XsConstantAttribute,
+    XsConstantColor,
+    XsConstantDamageClass,
+    XsConstantEffectAmount,
+    XsConstantTaskAttribute,
+    XsConstantTaskType,
+)
 
 
 class _FakeNewEffect:
@@ -101,6 +108,7 @@ class UnitTaskTests(unittest.TestCase):
     def test_task_class_docstrings_document_every_constructor_field(self) -> None:
         task_classes = [
             GarrisonTask,
+            CombatTask,
             FlyTask,
             BuildTask,
             ConvertTask,
@@ -305,6 +313,99 @@ class UnitModifierTaskTests(unittest.TestCase):
         self.assertEqual(5, call["armour_attack_quantity"])
         self.assertEqual(3, call["armour_attack_class"])
         self.assertEqual([], scenario.xs_manager.scripts)
+
+    def test_xs_attributes_and_tasks_share_one_function_and_script_call(self) -> None:
+        scenario = _FakeScenario()
+
+        (
+            UnitModifier(scenario, 629, 1)
+            .modify_attribute_xs(ObjectAttribute.HIT_POINTS, Operation.SET, 250)
+            .add_task(GarrisonTask())
+            .create_triggers()
+        )
+
+        self.assertEqual(1, len(scenario.xs_manager.scripts))
+        script = scenario.xs_manager.scripts[0]["xs_string"]
+        self.assertIn("xsEffectAmount(cSetAttribute, 629, 0, 250, 1);", script)
+        self.assertIn("xsModifyObjectTasks(629, 1, xsGetObjectTaskCount(629, 1));", script)
+        self.assertEqual(
+            [{"message": "unit_modifier_tasks_0();"}],
+            scenario.trigger_manager.triggers[0].new_effect.script_call_calls,
+        )
+
+    def test_xs_attribute_operations_and_attack_class_encoding(self) -> None:
+        scenario = _FakeScenario()
+
+        (
+            UnitModifier(scenario, 4, 2)
+            .modify_attribute_xs(ObjectAttribute.MOVEMENT_SPEED, Operation.SUBTRACT, 0.25)
+            .modify_attribute_xs(ObjectAttribute.ATTACK, Operation.ADD, 500, armor_attack_class=3)
+            .create_triggers()
+        )
+
+        script = scenario.xs_manager.scripts[0]["xs_string"]
+        self.assertIn("xsEffectAmount(cAddAttribute, 4, 5, -0.25, 2);", script)
+        self.assertEqual(2, script.count("xsEffectAmount(cAddAttribute, 4, 9,"))
+        self.assertIn("xsEffectAmount(cAddAttribute, 4, 9, 1023, 2);", script)
+        self.assertIn("xsEffectAmount(cAddAttribute, 4, 9, 1013, 2);", script)
+
+    def test_xs_attack_and_armor_require_a_class(self) -> None:
+        scenario = _FakeScenario()
+        modifier = UnitModifier(scenario, 4, 1).modify_attribute_xs(
+            ObjectAttribute.ATTACK,
+            Operation.SET,
+            5,
+        )
+
+        with self.assertRaises(ValueError):
+            modifier.create_triggers()
+
+    def test_xs_attack_and_armor_reject_multiply_and_divide(self) -> None:
+        for operation in (Operation.MULTIPLY, Operation.DIVIDE):
+            with self.subTest(operation=operation):
+                scenario = _FakeScenario()
+                modifier = UnitModifier(scenario, 4, 1).modify_attribute_xs(
+                    ObjectAttribute.ATTACK,
+                    operation,
+                    2,
+                    armor_attack_class=3,
+                )
+
+                with self.assertRaises(ValueError):
+                    modifier.create_triggers()
+
+    def test_xs_constants_are_preserved_as_symbolic_expressions(self) -> None:
+        scenario = _FakeScenario()
+
+        (
+            UnitModifier(scenario, 4, 1)
+            .modify_attribute_xs(
+                XsConstantEffectAmount.ATTACK,
+                XsConstantEffectAmount.SET_ATTRIBUTE,
+                500,
+                XsConstantDamageClass.MELEE,
+            )
+            .modify_attribute_xs(
+                XsConstantEffectAmount.MOVEMENT_SPEED,
+                XsConstantEffectAmount.ADD_ATTRIBUTE,
+                XsConstant("cCustomSpeed"),
+            )
+            .create_triggers()
+        )
+
+        script = scenario.xs_manager.scripts[0]["xs_string"]
+        self.assertIn(
+            "xsEffectAmount(cSetAttribute, 4, cAttack, cDamageClassMelee * 256 + 255, 1);",
+            script,
+        )
+        self.assertIn(
+            "xsEffectAmount(cAddAttribute, 4, cAttack, cDamageClassMelee * 256 + 245, 1);",
+            script,
+        )
+        self.assertIn(
+            "xsEffectAmount(cAddAttribute, 4, cMovementSpeed, cCustomSpeed, 1);",
+            script,
+        )
 
     def test_task_indices_must_be_valid_and_unique(self) -> None:
         scenario = _FakeScenario()

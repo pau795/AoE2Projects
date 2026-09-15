@@ -294,6 +294,7 @@ class Plague(ParserProject):
 if __name__ == "__main__":
     plaga = Plague(
         input_scenario_name='EDIT_PLAGUE_1V1',
-        output_scenario_name='OUTPUT_PLAGUE_1V1',
+        # output_scenario_name='OUTPUT_PLAGUE_1V1',
+        output_scenario_name='DEBUG_PLAGUE',
     )
     plaga.convert()

@@ -41,7 +41,7 @@ class ThunderDunesDat(DatFile):
     def set_fast_smoke(self, graphic_id: int, smoke_particle: str):
         graphic = self.dat_file.graphics[graphic_id]
         graphic.particle_effect_name = smoke_particle
-        graphic.layer = 20
+        graphic.layer = 30
         graphic.transparent_selection = 1
         graphic.replay_delay = 0
         graphic.frame_count = 1

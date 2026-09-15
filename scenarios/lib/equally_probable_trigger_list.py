@@ -38,3 +38,4 @@ class FastEquallyProbableTriggerList:
             trigger.new_condition.chance(chance)
             for trigger_b in self.target_trigger_list:
                 trigger.new_effect.deactivate_trigger(trigger_id=trigger_b.trigger_id)
+                    

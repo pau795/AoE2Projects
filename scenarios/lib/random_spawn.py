@@ -52,7 +52,7 @@ class RandomSpawn:
         for source_player, player_zones in self.zone_relation.items():
             zone_activation_triggers = []
             for source_zone, target_player_zones in player_zones.items():
-                activation_triggers = self.trigger_manager.add_trigger(f"Activate P{source_player} {source_zone}", enabled=True, execute_on_load=True)
+                activation_triggers = self.trigger_manager.add_trigger(f"Activate P{source_player} {source_zone}", enabled=True, execute_on_load=False)
                 for trigger in player_zone_dict[source_player][source_zone]:
                     activation_triggers.new_effect.activate_trigger(trigger.trigger_id)
                 for target_player, target_zone in target_player_zones.items():
@@ -83,6 +83,7 @@ class RandomSpawn:
                 source_player=player
             )
 
+            delete_horses.new_condition.timer(2)
             delete_horses.new_effect.remove_object(
                 source_player=player,
                 object_list_unit_id=UnitInfo.HORSE_A.ID

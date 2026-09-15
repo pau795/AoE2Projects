@@ -202,6 +202,32 @@ class GarrisonTask(UnitTask):
 
 
 @dataclass(frozen=True, kw_only=True)
+class CombatTask(UnitTask):
+    """Allow the modified unit to combat selected objects or classes."""
+
+    XS_TASK_TYPE: ClassVar[XsConstant] = XsConstantTaskType.COMBAT
+    Ownership: ClassVar[type[TargetOwnership]] = TargetOwnership
+
+    work_value_1: int = 0
+    work_value_2: int = 0
+    work_range: int = 0
+    search_wait_time: int = 3
+    combat_level_flag: int = 1
+    # Ownership relationships that are valid targets; see GarrisonTask.Ownership.
+    target_ownership: TargetOwnership | int = -1
+
+    def task_attributes(self) -> tuple[tuple[str, XsValue], ...]:
+        return (
+            (XsConstantTaskAttribute.WORK_VALUE_1, self.work_value_1),
+            (XsConstantTaskAttribute.WORK_VALUE_2, self.work_value_2),
+            (XsConstantTaskAttribute.WORK_RANGE, self.work_range),
+            (XsConstantTaskAttribute.SEARCH_WAIT_TIME, self.search_wait_time),
+            (XsConstantTaskAttribute.COMBAT_LEVEL_FLAG, self.combat_level_flag),
+            (XsConstantTaskAttribute.OWNER_TYPE, self.target_ownership),
+        )
+
+
+@dataclass(frozen=True, kw_only=True)
 class FlyTask(UnitTask):
     """Configure autonomous flying/roaming behavior.
 
@@ -949,6 +975,7 @@ __all__ = [
     "BuildTask",
     "ConvertTask",
     "DepositUnitTask",
+    "CombatTask",
     "FlyTask",
     "FlyOwnershipMode",
     "GarrisonTask",

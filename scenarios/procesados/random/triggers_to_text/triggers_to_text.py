@@ -13,7 +13,7 @@ class TriggersToText(ParserProject):
 
 
 if __name__ == '__main__':
-    scenario_name = 'the age of clash royale'
+    scenario_name = 'Comneno - La restauración bizantina'
     triggers_to_text = TriggersToText(
         input_scenario_name=scenario_name,
         output_file_name=f'triggers_{scenario_name}'
