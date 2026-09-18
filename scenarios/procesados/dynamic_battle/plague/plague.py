@@ -44,7 +44,7 @@ class Plague(ParserProject):
 
     def process(self):
         RandomSpawn(self.scenario, self.data_triggers, self.player_list, self.RS_ZONE_RELATION)
-        CivSettings(self.scenario, self.player_list)
+        CivSettings(self.scenario, self.player_list, delay=2)
         self.karambit_stats()
         plague_pond_list = []
         for tile in self.data_triggers.tiles["plague_ponds"]:
@@ -294,7 +294,6 @@ class Plague(ParserProject):
 if __name__ == "__main__":
     plaga = Plague(
         input_scenario_name='EDIT_PLAGUE_1V1',
-        # output_scenario_name='OUTPUT_PLAGUE_1V1',
-        output_scenario_name='DEBUG_PLAGUE',
+        output_scenario_name='OUTPUT_PLAGUE_1V1'
     )
     plaga.convert()

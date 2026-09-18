@@ -51,7 +51,7 @@ class EnchantedForest(ParserProject):
 
     def process(self):
         RandomSpawn(self.scenario, self.data_triggers, self.player_list, self.RS_ZONE_RELATION)
-        CivSettings(self.scenario, self.player_list)
+        CivSettings(self.scenario, self.player_list, delay=2)
         self.stats()
         for i, (key, areas) in enumerate(self.data_triggers.areas.items()):
             first_way = self.move_trees(areas[0], areas[1])

@@ -46,7 +46,7 @@ class ThreeGorges(ParserProject):
 
     def process(self):
         RandomSpawn(self.scenario, self.data_triggers, self.player_list, self.RS_ZONE_RELATION)
-        CivSettings(self.scenario, self.player_list)
+        CivSettings(self.scenario, self.player_list, delay=2)
         layers_scenario = self.load_scenario(f'{self.input_scenario_name}_LAYERS')
         for tile in layers_scenario.new.area().select_entire_map().to_coords(as_terrain=True):
             if tile.layer in self.flood_layers:

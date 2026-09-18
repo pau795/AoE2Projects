@@ -8,8 +8,11 @@ from AoE2ScenarioParser.datasets.units import UnitInfo
 from AoE2ScenarioParser.objects.data_objects.trigger import Trigger
 from AoE2ScenarioParser.objects.support.area import Area
 from AoE2ScenarioParser.objects.support.tile import Tile
+
+from scenarios.lib.civ_settings import CivSettings
 from scenarios.lib.equally_probable_trigger_list import EquallyProbableTriggerList
 from scenarios.lib.parser_project import ParserProject
+from scenarios.lib.random_spawn import RandomSpawn
 from scenarios.lib.unit_modifier import UnitModifier
 from scenarios.lib.xs.unit_tasks import TaskTargets, AuraTask
 from scenarios.lib.xs.xs_constants import XsConstantEffectAmount, XsConstantObjectClass
@@ -26,12 +29,10 @@ class Avalanche(ParserProject):
     AVALANCHE_SOUNDS = ["avalanche_1", "avalanche_2", "avalanche_3"]
     RS_ZONE_RELATION = {
         PlayerId.ONE: {
-            "zone1": {
-                PlayerId.TWO: "zone2",
-            },
-            "zone2": {
-                PlayerId.TWO: "zone1",
-            },
+            "zone1": {PlayerId.TWO: ["zone2", "zone3", "zone4"]},
+            "zone2": {PlayerId.TWO: ["zone1", "zone3", "zone4"]},
+            "zone3": {PlayerId.TWO: ["zone1", "zone2", "zone4"]},
+            "zone4": {PlayerId.TWO: ["zone1", "zone2", "zone3"]},
         }
     }
 
@@ -375,6 +376,8 @@ class Avalanche(ParserProject):
         self.unit_stats()
         self.tree_killer()
         self.stop_avalanches()
+        RandomSpawn(self.scenario, self.data_triggers, self.player_list, self.RS_ZONE_RELATION)
+        CivSettings(self.scenario, self.player_list, delay=2)
         top_corners = self.data_triggers.tiles['top_corners']
         left_corners = self.data_triggers.tiles['left_corners']
         right_corners = self.data_triggers.tiles['right_corners']

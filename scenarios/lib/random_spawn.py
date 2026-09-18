@@ -15,10 +15,10 @@ class RandomSpawn:
         self.trigger_manager = scenario.trigger_manager
         self.data_triggers = data_triggers
         self.player_list = player_list
-        self.zone_relation = zone_relation
 
         zone_dict = self._get_zone_dict()
         self._check_zone_dict_sanity(zone_dict)
+        self.zone_relation = self._normalize_zone_relation(zone_relation, player_list, zone_dict)
 
         player_zone_dict = {}
         for player in self.player_list:
@@ -55,9 +55,20 @@ class RandomSpawn:
                 activation_triggers = self.trigger_manager.add_trigger(f"Activate P{source_player} {source_zone}", enabled=True, execute_on_load=False)
                 for trigger in player_zone_dict[source_player][source_zone]:
                     activation_triggers.new_effect.activate_trigger(trigger.trigger_id)
-                for target_player, target_zone in target_player_zones.items():
-                    for trigger in player_zone_dict[target_player][target_zone]:
-                        activation_triggers.new_effect.activate_trigger(trigger.trigger_id)
+                for target_player, target_zones in target_player_zones.items():
+                    target_zone_activation_triggers = []
+                    for target_zone in target_zones:
+                        target_activation_trigger = self.trigger_manager.add_trigger(
+                            f"Activate P{target_player} {target_zone} for "
+                            f"P{source_player} {source_zone}",
+                            enabled=False,
+                            execute_on_load=False,
+                        )
+                        for trigger in player_zone_dict[target_player][target_zone]:
+                            target_activation_trigger.new_effect.activate_trigger(trigger.trigger_id)
+                        target_zone_activation_triggers.append(target_activation_trigger)
+                        activation_triggers.new_effect.activate_trigger(target_activation_trigger.trigger_id)
+                    FastEquallyProbableTriggerList(self.trigger_manager, target_zone_activation_triggers)
                 zone_activation_triggers.append(activation_triggers)
             FastEquallyProbableTriggerList(self.trigger_manager, zone_activation_triggers)
         for key, unit_list in self.data_triggers.objects.items():
@@ -183,6 +194,112 @@ class RandomSpawn:
             raise ValueError("Invalid RS objects:\n" + "\n".join(f"- {error}" for error in errors))
 
     @staticmethod
+    def _normalize_zone_relation(zone_relation: dict, player_list: list, zone_dict: dict) -> dict:
+        """Validate a zone relation and normalize legacy single-zone values to lists."""
+        if not isinstance(zone_relation, dict) or not zone_relation:
+            raise ValueError("zone_relation must be a non-empty dictionary")
+
+        errors = []
+        normalized_relation = {}
+        known_players = set(player_list)
+        known_zones = set(zone_dict)
+
+        for source_player, player_zones in zone_relation.items():
+            if source_player not in known_players:
+                errors.append(f"source player {source_player} is not in player_list")
+            if not isinstance(player_zones, dict):
+                errors.append(f"zones for source player {source_player} must be a dictionary")
+                continue
+
+            missing_source_zones = sorted(known_zones - set(player_zones))
+            unknown_source_zones = sorted(set(player_zones) - known_zones)
+            if missing_source_zones:
+                errors.append(
+                    f"source player {source_player} is missing zones: {missing_source_zones}"
+                )
+            if unknown_source_zones:
+                errors.append(
+                    f"source player {source_player} has unknown zones: {unknown_source_zones}"
+                )
+
+            normalized_relation[source_player] = {}
+            for source_zone, target_player_zones in player_zones.items():
+                if not isinstance(target_player_zones, dict) or not target_player_zones:
+                    errors.append(
+                        f"targets for source player {source_player} zone {source_zone} "
+                        "must be a non-empty dictionary"
+                    )
+                    continue
+
+                normalized_relation[source_player][source_zone] = {}
+                for target_player, target_zones in target_player_zones.items():
+                    if target_player not in known_players:
+                        errors.append(f"target player {target_player} is not in player_list")
+                    if target_player == source_player:
+                        errors.append(
+                            f"source player {source_player} cannot also be a target player"
+                        )
+
+                    # Keep the old two-zone relation format working while making the
+                    # internal representation consistently list-based.
+                    if isinstance(target_zones, str):
+                        target_zones = [target_zones]
+                    elif not isinstance(target_zones, list):
+                        errors.append(
+                            f"target zones for player {target_player} from {source_zone} "
+                            "must be a list"
+                        )
+                        continue
+
+                    if not target_zones:
+                        errors.append(
+                            f"target zones for player {target_player} from {source_zone} "
+                            "cannot be empty"
+                        )
+                        continue
+                    if any(not isinstance(zone, str) for zone in target_zones):
+                        errors.append(
+                            f"target zones for player {target_player} from {source_zone} "
+                            "must contain only zone names"
+                        )
+                        continue
+
+                    duplicate_zones = sorted(
+                        zone for zone, count in Counter(target_zones).items() if count > 1
+                    )
+                    unknown_target_zones = sorted(set(target_zones) - known_zones)
+                    if duplicate_zones:
+                        errors.append(
+                            f"target zones for player {target_player} from {source_zone} "
+                            f"contain duplicates: {duplicate_zones}"
+                        )
+                    if unknown_target_zones:
+                        errors.append(
+                            f"target player {target_player} has unknown zones: "
+                            f"{unknown_target_zones}"
+                        )
+                    if source_zone in target_zones:
+                        errors.append(
+                            f"target player {target_player} cannot use source zone {source_zone}"
+                        )
+                    elif source_zone in known_zones:
+                        missing_remaining_zones = sorted(
+                            (known_zones - {source_zone}) - set(target_zones)
+                        )
+                        if missing_remaining_zones:
+                            errors.append(
+                                f"target player {target_player} from {source_zone} is missing "
+                                f"remaining zones: {missing_remaining_zones}"
+                            )
+
+                    normalized_relation[source_player][source_zone][target_player] = list(target_zones)
+
+        if errors:
+            raise ValueError("Invalid zone_relation:\n" + "\n".join(f"- {error}" for error in errors))
+
+        return normalized_relation
+
+    @staticmethod
     def _format_signature(signature: tuple) -> str:
         unit_list_count, unit_list_lengths_counter, unit_const_counter = signature
         return (
@@ -190,6 +307,4 @@ class RandomSpawn:
             f"lengths={dict(sorted(unit_list_lengths_counter.items()))}, "
             f"unit_consts={dict(sorted(unit_const_counter.items()))}"
         )
-
-
 

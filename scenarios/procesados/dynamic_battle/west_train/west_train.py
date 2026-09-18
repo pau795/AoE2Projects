@@ -26,7 +26,7 @@ class WestTrain(ParserProject):
 
     def process(self):
         RandomSpawn(self.scenario, self.data_triggers, self.player_list, self.RS_ZONE_RELATION)
-        CivSettings(self.scenario, self.player_list)
+        CivSettings(self.scenario, self.player_list, delay=2)
         WestTrainFactory(self.scenario, train_player=PlayerId.THREE)
 
 
