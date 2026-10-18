@@ -46,7 +46,7 @@ class RandomSpawn:
                                     )
 
                         resource_trigger_list.append(create_object)
-                    FastEquallyProbableTriggerList(self.trigger_manager, resource_trigger_list)
+                    FastEquallyProbableTriggerList(resource_trigger_list)
                     zone_triggers.extend(resource_trigger_list)
                 player_zone_dict[player][zone] = zone_triggers
         for source_player, player_zones in self.zone_relation.items():
@@ -68,9 +68,9 @@ class RandomSpawn:
                             target_activation_trigger.new_effect.activate_trigger(trigger.trigger_id)
                         target_zone_activation_triggers.append(target_activation_trigger)
                         activation_triggers.new_effect.activate_trigger(target_activation_trigger.trigger_id)
-                    FastEquallyProbableTriggerList(self.trigger_manager, target_zone_activation_triggers)
+                    FastEquallyProbableTriggerList(target_zone_activation_triggers)
                 zone_activation_triggers.append(activation_triggers)
-            FastEquallyProbableTriggerList(self.trigger_manager, zone_activation_triggers)
+            FastEquallyProbableTriggerList(zone_activation_triggers)
         for key, unit_list in self.data_triggers.objects.items():
             if key.startswith("RS_"):
                 for unit in unit_list:

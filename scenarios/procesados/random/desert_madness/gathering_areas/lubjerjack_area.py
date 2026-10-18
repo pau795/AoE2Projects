@@ -166,7 +166,7 @@ class LumberjackArea:
             area_y1=self.tree_tile.y,
             area_x2=self.tree_tile.x,
             area_y2=self.tree_tile.y,
-            object_state=ObjectState.RESOURCE,
+            object_state=ObjectState.DEAD,
             quantity=1
         )
         tree_check_resource.new_effect.activate_trigger(
@@ -210,7 +210,7 @@ class LumberjackArea:
             area_y1=self.tree_tile.y,
             area_x2=self.tree_tile.x,
             area_y2=self.tree_tile.y,
-            object_state=ObjectState.RESOURCE
+            object_state=ObjectState.DEAD
         )
         timer_tree.new_effect.remove_object(
             object_list_unit_id=OtherInfo.TREE_D.ID,

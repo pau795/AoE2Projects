@@ -3,7 +3,7 @@ from dataclasses import fields
 
 from AoE2ScenarioParser.datasets.trigger_lists import ObjectAttribute, Operation
 
-from scenarios.lib.unit_modifier import UnitModifier
+from scenarios.lib.unit_modifier import ProjectileSmartFlags, UnitModifier
 from scenarios.lib.xs import xs_constants
 from scenarios.lib.xs.unit_tasks import (
     AdditionalSpawnTask,
@@ -11,12 +11,17 @@ from scenarios.lib.xs.unit_tasks import (
     AuraFlags,
     AuraTask,
     BuildTask,
+    ClassFilterFlags,
+    CombatTask,
     ConvertTask,
     DepositUnitTask,
+    DropOffBonusTask,
     FlyTask,
     GarrisonTask,
+    GatherTask,
     GenerateResourcesTask,
     HealTask,
+    HuntTask,
     HPDamageModifierTask,
     HPTransformationTask,
     LootTask,
@@ -35,6 +40,8 @@ from scenarios.lib.xs.xs_constants import (
     XsConstantEffectAmount,
     XsConstantTaskAttribute,
     XsConstantTaskType,
+    XsConstantObjectClass,
+    XsConstantClassFlag,
 )
 
 
@@ -93,8 +100,8 @@ class UnitTaskTests(unittest.TestCase):
             for value in vars(getattr(xs_constants, category_name)).values()
         )
 
-        self.assertEqual(21, len(category_names))
-        self.assertEqual(878, constant_count)
+        self.assertEqual(39, len(category_names))
+        self.assertEqual(1175, constant_count)
         self.assertEqual("cAttributeFood", XsConstantAttribute.FOOD)
         self.assertEqual(0, XsConstantAttribute.FOOD.value)
         self.assertEqual("int", XsConstantAttribute.FOOD.xs_type)
@@ -108,6 +115,9 @@ class UnitTaskTests(unittest.TestCase):
     def test_task_class_docstrings_document_every_constructor_field(self) -> None:
         task_classes = [
             GarrisonTask,
+            GatherTask,
+            HuntTask,
+            DropOffBonusTask,
             CombatTask,
             FlyTask,
             BuildTask,
@@ -234,8 +244,163 @@ class UnitTaskTests(unittest.TestCase):
             class_targets.xs_lines_for_target(0),
         )
 
+    def test_update_185872_constants_cover_every_new_object_attribute(self) -> None:
+        attributes = {
+            constant.value: constant.name
+            for constant in vars(XsConstantEffectAmount).values()
+            if isinstance(constant, XsConstant)
+            and isinstance(constant.value, int) and 167 <= constant.value <= 221
+        }
+        self.assertEqual(set(range(167, 222)), set(attributes))
+        self.assertEqual("cBuildAndGoAway", attributes[167])
+        self.assertEqual("cAnnexUnit4OffsetY", attributes[217])
+        self.assertEqual("cGatherFlag", attributes[221])
+        self.assertEqual(164, XsConstantTaskType.ADDITIONAL_RESOURCE.value)
+        self.assertEqual(166, XsConstantEffectAmount.UNDEAD_FLAG.value)
+        self.assertEqual(18, XsConstantAttribute.CIV_VOICE_OVERRIDE.value)
+        self.assertEqual(62, xs_constants.XsConstantCivilization.NUM_CIVS.value)
+        self.assertEqual(968, XsConstantObjectClass.SENTINEL_END_CLASS.value)
+
+    def test_class_filters_combine_groups_in_one_target(self) -> None:
+        targets = TaskTargets.class_filter(ClassFilterFlags.INFANTRY | ClassFilterFlags.ARCHERS)
+        self.assertEqual(1, targets.task_count)
+        self.assertEqual(
+            ["xsTaskAmount(cTaskAttrObjectId, -1);", "xsTaskAmount(cTaskAttrObjectClass, 1005);"],
+            targets.xs_lines_for_target(0),
+        )
+        excluded = TaskTargets.class_filter(ClassFilterFlags.BUILDINGS, exclude=True)
+        self.assertIn(
+            "xsTaskAmount(cTaskAttrObjectClass, cFlagClassRemoval * (1256));",
+            excluded.xs_lines_for_target(0),
+        )
+        self.assertEqual(1000, XsConstantClassFlag.OFFSET.value)
+        for invalid in (0, -1, 512, 1.5, True):
+            with self.subTest(invalid=invalid), self.assertRaises(ValueError):
+                TaskTargets.class_filter(invalid)
+
+    def test_class_exclusions_preserve_symbols_and_support_archer_class_zero(self) -> None:
+        excluded = TaskTargets.excluding_class(XsConstantObjectClass.INFANTRY_CLASS)
+        self.assertIn(
+            "xsTaskAmount(cTaskAttrObjectClass, cFlagClassRemoval * (cInfantryClass));",
+            excluded.xs_lines_for_target(0),
+        )
+        self.assertEqual(
+            TaskTargets.excluding_class(0).xs_lines_for_target(0),
+            TaskTargets.excluding_class(900).xs_lines_for_target(0),
+        )
+        for invalid in (-1, 1000, 1.5, True, XsConstant("cUnknownClass")):
+            with self.subTest(invalid=invalid), self.assertRaises(ValueError):
+                TaskTargets.excluding_class(invalid)
+
+    def test_extended_class_filters_are_restricted_to_supported_tasks(self) -> None:
+        for targets in (
+            TaskTargets.class_filter(ClassFilterFlags.INFANTRY),
+            TaskTargets.excluding_class(XsConstantObjectClass.INFANTRY_CLASS),
+        ):
+            with self.subTest(targets=targets):
+                LootTask(affected_objects=targets)
+                AuraTask(modifier_value=1, effect_range=2, modified_attribute=9, affected_objects=targets)
+                StingerTask(modifier_value=1, effect_duration_seconds=5, modified_attribute=9,
+                            affected_objects=targets)
+                with self.assertRaises(ValueError):
+                    GarrisonTask(affected_objects=targets)
+
+    def test_generation_flags_preserve_passive_mode_and_combine_work_rate(self) -> None:
+        task = GenerateResourcesTask(
+            resource_amount=1, output_resource=3, productivity_resource=600,
+            passive_generation_flag=(GenerateResourcesTask.Mode.PASSIVE
+                                     | GenerateResourcesTask.Flags.WORK_RATE_MULTIPLIER),
+        )
+        self.assertIn("xsTaskAmount(cTaskAttrCombatLevelFlag, 6);", task.xs_setup_lines())
+
+    def test_stinger_ui_and_new_flags_render_for_new_attributes(self) -> None:
+        for attribute in (XsConstantEffectAmount.COMBAT_ABILITY,
+                          XsConstantEffectAmount.INVULNERABILITY_LEVEL,
+                          XsConstantEffectAmount.AREA_DAMAGE, XsConstantEffectAmount.BLAST_WIDTH):
+            with self.subTest(attribute=attribute):
+                task = StingerTask(
+                    modifier_value=1, effect_duration_seconds=5, modified_attribute=attribute,
+                    flags=(StingerTask.Flags.CHARGE_ATTACK_ONLY | StingerTask.Flags.SHOW_DURATION_BAR
+                           | StingerTask.Flags.SHOW_IN_UNIT_STATS),
+                    indicator_short_tooltip_id=12345, indicator_long_tooltip_id=12346, indicator_icon_id=98,
+                )
+                lines = task.xs_setup_lines()
+                self.assertIn("xsTaskAmount(cTaskAttrCombatLevelFlag, 28);", lines)
+                self.assertIn(f"xsTaskAmount(cTaskAttrSearchWaitTime, {attribute});", lines)
+                self.assertIn("xsTaskAmount(cTaskAttrGatheringSound, 12345);", lines)
+                self.assertIn("xsTaskAmount(cTaskAttrDepositSound, 12346);", lines)
+                self.assertIn("xsTaskAmount(cTaskAttrGatherType, 98);", lines)
+
+    def test_refund_construction_flag_combines_with_cost_fraction_and_diplomacy(self) -> None:
+        task = UnitRefundTask(
+            refund_value=0.5, refunded_resource=3, recipient=UnitRefundTask.Recipient.KILLER,
+            value_mode=(UnitRefundTask.ValueMode.FRACTION_OF_ASSOCIATED_COST
+                        | UnitRefundTask.Flags.PROPORTIONAL_TO_CONSTRUCTION),
+            target_ownership=UnitRefundTask.Ownership.NEUTRAL_AND_ENEMY,
+        )
+        lines = task.xs_setup_lines()
+        self.assertIn("xsTaskAmount(cTaskAttrWorkRange, 1);", lines)
+        self.assertIn("xsTaskAmount(cTaskAttrCombatLevelFlag, 3);", lines)
+        self.assertIn("xsTaskAmount(cTaskAttrOwnerType, 2);", lines)
+
+    def test_gather_and_hunt_emit_auto_collection_and_output_resource(self) -> None:
+        for task_class, expected_type in ((GatherTask, "cTaskTypeGatherRebuild"), (HuntTask, "cTaskTypeHunt")):
+            with self.subTest(task_class=task_class):
+                task = task_class(flags=task_class.Flags.AUTO_COLLECTION, output_resource=3)
+                lines = task.xs_setup_lines()
+                self.assertIn(f"xsTaskAmount(cTaskAttrTaskType, {expected_type});", lines)
+                self.assertIn("xsTaskAmount(cTaskAttrCombatLevelFlag, 1);", lines)
+                self.assertIn("xsTaskAmount(cTaskAttrResourceOut, 3);", lines)
+
+    def test_drop_off_bonus_emits_multiplier_resource_and_productivity(self) -> None:
+        task = DropOffBonusTask(multiplier=0.25, output_resource=XsConstantAttribute.GOLD,
+                                productivity_resource=600)
+        lines = task.xs_setup_lines()
+        self.assertIn("xsTaskAmount(cTaskAttrTaskType, cTaskTypeAdditionalResource);", lines)
+        self.assertIn("xsTaskAmount(cTaskAttrWorkValue1, 0.25);", lines)
+        self.assertIn("xsTaskAmount(cTaskAttrResourceOut, cAttributeGold);", lines)
+        self.assertIn("xsTaskAmount(cTaskAttrProductivityResource, 600);", lines)
+
 
 class UnitModifierTaskTests(unittest.TestCase):
+    def test_combined_class_filter_adds_and_edits_exactly_one_task_entry(self) -> None:
+        scenario = _FakeScenario()
+        task = LootTask(affected_objects=TaskTargets.class_filter(
+            ClassFilterFlags.INFANTRY | ClassFilterFlags.CAVALRY))
+        UnitModifier(scenario, 4, 1).add_task(task).edit_task(task, 7).create_triggers()
+        script = scenario.xs_manager.scripts[0]["xs_string"]
+        self.assertEqual(2, script.count("xsModifyObjectTasks("))
+        self.assertEqual(2, script.count("xsTaskAmount(cTaskAttrObjectClass, 1003);"))
+        self.assertIn("xsModifyObjectTasks(4, 1, 7, true);", script)
+
+    def test_train_location_entry_mod_is_optional_and_preserves_symbolic_values(self) -> None:
+        scenario = _FakeScenario()
+        (UnitModifier(scenario, 4, 1)
+         .modify_attribute_xs(XsConstantEffectAmount.TRAIN_LOCATION, Operation.SET, 87,
+                              train_location_entry_mod=0)
+         .modify_attribute_xs(XsConstantEffectAmount.TRAIN_BUTTON, Operation.SET, 5,
+                              train_location_entry_mod=XsConstant("cCustomEntry"))
+         .modify_attribute_xs(XsConstantEffectAmount.TRAIN_BUTTON, Operation.SET, 6)
+         .create_triggers())
+        script = scenario.xs_manager.scripts[0]["xs_string"]
+        self.assertIn("xsEffectAmount(cSetAttribute, 4, cTrainLocation, 87, 1, 0);", script)
+        self.assertIn("xsEffectAmount(cSetAttribute, 4, cTrainButton, 5, 1, cCustomEntry);", script)
+        self.assertIn("xsEffectAmount(cSetAttribute, 4, cTrainButton, 6, 1);", script)
+
+    def test_new_attributes_work_in_xs_and_trigger_effects(self) -> None:
+        scenario = _FakeScenario()
+        (UnitModifier(scenario, 4, 1)
+         .modify_attribute(XsConstantEffectAmount.GATHER_FLAG.value, Operation.SET, 1)
+         .modify_attribute_xs(XsConstantEffectAmount.BUILD_AND_GO_AWAY, Operation.SET, 1)
+         .modify_attribute_xs(XsConstantEffectAmount.ENABLE_SMART_PROJECTILE, Operation.SET,
+                              ProjectileSmartFlags.BYPASS_TARGET_AGILITY | ProjectileSmartFlags.USE_UNIT_DAMAGE)
+         .create_triggers())
+        script = scenario.xs_manager.scripts[0]["xs_string"]
+        self.assertIn("xsEffectAmount(cSetAttribute, 4, cBuildAndGoAway, 1, 1);", script)
+        self.assertIn("xsEffectAmount(cSetAttribute, 4, cEnableSmartProjectile, 12, 1);", script)
+        self.assertEqual(221, scenario.trigger_manager.triggers[0].new_effect.modify_attribute_calls[0]
+                         ["object_attributes"])
+
     def test_builder_generates_add_edit_remove_xs_and_script_call(self) -> None:
         scenario = _FakeScenario()
         targets = TaskTargets.object_classes(

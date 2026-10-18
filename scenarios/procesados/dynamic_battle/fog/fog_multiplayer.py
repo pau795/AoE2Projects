@@ -11,7 +11,7 @@ class FogMultiplayer(ParserProject):
         self.trigger_manager = self.scenario.trigger_manager
 
     def process(self):
-        CivSettings(self.scenario, self.player_list, nomad_players=[False, True, False, True])
+        CivSettings(self.scenario, self.player_list, add_resources=False)
 
 
 if __name__ == '__main__':

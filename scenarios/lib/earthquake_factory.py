@@ -85,7 +85,6 @@ class EarthquakeFactory:
         crack_warning_duration.new_effect.display_instructions(
             object_list_unit_id=OtherInfo.STONE_MINE.ID,
             source_player=PlayerId.GAIA,
-            sound_name=self.earthquake_sound,
             message="EARTHQUAKE!",
             display_time=20,
             instruction_panel_position=PanelLocation.BOTTOM

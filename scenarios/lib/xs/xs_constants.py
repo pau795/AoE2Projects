@@ -1,4 +1,4 @@
-"""Python namespaces generated from the game's bundled ``Constants.xs`` file.
+"""Python namespaces generated from Update 185872's bundled ``Constants.xs`` file.
 
 Each uppercase class attribute behaves like its original XS symbol when used in
 a string or f-string. Its mapped game value and XS type remain available through
@@ -60,6 +60,7 @@ class XsConstantAttribute:
     MEAT: Final[XsConstant] = XsConstant('cAttributeMeat', 15, 'int')
     BERRIES: Final[XsConstant] = XsConstant('cAttributeBerries', 16, 'int')
     FISH: Final[XsConstant] = XsConstant('cAttributeFish', 17, 'int')
+    CIV_VOICE_OVERRIDE: Final[XsConstant] = XsConstant('cAttributeCivVoiceOverride', 18, 'int')
     KILLS: Final[XsConstant] = XsConstant('cAttributeKills', 20, 'int')
     RESEARCH_COUNT: Final[XsConstant] = XsConstant('cAttributeResearchCount', 21, 'int')
     EXPLORATION: Final[XsConstant] = XsConstant('cAttributeExploration', 22, 'int')
@@ -167,6 +168,7 @@ class XsConstantAttribute:
     CONSTRUCTION_RATE_MOD: Final[XsConstant] = XsConstant('cAttributeConstructionRateMod', 195, 'int')
     HUN_WONDER_BONUS: Final[XsConstant] = XsConstant('cAttributeHunWonderBonus', 196, 'int')
     SPIES_DISCOUNT: Final[XsConstant] = XsConstant('cAttributeSpiesDiscount', 197, 'int')
+    HUN_RELIC_BONUS: Final[XsConstant] = XsConstant('cAttributeHunRelicBonus', 198, 'int')
     MAP_REVEAL: Final[XsConstant] = XsConstant('cAttributeMapReveal', 203, 'int')
     UNIT_REVEAL: Final[XsConstant] = XsConstant('cAttributeUnitReveal', 204, 'int')
     FEITORIA_FOOD_PRODUCTIVITY: Final[XsConstant] = XsConstant('cAttributeFeitoriaFoodProductivity', 205, 'int')
@@ -177,6 +179,7 @@ class XsConstantAttribute:
     REVEAL_INITIAL_TYPE: Final[XsConstant] = XsConstant('cAttributeRevealInitialType', 210, 'int')
     ELEVATION_BONUS_HIGHER: Final[XsConstant] = XsConstant('cAttributeElevationBonusHigher', 211, 'int')
     ELEVATION_BONUS_LOWER: Final[XsConstant] = XsConstant('cAttributeElevationBonusLower', 212, 'int')
+    EXTRA_FORAGE_PRODUCTIVITY: Final[XsConstant] = XsConstant('cAttributeExtraForageProductivity', 215, 'int')
     SHEPHERDING_PRODUCTIVITY: Final[XsConstant] = XsConstant('cAttributeShepherdingProductivity', 216, 'int')
     FEUDAL_TOWN_CENTER_LIMIT: Final[XsConstant] = XsConstant('cAttributeFeudalTownCenterLimit', 218, 'int')
     FISHING_PRODUCTIVITY: Final[XsConstant] = XsConstant('cAttributeFishingProductivity', 219, 'int')
@@ -189,9 +192,7 @@ class XsConstantAttribute:
     VILLAGERS_KILLED_BY_GAIA: Final[XsConstant] = XsConstant('cAttributeVillagersKilledByGaia', 226, 'int')
     VILLGAERS_KILLED_BY_ANIMAL: Final[XsConstant] = XsConstant('cAttributeVillgaersKilledByAnimal', 227, 'int')
     VILLAGERS_KILLED_BY_AI_PLAYER: Final[XsConstant] = XsConstant('cAttributeVillagersKilledByAIPlayer', 228, 'int')
-    VILLAGERS_KILLED_BY_HUMAN_PLAYER: Final[XsConstant] = XsConstant(
-        'cAttributeVillagersKilledByHumanPlayer', 229, 'int',
-    )
+    VILLAGERS_KILLED_BY_HUMAN_PLAYER: Final[XsConstant] = XsConstant('cAttributeVillagersKilledByHumanPlayer', 229, 'int')
     FOOD_GENERATION: Final[XsConstant] = XsConstant('cAttributeFoodGeneration', 230, 'int')
     WOOD_GENERATION: Final[XsConstant] = XsConstant('cAttributeWoodGeneration', 231, 'int')
     STONE_GENERATION: Final[XsConstant] = XsConstant('cAttributeStoneGeneration', 232, 'int')
@@ -237,12 +238,14 @@ class XsConstantAttribute:
     ELEVATION_DAMAGE_HIGHER: Final[XsConstant] = XsConstant('cAttributeElevationDamageHigher', 272, 'int')
     ELEVATION_DAMAGE_LOWER: Final[XsConstant] = XsConstant('cAttributeElevationDamageLower', 273, 'int')
     INFANTRY_KILL_REWARD: Final[XsConstant] = XsConstant('cAttributeInfantryKillReward', 274, 'int')
+    INFANTRY_FYRD_LEVEL: Final[XsConstant] = XsConstant('cAttributeInfantryFyrdLevel', 275, 'int')
+    EXTRA_GOLD_PRODUCTIVITY: Final[XsConstant] = XsConstant('cAttributeExtraGoldProductivity', 276, 'int')
+    RED_CLIFF_TACTICS: Final[XsConstant] = XsConstant('cAttributeRedCliffTactics', 277, 'int')
+    RAZING_BOUNTY: Final[XsConstant] = XsConstant('cAttributeRazingBounty', 278, 'int')
     MILITARY_CAN_CONVERT: Final[XsConstant] = XsConstant('cAttributeMilitaryCanConvert', 279, 'int')
     MILITARY_CONVERSION_RANGE_ADJ: Final[XsConstant] = XsConstant('cAttributeMilitaryConversionRangeAdj', 280, 'int')
     MILITARY_CONVERSION_CHANCE: Final[XsConstant] = XsConstant('cAttributeMilitaryConversionChance', 281, 'int')
-    MILITARY_CONVERSION_RECHARGE_RATE: Final[XsConstant] = XsConstant(
-        'cAttributeMilitaryConversionRechargeRate', 282, 'int',
-    )
+    MILITARY_CONVERSION_RECHARGE_RATE: Final[XsConstant] = XsConstant('cAttributeMilitaryConversionRechargeRate', 282, 'int')
     SPAWN_STAY_INSIDE: Final[XsConstant] = XsConstant('cAttributeSpawnStayInside', 283, 'int')
     CAVALRY_KILL_REWARD: Final[XsConstant] = XsConstant('cAttributeCavalryKillReward', 284, 'int')
     TRIGGER_SHARED_VISIBILITY: Final[XsConstant] = XsConstant('cAttributeTriggerSharedVisibility', 285, 'int')
@@ -251,11 +254,15 @@ class XsConstantAttribute:
     PASTURE_FOOD_AMOUNT: Final[XsConstant] = XsConstant('cAttributePastureFoodAmount', 288, 'int')
     PASTURE_ANIMAL_COUNT: Final[XsConstant] = XsConstant('cAttributePastureAnimalCount', 289, 'int')
     PASTURE_HERDER_COUNT: Final[XsConstant] = XsConstant('cAttributePastureHerderCount', 290, 'int')
+    RAZING_PILLAGE: Final[XsConstant] = XsConstant('cAttributeRazingPillage', 291, 'int')
     DISABLE_ANIMAL_DECAY: Final[XsConstant] = XsConstant('cAttributeDisableAnimalDecay', 292, 'int')
     HERDING_FOOD_PRODUCTIVITY: Final[XsConstant] = XsConstant('cAttributeHerdingFoodProductivity', 293, 'int')
     SHEPHERDING_FOOD_PRODUCTIVITY: Final[XsConstant] = XsConstant('cAttributeShepherdingFoodProductivity', 294, 'int')
     UNIT_COST_REFUND: Final[XsConstant] = XsConstant('cAttributeUnitCostRefund', 295, 'int')
     FORAGING_PRODUCTIVITY: Final[XsConstant] = XsConstant('cAttributeForagingProductivity', 296, 'int')
+    VARANGIAN_GOLD: Final[XsConstant] = XsConstant('cAttributeVarangianGold', 297, 'int')
+    BUTCHER_GOLD_PRODUCTIVITY: Final[XsConstant] = XsConstant('cAttributeButcherGoldProductivity', 298, 'int')
+    EXTRA_FOOD_PRODUCTIVITY: Final[XsConstant] = XsConstant('cAttributeExtraFoodProductivity', 299, 'int')
     GAIA_KILLS: Final[XsConstant] = XsConstant('cAttributeGaiaKills', 300, 'int')
     PLAYER_1_KILLS: Final[XsConstant] = XsConstant('cAttributePlayer1Kills', 301, 'int')
     PLAYER_2_KILLS: Final[XsConstant] = XsConstant('cAttributePlayer2Kills', 302, 'int')
@@ -406,6 +413,16 @@ class XsConstantEffectAmount:
     ATTR_MUL_GOLD_COST: Final[XsConstant] = XsConstant('cAttrMulGoldCost', 16, 'int')
     ATTR_MUL_ALL_COSTS: Final[XsConstant] = XsConstant('cAttrMulAllCosts', 17, 'int')
     ATTR_SET_EFFECT: Final[XsConstant] = XsConstant('cAttrSetEffect', 18, 'int')
+    ATTR_SET_EXTENDED_DESCRIPTION: Final[XsConstant] = XsConstant('cAttrSetExtendedDescription', 19, 'int')
+    ATTR_AMOUNT_FIRST_COST: Final[XsConstant] = XsConstant('cAttrAmountFirstCost', 20, 'int')
+    ATTR_AMOUNT_SECOND_COST: Final[XsConstant] = XsConstant('cAttrAmountSecondCost', 21, 'int')
+    ATTR_AMOUNT_THIRD_COST: Final[XsConstant] = XsConstant('cAttrAmountThirdCost', 22, 'int')
+    ATTR_TYPE_FIRST_COST: Final[XsConstant] = XsConstant('cAttrTypeFirstCost', 23, 'int')
+    ATTR_TYPE_SECOND_COST: Final[XsConstant] = XsConstant('cAttrTypeSecondCost', 24, 'int')
+    ATTR_TYPE_THIRD_COST: Final[XsConstant] = XsConstant('cAttrTypeThirdCost', 25, 'int')
+    ATTR_DEDUCT_FLAG_FIRST_COST: Final[XsConstant] = XsConstant('cAttrDeductFlagFirstCost', 26, 'int')
+    ATTR_DEDUCT_FLAG_SECOND_COST: Final[XsConstant] = XsConstant('cAttrDeductFlagSecondCost', 27, 'int')
+    ATTR_DEDUCT_FLAG_THIRD_COST: Final[XsConstant] = XsConstant('cAttrDeductFlagThirdCost', 28, 'int')
     ATTR_ADD_FOOD_COST: Final[XsConstant] = XsConstant('cAttrAddFoodCost', 16384, 'int')
     ATTR_ADD_WOOD_COST: Final[XsConstant] = XsConstant('cAttrAddWoodCost', 16385, 'int')
     ATTR_ADD_STONE_COST: Final[XsConstant] = XsConstant('cAttrAddStoneCost', 16386, 'int')
@@ -552,9 +569,7 @@ class XsConstantEffectAmount:
     PROJECTILE_GRAPHIC_DISPLACEMENT_Z: Final[XsConstant] = XsConstant('cProjectileGraphicDisplacementZ', 150, 'int')
     PROJECTILE_SPAWNING_AREA_WIDTH: Final[XsConstant] = XsConstant('cProjectileSpawningAreaWidth', 151, 'int')
     PROJECTILE_SPAWNING_AREA_LENGTH: Final[XsConstant] = XsConstant('cProjectileSpawningAreaLength', 152, 'int')
-    PROJECTILE_SPAWNING_AREA_RANDOMNESS: Final[XsConstant] = XsConstant(
-        'cProjectileSpawningAreaRandomness', 153, 'int',
-    )
+    PROJECTILE_SPAWNING_AREA_RANDOMNESS: Final[XsConstant] = XsConstant('cProjectileSpawningAreaRandomness', 153, 'int')
     DAMAGE_GRAPHICS_ENTRY_MOD: Final[XsConstant] = XsConstant('cDamageGraphicsEntryMod', 154, 'int')
     DAMAGE_GRAPHICS_TOTAL_NUM: Final[XsConstant] = XsConstant('cDamageGraphicsTotalNum', 155, 'int')
     DAMAGE_GRAPHIC_PERCENT: Final[XsConstant] = XsConstant('cDamageGraphicPercent', 156, 'int')
@@ -567,6 +582,63 @@ class XsConstantEffectAmount:
     SIZE_CLASS: Final[XsConstant] = XsConstant('cSizeClass', 163, 'int')
     REMOVE_ARMOR_TYPE: Final[XsConstant] = XsConstant('cRemoveArmorType', 164, 'int')
     REMOVE_ATTACK_TYPE: Final[XsConstant] = XsConstant('cRemoveAttackType', 165, 'int')
+    UNDEAD_FLAG: Final[XsConstant] = XsConstant('cUndeadFlag', 166, 'int')
+    BUILD_AND_GO_AWAY: Final[XsConstant] = XsConstant('cBuildAndGoAway', 167, 'int')
+    TYPE_FIRST_STORAGE: Final[XsConstant] = XsConstant('cTypeFirstStorage', 168, 'int')
+    TYPE_SECOND_STORAGE: Final[XsConstant] = XsConstant('cTypeSecondStorage', 169, 'int')
+    TYPE_THIRD_STORAGE: Final[XsConstant] = XsConstant('cTypeThirdStorage', 170, 'int')
+    STORE_FLAG_FIRST_STORAGE: Final[XsConstant] = XsConstant('cStoreFlagFirstStorage', 171, 'int')
+    STORE_FLAG_SECOND_STORAGE: Final[XsConstant] = XsConstant('cStoreFlagSecondStorage', 172, 'int')
+    STORE_FLAG_THIRD_STORAGE: Final[XsConstant] = XsConstant('cStoreFlagThirdStorage', 173, 'int')
+    AMOUNT_FIRST_COST: Final[XsConstant] = XsConstant('cAmountFirstCost', 174, 'int')
+    AMOUNT_SECOND_COST: Final[XsConstant] = XsConstant('cAmountSecondCost', 175, 'int')
+    AMOUNT_THIRD_COST: Final[XsConstant] = XsConstant('cAmountThirdCost', 176, 'int')
+    TYPE_FIRST_COST: Final[XsConstant] = XsConstant('cTypeFirstCost', 177, 'int')
+    TYPE_SECOND_COST: Final[XsConstant] = XsConstant('cTypeSecondCost', 178, 'int')
+    TYPE_THIRD_COST: Final[XsConstant] = XsConstant('cTypeThirdCost', 179, 'int')
+    DEDUCT_FLAG_FIRST_COST: Final[XsConstant] = XsConstant('cDeductFlagFirstCost', 180, 'int')
+    DEDUCT_FLAG_SECOND_COST: Final[XsConstant] = XsConstant('cDeductFlagSecondCost', 181, 'int')
+    DEDUCT_FLAG_THIRD_COST: Final[XsConstant] = XsConstant('cDeductFlagThirdCost', 182, 'int')
+    SPAWNING_GRAPHIC: Final[XsConstant] = XsConstant('cSpawningGraphic', 183, 'int')
+    UPGRADE_GRAPHIC: Final[XsConstant] = XsConstant('cUpgradeGraphic', 184, 'int')
+    FLY_MODE: Final[XsConstant] = XsConstant('cFlyMode', 185, 'int')
+    CAN_BE_GATHERED: Final[XsConstant] = XsConstant('cCanBeGathered', 186, 'int')
+    HILL_MODE: Final[XsConstant] = XsConstant('cHillMode', 187, 'int')
+    DOPPELGANGER: Final[XsConstant] = XsConstant('cDoppelganger', 188, 'int')
+    GATHER_GROUP: Final[XsConstant] = XsConstant('cGatherGroup', 189, 'int')
+    TASK_SWAP_GROUP: Final[XsConstant] = XsConstant('cTaskSwapGroup', 190, 'int')
+    PLACEMENT_TERRAIN_1: Final[XsConstant] = XsConstant('cPlacementTerrain1', 191, 'int')
+    PLACEMENT_TERRAIN_2: Final[XsConstant] = XsConstant('cPlacementTerrain2', 192, 'int')
+    PLACEMENT_CENTER_TERRAIN_1: Final[XsConstant] = XsConstant('cPlacementCenterTerrain1', 193, 'int')
+    PLACEMENT_CENTER_TERRAIN_2: Final[XsConstant] = XsConstant('cPlacementCenterTerrain2', 194, 'int')
+    INITIATED_TECH_ID: Final[XsConstant] = XsConstant('cInitiatedTechId', 195, 'int')
+    MIN_SIZE_MULTIPLIER: Final[XsConstant] = XsConstant('cMinSizeMultiplier', 196, 'int')
+    SELECTION_OUTLINE_SIZE_X: Final[XsConstant] = XsConstant('cSelectionOutlineSizeX', 197, 'int')
+    SELECTION_OUTLINE_SIZE_Y: Final[XsConstant] = XsConstant('cSelectionOutlineSizeY', 198, 'int')
+    SELECTION_OUTLINE_SIZE_Z: Final[XsConstant] = XsConstant('cSelectionOutlineSizeZ', 199, 'int')
+    CLEARANCE_SIZE_X: Final[XsConstant] = XsConstant('cClearanceSizeX', 200, 'int')
+    CLEARANCE_SIZE_Y: Final[XsConstant] = XsConstant('cClearanceSizeY', 201, 'int')
+    STACK_UNIT: Final[XsConstant] = XsConstant('cStackUnit', 202, 'int')
+    HEAD_UNIT: Final[XsConstant] = XsConstant('cHeadUnit', 203, 'int')
+    TRANSFORM_UNIT: Final[XsConstant] = XsConstant('cTransformUnit', 204, 'int')
+    PILE_UNIT: Final[XsConstant] = XsConstant('cPileUnit', 205, 'int')
+    ANNEX_UNIT_1: Final[XsConstant] = XsConstant('cAnnexUnit1', 206, 'int')
+    ANNEX_UNIT_2: Final[XsConstant] = XsConstant('cAnnexUnit2', 207, 'int')
+    ANNEX_UNIT_3: Final[XsConstant] = XsConstant('cAnnexUnit3', 208, 'int')
+    ANNEX_UNIT_4: Final[XsConstant] = XsConstant('cAnnexUnit4', 209, 'int')
+    ANNEX_UNIT_1_OFFSET_X: Final[XsConstant] = XsConstant('cAnnexUnit1OffsetX', 210, 'int')
+    ANNEX_UNIT_1_OFFSET_Y: Final[XsConstant] = XsConstant('cAnnexUnit1OffsetY', 211, 'int')
+    ANNEX_UNIT_2_OFFSET_X: Final[XsConstant] = XsConstant('cAnnexUnit2OffsetX', 212, 'int')
+    ANNEX_UNIT_2_OFFSET_Y: Final[XsConstant] = XsConstant('cAnnexUnit2OffsetY', 213, 'int')
+    ANNEX_UNIT_3_OFFSET_X: Final[XsConstant] = XsConstant('cAnnexUnit3OffsetX', 214, 'int')
+    ANNEX_UNIT_3_OFFSET_Y: Final[XsConstant] = XsConstant('cAnnexUnit3OffsetY', 215, 'int')
+    ANNEX_UNIT_4_OFFSET_X: Final[XsConstant] = XsConstant('cAnnexUnit4OffsetX', 216, 'int')
+    ANNEX_UNIT_4_OFFSET_Y: Final[XsConstant] = XsConstant('cAnnexUnit4OffsetY', 217, 'int')
+    MOVE_ALGORITHM: Final[XsConstant] = XsConstant('cMoveAlgorithm', 218, 'int')
+    SPACING_MODIFIER: Final[XsConstant] = XsConstant('cSpacingModifier', 219, 'int')
+    CAN_BURN: Final[XsConstant] = XsConstant('cCanBurn', 220, 'int')
+    GATHER_FLAG: Final[XsConstant] = XsConstant('cGatherFlag', 221, 'int')
+    DOUBLE_CLICK_SELECTION_BEHAVIOUR: Final[XsConstant] = XsConstant('cDoubleClickSelectionBehaviour', 140, 'int')
 
 
 class XsConstantCivilization:
@@ -632,7 +704,10 @@ class XsConstantCivilization:
     MUISCA: Final[XsConstant] = XsConstant('cMuisca', 57, 'int')
     MAPUCHE: Final[XsConstant] = XsConstant('cMapuche', 58, 'int')
     TUPI: Final[XsConstant] = XsConstant('cTupi', 59, 'int')
-    NUM_CIVS: Final[XsConstant] = XsConstant('cNumCivs', 60, 'int')
+    SAXONS: Final[XsConstant] = XsConstant('cSaxons', 60, 'int')
+    VARANGIANS: Final[XsConstant] = XsConstant('cVarangians', 61, 'int')
+    DANES: Final[XsConstant] = XsConstant('cDanes', 62, 'int')
+    NUM_CIVS: Final[XsConstant] = XsConstant('cNumCivs', 62, 'int')
     AOE_EGYPTIANS: Final[XsConstant] = XsConstant('cAoeEgyptians', 1, 'int')
     AOE_GREEKS: Final[XsConstant] = XsConstant('cAoeGreeks', 2, 'int')
     AOE_BABYLONIANS: Final[XsConstant] = XsConstant('cAoeBabylonians', 3, 'int')
@@ -720,7 +795,8 @@ class XsConstantObjectClass:
     CONTROLLED_ANIMAL_CLASS: Final[XsConstant] = XsConstant('cControlledAnimalClass', 961, 'int')
     GOLD_FISH_CLASS: Final[XsConstant] = XsConstant('cGoldFishClass', 963, 'int')
     LAND_MINE_CLASS: Final[XsConstant] = XsConstant('cLandMineClass', 964, 'int')
-    SENTINEL_END_CLASS: Final[XsConstant] = XsConstant('cSentinelEndClass', 965, 'int')
+    GOLD_HUNTABLE_CLASS: Final[XsConstant] = XsConstant('cGoldHuntableClass', 965, 'int')
+    SENTINEL_END_CLASS: Final[XsConstant] = XsConstant('cSentinelEndClass', 968, 'int')
 
 
 class XsConstantReadWriteOffset:
@@ -867,6 +943,7 @@ class XsConstantTaskType:
     AMPHIBIOUS: Final[XsConstant] = XsConstant('cTaskTypeAmphibious', 159, 'int')
     HP_MODIFIER: Final[XsConstant] = XsConstant('cTaskTypeHPModifier', 160, 'int')
     REFUND: Final[XsConstant] = XsConstant('cTaskTypeRefund', 161, 'int')
+    ADDITIONAL_RESOURCE: Final[XsConstant] = XsConstant('cTaskTypeAdditionalResource', 164, 'int')
 
 
 class XsConstantTechState:
@@ -1007,6 +1084,16 @@ class XsConstantColor:
     ORANGE: Final[XsConstant] = XsConstant('cColorOrange', '<ORANGE>', 'string')
     WHITE: Final[XsConstant] = XsConstant('cColorWhite', '<WHITE>', 'string')
     BLACK: Final[XsConstant] = XsConstant('cColorBlack', '<BLACK>', 'string')
+    COLOR_ID_BLUE: Final[XsConstant] = XsConstant('cColorIdBlue', 0, 'int')
+    COLOR_ID_RED: Final[XsConstant] = XsConstant('cColorIdRed', 1, 'int')
+    COLOR_ID_GREEN: Final[XsConstant] = XsConstant('cColorIdGreen', 2, 'int')
+    COLOR_ID_YELLOW: Final[XsConstant] = XsConstant('cColorIdYellow', 3, 'int')
+    COLOR_ID_AQUA: Final[XsConstant] = XsConstant('cColorIdAqua', 4, 'int')
+    COLOR_ID_PURPLE: Final[XsConstant] = XsConstant('cColorIdPurple', 5, 'int')
+    COLOR_ID_GRAY: Final[XsConstant] = XsConstant('cColorIdGray', 6, 'int')
+    COLOR_ID_ORANGE: Final[XsConstant] = XsConstant('cColorIdOrange', 7, 'int')
+    COLOR_ID_WHITE: Final[XsConstant] = XsConstant('cColorIdWhite', 8, 'int')
+    COLOR_ID_BLACK: Final[XsConstant] = XsConstant('cColorIdBlack', 9, 'int')
 
 
 class XsConstantTechAttribute:
@@ -1026,9 +1113,321 @@ class XsConstantTechAttribute:
     STACKING_ALLOWED: Final[XsConstant] = XsConstant('cTechStackingAllowed', 11, 'int')
     STACKING_ENABLED: Final[XsConstant] = XsConstant('cTechStackingEnabled', 12, 'int')
     STACKING_CAP: Final[XsConstant] = XsConstant('cTechStackingCap', 13, 'int')
+    NUM_RESEARCH_LOCATIONS: Final[XsConstant] = XsConstant('cTechNumResearchLocations', 14, 'int')
+    COST_TYPE: Final[XsConstant] = XsConstant('cTechCostType', 15, 'int')
+    COST_DEDUCT_FLAG: Final[XsConstant] = XsConstant('cTechCostDeductFlag', 16, 'int')
+
+
+class XsConstantVictoryType:
+    """Constants.xs category: Victory Setting Type."""
+
+    STANDARD: Final[XsConstant] = XsConstant('cVictoryTypeStandard', 0, 'int')
+    CONQUEST: Final[XsConstant] = XsConstant('cVictoryTypeConquest', 1, 'int')
+    TIME_LIMIT: Final[XsConstant] = XsConstant('cVictoryTypeTimeLimit', 2, 'int')
+    SCORE: Final[XsConstant] = XsConstant('cVictoryTypeScore', 3, 'int')
+    CUSTOM: Final[XsConstant] = XsConstant('cVictoryTypeCustom', 4, 'int')
+
+
+class XsConstantUndeadFlag:
+    """Constants.xs category: Undead Flag Constants."""
+
+    SHOW_UNDEAD_GRAPHIC: Final[XsConstant] = XsConstant('cUndeadFlagShowUndeadGraphic', 1, 'int')
+    IGNORE_IN_KILL_STATS: Final[XsConstant] = XsConstant('cUndeadFlagIgnoreInKillStats', 2, 'int')
+    GARRISON_INVINCIBILITY: Final[XsConstant] = XsConstant('cUndeadFlagGarrisonInvincibility', 4, 'int')
+
+
+class XsConstantClassFlag:
+    """Constants.xs category: Multiple Classes Flags Constants."""
+
+    REMOVAL: Final[XsConstant] = XsConstant('cFlagClassRemoval', -1, 'int')
+    OFFSET: Final[XsConstant] = XsConstant('cFlagClassOffset', 1000, 'int')
+    INFANTRY: Final[XsConstant] = XsConstant('cFlagClassInfantry', 1, 'int')
+    CAVALRY: Final[XsConstant] = XsConstant('cFlagClassCavalry', 2, 'int')
+    ARCHERS: Final[XsConstant] = XsConstant('cFlagClassArchers', 4, 'int')
+    CAVALRY_ARCHERS: Final[XsConstant] = XsConstant('cFlagClassCavalryArchers', 8, 'int')
+    MONK: Final[XsConstant] = XsConstant('cFlagClassMonk', 16, 'int')
+    CIVILIAN: Final[XsConstant] = XsConstant('cFlagClassCivilian', 32, 'int')
+    SHIP: Final[XsConstant] = XsConstant('cFlagClassShip', 64, 'int')
+    SIEGE: Final[XsConstant] = XsConstant('cFlagClassSiege', 128, 'int')
+    BUILDING: Final[XsConstant] = XsConstant('cFlagClassBuilding', 256, 'int')
+
+
+class XsConstantMapTileAttribute:
+    """Constants.xs category: Map Tile Attribute Constants."""
+
+    TERRAIN_ID: Final[XsConstant] = XsConstant('cTileTerrainId', 0, 'int')
+    ELEVATION: Final[XsConstant] = XsConstant('cTileElevation', 1, 'int')
+    MASK_ID: Final[XsConstant] = XsConstant('cTileMaskId', 2, 'int')
+    LAYER_ID: Final[XsConstant] = XsConstant('cTileLayerId', 3, 'int')
+
+
+class XsConstantCaptureFlag:
+    """Constants.xs category: Capture Flag Constants."""
+
+    NEVER: Final[XsConstant] = XsConstant('cCaptureFlagNever', 0, 'int')
+    ONCE: Final[XsConstant] = XsConstant('cCaptureFlagOnce', 1, 'int')
+    MULTIPLE_TIMES: Final[XsConstant] = XsConstant('cCaptureFlagMultipleTimes', 2, 'int')
+    NEVER_GAIA_AGGRESSIVE: Final[XsConstant] = XsConstant('cCaptureFlagNeverGaiaAggressive', 3, 'int')
+
+
+class XsConstantUnitProperty:
+    """Constants.xs category: Unit Property Constants."""
+
+    HITPOINTS: Final[XsConstant] = XsConstant('cUnitHitpoints', 0, 'int')
+    BUILDPOINTS: Final[XsConstant] = XsConstant('cUnitBuildpoints', 1, 'int')
+    CHARGE: Final[XsConstant] = XsConstant('cUnitCharge', 2, 'int')
+    CAPTION_STRING_ID: Final[XsConstant] = XsConstant('cUnitCaptionStringId', 3, 'int')
+    ATTRIBUTE_HELD: Final[XsConstant] = XsConstant('cUnitAttributeHeld', 4, 'int')
+    GARRISONED_IN_ID: Final[XsConstant] = XsConstant('cUnitGarrisonedInId', 5, 'int')
+    CAPTURE_FLAG: Final[XsConstant] = XsConstant('cUnitCaptureFlag', 6, 'int')
+    DELETABLE: Final[XsConstant] = XsConstant('cUnitDeletable', 7, 'int')
+    TARGETABLE: Final[XsConstant] = XsConstant('cUnitTargetable', 8, 'int')
+    ATTACKABLE: Final[XsConstant] = XsConstant('cUnitAttackable', 9, 'int')
+    SELECTABLE: Final[XsConstant] = XsConstant('cUnitSelectable', 10, 'int')
+    STANCE: Final[XsConstant] = XsConstant('cUnitStance', 11, 'int')
+    VISIBILITY: Final[XsConstant] = XsConstant('cUnitVisibility', 12, 'int')
+    COLOR_ID: Final[XsConstant] = XsConstant('cUnitColorId', 13, 'int')
+    LOCKED: Final[XsConstant] = XsConstant('cUnitLocked', 14, 'int')
+    FACET: Final[XsConstant] = XsConstant('cUnitFacet', 15, 'int')
+    GROUP_ID: Final[XsConstant] = XsConstant('cUnitGroupId', 10000, 'int')
+    OBJECT_ID: Final[XsConstant] = XsConstant('cUnitObjectId', 10001, 'int')
+    COPY_ID: Final[XsConstant] = XsConstant('cUnitCopyId', 10002, 'int')
+    CLASS_TYPE: Final[XsConstant] = XsConstant('cUnitClassType', 10003, 'int')
+    OBJECT_TYPE: Final[XsConstant] = XsConstant('cUnitObjectType', 10004, 'int')
+    ATTRIBUTE_TYPES_HELD: Final[XsConstant] = XsConstant('cUnitAttributeTypesHeld', 10005, 'int')
+    GARRISONED_UNIT_IDS: Final[XsConstant] = XsConstant('cUnitGarrisonedUnitIds', 10006, 'int')
+    TARGET_ID: Final[XsConstant] = XsConstant('cUnitTargetId', 10007, 'int')
+    TARGET_2_ID: Final[XsConstant] = XsConstant('cUnitTarget2Id', 10008, 'int')
+    ACTION_ID: Final[XsConstant] = XsConstant('cUnitActionId', 10009, 'int')
+    ORDER_ID: Final[XsConstant] = XsConstant('cUnitOrderId', 10010, 'int')
+
+
+class XsConstantUnitStance:
+    """Constants.xs category: Unit Stance Constants."""
+
+    AGGRESSIVE: Final[XsConstant] = XsConstant('cStanceAggressive', 0, 'int')
+    DEFENSIVE: Final[XsConstant] = XsConstant('cStanceDefensive', 1, 'int')
+    STAND_GROUND: Final[XsConstant] = XsConstant('cStanceStandGround', 2, 'int')
+    NO_ATTACK: Final[XsConstant] = XsConstant('cStanceNoAttack', 3, 'int')
+
+
+class XsConstantUnitLos:
+    """Constants.xs category: Unit Los Constants."""
+
+    VISIBLE: Final[XsConstant] = XsConstant('cLosVisible', 0, 'int')
+    EXPLORED: Final[XsConstant] = XsConstant('cLosExplored', 1, 'int')
+    INVISIBLE: Final[XsConstant] = XsConstant('cLosInvisible', 2, 'int')
+
+
+class XsConstantUnitAction:
+    """Constants.xs category: Unit Action Constants."""
+
+    ATTACK: Final[XsConstant] = XsConstant('cUnitActionAttack', 600, 'int')
+    DEFEND: Final[XsConstant] = XsConstant('cUnitActionDefend', 601, 'int')
+    BUILD: Final[XsConstant] = XsConstant('cUnitActionBuild', 602, 'int')
+    HEAL: Final[XsConstant] = XsConstant('cUnitActionHeal', 603, 'int')
+    CONVERT: Final[XsConstant] = XsConstant('cUnitActionConvert', 604, 'int')
+    EXPLORE: Final[XsConstant] = XsConstant('cUnitActionExplore', 605, 'int')
+    STOP: Final[XsConstant] = XsConstant('cUnitActionStop', 606, 'int')
+    RUN_AWAY: Final[XsConstant] = XsConstant('cUnitActionRunAway', 607, 'int')
+    RETREAT: Final[XsConstant] = XsConstant('cUnitActionRetreat', 608, 'int')
+    GATHER: Final[XsConstant] = XsConstant('cUnitActionGather', 609, 'int')
+    MOVE: Final[XsConstant] = XsConstant('cUnitActionMove', 610, 'int')
+    PATROL: Final[XsConstant] = XsConstant('cUnitActionPatrol', 611, 'int')
+    FOLLOW: Final[XsConstant] = XsConstant('cUnitActionFollow', 612, 'int')
+    HUNT: Final[XsConstant] = XsConstant('cUnitActionHunt', 613, 'int')
+    TRANSPORT: Final[XsConstant] = XsConstant('cUnitActionTransport', 614, 'int')
+    TRADE: Final[XsConstant] = XsConstant('cUnitActionTrade', 615, 'int')
+    EVASIVE_MOVE: Final[XsConstant] = XsConstant('cUnitActionEvasiveMove', 616, 'int')
+    ENTER: Final[XsConstant] = XsConstant('cUnitActionEnter', 617, 'int')
+    REPAIR: Final[XsConstant] = XsConstant('cUnitActionRepair', 618, 'int')
+    TRAIN: Final[XsConstant] = XsConstant('cUnitActionTrain', 619, 'int')
+    RESEARCH: Final[XsConstant] = XsConstant('cUnitActionResearch', 620, 'int')
+    UNLOAD: Final[XsConstant] = XsConstant('cUnitActionUnload', 621, 'int')
+    SEEK_AND_DESTROY: Final[XsConstant] = XsConstant('cUnitActionSeekAndDestroy', 622, 'int')
+    EXPLORE_AND_DESTROY: Final[XsConstant] = XsConstant('cUnitActionExploreAndDestroy', 623, 'int')
+    GROUP_GATHER: Final[XsConstant] = XsConstant('cUnitActionGroupGather', 624, 'int')
+    WAIT: Final[XsConstant] = XsConstant('cUnitActionWait', 628, 'int')
+    ATTACK_ROUNDUP: Final[XsConstant] = XsConstant('cUnitActionAttackRoundup', 629, 'int')
+    SCOUT: Final[XsConstant] = XsConstant('cUnitActionScout', 630, 'int')
+    CONTROL: Final[XsConstant] = XsConstant('cUnitActionControl', 631, 'int')
+    SHEPHERD: Final[XsConstant] = XsConstant('cUnitActionShepherd', 632, 'int')
+    ATTACK_MOVE: Final[XsConstant] = XsConstant('cUnitActionAttackMove', 633, 'int')
+    WAIT_FOR_SOLIDIFY: Final[XsConstant] = XsConstant('cUnitActionWaitForSolidify', 634, 'int')
+    RELEASED: Final[XsConstant] = XsConstant('cUnitActionReleased', 699, 'int')
+    UNLOAD_OVER_WALL: Final[XsConstant] = XsConstant('cUnitActionUnloadOverWall', 700, 'int')
+    AUTO_SCOUT: Final[XsConstant] = XsConstant('cUnitActionAutoScout', 701, 'int')
+    AUTO_BOAR_LURE: Final[XsConstant] = XsConstant('cUnitActionAutoBoarLure', 702, 'int')
+    EVACUATE: Final[XsConstant] = XsConstant('cUnitActionEvacuate', 703, 'int')
+    EVACUATE_IN_GROUP: Final[XsConstant] = XsConstant('cUnitActionEvacuateInGroup', 704, 'int')
+    BACK_TO_WORK: Final[XsConstant] = XsConstant('cUnitActionBackToWork', 705, 'int')
+    HERO_POWER: Final[XsConstant] = XsConstant('cUnitActionHeroPower', 706, 'int')
+
+
+class XsConstantUnitOrder:
+    """Constants.xs category: Unit Order Constants."""
+
+    ATTACK: Final[XsConstant] = XsConstant('cUnitOrderAttack', 700, 'int')
+    DEFEND: Final[XsConstant] = XsConstant('cUnitOrderDefend', 701, 'int')
+    BUILD: Final[XsConstant] = XsConstant('cUnitOrderBuild', 702, 'int')
+    HEAL: Final[XsConstant] = XsConstant('cUnitOrderHeal', 703, 'int')
+    CONVERT: Final[XsConstant] = XsConstant('cUnitOrderConvert', 704, 'int')
+    EXPLORE: Final[XsConstant] = XsConstant('cUnitOrderExplore', 705, 'int')
+    STOP: Final[XsConstant] = XsConstant('cUnitOrderStop', 706, 'int')
+    RUN_AWAY: Final[XsConstant] = XsConstant('cUnitOrderRunAway', 707, 'int')
+    RETREAT: Final[XsConstant] = XsConstant('cUnitOrderRetreat', 708, 'int')
+    GATHER: Final[XsConstant] = XsConstant('cUnitOrderGather', 709, 'int')
+    MOVE: Final[XsConstant] = XsConstant('cUnitOrderMove', 710, 'int')
+    PATROL: Final[XsConstant] = XsConstant('cUnitOrderPatrol', 711, 'int')
+    FOLLOW: Final[XsConstant] = XsConstant('cUnitOrderFollow', 712, 'int')
+    HUNT: Final[XsConstant] = XsConstant('cUnitOrderHunt', 713, 'int')
+    TRANSPORT: Final[XsConstant] = XsConstant('cUnitOrderTransport', 714, 'int')
+    TRADE: Final[XsConstant] = XsConstant('cUnitOrderTrade', 715, 'int')
+    EVASIVE_MOVE: Final[XsConstant] = XsConstant('cUnitOrderEvasiveMove', 716, 'int')
+    ENTER: Final[XsConstant] = XsConstant('cUnitOrderEnter', 717, 'int')
+    REPAIR: Final[XsConstant] = XsConstant('cUnitOrderRepair', 718, 'int')
+    TRAIN: Final[XsConstant] = XsConstant('cUnitOrderTrain', 719, 'int')
+    RESEARCH: Final[XsConstant] = XsConstant('cUnitOrderResearch', 720, 'int')
+    UNLOAD: Final[XsConstant] = XsConstant('cUnitOrderUnload', 721, 'int')
+    UNLOAD_OVER_WALL: Final[XsConstant] = XsConstant('cUnitOrderUnloadOverWall', 800, 'int')
+    SEEK_AND_DESTROY: Final[XsConstant] = XsConstant('cUnitOrderSeekAndDestroy', 722, 'int')
+    GROUP_GATHER: Final[XsConstant] = XsConstant('cUnitOrderGroupGather', 724, 'int')
+    EXPLORE_AND_DESTROY: Final[XsConstant] = XsConstant('cUnitOrderExploreAndDestroy', 723, 'int')
+    WAIT: Final[XsConstant] = XsConstant('cUnitOrderWait', 728, 'int')
+    ATTACK_ROUNDUP: Final[XsConstant] = XsConstant('cUnitOrderAttackRoundup', 729, 'int')
+    SCOUT: Final[XsConstant] = XsConstant('cUnitOrderScout', 730, 'int')
+    ACTION_CONTROL: Final[XsConstant] = XsConstant('cUnitOrderActionControl', 731, 'int')
+    SHEPHERD: Final[XsConstant] = XsConstant('cUnitOrderShepherd', 732, 'int')
+    ATTACK_MOVE: Final[XsConstant] = XsConstant('cUnitOrderAttackMove', 733, 'int')
+    AUTO_SCOUT: Final[XsConstant] = XsConstant('cUnitOrderAutoScout', 801, 'int')
+    WAIT_FOR_SOLIDIFY: Final[XsConstant] = XsConstant('cUnitOrderWaitForSolidify', 734, 'int')
+    AUTO_BOAR_LURE: Final[XsConstant] = XsConstant('cUnitOrderAutoBoarLure', 802, 'int')
+    EVACUATE: Final[XsConstant] = XsConstant('cUnitOrderEvacuate', 803, 'int')
+    EVACUATE_IN_GROUP: Final[XsConstant] = XsConstant('cUnitOrderEvacuateInGroup', 804, 'int')
+    BACK_TO_WORK: Final[XsConstant] = XsConstant('cUnitOrderBackToWork', 805, 'int')
+    HERO_POWER: Final[XsConstant] = XsConstant('cUnitOrderHeroPower', 806, 'int')
+
+
+class XsConstantUnitFormation:
+    """Constants.xs category: Unit Formation Constants."""
+
+    LINE: Final[XsConstant] = XsConstant('cFormationLine', 2, 'int')
+    BOX: Final[XsConstant] = XsConstant('cFormationBox', 4, 'int')
+    STAGGERED: Final[XsConstant] = XsConstant('cFormationStaggered', 7, 'int')
+    FLANK: Final[XsConstant] = XsConstant('cFormationFlank', 8, 'int')
+
+
+class XsConstantActionType:
+    """Constants.xs category: Action Type Constants."""
+
+    DEFAULT: Final[XsConstant] = XsConstant('cActionTypeDefault', 0, 'int')
+    MOVE: Final[XsConstant] = XsConstant('cActionTypeMove', 1, 'int')
+    PATROL: Final[XsConstant] = XsConstant('cActionTypePatrol', 2, 'int')
+    GUARD: Final[XsConstant] = XsConstant('cActionTypeGuard', 3, 'int')
+    FOLLOW: Final[XsConstant] = XsConstant('cActionTypeFollow', 4, 'int')
+    STOP: Final[XsConstant] = XsConstant('cActionTypeStop', 5, 'int')
+    ATTACK_GROUND: Final[XsConstant] = XsConstant('cActionTypeAttackGround', 6, 'int')
+    GARRISON: Final[XsConstant] = XsConstant('cActionTypeGarrison', 7, 'int')
+    KILL: Final[XsConstant] = XsConstant('cActionTypeKill', 8, 'int')
+    UNLOAD: Final[XsConstant] = XsConstant('cActionTypeUnload', 9, 'int')
+    GATHER_POINT: Final[XsConstant] = XsConstant('cActionTypeGatherPoint', 10, 'int')
+    LOCK: Final[XsConstant] = XsConstant('cActionTypeLock', 11, 'int')
+    WORK: Final[XsConstant] = XsConstant('cActionTypeWork', 12, 'int')
+    UNGARRISON: Final[XsConstant] = XsConstant('cActionTypeUngarrison', 13, 'int')
+    DROP_RELIC: Final[XsConstant] = XsConstant('cActionTypeDropRelic', 14, 'int')
+    PACK: Final[XsConstant] = XsConstant('cActionTypePack', 15, 'int')
+    UNPACK: Final[XsConstant] = XsConstant('cActionTypeUnpack', 16, 'int')
+    ATTACK_MOVE: Final[XsConstant] = XsConstant('cActionTypeAttackMove', 17, 'int')
+    FORMATION_LINE: Final[XsConstant] = XsConstant('cActionTypeFormationLine', 18, 'int')
+    FORMATION_BOX: Final[XsConstant] = XsConstant('cActionTypeFormationBox', 19, 'int')
+    FORMATION_STAGGERED: Final[XsConstant] = XsConstant('cActionTypeFormationStaggered', 20, 'int')
+    FORMATION_FLANK: Final[XsConstant] = XsConstant('cActionTypeFormationFlank', 21, 'int')
+    TRANSFORM: Final[XsConstant] = XsConstant('cActionTypeTransform', 22, 'int')
+    SELL_FOOD: Final[XsConstant] = XsConstant('cActionTypeSellFood', 23, 'int')
+    SELL_WOOD: Final[XsConstant] = XsConstant('cActionTypeSellWood', 24, 'int')
+    SELL_STONE: Final[XsConstant] = XsConstant('cActionTypeSellStone', 25, 'int')
+    BUY_FOOD: Final[XsConstant] = XsConstant('cActionTypeBuyFood', 26, 'int')
+    BUY_WOOD: Final[XsConstant] = XsConstant('cActionTypeBuyWood', 27, 'int')
+    BUY_STONE: Final[XsConstant] = XsConstant('cActionTypeBuyStone', 28, 'int')
+    RING_TOWN_BELL: Final[XsConstant] = XsConstant('cActionTypeRingTownBell', 29, 'int')
+    BACK_TO_WORK: Final[XsConstant] = XsConstant('cActionTypeBackToWork', 30, 'int')
+    ALL_BACK_TO_WORK: Final[XsConstant] = XsConstant('cActionTypeAllBackToWork', 31, 'int')
+    FORCE_DROP_OFF: Final[XsConstant] = XsConstant('cActionTypeForceDropOff', 32, 'int')
+
+
+class XsConstantStoreFlag:
+    """Constants.xs category: Store Mode Constants."""
+
+    KEEP: Final[XsConstant] = XsConstant('cStoreFlagKeep', 0, 'int')
+    GIVE: Final[XsConstant] = XsConstant('cStoreFlagGive', 1, 'int')
+    GIVE_AND_TAKE_ON_DEATH: Final[XsConstant] = XsConstant('cStoreFlagGiveAndTakeOnDeath', 2, 'int')
+    GIVE_ON_COMPLETION_AND_TAKE_ON_DEATH: Final[XsConstant] = XsConstant('cStoreFlagGiveOnCompletionAndTakeOnDeath', 4, 'int')
+    GIVE_ON_COMPLETION: Final[XsConstant] = XsConstant('cStoreFlagGiveOnCompletion', 8, 'int')
+    TAKE: Final[XsConstant] = XsConstant('cStoreFlagTake', 16, 'int')
+    GIVE_AND_TAKE_ON_DEATH_AFTER_ANIMATION: Final[XsConstant] = XsConstant('cStoreFlagGiveAndTakeOnDeathAfterAnimation', 32, 'int')
+
+
+class XsConstantMinimapMode:
+    """Constants.xs category: Minimap Mode Constants."""
+
+    NONE: Final[XsConstant] = XsConstant('cMinimapModeNone', 0, 'int')
+    UNIT: Final[XsConstant] = XsConstant('cMinimapModeUnit', 1, 'int')
+    BUILDING: Final[XsConstant] = XsConstant('cMinimapModeBuilding', 2, 'int')
+    TERRAIN: Final[XsConstant] = XsConstant('cMinimapModeTerrain', 3, 'int')
+    TERRAIN_BIG: Final[XsConstant] = XsConstant('cMinimapModeTerrainBig', 4, 'int')
+
+
+class XsConstantFogFlag:
+    """Constants.xs category: Fog Flag Constants."""
+
+    NOT_IN_FOG: Final[XsConstant] = XsConstant('cFogFlagNotInFog', 0, 'int')
+    ALWAYS: Final[XsConstant] = XsConstant('cFogFlagAlways', 1, 'int')
+    ONLY_IF_ALIVE: Final[XsConstant] = XsConstant('cFogFlagOnlyIfAlive', 2, 'int')
+    DOPPELGANGER: Final[XsConstant] = XsConstant('cFogFlagDoppelganger', 3, 'int')
+    CHECK_DOPPEL: Final[XsConstant] = XsConstant('cFogFlagCheckDoppel', 4, 'int')
+
+
+class XsConstantHillMode:
+    """Constants.xs category: Hill Mode Constants."""
+
+    NO_RESTRICTION: Final[XsConstant] = XsConstant('cHillModeNoRestriction', 0, 'int')
+    NO_CORNERS_OF_HILLS: Final[XsConstant] = XsConstant('cHillModeNoCornersOfHills', 1, 'int')
+    FLAT_ONLY: Final[XsConstant] = XsConstant('cHillModeFlatOnly', 2, 'int')
+    ONE_ELEVATION_DIFFERENCE: Final[XsConstant] = XsConstant('cHillModeOneElevationDifference', 3, 'int')
+
+
+class XsConstantMoveAlgorithm:
+    """Constants.xs category: Move Algorithm Constants."""
+
+    NONE: Final[XsConstant] = XsConstant('cMoveAlgorithmNone', 0, 'int')
+    USE_STOP_SPRITE: Final[XsConstant] = XsConstant('cMoveAlgorithmUseStopSprite', 1, 'int')
+
+
+class XsConstantDoubleClickSelection:
+    """Constants.xs category: Run Pattern/Double Click Selection Behaviour."""
+
+    SELECT_BY_ID: Final[XsConstant] = XsConstant('cDoubleClickSelectById', 255, 'int')
 
 
 __all__ = [
+    "XsConstantVictoryType",
+    "XsConstantUndeadFlag",
+    "XsConstantClassFlag",
+    "XsConstantMapTileAttribute",
+    "XsConstantCaptureFlag",
+    "XsConstantUnitProperty",
+    "XsConstantUnitStance",
+    "XsConstantUnitLos",
+    "XsConstantUnitAction",
+    "XsConstantUnitOrder",
+    "XsConstantUnitFormation",
+    "XsConstantActionType",
+    "XsConstantStoreFlag",
+    "XsConstantMinimapMode",
+    "XsConstantFogFlag",
+    "XsConstantHillMode",
+    "XsConstantMoveAlgorithm",
+    "XsConstantDoubleClickSelection",
     'XsConstantAttribute',
     'XsConstantPlayerAge',
     'XsConstantEffectAmount',

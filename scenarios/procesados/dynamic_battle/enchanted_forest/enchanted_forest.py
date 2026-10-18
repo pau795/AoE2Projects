@@ -100,7 +100,7 @@ class EnchantedForest(ParserProject):
         trees_phase_1.new_effect.remove_object(
             object_list_unit_id=self.MOVEABLE_TREE,
             source_player=PlayerId.GAIA,
-            object_state=ObjectState.RESOURCE,
+            object_state=ObjectState.DEAD,
             area_x1=source_area.x1,
             area_y1=source_area.y1,
             area_x2=source_area.x2,

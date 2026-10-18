@@ -3,3 +3,4 @@ venv
 **/output/*
 /scripts/aoe2dynamic/aoe2dynamic-credentials.json
 /records/
+/mediamtx_sender/mediamtx_sender.cfg

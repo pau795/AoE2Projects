@@ -17,7 +17,7 @@ class CavesMultiplayer(ParserProject):
         self.trigger_data = self.scenario.actions.load_data_triggers()
 
     def process(self):
-        CivSettings(self.scenario, self.player_list)
+        CivSettings(self.scenario, self.player_list, add_resources=False)
         cave_list = [v for k, v in self.trigger_data.areas.items() if k.startswith('cave')]
         (UnitModifier(self.scenario, BuildingInfo.WOODEN_BRIDGE_A_MIDDLE.ID, PlayerId.GAIA)
          .modify_attribute(ObjectAttribute.FOUNDATION_TERRAIN, Operation.SET, -1)

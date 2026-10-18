@@ -13,7 +13,7 @@ class WestTrainMultiplayer(ParserProject):
         self.trigger_manager = self.scenario.trigger_manager
 
     def process(self):
-        CivSettings(self.scenario, self.player_list)
+        CivSettings(self.scenario, self.player_list, add_resources=False)
         WestTrainFactory(self.scenario, train_player=PlayerId.SEVEN)
 
 

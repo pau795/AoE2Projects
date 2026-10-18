@@ -10,7 +10,7 @@ class Avalanche:
         self.set_snowball_graphic(10640, "med_snowball_roll_2_x1", 10642)
         self.set_snowball_graphic(10641, "lg_snowball_roll_1_x1", 10642)
         self.set_dust(10642, "dust_loop")
-        self.set_snow_rock_graphic(10643, "rock_snow_x1")
+        self.set_snowing(10644, "snow")
         self.snow_terrain_restriction(self.dat_file.terrain_restrictions[41])
 
     def set_dust(self, graphic_id: int, particle_name: str):
@@ -40,17 +40,17 @@ class Avalanche:
         dust_delta = GraphicDelta(graphic_id=dust_graphic_id, offset_x=0, offset_y=0, padding_1=0, padding_2=0, sprite_ptr=0, display_angle=-1)
         graphic.deltas = [void_delta, dust_delta]
 
-    def set_snow_rock_graphic(self, graphic_id: int, sprite_name: str,):
+    def set_snowing(self, graphic_id: int, snow_particle: str):
         graphic = self.dat_file.graphics[graphic_id]
-        graphic.file_name = sprite_name
-        graphic.layer = 20
-        graphic.transparency = 1
+        graphic.particle_effect_name = snow_particle
+        graphic.layer = 30
+        graphic.transparent_selection = 1
         graphic.replay_delay = 0
         graphic.frame_count = 1
-        graphic.frame_duration = 0
-        graphic.sequence_type = 6
+        graphic.frame_duration = 1.0666666667
+        graphic.sequence_type = 1
         graphic.mirroring_mode = 0
-        graphic.angle_count = 6
+        graphic.angle_count = 1
 
     @staticmethod
     def snow_terrain_restriction(new_terrain_restriction: TerrainRestriction):

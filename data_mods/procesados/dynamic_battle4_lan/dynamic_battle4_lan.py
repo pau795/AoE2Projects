@@ -23,6 +23,8 @@ class DynamicBattle4Lan(DatProject):
     #   - 10640: Snowball medium 2 (Avalanche)
     #   - 10641: Snowball medium 3 (Avalanche)
     #   - 10642: Snowball large (Avalanche)
+    #   - 10643: Rain (Thunder Dunes)
+    #   - 10643: Snow Falling (Avalanche)
 
     def __init__(self, output_file: Path):
         super().__init__(output_file)

@@ -1,7 +1,8 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Iterable
+from enum import IntFlag
+from typing import ClassVar, Iterable
 
 from typing_extensions import Self
 
@@ -13,6 +14,13 @@ from scenarios.lib.xs.unit_tasks import UnitTask, XsConstant, format_xs_value
 
 _XsAttributeValue = int | XsConstant
 _XsQuantity = int | float | XsConstant
+
+
+class ProjectileSmartFlags(IntFlag):
+    """Update 185872 flags for the Enable Smart Projectile object attribute."""
+
+    BYPASS_TARGET_AGILITY = 4
+    USE_UNIT_DAMAGE = 8
 
 
 @dataclass(frozen=True)
@@ -36,6 +44,8 @@ _TaskOperation = _AddTask | _EditTask | _RemoveTasks
 
 
 class UnitModifier:
+    ProjectileSmartFlags: ClassVar[type[ProjectileSmartFlags]] = ProjectileSmartFlags
+
     def __init__(self, scenario: AoE2DEScenario, unit_id: int, source_player: int):
         self._scenario = scenario
         self._unit_id = unit_id
@@ -43,7 +53,10 @@ class UnitModifier:
         self._modify_unit_trigger = scenario.trigger_manager.add_trigger(f"P{source_player} Modify Unit {unit_id}")
         self._attribute_list: list[tuple[int, int, int | float, int | None]] = []
         self._xs_attribute_list: list[
-            tuple[_XsAttributeValue, int | XsConstant, _XsQuantity, _XsAttributeValue | None]
+            tuple[
+                _XsAttributeValue, int | XsConstant, _XsQuantity,
+                _XsAttributeValue | None, _XsAttributeValue | None,
+            ]
         ] = []
         self._task_operations: list[_TaskOperation] = []
         self._created = False
@@ -65,16 +78,25 @@ class UnitModifier:
             operation: int | XsConstant,
             quantity: _XsQuantity,
             armor_attack_class: _XsAttributeValue | None = None,
+            *,
+            train_location_entry_mod: _XsAttributeValue | None = None,
     ) -> Self:
         """Queue an ``xsEffectAmount`` modification.
 
         Attack and armor amounts are emitted in chunks of at most 255. Their
         multiply and divide operations are unsupported because ``cMulAttribute``
         does not work reliably for damage classes.
+
+        ``train_location_entry_mod`` selects the train-location entry through
+        the optional sixth XS argument. Omit it to use the unit's current entry.
         """
 
         self._ensure_not_created()
-        self._xs_attribute_list.append((attribute, operation, quantity, armor_attack_class))
+        if train_location_entry_mod is not None:
+            format_xs_value(train_location_entry_mod)
+        self._xs_attribute_list.append(
+            (attribute, operation, quantity, armor_attack_class, train_location_entry_mod)
+        )
         return self
 
     def add_task(self, task: UnitTask, insertion_index: int | None = None) -> Self:
@@ -155,17 +177,18 @@ class UnitModifier:
         source_player = format_xs_value(self._source_player)
         body_lines: list[str] = []
 
-        for attribute, operation, quantity, armor_attack_class in self._xs_attribute_list:
+        for attribute, operation, quantity, armor_attack_class, entry_mod in self._xs_attribute_list:
             xs_operations = self._format_xs_attribute_operation(
                 attribute,
                 operation,
                 quantity,
                 armor_attack_class,
             )
+            entry_argument = "" if entry_mod is None else f", {format_xs_value(entry_mod)}"
             for effect, xs_quantity in xs_operations:
                 body_lines.append(
                     f"xsEffectAmount({effect}, {unit_id}, {format_xs_value(attribute)}, "
-                    f"{xs_quantity}, {source_player});"
+                    f"{xs_quantity}, {source_player}{entry_argument});"
                 )
 
         for operation in self._task_operations:

@@ -78,7 +78,6 @@ class CatastrophicMultiplayer(ParserProject):
         )
 
 
-
 if __name__ == '__main__':
     catastrophic_class = CatastrophicMultiplayer(
         input_scenario_name='EDIT_CATASTROPHIC_4V4',

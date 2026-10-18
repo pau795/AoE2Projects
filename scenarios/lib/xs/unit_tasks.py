@@ -6,7 +6,12 @@ from enum import IntEnum, IntFlag
 from numbers import Real
 from typing import ClassVar, Iterable, TypeAlias
 
-from scenarios.lib.xs.xs_constants import XsConstantTaskAttribute, XsConstantTaskType, XsConstant
+from scenarios.lib.xs.xs_constants import (
+    XsConstant,
+    XsConstantClassFlag,
+    XsConstantTaskAttribute,
+    XsConstantTaskType,
+)
 
 
 Number: TypeAlias = int | float
@@ -29,23 +34,47 @@ def format_xs_value(value: XsValue) -> str:
     return repr(value)
 
 
+class ClassFilterFlags(IntFlag):
+    """Combinable target groups for Loot, Aura, and Stinger tasks."""
+
+    INFANTRY = XsConstantClassFlag.INFANTRY.value
+    CAVALRY = XsConstantClassFlag.CAVALRY.value
+    ARCHERS = XsConstantClassFlag.ARCHERS.value
+    CAVALRY_ARCHERS = XsConstantClassFlag.CAVALRY_ARCHERS.value
+    MONKS = XsConstantClassFlag.MONK.value
+    CIVILIANS = XsConstantClassFlag.CIVILIAN.value
+    SHIPS = XsConstantClassFlag.SHIP.value
+    SIEGE = XsConstantClassFlag.SIEGE.value
+    BUILDINGS = XsConstantClassFlag.BUILDING.value
+
+
 @dataclass(frozen=True, init=False)
 class TaskTargets:
     """Object IDs or object classes to which a task applies."""
 
     uses_object_classes: bool | None
     values: tuple[XsValue, ...]
+    exclude_classes: bool
 
-    def __init__(self, uses_object_classes: bool | None, values: Iterable[XsValue] = ()) -> None:
+    def __init__(
+            self,
+            uses_object_classes: bool | None,
+            values: Iterable[XsValue] = (),
+            *,
+            exclude_classes: bool = False,
+    ) -> None:
         normalized_values = tuple(values)
         if uses_object_classes is None and normalized_values:
             raise ValueError("Targetless tasks cannot contain target values")
         if uses_object_classes is not None and not normalized_values:
             raise ValueError("Object ID/class targets cannot be empty")
+        if exclude_classes and (uses_object_classes is not True or len(normalized_values) != 1):
+            raise ValueError("Class exclusions require exactly one class or combined class filter")
         for value in normalized_values:
             format_xs_value(value)
         object.__setattr__(self, "uses_object_classes", uses_object_classes)
         object.__setattr__(self, "values", normalized_values)
+        object.__setattr__(self, "exclude_classes", exclude_classes)
 
     @classmethod
     def object_ids(cls, values: Iterable[XsValue]) -> TaskTargets:
@@ -54,6 +83,35 @@ class TaskTargets:
     @classmethod
     def object_classes(cls, values: Iterable[XsValue]) -> TaskTargets:
         return cls(True, values)
+
+    @classmethod
+    def class_filter(cls, flags: ClassFilterFlags | int, *, exclude: bool = False) -> TaskTargets:
+        """Select combined groups in one Loot/Aura/Stinger task entry.
+
+        ``exclude=True`` targets all classes outside those groups. Ordinary
+        ``object_classes`` still emits one entry per class.
+        """
+
+        if isinstance(flags, bool) or not isinstance(flags, int) or not 0 < flags <= 511:
+            raise ValueError("Class filter flags must be a non-empty combination of bits 1 through 256")
+        return cls(True, [XsConstantClassFlag.OFFSET.value + int(flags)], exclude_classes=exclude)
+
+    @classmethod
+    def excluding_class(cls, object_class: int | XsConstant) -> TaskTargets:
+        """Exclude a class using its XS constant/ID (900..999) or raw ID (0..99).
+
+        Exclusions are supported by Loot, Aura, and Stinger. The XS class offset
+        also makes excluding raw Archer class 0 representable as a negative ID.
+        """
+
+        value = object_class.value if isinstance(object_class, XsConstant) else object_class
+        if isinstance(value, bool) or not isinstance(value, int):
+            raise ValueError("An excluded class must have a known integer class ID")
+        if 0 <= value < 100:
+            object_class = 900 + value
+        elif not 900 <= value < 1000:
+            raise ValueError("Excluded classes must be raw IDs 0..99 or XS IDs 900..999")
+        return cls(True, [object_class], exclude_classes=True)
 
     @classmethod
     def none(cls) -> TaskTargets:
@@ -71,6 +129,8 @@ class TaskTargets:
             ]
 
         value = format_xs_value(self.values[target_offset])
+        if self.exclude_classes:
+            value = f"{XsConstantClassFlag.REMOVAL} * ({value})"
         if self.uses_object_classes:
             return [
                 f"xsTaskAmount({XsConstantTaskAttribute.OBJECT_ID}, -1);",
@@ -106,6 +166,9 @@ class StingerFlags(IntFlag):
     ADD = 0
     MULTIPLY = 1
     DO_NOT_STACK = 2
+    CHARGE_ATTACK_ONLY = 4
+    SHOW_DURATION_BAR = 8
+    SHOW_IN_UNIT_STATS = 16
 
 
 class StingerRecipient(IntEnum):
@@ -123,9 +186,10 @@ class RefundRecipient(IntEnum):
     KILLER = 1
 
 
-class RefundValueMode(IntEnum):
+class RefundValueMode(IntFlag):
     FLAT_VALUE = 0
     FRACTION_OF_ASSOCIATED_COST = 1
+    PROPORTIONAL_TO_CONSTRUCTION = 2
 
 
 class HPThresholdMode(IntEnum):
@@ -137,8 +201,13 @@ class FlyOwnershipMode(IntEnum):
     GAIA_ONLY = 1
 
 
-class ResourceGenerationMode(IntEnum):
+class ResourceGenerationMode(IntFlag):
     PASSIVE = 2
+    WORK_RATE_MULTIPLIER = 4
+
+
+class GatherFlags(IntFlag):
+    AUTO_COLLECTION = 1
 
 
 class LootMode(IntEnum):
@@ -158,6 +227,17 @@ class UnitTask:
     def __post_init__(self) -> None:
         if not isinstance(self.affected_objects, TaskTargets):
             raise TypeError("affected_objects must be a TaskTargets instance")
+        has_extended_filter = self.affected_objects.exclude_classes or (
+            self.affected_objects.uses_object_classes is True
+            and any(
+                isinstance(value, (int, IntEnum, IntFlag)) and abs(value) > 1000
+                for value in self.affected_objects.values
+            )
+        )
+        if has_extended_filter and self.XS_TASK_TYPE not in (
+            XsConstantTaskType.LOOT, XsConstantTaskType.AURA, XsConstantTaskType.STINGER,
+        ):
+            raise ValueError("Combined class filters and exclusions require Loot, Aura, or Stinger")
         for _, value in self.task_attributes():
             format_xs_value(value)
 
@@ -203,7 +283,18 @@ class GarrisonTask(UnitTask):
 
 @dataclass(frozen=True, kw_only=True)
 class CombatTask(UnitTask):
-    """Allow the modified unit to combat selected objects or classes."""
+    """Allow the modified unit to combat selected objects or classes.
+
+    Args:
+        affected_objects: Optional combat target object IDs or classes. Defaults to no target.
+        work_value_1: Optional raw Work Value 1. Defaults to 0.
+        work_value_2: Optional raw Work Value 2. Defaults to 0.
+        work_range: Optional raw Work Range. Defaults to 0.
+        search_wait_time: Optional raw Search Wait Time. Defaults to 3.
+        combat_level_flag: Optional raw Combat Level Flag. Defaults to 1.
+        target_ownership: Optional ownership filter from ``CombatTask.Ownership``.
+            Defaults to -1.
+    """
 
     XS_TASK_TYPE: ClassVar[XsConstant] = XsConstantTaskType.COMBAT
     Ownership: ClassVar[type[TargetOwnership]] = TargetOwnership
@@ -479,6 +570,73 @@ class DepositUnitTask(UnitTask):
 
 
 @dataclass(frozen=True, kw_only=True)
+class GatherTask(UnitTask):
+    """Configure gathering, including direct collection without a dropsite.
+
+    Args:
+        affected_objects: Optional gathered object IDs or classes. Defaults to no target.
+        flags: Optional behavior from ``GatherTask.Flags``. AUTO_COLLECTION
+            deposits resources directly; replaces the old resource 96 farm bonus.
+            Defaults to -1.
+        output_resource: Optional Resource Out override. Defaults to -1.
+    """
+
+    XS_TASK_TYPE: ClassVar[XsConstant] = XsConstantTaskType.GATHER_REBUILD
+    Flags: ClassVar[type[GatherFlags]] = GatherFlags
+
+    flags: GatherFlags | int = -1
+    output_resource: XsValue = -1
+
+    def task_attributes(self) -> tuple[tuple[str, XsValue], ...]:
+        return (
+            (XsConstantTaskAttribute.COMBAT_LEVEL_FLAG, self.flags),
+            (XsConstantTaskAttribute.RESOURCE_OUT, self.output_resource),
+        )
+
+
+@dataclass(frozen=True, kw_only=True)
+class HuntTask(GatherTask):
+    """Configure hunting and gathering from huntable animals.
+
+    Args:
+        affected_objects: Optional huntable object IDs or classes. Defaults to no target.
+        flags: Optional behavior from ``HuntTask.Flags``; AUTO_COLLECTION
+            deposits resources directly. Defaults to -1.
+        output_resource: Optional Resource Out override. Defaults to -1.
+    """
+
+    XS_TASK_TYPE: ClassVar[XsConstant] = XsConstantTaskType.HUNT
+
+
+@dataclass(frozen=True, kw_only=True)
+class DropOffBonusTask(UnitTask):
+    """Gather an additional resource without consuming carry capacity.
+
+    Args:
+        multiplier: Required multiplier for the bonus resource.
+        output_resource: Required secondary resource type. If it matches the
+            primary resource, the game combines their amounts in the UI.
+        affected_objects: Optional gathered object IDs or classes. No target
+            applies to gathering from any target.
+        productivity_resource: Optional resource whose current value multiplies
+            ``multiplier``. Defaults to -1.
+    """
+
+    XS_TASK_TYPE: ClassVar[XsConstant] = XsConstantTaskType.ADDITIONAL_RESOURCE
+
+    multiplier: XsValue
+    output_resource: XsValue
+    productivity_resource: XsValue = -1
+
+    def task_attributes(self) -> tuple[tuple[str, XsValue], ...]:
+        return (
+            (XsConstantTaskAttribute.WORK_VALUE_1, self.multiplier),
+            (XsConstantTaskAttribute.PRODUCTIVITY_RESOURCE, self.productivity_resource),
+            (XsConstantTaskAttribute.RESOURCE_OUT, self.output_resource),
+        )
+
+
+@dataclass(frozen=True, kw_only=True)
 class GenerateResourcesTask(UnitTask):
     """Generate a player resource while attacking or idling.
 
@@ -489,13 +647,15 @@ class GenerateResourcesTask(UnitTask):
             multiplies ``resource_amount``.
         affected_objects: Optional attacked object IDs or classes that activate
             generation. Defaults to no target.
-        passive_generation_flag: Optional mode. Use
+        passive_generation_flag: Optional combinable flags. Use
             ``GenerateResourcesTask.Mode.PASSIVE`` for passive generation on
-            units. Buildings generate passively automatically. Defaults to -1.
+            units. Combine with ``Mode.WORK_RATE_MULTIPLIER`` to multiply by the
+            unit's Work Rate. Buildings generate passively automatically. Defaults to -1.
     """
 
     XS_TASK_TYPE: ClassVar[XsConstant] = XsConstantTaskType.GENERATE_RESOURCES
     Mode: ClassVar[type[ResourceGenerationMode]] = ResourceGenerationMode
+    Flags: ClassVar[type[ResourceGenerationMode]] = ResourceGenerationMode
 
     # Base amount of the output resource granted per activation.
     resource_amount: XsValue
@@ -753,10 +913,14 @@ class StingerTask(UnitTask):
             ``StingerTask.Ownership``. Defaults to -1.
         activation_resource: Optional resource that must be greater than zero
             for activation. Defaults to -1.
+        indicator_short_tooltip_id: Optional UI short-tooltip string ID. Defaults to -1.
+        indicator_long_tooltip_id: Optional UI long-tooltip string ID. Defaults to -1.
+        indicator_icon_id: Optional UI icon ID from icons.json. Defaults to -1.
 
     Note:
         The owning unit also needs the Stinger bit in its Combat Ability object
-        attribute.
+        attribute. Update 185872 additionally supports Combat Ability (63),
+        Invulnerability Level (129), Area Damage (115), and Blast Width (22).
     """
 
     XS_TASK_TYPE: ClassVar[XsConstant] = XsConstantTaskType.STINGER
@@ -779,6 +943,11 @@ class StingerTask(UnitTask):
     # Resource that must be greater than zero for the stinger to activate.
     activation_resource: XsValue = -1
 
+    # Tooltip strings and icon displayed when SHOW_IN_UNIT_STATS is enabled.
+    indicator_short_tooltip_id: XsValue = -1
+    indicator_long_tooltip_id: XsValue = -1
+    indicator_icon_id: XsValue = -1
+
     def task_attributes(self) -> tuple[tuple[str, XsValue], ...]:
         return (
             (XsConstantTaskAttribute.WORK_VALUE_1, self.modifier_value),
@@ -788,6 +957,9 @@ class StingerTask(UnitTask):
             (XsConstantTaskAttribute.COMBAT_LEVEL_FLAG, self.flags),
             (XsConstantTaskAttribute.OWNER_TYPE, self.target_ownership),
             (XsConstantTaskAttribute.PRODUCTIVITY_RESOURCE, self.activation_resource),
+            (XsConstantTaskAttribute.GATHERING_SOUND, self.indicator_short_tooltip_id),
+            (XsConstantTaskAttribute.DEPOSIT_SOUND, self.indicator_long_tooltip_id),
+            (XsConstantTaskAttribute.GATHER_TYPE, self.indicator_icon_id),
         )
 
 
@@ -937,14 +1109,19 @@ class UnitRefundTask(UnitTask):
         recipient: Optional recipient from ``UnitRefundTask.Recipient``: owner
             or killer. Defaults to -1.
         value_mode: Optional interpretation from ``UnitRefundTask.ValueMode``:
-            flat value or fraction of associated cost. Defaults to -1.
+            flat value or fraction of associated cost, combinable with
+            PROPORTIONAL_TO_CONSTRUCTION. Defaults to -1.
         productivity_resource: Optional resource whose current value multiplies
             ``refund_value``. Defaults to -1.
+        target_ownership: Optional diplomacy filter checked when ``recipient``
+            (Work Range) is positive, e.g. KILLER. Defaults to -1.
     """
 
     XS_TASK_TYPE: ClassVar[XsConstant] = XsConstantTaskType.REFUND
     Recipient: ClassVar[type[RefundRecipient]] = RefundRecipient
     ValueMode: ClassVar[type[RefundValueMode]] = RefundValueMode
+    Flags: ClassVar[type[RefundValueMode]] = RefundValueMode
+    Ownership: ClassVar[type[TargetOwnership]] = TargetOwnership
 
     # Flat refund or fraction of the unit's associated resource cost.
     refund_value: XsValue
@@ -956,6 +1133,8 @@ class UnitRefundTask(UnitTask):
     value_mode: RefundValueMode | int = -1
     # Resource whose current value multiplies refund_value.
     productivity_resource: XsValue = -1
+    # Diplomacy restriction checked when recipient/Work Range is positive.
+    target_ownership: TargetOwnership | int = -1
 
     def task_attributes(self) -> tuple[tuple[str, XsValue], ...]:
         return (
@@ -964,6 +1143,7 @@ class UnitRefundTask(UnitTask):
             (XsConstantTaskAttribute.COMBAT_LEVEL_FLAG, self.value_mode),
             (XsConstantTaskAttribute.PRODUCTIVITY_RESOURCE, self.productivity_resource),
             (XsConstantTaskAttribute.RESOURCE_OUT, self.refunded_resource),
+            (XsConstantTaskAttribute.OWNER_TYPE, self.target_ownership),
         )
 
 
@@ -973,14 +1153,19 @@ __all__ = [
     "AuraFlags",
     "AuraTask",
     "BuildTask",
+    "ClassFilterFlags",
     "ConvertTask",
     "DepositUnitTask",
+    "DropOffBonusTask",
     "CombatTask",
     "FlyTask",
     "FlyOwnershipMode",
     "GarrisonTask",
+    "GatherFlags",
+    "GatherTask",
     "GenerateResourcesTask",
     "HealTask",
+    "HuntTask",
     "HPComparisonTarget",
     "HPDamageModifierTask",
     "HPThresholdMode",

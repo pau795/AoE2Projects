@@ -38,7 +38,7 @@ class EnchantedForestMultiplayer(ParserProject):
             return 1
 
     def process(self):
-        CivSettings(self.scenario, self.player_list)
+        CivSettings(self.scenario, self.player_list, add_resources=False)
         self.stats()
         for i, (key, areas) in enumerate(self.data_triggers.areas.items()):
             first_way = self.move_trees(areas[0], areas[1])
@@ -86,7 +86,7 @@ class EnchantedForestMultiplayer(ParserProject):
         trees_phase_1.new_effect.remove_object(
             object_list_unit_id=self.MOVEABLE_TREE,
             source_player=PlayerId.GAIA,
-            object_state=ObjectState.RESOURCE,
+            object_state=ObjectState.DEAD,
             area_x1=source_area.x1,
             area_y1=source_area.y1,
             area_x2=source_area.x2,

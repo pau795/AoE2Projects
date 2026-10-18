@@ -15,7 +15,7 @@ class EarthquakeMultiplayer(ParserProject):
         data_triggers = self.scenario.actions.load_data_triggers()
         earthquake_areas = data_triggers.areas['earthquake 2']
         players = [PlayerId.ONE, PlayerId.TWO, PlayerId.THREE, PlayerId.FOUR, PlayerId.FIVE, PlayerId.SIX, PlayerId.SEVEN, PlayerId.EIGHT]
-        CivSettings(self.scenario, players, nomad_players=[True, True, True, True, True, True, True, True])
+        CivSettings(self.scenario, players)
         EarthquakeFactory(
             scenario=self.scenario,
             initial_delay=900,

@@ -29,13 +29,10 @@ class EquallyProbableTriggerList:
 
 
 class FastEquallyProbableTriggerList:
-    def __init__(self, trigger_manager, target_trigger_list):
-        self.trigger_manager: TriggerManager = trigger_manager
-        self.target_trigger_list = target_trigger_list
-
-        for i, trigger in enumerate(self.target_trigger_list):
-            chance = round(1 / (len(self.target_trigger_list) - i) * 100)
+    def __init__(self, target_trigger_list):
+        for i, trigger in enumerate(target_trigger_list):
+            chance = round(1 / (len(target_trigger_list) - i) * 100)
             trigger.new_condition.chance(chance)
-            for trigger_b in self.target_trigger_list:
+            for trigger_b in target_trigger_list:
                 trigger.new_effect.deactivate_trigger(trigger_id=trigger_b.trigger_id)
                     

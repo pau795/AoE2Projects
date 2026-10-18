@@ -52,5 +52,8 @@ tree_dict = [
     {"graphic": "n_tree_stump_lush_bamboo_x1.sld", "object_id": 1538, "type": "stump", "angle_count": 4},
     {"graphic": "n_tree_wax_palm_x1.sld", "object_id": 2583, "type": "tree", "angle_count": 8},
     {"graphic": "n_tree_willow_x1.sld", "object_id": 2025, "type": "tree", "angle_count": 3},
+    {"graphic": "n_tree_spruce_x1.sld", "object_id": 2731, "type": "tree", "angle_count": 25},
+    {"graphic": "n_tree_spruce_snow_x1.sld", "object_id": 2732, "type": "tree", "angle_count": 12},
+    {"graphic": "n_tree_bush_d_x1.sld", "object_id": 2733, "type": "tree", "angle_count": 8},
 
 ]

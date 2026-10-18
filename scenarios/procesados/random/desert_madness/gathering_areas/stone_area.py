@@ -55,7 +55,7 @@ class StoneArea:
             area_y1=self.stone_resource.y,
             area_x2=self.stone_resource.x,
             area_y2=self.stone_resource.y,
-            object_state=ObjectState.RESOURCE,
+            object_state=ObjectState.DEAD,
             inverted=True,
             quantity=1
         )

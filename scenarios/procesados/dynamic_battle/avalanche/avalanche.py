@@ -150,7 +150,7 @@ class Avalanche(ParserProject):
          .modify_attribute(ObjectAttribute.INTERACTION_MODE, Operation.SET, 0)
          .modify_attribute(ObjectAttribute.SELECTION_EFFECT, Operation.SET, 2)
          .modify_attribute(ObjectAttribute.HIT_POINTS, Operation.SET, 300)
-         .modify_attribute(ObjectAttribute.STANDING_GRAPHIC, Operation.SET, 10643)
+         .modify_attribute(ObjectAttribute.STANDING_GRAPHIC, Operation.SET, 19611)
          .modify_attribute(ObjectAttribute.DYING_GRAPHIC, Operation.SET, 0)
          .modify_attribute(ObjectAttribute.COMBAT_ABILITY, Operation.SET, CombatAbility.ENABLE_AURA_ABILITY)
          .modify_attribute(ObjectAttribute.DAMAGE_GRAPHICS_TOTAL_NUM, Operation.SET, 0)

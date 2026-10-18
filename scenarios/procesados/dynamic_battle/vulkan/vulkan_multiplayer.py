@@ -18,7 +18,7 @@ class VulkanMultiplayer(ParserProject):
 
     def process(self):
         try:
-            CivSettings(self.scenario, self.player_list)
+            CivSettings(self.scenario, self.player_list, add_resources=False)
             VulkanFactory(
                 scenario=self.scenario,
                 first_stage_time=self.first_stage_time,

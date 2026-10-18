@@ -1,5 +1,6 @@
 from AoE2ScenarioParser.datasets.players import PlayerId
 
+from scenarios.lib.civ_settings import CivSettings
 from scenarios.lib.nomad_start import NomadStart
 from scenarios.lib.parser_project import ParserProject
 from scenarios.lib.vulkan_factory import VulkanFactory
@@ -21,6 +22,7 @@ class VulkanNomad(ParserProject):
             trigger_manager = self.scenario.trigger_manager
             trigger_data = self.scenario.actions.load_data_triggers()
             NomadStart(trigger_manager, trigger_data, self.player_list)
+            CivSettings(self.scenario, self.player_list)
             VulkanFactory(
                 scenario=self.scenario,
                 first_stage_time=self.first_stage_time,

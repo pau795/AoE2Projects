@@ -11,7 +11,7 @@ class ArmageddonMultiplayer(ParserProject):
         self.player_list = [PlayerId.ONE, PlayerId.TWO, PlayerId.THREE, PlayerId.FOUR, PlayerId.FIVE, PlayerId.SIX]
 
     def process(self):
-        CivSettings(self.scenario, self.player_list)
+        CivSettings(self.scenario, self.player_list, add_resources=False)
 
 
 if __name__ == '__main__':

@@ -43,7 +43,7 @@ class TsunamiMultiplayer(ParserProject):
             tsunami_periods=[600],
             display_sound=False
         )
-        CivSettings(self.scenario, self.player_list)
+        CivSettings(self.scenario, self.player_list, add_resources=False)
         self.trees()
 
     def trees(self):

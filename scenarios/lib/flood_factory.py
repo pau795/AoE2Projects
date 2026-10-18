@@ -13,7 +13,6 @@ from AoE2ScenarioParser.objects.support.tile import Tile
 from AoE2ScenarioParser.scenarios.aoe2_de_scenario import AoE2DEScenario
 
 
-
 class FloodFactory:
 
     BEACH_BRIDGE = BuildingInfo.WOODEN_BRIDGE_A_MIDDLE.ID
@@ -92,7 +91,7 @@ class FloodFactory:
                     )
                     bridge_trigger.new_effect.remove_object(
                         source_player=PlayerId.GAIA,
-                        object_state=ObjectState.RESOURCE,
+                        object_state=ObjectState.DEAD,
                         area_x1=max(0, current_tile.x - 2),
                         area_y1=max(0, current_tile.y - 1),
                         area_x2=min(current_tile.x + 1, self.map_manager.map_width),
